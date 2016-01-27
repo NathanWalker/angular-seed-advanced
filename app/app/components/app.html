@@ -3,6 +3,14 @@
     <a [routerLink]="['/Home']">Home</a>
     <a [routerLink]="['/About']">About</a>
   </nav>
+  
+  <form [ngFormModel]="langForm">
+    <select ngControl="lang" (change)="changeLang($event)">
+      <option *ngFor="#l of supportedLanguages" [value]="l.code">{{l.label}}</option>
+    </select>
+  </form>
 
+  <h1 class="title">{{ 'HELLO' | translate }}!</h1>
+  
   <router-outlet></router-outlet>
 </section>

@@ -92,6 +92,7 @@ const SYSTEM_CONFIG_DEV = {
     'hot_loader_main': `${APP_ROOT}hot_loader_main`,
     'angular2/*': `${APP_ROOT}angular2/*`,
     'rxjs/*': `${APP_ROOT}rxjs/*`,
+    'lodash': `${APP_BASE}node_modules/lodash/index`,
     '*': `${APP_BASE}node_modules/*`
   },
   packages: {

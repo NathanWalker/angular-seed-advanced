@@ -17,7 +17,7 @@
     "no-empty": true,
     "no-eval": true,
     "no-trailing-comma": true,
-    "no-trailing-whitespace": true,
+    "no-trailing-whitespace": false,
     "no-unused-expression": true,
     "no-unused-variable": true,
     "no-unreachable": true,
