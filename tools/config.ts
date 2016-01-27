@@ -96,7 +96,8 @@ const SYSTEM_CONFIG_DEV = {
   paths: {
     'main': `${APP_ROOT}main`,
     'hot_loader_main': `${APP_ROOT}hot_loader_main`,
-    '*': `${APP_BASE}node_modules/*`
+    '*': `${APP_BASE}node_modules/*`,
+    'lodash': `${APP_BASE}node_modules/lodash/index`
   }
 };
 
