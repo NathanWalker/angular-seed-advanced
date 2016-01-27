@@ -6,7 +6,7 @@
   "noempty": true,
   "nonew": true,
   "trailing": true,
-  "maxlen": 200,
+  "maxlen": 500,
   "boss": true,
   "eqnull": true,
   "expr": true,
@@ -17,7 +17,6 @@
   "undef": true,
   "indent": 2,
   "unused": true,
-
   "node": true,
   "globals": {
     "System": true

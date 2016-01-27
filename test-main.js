@@ -37,7 +37,6 @@ Promise.all([
   var testing = modules[2];
   testing.setBaseTestProviders(providers.TEST_BROWSER_PLATFORM_PROVIDERS,
                        providers.TEST_BROWSER_APPLICATION_PROVIDERS);
-
   browser_adapter.BrowserDomAdapter.makeCurrent();
 }).then(function() {
   return Promise.all(
