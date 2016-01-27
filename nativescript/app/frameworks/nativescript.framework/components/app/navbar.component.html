@@ -1,0 +1,4 @@
+<GridLayout columns="auto, auto" width="100%" rows="auto" horizontalAlignment="left" class="nav">
+  <Button [nsRouterLink]="['/Home']" [text]="'HOME' | translate" row="0" col="0" [class.active]="activeLink.home"></Button>
+  <Button [nsRouterLink]="['/About']" [text]="'ABOUT' | translate" row="0" col="1" [class.active]="activeLink.about"></Button>  
+</GridLayout>

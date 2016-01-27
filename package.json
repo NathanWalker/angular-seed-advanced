@@ -1,9 +1,9 @@
 {
-  "name": "angular2-seed",
+  "name": "angular2-seed-advanced",
   "version": "0.0.0",
-  "description": "Seed for Angular 2 apps",
+  "description": "Advanced seed for Angular 2 apps",
   "repository": {
-    "url": "https://github.com/mgechev/angular2-seed"
+    "url": "https://github.com/NathanWalker/angular2-seed-advanced"
   },
   "scripts": {
     "build.dev": "gulp build.dev",
@@ -31,7 +31,7 @@
   },
   "author": "Minko Gechev <mgechev>",
   "license": "MIT",
-  "devDependencies": {
+    "devDependencies": {
     "async": "^1.4.2",
     "browser-sync": "^2.11.1",
     "chalk": "^1.1.1",
