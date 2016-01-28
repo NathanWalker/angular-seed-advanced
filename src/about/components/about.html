@@ -1,0 +1,14 @@
+<p>
+  {{'ABOUT_REWARD' | translate}}
+</p>
+
+<p>
+  {{'ABOUT_ADD' | translate}}
+</p>
+<form (submit)="addName()">
+  <input [(ngModel)]="newName">
+  <button type="submit">{{'ADD_BTN_TEXT' | translate}}</button>
+</form>
+<ul>
+  <li *ngFor="#name of list.get()">{{name}}</li>
+</ul>
