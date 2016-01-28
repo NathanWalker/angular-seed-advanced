@@ -1,6 +1,7 @@
 # Introduction
 
-WIP
+## Please note: This is a WIP!
+
 An advanced seed project for Angular 2 apps.
 
 `angular2-seed-advanced` will provide the following features:
@@ -17,12 +18,15 @@ An advanced seed project for Angular 2 apps.
 Out of the box support for:
 - [lodash](https://lodash.com/)
 - [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n
-- [ngrx/store](https://github.com/ngrx/store) for state management (Redux inspired)
-- [NativeScript](https://www.nativescript.org/) bootstrap ability for cross platform mobile apps.
-- [Electron](http://electron.atom.io/) bootstrap ability for cross platform desktop apps.
-- [angular cli](https://github.com/angular/angular-cli) to help in component, service, pipe creation, etc. (it does `not` use it for the build)
-- provider for LocalStorage (abstraction for IndexedDB, WebSQL, localStorage, perhaps a port of localForage)
-- sophisticated setup for Service Worker
+
+Coming Soon...
+- [ ] [ngrx/store](https://github.com/ngrx/store) for state management (Redux inspired)
+- [ ] [NativeScript](https://www.nativescript.org/) bootstrap ability for cross platform mobile apps.
+- [ ] [Electron](http://electron.atom.io/) bootstrap ability for cross platform desktop apps.
+- [ ] [angular cli](https://github.com/angular/angular-cli) to help in component, service, pipe creation, etc. (it does `not` use it for the build)
+- [ ] provider for LocalStorage (abstraction for IndexedDB, WebSQL, localStorage, perhaps a port of localForage)
+- [ ] sophisticated setup for Service Worker
+- [ ] integration with [ng2-bootstrap](https://github.com/valor-software/ng2-bootstrap)
 
 # How to start
 
@@ -78,48 +82,6 @@ _Does not rely on any global dependencies._
 - [Contributing](#contributing)
 - [Change Log](#change-log)
 - [License](#license)
-
-# Configuration
-
-Default application server configuration
-
-```javascript
-var PORT             = 5555;
-var LIVE_RELOAD_PORT = 4002;
-var DOCS_PORT        = 4003;
-var APP_BASE         = '/';
-```
-
-Configure at runtime
-
-```bash
-npm start -- --port 8080 --reload-port 4000 --base /my-app/
-```
-
-# Running test
-
-```bash
-npm test
-
-# Debug - In two different shell windows
-npm run build.test.watch      # 1st window
-npm run karma.start           # 2nd window
-
-# e2e (aka. end-to-end, integration) - In three different shell windows
-npm start
-# npm run webdriver-update <- You may need to run this the first time
-npm run webdriver-start
-npm run e2e
-
-# e2e live mode - Protractor interactive mode
-# Instead of last command above, you can use:
-npm run e2e-live
-```
-You can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
-
-# Contributing
-
-Please see the [CONTRIBUTING](https://github.com/mgechev/angular2-seed/blob/master/CONTRIBUTING.md) file for guidelines.
 
 # Configuration
 

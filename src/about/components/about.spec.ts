@@ -8,7 +8,7 @@ import {
 import {Component} from 'angular2/core';
 import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 import {AboutCmp} from './about';
-import {NameList} from '../../framework/scientists/services/name-list.service';
+import {NameList} from '../../frameworks/app.framework/scientists/services/name-list.service';
 
 export function main() {
   describe('About component', () => {
