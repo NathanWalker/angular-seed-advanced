@@ -1,6 +1,6 @@
-import {Component} from 'angular2/core';
+import {Base} from '../../frameworks/app.framework/core/decorators/base.component';
 
-@Component({
+@Base({
   selector: 'home',
   templateUrl: './home/components/home.html',
   styleUrls: ['./home/components/home.css']

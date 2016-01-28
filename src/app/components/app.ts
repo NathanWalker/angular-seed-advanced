@@ -1,4 +1,7 @@
-import {Component, ViewEncapsulation} from 'angular2/core';
+import {Base} from '../../frameworks/app.framework/core/decorators/base.component';
+
+import {LangSwitcherCmp} from '../../frameworks/app.framework/i18n/components/lang-switcher.component';
+
 import {
   RouteConfig,
   ROUTER_DIRECTIVES
@@ -6,15 +9,14 @@ import {
 
 import {HomeCmp} from '../../home/components/home';
 import {AboutCmp} from '../../about/components/about';
-import {NameList} from '../../shared/services/name_list';
+import {NameList} from '../../frameworks/app.framework/scientists/services/name-list.service';
 
-@Component({
+@Base({
   selector: 'app',
   viewProviders: [NameList],
   templateUrl: './app/components/app.html',
   styleUrls: ['./app/components/app.css'],
-  encapsulation: ViewEncapsulation.None,
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES, LangSwitcherCmp]
 })
 @RouteConfig([
   { path: '/', component: HomeCmp, as: 'Home' },

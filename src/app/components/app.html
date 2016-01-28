@@ -1,0 +1,12 @@
+<section class="sample-app-content">
+  <nav>
+    <a [routerLink]="['/Home']">{{ 'HOME' | translate}}</a>
+    <a [routerLink]="['/About']">{{ 'ABOUT' | translate}}</a>
+  </nav>
+  
+  <lang-switcher></lang-switcher>
+
+  <h1 class="title">{{ 'HELLO' | translate }}!</h1>
+  
+  <router-outlet></router-outlet>
+</section>

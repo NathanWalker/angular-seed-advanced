@@ -21,11 +21,26 @@ export const APP_BASE             = argv['base']        || '/';
 export const ENABLE_HOT_LOADING   = !!argv['hot-loader'];
 export const HOT_LOADER_PORT      = 5578;
 
-export const BOOTSTRAP_MODULE     = ENABLE_HOT_LOADING ? 'hot_loader_main' : 'main';
+export const TARGET_WEB           = !!argv['web'];
+export const TARGET_NATIVESCRIPT  = !!argv['mobile'];
+export const TARGET_DESKTOP       = !!argv['desktop'];
+
+var bootstrap                     = 'main.web';
+
+if (ENABLE_HOT_LOADING) {
+  bootstrap                       = 'hot_loader_main';
+} else if (TARGET_WEB) {
+  bootstrap                       = 'main.web';
+} else if (TARGET_NATIVESCRIPT) {
+  bootstrap                       = 'main.mobile';
+} else if (TARGET_DESKTOP) {
+  bootstrap                       = 'main.desktop';
+}
+export const BOOTSTRAP_MODULE     = bootstrap;
 
 export const APP_TITLE            = 'My Angular2 App';
 
-export const APP_SRC              = 'app';
+export const APP_SRC              = 'src';
 export const ASSETS_SRC           = `${APP_SRC}/assets`;
 
 export const TOOLS_DIR            = 'tools';
@@ -85,6 +100,12 @@ export const PROD_DEPENDENCIES = PROD_NPM_DEPENDENCIES.concat(APP_ASSETS);
 
 // ----------------
 // SystemsJS Configuration.
+var paths = {
+  '*': `${APP_BASE}node_modules/*`,
+  'lodash': `${APP_BASE}node_modules/lodash/index`
+};
+paths[BOOTSTRAP_MODULE] = `${APP_ROOT}${BOOTSTRAP_MODULE}`;
+
 const SYSTEM_CONFIG_DEV = {
   defaultJSExtensions: true,
   paths: {
