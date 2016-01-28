@@ -23,7 +23,9 @@ System.config({
   defaultJSExtensions: true,
   paths: {
     'angular2/*': 'node_modules/angular2/*.js',
-    'rxjs/*': 'node_modules/rxjs/*.js'
+    'rxjs/*': 'node_modules/rxjs/*.js',
+    'lodash': 'node_modules/lodash/index.js',
+    'ng2-translate/*': 'node_modules/ng2-translate/ng2-translate.js'
   }
 });
 

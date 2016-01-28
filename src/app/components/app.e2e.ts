@@ -1,3 +1,7 @@
+// import {
+// selectDropdownByText
+// } from '../../../tools/utils/testing_e2e';
+
 describe('App', function() {
 
   beforeEach(function() {

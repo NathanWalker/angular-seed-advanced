@@ -28,14 +28,14 @@ bootstrap(AppCmp, [
   ROUTER_PROVIDERS,
   provide(LocationStrategy, { useClass: HashLocationStrategy }),
   CORE_APP_PROVIDERS,
+  COMMON_WEB_PROVIDERS,
   provide(Multilingual, {
     useFactory: (translate) => {
       Multilingual.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;
       return new Multilingual(translate);
     },
     deps: [TranslateService]
-  }),
-  COMMON_WEB_PROVIDERS
+  })
 ])
 .catch(err => console.error(err));
 
