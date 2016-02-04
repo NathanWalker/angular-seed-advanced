@@ -2,7 +2,7 @@ import {Component, ViewEncapsulation} from 'angular2/core';
 
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
 
-const _reflect: any=Reflect;
+const _reflect: any = Reflect;
 
 export class DecoratorUtils {
   public static getConfig(config: any = {}, opts?: any) {

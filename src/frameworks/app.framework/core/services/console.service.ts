@@ -1,9 +1,9 @@
 import {Injectable} from 'angular2/core';
 
-import {ILog} from '../interfaces/ilog';
+import {IConsole} from '../interfaces/iconsole';
 
 @Injectable()
-export class Console implements ILog {
+export class Console implements IConsole {
   
   public log(m: any): void { return; }
   public error(m: any): void { return; }

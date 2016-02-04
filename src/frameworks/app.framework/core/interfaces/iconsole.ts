@@ -1,4 +1,4 @@
-export interface ILog {
+export interface IConsole {
   log(m: any): void;
   error(m: any): void;
   warn(m: any): void;

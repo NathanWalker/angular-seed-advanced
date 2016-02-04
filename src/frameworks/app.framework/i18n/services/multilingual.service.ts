@@ -3,14 +3,21 @@ import {Injectable} from 'angular2/core';
 import _ = require('lodash');
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
+export interface Lang {
+  code: string;
+  label: string;
+}
+
 @Injectable()
 export class Multilingual {
   
   // default supported languages
   // see main.ts bootstrap for example of how to provide different value
-  public static SUPPORTED_LANGUAGES: Array<Object> = [
+  public static SUPPORTED_LANGUAGES: Array<Lang> = [
     { code: 'en', label: 'English' }
   ];
+  
+  public static STATIC_FILES_LOADER: string = 'assets/i18n';
   
   // defaults to English: 'en'
   private _userLang: string = 'en';
@@ -24,7 +31,7 @@ export class Multilingual {
     }
 
     // this will load translate json files
-    translate.useStaticFilesLoader('assets/i18n');
+    translate.useStaticFilesLoader(Multilingual.STATIC_FILES_LOADER);
 
     // the lang to use, if the lang isn't available, it will use the current loader to get them
     translate.use(userLang);

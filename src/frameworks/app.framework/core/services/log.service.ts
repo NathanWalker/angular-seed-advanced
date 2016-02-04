@@ -9,28 +9,29 @@ export class Log {
   constructor(private logger: Console) {}
   
   // out
-  o(msg: string) {
+  public o(msg: string) {
+    
     if (AppConfig.DEBUG.LEVEL_4) {
       this.logger.log(msg);  
     }
   }
   
   // error
-  error(err: any) {
+  public error(err: any) {
     if (AppConfig.DEBUG.LEVEL_4 || AppConfig.DEBUG.LEVEL_3) {
       this.logger.error(err);  
     }
   }
   
   // warn
-  warn(err: any) {
+  public warn(err: any) {
     if (AppConfig.DEBUG.LEVEL_4 || AppConfig.DEBUG.LEVEL_2) {
       this.logger.warn(err);  
     }
   }
   
   // info
-  info(err: any) {
+  public info(err: any) {
     if (AppConfig.DEBUG.LEVEL_4 || AppConfig.DEBUG.LEVEL_1) {
       this.logger.info(err);  
     }

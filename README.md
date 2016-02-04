@@ -1,25 +1,51 @@
-# Introduction
+## angular2-seed-advanced
+![Angular 2 Seed Advanced](/angular-advanced-logo.png)
 
-## Please note: This is a WIP!
+#### Please note: This is very much a wip.
 
-An advanced seed project for Angular 2 apps.
+An **advanced** seed project for Angular 2 apps grown out of [Minko Gechev's](https://github.com/mgechev) [angular2-seed](https://github.com/mgechev/angular2-seed). This seed inherits all the genetics of its parent and continually grows alongside it mirroring any changes to it's underlying roots.
 
-`angular2-seed-advanced` will provide the following features:
+**Free Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project's goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
 
-- Ready to go, statically typed build system using gulp for working with TypeScript.
-- Production and development builds.
-- Sample unit tests with Jasmine and Karma.
-- End-to-end tests with Protractor.
-- Development server with Livereload.
-- Experimental hot loading support.
-- Following the best practices for your application’s structure.
-- Manager of your type definitions using [typings](https://github.com/typings/typings).
+### Features
 
-Out of the box support for:
+Provides all features available in [angular2-seed](https://github.com/mgechev/angular2-seed) with the following enhancements:
+
+#### Integration with:
 - [lodash](https://lodash.com/)
 - [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n
 
-Coming Soon...
+#### Enhanced development workflow
+- Decorators for components which reduce boilerplate for common component setups
+- Introduction of `frameworks` to help organize your code for different platforms:
+    - `app.framework`: your shared application architecture code
+    - `desktop.framework`: **coming soon**... [Electron](http://electron.atom.io/) specific code
+    - `mobile.framework`: **coming soon**...[NativeScript](https://www.nativescript.org/) specific code
+    - `web.framework`: web specific code
+    - `test.framework`: test specific code providing conveniences to make testing your code easier and faster 
+
+#### Enhanced testing support options
+- mocks for various services
+- configurable provider blocks for easy test setup of common application providers
+  - tired of setting up similar providers over and over again for different tests?
+  - configure a reusable test provider which can be configured on a case-by-base basis
+  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/development/src/frameworks/test.framework/_providers.ts#L45-L78)
+  - watch [video explanation **coming soon**](https://github.com/NathanWalker/angular2-seed-advanced)
+- helpers for end-to-end (e2e, integration) tests
+- convenient shorthand to reduce test setup boilerplate and enhance speed of writing tests
+  - are your test cases buried by multiple import lines requiring you to scroll just to get to the substance of the test?
+  - removes noise allowing you to better focus on the substance of the test
+  - provides full intellisense support
+  - allows your team to add unique shorthands for various testing scenarios specific to your application needs
+    - see [example here **coming soon**](https://github.com/NathanWalker/angular2-seed-advanced)
+    - watch [video explanation **coming soon**](https://github.com/NathanWalker/angular2-seed-advanced)
+  - plays nice with `tslint` options like `"no-unused-variable": true` as the api hangs off a plain `Object` instead of globals 
+    - what's the value of that you ask? have you ever isolated a test with `iit` or `ddescribe` but didn't import those or vice versa, used `iit` leaving an unused `it` now in your tests? yeah, `tslint` will be all over you :/
+    - avoids `unused` variable warnings altogether in tests since you are always using a valid key from the shorthand `Object`
+  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/development/src/frameworks/test.framework/shorthand/ng2-jasmine.ts)
+  - watch [video explanation **coming soon**](https://github.com/NathanWalker/angular2-seed-advanced)
+
+#### Coming Soon...
 - [ ] [ngrx/store](https://github.com/ngrx/store) for state management (Redux inspired)
 - [ ] [NativeScript](https://www.nativescript.org/) bootstrap ability for cross platform mobile apps.
 - [ ] [Electron](http://electron.atom.io/) bootstrap ability for cross platform desktop apps.
@@ -57,6 +83,11 @@ npm run build.dev
 # prod build
 npm run build.prod
 ```
+
+## Important note: Ignore 'app' folder! Use the 'src'!
+
+Since this seed inherits from [angular2-seed](https://github.com/mgechev/angular2-seed), you should **never** modify the `app` folder here. This is to minimize merge conflicts with the parent seed whenever it is rebased here.
+Instead, use the `src`!
 
 ## Using the experimental hot loader support
 

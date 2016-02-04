@@ -22,19 +22,22 @@ export const ENABLE_HOT_LOADING   = !!argv['hot-loader'];
 export const HOT_LOADER_PORT      = 5578;
 
 export const TARGET_WEB           = !!argv['web'];
-export const TARGET_NATIVESCRIPT  = !!argv['mobile'];
+export const TARGET_MOBILE_NATIVE = !!argv['mobile-native'];
+export const TARGET_MOBILE_HYBRID = !!argv['mobile-hybrid'];
 export const TARGET_DESKTOP       = !!argv['desktop'];
 
-var bootstrap                     = 'main.web';
+var bootstrap                     = 'main.web'; // default
 
 if (ENABLE_HOT_LOADING) {
   bootstrap                       = 'hot_loader_main';
 } else if (TARGET_WEB) {
   bootstrap                       = 'main.web';
-} else if (TARGET_NATIVESCRIPT) {
-  bootstrap                       = 'main.mobile';
+} else if (TARGET_MOBILE_NATIVE) {
+  bootstrap                       = 'main.mobile.native'; // NativeScript
+} else if (TARGET_MOBILE_HYBRID) {
+  bootstrap                       = 'main.mobile.hybrid'; // Cordova
 } else if (TARGET_DESKTOP) {
-  bootstrap                       = 'main.desktop';
+  bootstrap                       = 'main.desktop'; // Electron
 }
 export const BOOTSTRAP_MODULE     = bootstrap;
 

@@ -1,16 +1,18 @@
 import {NameList} from './name-list.service';
 
+import {t} from '../../../test.framework/_providers';
+
 export function main() {
-  describe('NameList Service', () => {
+  t.describe('NameList', () => {
     let nameList;
 
-    beforeEach(() => {
+    t.be(() => {
       nameList = new NameList;
     });
 
-    it('should return the list of names', () => {
+    t.it('should return the list of names', () => {
       let names = nameList.get();
-      expect(names).toEqual(jasmine.any(Array));
+      t.e(names).toEqual(jasmine.any(Array));
     });
   });
 }
