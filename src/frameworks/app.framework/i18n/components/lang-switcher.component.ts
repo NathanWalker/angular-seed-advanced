@@ -4,7 +4,7 @@ import {FORM_DIRECTIVES, ControlGroup, Control} from 'angular2/common';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 import {Log} from '../../core/services/log.service';
-import {Multilingual} from '../services/multilingual.service';
+import {Multilingual, Lang} from '../services/multilingual.service';
 
 @Component({
   selector: 'lang-switcher',
@@ -19,7 +19,7 @@ import {Multilingual} from '../services/multilingual.service';
 })
 export class LangSwitcherCmp {
   public langForm: ControlGroup;
-  public supportedLanguages: Array<Object> = Multilingual.SUPPORTED_LANGUAGES;
+  public supportedLanguages: Array<Lang> = Multilingual.SUPPORTED_LANGUAGES;
   
   constructor(private translate: TranslateService, private multilang: Multilingual, private log: Log) {
     this.langForm = new ControlGroup({

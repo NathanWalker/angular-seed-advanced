@@ -1,23 +1,24 @@
-// angular2
+// angular
 import {provide} from 'angular2/core';
 import {bootstrap} from 'angular2/platform/browser';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
-import {AppCmp} from './app/components/app';
 
 // 3rd party dependencies
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
+// platform
+import {WEB_PROVIDERS} from './frameworks/web.framework/_providers';
+
 // app
 import {AppConfig} from './frameworks/app.framework/core/services/app-config.service';
 import {Window} from './frameworks/app.framework/core/interfaces/iwindow';
-import {CORE_APP_PROVIDERS} from './frameworks/app.framework/_providers';
+import {APP_PROVIDERS} from './frameworks/app.framework/_providers';
 import {Multilingual} from './frameworks/app.framework/i18n/services/multilingual.service';
+import {AppCmp} from './app/components/app';
 
-// Web
-import {COMMON_WEB_PROVIDERS} from './frameworks/web.framework/_providers';
-
-// Config
+// config
+AppConfig.PLATFORM_TARGET = AppConfig.PLATFORMS.WEB;
 AppConfig.DEBUG.LEVEL_4 = true;
 
 // include for production builds
@@ -28,8 +29,8 @@ bootstrap(AppCmp, [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
   provide(LocationStrategy, { useClass: HashLocationStrategy }),
-  COMMON_WEB_PROVIDERS,
-  CORE_APP_PROVIDERS,
+  WEB_PROVIDERS,
+  APP_PROVIDERS,
   provide(Multilingual, {
     useFactory: (translate, win) => {
       Multilingual.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;

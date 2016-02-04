@@ -1,19 +1,17 @@
-import {
-  TestComponentBuilder,
-  describe,
-  expect,
-  injectAsync,
-  it
-} from 'angular2/testing';
+import {TestComponentBuilder} from 'angular2/testing';
 import {Component} from 'angular2/core';
 import {DOM} from 'angular2/src/platform/dom/dom_adapter';
+
+import {t, TEST_COMPONENT_PROVIDERS} from '../../frameworks/test.framework/_providers';
 import {AboutCmp} from './about';
 import {NameList} from '../../frameworks/app.framework/scientists/services/name-list.service';
 
 export function main() {
-  describe('About component', () => {
-    it('should work',
-      injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+  t.describe('@Component: AboutCmp', () => {
+    t.bep(() => TEST_COMPONENT_PROVIDERS({http: true}));
+    
+    t.it('should work',
+      t.injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         return tcb.createAsync(TestComponent)
           .then(rootTC => {
             rootTC.detectChanges();
@@ -24,18 +22,18 @@ export function main() {
               return aboutInstance.list.names.length;
             };
 
-            expect(aboutInstance.list).toEqual(jasmine.any(NameList));
-            expect(nameListLen()).toEqual(4);
-            expect(DOM.querySelectorAll(aboutDOMEl, 'li').length).toEqual(nameListLen());
+            t.e(aboutInstance.list).toEqual(jasmine.any(NameList));
+            t.e(nameListLen()).toEqual(4);
+            t.e(DOM.querySelectorAll(aboutDOMEl, 'li').length).toEqual(nameListLen());
 
             aboutInstance.newName = 'Minko';
             aboutInstance.addName();
             rootTC.detectChanges();
 
-            expect(nameListLen()).toEqual(5);
-            expect(DOM.querySelectorAll(aboutDOMEl, 'li').length).toEqual(nameListLen());
+            t.e(nameListLen()).toEqual(5);
+            t.e(DOM.querySelectorAll(aboutDOMEl, 'li').length).toEqual(nameListLen());
 
-            expect(DOM.querySelectorAll(aboutDOMEl, 'li')[4].textContent).toEqual('Minko');
+            t.e(DOM.querySelectorAll(aboutDOMEl, 'li')[4].textContent).toEqual('Minko');
           });
       }));
   });

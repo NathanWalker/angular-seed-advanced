@@ -1,21 +1,27 @@
-describe('Home', function() {
+import {t} from '../../frameworks/test.framework/_providers';
+import {selectDropdownByText} from '../../frameworks/test.framework/e2e/dropdowns';
 
-  beforeEach(function() {
+t.describe('Home', function() {
+
+  t.be(function() {
     browser.get('/dist/dev');
   });
 
-  it('should have correct h1', function() {
-      expect(element(by.css('app section home h1')).getText())
-      .toEqual('Howdy!');
+  t.it('should have correct h2', function() {
+      t.e(element(by.css('app section home h2')).getText())
+      .toEqual('I love technology');
   });
 
-  it('should have correct h2', function() {
-      expect(element(by.css('app section home h2')).getText())
-      .toEqual('Gratz!');
-  });
-
-  it('should have correct success msg', function() {
-      expect(element(by.css('app section home p')).getText())
+  t.it('should have correct success msg', function() {
+      t.e(element(by.css('app section home p')).getText())
       .toEqual('Your deployment of Angular 2 Seed worked perfectly! Click about (above) to get your reward!');
+  });
+  
+  t.it('language switcher should change language', function() {
+    t.e(element(by.css('app section home h2')).getText()).toEqual('I love technology');
+    selectDropdownByText(element(by.css('app section lang-switcher select')), 'French', 500);
+    t.e(element(by.css('app section home h2')).getText()).toEqual('Je adore la technologie');
+    t.e(element(by.css('app section home p')).getText())
+      .toEqual(`Votre déploiement de angulaire 2 Seed avancée a parfaitement fonctionné! Cliquez environ (ci-dessus) pour obtenir votre récompense!`);
   });
 });
