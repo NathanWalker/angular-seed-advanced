@@ -100,12 +100,6 @@ export const PROD_DEPENDENCIES = PROD_NPM_DEPENDENCIES.concat(APP_ASSETS);
 
 // ----------------
 // SystemsJS Configuration.
-var paths = {
-  '*': `${APP_BASE}node_modules/*`,
-  'lodash': `${APP_BASE}node_modules/lodash/index`
-};
-paths[BOOTSTRAP_MODULE] = `${APP_ROOT}${BOOTSTRAP_MODULE}`;
-
 const SYSTEM_CONFIG_DEV = {
   defaultJSExtensions: true,
   paths: {
