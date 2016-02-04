@@ -10,6 +10,7 @@ import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
 import {AppConfig} from './frameworks/app.framework/core/services/app-config.service';
+import {Window} from './frameworks/app.framework/core/interfaces/iwindow';
 import {CORE_APP_PROVIDERS} from './frameworks/app.framework/_providers';
 import {Multilingual} from './frameworks/app.framework/i18n/services/multilingual.service';
 
@@ -27,14 +28,14 @@ bootstrap(AppCmp, [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
   provide(LocationStrategy, { useClass: HashLocationStrategy }),
-  CORE_APP_PROVIDERS,
   COMMON_WEB_PROVIDERS,
+  CORE_APP_PROVIDERS,
   provide(Multilingual, {
-    useFactory: (translate) => {
+    useFactory: (translate, win) => {
       Multilingual.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;
-      return new Multilingual(translate);
+      return new Multilingual(translate, win);
     },
-    deps: [TranslateService]
+    deps: [TranslateService, Window]
   })
 ])
 .catch(err => console.error(err));
