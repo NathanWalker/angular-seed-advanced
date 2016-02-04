@@ -15,9 +15,9 @@ export class Multilingual {
   // defaults to English: 'en'
   private _userLang: string = 'en';
   
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService, private win: Window) {
     // use navigator lang if available
-    let userLang = window.navigator.language.split('-')[0];
+    let userLang = win.navigator.language.split('-')[0];
     if (_.includes(_.map(Multilingual.SUPPORTED_LANGUAGES, 'code'), userLang)) {
       // only if supported
       this._userLang = userLang;
