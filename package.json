@@ -29,6 +29,15 @@
     "webdriver-start": "webdriver-manager start",
     "webdriver-update": "webdriver-manager update"
   },
+  "nativescript": {
+    "id": "com.yourbundle.yourappname",
+    "tns-ios": {
+      "version": "1.5.2"
+    },
+    "tns-android": {
+      "version": "1.5.1"
+    }
+  },
   "author": "Minko Gechev <mgechev>",
   "contributors": [
     {

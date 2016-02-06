@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "inlineSourceMap": true,
+        "experimentalDecorators": true,
+        "noEmitHelpers": true
+    },
+    "files": [
+        "../typings/main.d.ts",
+        "main.mobile.native.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "platforms"
+    ]
+}
