@@ -30,9 +30,11 @@
     "webdriver-update": "webdriver-manager update"
   },
   "author": "Minko Gechev <mgechev>",
-  "contributors": [{
-    "name": "Nathan Walker <NathanWalker>"
-  }],
+  "contributors": [
+    {
+      "name": "Nathan Walker <NathanWalker>"
+    }
+  ],
   "license": "MIT",
     "devDependencies": {
     "async": "^1.4.2",
