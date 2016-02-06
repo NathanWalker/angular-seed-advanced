@@ -12,6 +12,7 @@
     "build.test": "gulp build.test",
     "build.test.watch": "gulp build.test.watch",
     "clean-ng2": "rimraf node_modules/angular2/manual_typings node_modules/angular2/typings",
+    "coverage": "remap-istanbul -i coverage/coverage-final.json -o coverage -t html && npm run gulp -- serve.coverage",
     "docs": "npm run gulp -- build.docs && npm run gulp -- serve.docs",
     "e2e": "protractor",
     "e2e-live": "protractor --elementExplorer",
@@ -28,9 +29,11 @@
     "webdriver-start": "webdriver-manager start"
   },
   "author": "Minko Gechev <mgechev>",
-  "contributors": [{
-    "name": "Nathan Walker <NathanWalker>"
-  }],
+  "contributors": [
+    {
+      "name": "Nathan Walker <NathanWalker>"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "angular2-hot-loader": "0.0.17",
@@ -65,6 +68,7 @@
     "jasmine-spec-reporter": "^2.4.0",
     "karma": "~0.13.15",
     "karma-chrome-launcher": "~0.2.0",
+    "karma-coverage": "^0.5.3",
     "karma-ie-launcher": "^0.2.0",
     "karma-jasmine": "~0.3.6",
     "karma-mocha-reporter": "^1.1.1",
@@ -72,6 +76,7 @@
     "merge-stream": "^1.0.0",
     "open": "0.0.5",
     "protractor": "^3.0.0",
+    "remap-istanbul": "^0.5.1",
     "rimraf": "^2.5.1",
     "run-sequence": "^1.1.0",
     "semver": "^5.0.3",

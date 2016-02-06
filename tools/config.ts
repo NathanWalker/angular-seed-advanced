@@ -12,11 +12,12 @@ const ENVIRONMENTS = {
 
 export const PROJECT_ROOT         = normalize(join(__dirname, '..'));
 export const ENV                  = getEnvironment();
-export const DEBUG                = argv['debug']       || false;
-export const PORT                 = argv['port']        || 5555;
-export const LIVE_RELOAD_PORT     = argv['reload-port'] || 4002;
-export const DOCS_PORT            = argv['docs-port']   || 4003;
-export const APP_BASE             = argv['base']        || '/';
+export const DEBUG                = argv['debug']         || false;
+export const PORT                 = argv['port']          || 5555;
+export const LIVE_RELOAD_PORT     = argv['reload-port']   || 4002;
+export const DOCS_PORT            = argv['docs-port']     || 4003;
+export const COVERAGE_PORT        = argv['coverage-port'] || 4004;
+export const APP_BASE             = argv['base']          || '/';
 
 export const ENABLE_HOT_LOADING   = !!argv['hot-loader'];
 export const HOT_LOADER_PORT      = 5578;
