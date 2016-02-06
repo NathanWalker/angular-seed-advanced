@@ -40,3 +40,10 @@ lib
 test
 tools/typings/tsd
 tmp
+
+app/**/*.js
+app/hooks
+app/node_modules
+app/platforms
+app/*.d.ts
+!app/sw.js

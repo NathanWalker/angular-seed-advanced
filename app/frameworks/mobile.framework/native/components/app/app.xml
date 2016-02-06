@@ -1,0 +1,6 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="loaded">
+  <Page.actionBar>
+    <ActionBar title="Angular 2 Advanced Seed"></ActionBar>
+  </Page.actionBar>
+  <StackLayout><router-outlet></router-outlet></StackLayout>
+</Page>

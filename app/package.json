@@ -1,0 +1,20 @@
+{
+	"nativescript": {
+		"id": "com.yourdomain.appname",
+		"tns-ios": {
+			"version": "1.5.2"
+		},
+		"tns-android": {
+			"version": "1.5.1"
+		}
+	},
+	"dependencies": {
+		"nativescript-angular": "0.0.27",
+		"tns-core-modules": "1.6.0-angular-2"
+	},
+	"devDependencies": {
+		"nativescript-dev-typescript": "^0.2.3",
+		"shelljs": "^0.5.3",
+		"typescript": "^1.7.5"
+	}
+}
