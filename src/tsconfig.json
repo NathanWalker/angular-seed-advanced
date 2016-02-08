@@ -4,11 +4,15 @@
         "target": "es5",
         "inlineSourceMap": true,
         "experimentalDecorators": true,
-        "noEmitHelpers": true
+        "emitDecoratorMetadata": true,
+        "noEmitHelpers": true,
+        "noEmitOnError": true,
+        "removeComments": false
     },
     "files": [
         "../typings/main.d.ts",
-        "main.mobile.native.ts"
+        "node_modules/tns-core-modules/tns-core-modules.d.ts",
+        "app/app.ts"
     ],
     "exclude": [
         "node_modules",

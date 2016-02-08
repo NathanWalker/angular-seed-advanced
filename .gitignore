@@ -44,9 +44,12 @@ lib
 test
 tmp
 
-app/**/*.js
-app/hooks
-app/node_modules
-app/platforms
-app/*.d.ts
-!app/sw.js
+src/**/*.js
+src/hooks
+src/node_modules
+src/platforms
+src/*.d.ts
+!src/sw.js
+src/app/assets
+src/app/components
+src/app/frameworks
