@@ -1,43 +1,45 @@
-import application = require('application');
-import {LocationStrategy} from 'angular2/router';
-import {NgZone, Inject, forwardRef} from 'angular2/core';
+var application = require("application");
+import { LocationStrategy } from 'angular2/router';
+import { NgZone, ApplicationRef, Inject, forwardRef } from 'angular2/core';
 
-interface LocationState { 
-    state: any;
-    title: string;
-    url: string;
-    queryParams: string;
+interface LocationState 
+{ 
+    state: any, 
+    title: string, 
+    url: string,
+    queryParams: string 
 }
     
 export class NSLocationStrategy extends LocationStrategy {
     private states = new Array<LocationState>();
     private popStateCallbacks = new Array<(_: any) => any>();
     private ngZone: NgZone;
-    constructor(@Inject(forwardRef(() => NgZone)) zone: NgZone) {
+    // constructor(@Inject(forwardRef(() => NgZone)) zone: NgZone){
+    constructor(zone: NgZone){
         super();
-
+        
         this.ngZone = zone;
-        if(application.android) {
-          application.android.on('activityBackPressed', (args: application.AndroidActivityBackPressedEventData) => {
-            this.ngZone.run(() => {
-              if (this.states.length > 1) {
-                this.back();
-                args.cancel = true;
-              }
-            });
-          });
-        }
+        //if(application.android){
+            //application.android.on("activityBackPressed", (args: application.AndroidActivityBackPressedEventData) => {
+                //this.ngZone.run( () => {
+                    //if(this.states.length > 1){
+                        //this.back();
+                        //args.cancel = true;
+                    //}
+                //});
+            //})
+        //}
     }
     
     path(): string {
-        console.log('--[NSLocationStrategy].path()');
-        if(this.states.length > 0) {
+        console.log("--[NSLocationStrategy].path()");
+        if(this.states.length > 0){
             return this.states[this.states.length - 1].url;
         }
-        return '/';
+        return "/";
     }
     prepareExternalUrl(internal: string): string {
-        console.log('--[NSLocationStrategy].prepareExternalUrl() internal: ' + internal);
+        console.log("--[NSLocationStrategy].prepareExternalUrl() internal: " + internal);
         return internal;
     }
     pushState(state: any, title: string, url: string, queryParams: string): void {
@@ -52,8 +54,8 @@ export class NSLocationStrategy extends LocationStrategy {
     }
     replaceState(state: any, title: string, url: string, queryParams: string): void {
         console.log(`--[NSLocationStrategy].replaceState state: ${state}, title: ${title}, url: ${url}, queryParams: ${queryParams}`);
-
-        this.states.pop();
+        
+        this.states.pop()
         this.states.push({
             state: state, 
             title: title, 
@@ -61,27 +63,28 @@ export class NSLocationStrategy extends LocationStrategy {
             queryParams: queryParams });
     }
     forward(): void {
-        console.log('--[NSLocationStrategy].forward');
-        throw new Error('Not implemented');
+        console.log("--[NSLocationStrategy].forward");
+        throw new Error("Not implemented");
     }
     back(): void {
-        console.log('--[NSLocationStrategy].back');
-
+        console.log("--[NSLocationStrategy].back");
+        
         var state = this.states.pop();
         this.callPopState(state, true);
     }
     onPopState(fn: (_: any) => any): void {
-        console.log('--[NSLocationStrategy].onPopState');
+        console.log("--[NSLocationStrategy].onPopState");
         this.popStateCallbacks.push(fn);
     }
     getBaseHref(): string {
-        console.log('--[NSLocationStrategy].getBaseHref()');
-        return '';
+        console.log("--[NSLocationStrategy].getBaseHref()");
+        return "";
     }
-
-    private callPopState(state:LocationState, pop: boolean = true) {
+    
+    private callPopState(state:LocationState, pop: boolean = true){
        var change = { url: state.url, pop: pop};
         for(var fn of this.popStateCallbacks){
+            console.log('pop state callback: ' + fn);
             fn(change);
         }
     }

@@ -1,11 +1,11 @@
 ## angular2-seed-advanced
-![Angular 2 Seed Advanced](/angular-advanced-logo.png)
+![Angular 2 Seed Advanced](/angular-advanced-logo.png)![Angular 2 Seed Advanced Integrations](/integrations.png)
 
 #### Please note: This is very much a wip.
 
-An **advanced** seed project for Angular 2 apps grown out of [Minko Gechev's](https://github.com/mgechev) [angular2-seed](https://github.com/mgechev/angular2-seed). This seed inherits all the genetics of its parent and continually grows alongside it mirroring any changes to it's underlying roots.
+An **advanced** seed project for Angular 2 apps grown out of [Minko Gechev's](https://github.com/mgechev) [angular2-seed](https://github.com/mgechev/angular2-seed). This seed inherits all the genetics of its parent and will continually grow alongside it mirroring any changes to the underlying roots.
 
-**Free Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project's goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
+**Free Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
 
 ### Features
 
@@ -14,6 +14,15 @@ Provides all features available in [angular2-seed](https://github.com/mgechev/an
 #### Integration with:
 - [lodash](https://lodash.com/)
 - [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n
+
+#### Coming Soon...
+- [ ] [ngrx/store](https://github.com/ngrx/store) for state management (Redux)
+- [ ] [NativeScript](https://www.nativescript.org/) bootstrap ability for cross platform mobile apps.
+- [ ] [Electron](http://electron.atom.io/) bootstrap ability for cross platform desktop apps.
+- [ ] [angular cli](https://github.com/angular/angular-cli) to help in component, service, pipe creation, etc. (it does `not` use it for the build)
+- [ ] provider for LocalStorage (abstraction for IndexedDB, WebSQL, localStorage, perhaps a port of localForage)
+- [ ] sophisticated setup for Service Worker
+- [ ] integration with [ng2-bootstrap](https://github.com/valor-software/ng2-bootstrap)
 
 #### Enhanced development workflow
 - Decorators for components which reduce boilerplate for common component setups
@@ -45,14 +54,6 @@ Provides all features available in [angular2-seed](https://github.com/mgechev/an
   - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/development/src/frameworks/test.framework/shorthand/ng2-jasmine.ts)
   - watch [video explanation **coming soon**](https://github.com/NathanWalker/angular2-seed-advanced)
 
-#### Coming Soon...
-- [ ] [ngrx/store](https://github.com/ngrx/store) for state management (Redux inspired)
-- [ ] [NativeScript](https://www.nativescript.org/) bootstrap ability for cross platform mobile apps.
-- [ ] [Electron](http://electron.atom.io/) bootstrap ability for cross platform desktop apps.
-- [ ] [angular cli](https://github.com/angular/angular-cli) to help in component, service, pipe creation, etc. (it does `not` use it for the build)
-- [ ] provider for LocalStorage (abstraction for IndexedDB, WebSQL, localStorage, perhaps a port of localForage)
-- [ ] sophisticated setup for Service Worker
-- [ ] integration with [ng2-bootstrap](https://github.com/valor-software/ng2-bootstrap)
 
 # How to start
 
@@ -83,11 +84,6 @@ npm run build.dev
 # prod build
 npm run build.prod
 ```
-
-## Important note: Ignore 'app' folder! Use the 'src'!
-
-Since this seed inherits from [angular2-seed](https://github.com/mgechev/angular2-seed), you should **never** modify the `app` folder here. This is to minimize merge conflicts with the parent seed whenever it is rebased here.
-Instead, use the `src`!
 
 ## Using the experimental hot loader support
 
