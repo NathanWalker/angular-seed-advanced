@@ -4,6 +4,7 @@ import {TranslateService} from 'ng2-translate/ng2-translate';
 
 import {t, TEST_COMMON_PROVIDERS} from '../../../test.framework/_providers';
 import {WindowMockFrench} from '../../../test.framework/core/mocks/iwindow.mock';
+import {Window} from '../../core/services/window';
 import {Multilingual, Lang} from './multilingual';
 
 export function main() {
@@ -18,14 +19,14 @@ export function main() {
       })
     ]);
     t.it('should get language', t.inject([Multilingual], (multilang) => {
-      expect(multilang.getLang()).toBe('en');
+      t.e(multilang.getLang()).toBe('en');
     }));
     t.it('should support only english by default', t.inject([Multilingual], (multilang) => {
-      expect(Multilingual.SUPPORTED_LANGUAGES.length).toBe(1);
-      expect(Multilingual.SUPPORTED_LANGUAGES[0].code).toBe('en');
+      t.e(Multilingual.SUPPORTED_LANGUAGES.length).toBe(1);
+      t.e(Multilingual.SUPPORTED_LANGUAGES[0].code).toBe('en');
     }));
     t.it('should default static files loader', t.inject([Multilingual], (multilang) => {
-      expect(Multilingual.STATIC_FILES_LOADER).toBe('assets/i18n');
+      t.e(Multilingual.STATIC_FILES_LOADER).toBe('assets/i18n');
     }));
 
   });
@@ -47,12 +48,12 @@ export function main() {
       })
     ]);
     t.it('should get language - french', t.inject([Multilingual], (multilang) => {
-      expect(multilang.getLang()).toBe('fr');
+      t.e(multilang.getLang()).toBe('fr');
     }));
     t.it('should now support french', t.inject([Multilingual], (multilang) => {
-      expect(Multilingual.SUPPORTED_LANGUAGES.length).toBe(2);
-      expect(Multilingual.SUPPORTED_LANGUAGES[0].code).toBe('en');
-      expect(Multilingual.SUPPORTED_LANGUAGES[1].code).toBe('fr');
+      t.e(Multilingual.SUPPORTED_LANGUAGES.length).toBe(2);
+      t.e(Multilingual.SUPPORTED_LANGUAGES[0].code).toBe('en');
+      t.e(Multilingual.SUPPORTED_LANGUAGES[1].code).toBe('fr');
       
       if (Multilingual.SUPPORTED_LANGUAGES.length > 1) {
         // ensure it's reset back to the 1 default
@@ -60,7 +61,7 @@ export function main() {
       }
     }));
     t.it('i18n file location should be custom', t.inject([Multilingual], (multilang) => {
-      expect(Multilingual.STATIC_FILES_LOADER).toBe('public/i18n');
+      t.e(Multilingual.STATIC_FILES_LOADER).toBe('public/i18n');
     }));
    
   });

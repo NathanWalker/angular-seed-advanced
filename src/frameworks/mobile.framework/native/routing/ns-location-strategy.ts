@@ -1,7 +1,6 @@
 // var application = require('application');
 import {LocationStrategy} from 'angular2/router';
-import {NgZone} from 'angular2/core';
-// import {NgZone, Inject, forwardRef} from 'angular2/core';
+import {NgZone, Inject, forwardRef} from 'angular2/core';
 
 interface LocationState { 
   state: any;
@@ -14,8 +13,7 @@ export class NSLocationStrategy extends LocationStrategy {
   private states = new Array<LocationState>();
   private popStateCallbacks = new Array<(_: any) => any>();
   private ngZone: NgZone;
-  // constructor(@Inject(forwardRef(() => NgZone)) zone: NgZone){
-  constructor(zone: NgZone) {
+  constructor(@Inject(forwardRef(() => NgZone)) zone: NgZone) {
     super();
 
     this.ngZone = zone;

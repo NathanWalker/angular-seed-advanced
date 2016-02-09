@@ -4,6 +4,7 @@
 // application.start();
 
 import 'reflect-metadata';
+import 'rxjs/add/operator/map';
 
 // angular
 import {provide} from 'angular2/core';
@@ -22,7 +23,7 @@ import {TranslateService} from 'ng2-translate/ng2-translate';
 import {NSLocationStrategy} from './frameworks/mobile.framework/native/routing/ns-location-strategy';
 import {NativeScriptAppConfig} from './frameworks/mobile.framework/native/core/native-script-app-config';
 import {AppConfig} from './frameworks/app.framework/core/services/app-config';
-import {Window} from './frameworks/app.framework/core/interfaces/iwindow';
+import {Window} from './frameworks/app.framework/core/services/window';
 import {Console} from './frameworks/app.framework/core/services/console';
 import {APP_PROVIDERS} from './frameworks/app.framework/_providers';
 import {Multilingual} from './frameworks/app.framework/i18n/services/multilingual';
@@ -37,7 +38,7 @@ declare var UIBarStyle: any;
 class WindowNative {
   public get navigator(): any {
     return {
-      location: 'en-US'
+      language: 'en-US'
     };
   }
 }

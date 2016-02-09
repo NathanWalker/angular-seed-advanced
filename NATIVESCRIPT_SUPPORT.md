@@ -7,10 +7,9 @@ git clone https://github.com/NathanWalker/angular2-seed-advanced.git
 cd angular2-seed-advanced
 cd src  // we set things up from `src` directory for the {N} integration as it does not use the seed build
 npm install
-npm run prepare-nativescript  // copies files to `src/app` directory for {N} and fixes some typings issues
 ```
 
-Now we need to fix another `typings` issues with `tns-core-modules`
+#### Fix `typings` issues with `tns-core-modules`
 
 All instructions below will assume you are in the `src` folder (as mentioned above) so paths are relative to `src` directory:
 
@@ -111,11 +110,16 @@ Open `node_modules/tns-core-modules/tns-core-modules.d.ts`. Copy the following a
 
 This removes all the typing references that are already handled by the `"../typings/main.d.ts"` reference in `src/tsconfig.json`.
 
-Proceed with platform add
+#### Platform add
 
 ```
 tns platform add ios
-tns emulate ios
+```
+
+#### Start app
+
+```
+npm start
 ```
 
 You should get this error:

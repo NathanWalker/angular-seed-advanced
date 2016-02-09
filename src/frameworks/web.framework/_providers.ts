@@ -1,5 +1,5 @@
 import {provide} from 'angular2/core';
-import {Window} from '../app.framework/core/interfaces/iwindow';
+import {Window} from '../app.framework/core/services/window';
 import {Console} from '../app.framework/core/services/console';
 
 

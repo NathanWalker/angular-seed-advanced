@@ -3,6 +3,8 @@ import {Injectable} from 'angular2/core';
 import _ = require('lodash');
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
+import {Window} from '../../core/services/window';
+
 export interface Lang {
   code: string;
   label: string;

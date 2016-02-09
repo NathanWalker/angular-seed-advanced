@@ -2,11 +2,12 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
+        "declaration": false,
+        "noImplicitAny": false,
         "inlineSourceMap": true,
+        "noLib": false,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "noEmitHelpers": true,
-        "noEmitOnError": true,
         "removeComments": false
     },
     "files": [
