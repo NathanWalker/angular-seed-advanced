@@ -9,7 +9,7 @@ import {RootRouter} from 'angular2/src/router/router';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
-import {Window} from '../app.framework/core/interfaces/iwindow';
+import {Window} from '../app.framework/core/services/window';
 import {Console} from '../app.framework/core/services/console';
 import {Log} from '../app.framework/core/services/log';
 import {Multilingual} from '../app.framework/i18n/services/multilingual';

@@ -1,4 +1,4 @@
-export interface Window {
+export interface IWindow {
   navigator: any;
   location: any;
   alert(msg: string): void;

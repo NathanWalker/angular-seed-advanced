@@ -12,7 +12,7 @@ import {WEB_PROVIDERS} from './frameworks/web.framework/_providers';
 
 // app
 import {AppConfig} from './frameworks/app.framework/core/services/app-config';
-import {Window} from './frameworks/app.framework/core/interfaces/iwindow';
+import {Window} from './frameworks/app.framework/core/services/window';
 import {APP_PROVIDERS} from './frameworks/app.framework/_providers';
 import {Multilingual} from './frameworks/app.framework/i18n/services/multilingual';
 import {AppCmp} from './components/app/app';
