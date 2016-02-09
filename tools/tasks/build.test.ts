@@ -8,6 +8,7 @@ export = function buildTest(gulp, plugins) {
     let src = [
       'typings/main.d.ts',
       join(APP_SRC, '**/*.ts'),
+      '!' + join(APP_SRC, 'app/**/*.ts'),
       '!' + join(APP_SRC, '**/*.e2e.ts'),
       '!' + join(APP_SRC, 'main.ts')
     ];

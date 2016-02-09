@@ -30,7 +30,7 @@ export function main() {
 
   });
 
-  t.describe('Multilingual for French and should allow customization of location of i18n files', () => {
+  t.describe('app.framework: Multilingual for French and should allow customization of location of i18n files', () => {
     const SUPPORTED_LANGUAGES: Array<Lang> = [
       { code: 'en', label: 'English' },
       { code: 'fr', label: 'French' }
@@ -53,10 +53,16 @@ export function main() {
       expect(Multilingual.SUPPORTED_LANGUAGES.length).toBe(2);
       expect(Multilingual.SUPPORTED_LANGUAGES[0].code).toBe('en');
       expect(Multilingual.SUPPORTED_LANGUAGES[1].code).toBe('fr');
+      
+      if (Multilingual.SUPPORTED_LANGUAGES.length > 1) {
+        // ensure it's reset back to the 1 default
+        Multilingual.SUPPORTED_LANGUAGES.splice(-1);
+      }
     }));
     t.it('i18n file location should be custom', t.inject([Multilingual], (multilang) => {
       expect(Multilingual.STATIC_FILES_LOADER).toBe('public/i18n');
     }));
+   
   });
 
 }

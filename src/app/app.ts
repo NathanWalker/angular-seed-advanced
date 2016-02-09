@@ -11,7 +11,7 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 import {ROUTER_PROVIDERS, LocationStrategy} from 'angular2/router';
 
 // nativescript
-import {nativeScriptBootstrap} from "nativescript-angular/application";
+import {nativeScriptBootstrap} from 'nativescript-angular/application';
 import {EventData} from 'data/observable';
 import {topmost} from 'ui/frame';
 

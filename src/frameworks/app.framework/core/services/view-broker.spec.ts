@@ -12,7 +12,7 @@ export function main() {
     });
     t.it('TEMPLATE_URL: mobile_native', () => {
       AppConfig.PLATFORM_TARGET = AppConfig.PLATFORMS.MOBILE_NATIVE;
-      t.e(ViewBroker.TEMPLATE_URL('./components/app/app.html')).toBe('./frameworks/mobile.framework/native/components/app/app.xml');
+      t.e(ViewBroker.TEMPLATE_URL('./components/app/app.html')).toBe('./frameworks/mobile.framework/native/components/app/app.html');
     });
     t.it('TEMPLATE_URL: mobile_hybrid', () => {
       AppConfig.PLATFORM_TARGET = AppConfig.PLATFORMS.MOBILE_HYBRID;
