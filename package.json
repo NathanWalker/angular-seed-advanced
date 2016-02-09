@@ -21,7 +21,7 @@
     "karma.start": "karma start",
     "postinstall": "typings install && npm run clean-ng2 && gulp check.versions && gulp postinstall",
     "reinstall": "rimraf node_modules && npm cache clean && npm install",
-    "start": "gulp serve --env dev",
+    "start": "rimraf src/node_modules src/platforms src/references.d.ts; gulp serve --env dev",
     "serve.dev": "gulp serve --env dev",
     "start.mobile": "npm run prepare; cd src; tns emulate ios",
     "tasks.list": "gulp --tasks-simple",

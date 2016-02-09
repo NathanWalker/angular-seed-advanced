@@ -5,6 +5,7 @@ export = function tslint(gulp, plugins) {
   return function () {
     let src = [
       join(APP_SRC, '**/*.ts'),
+      '!' + join(APP_SRC, 'app/**/*.ts'),
       '!' + join(APP_SRC, '**/*.d.ts'),
       join(TOOLS_DIR, '**/*.ts'),
       '!' + join(TOOLS_DIR, '**/*.d.ts')
