@@ -3,6 +3,11 @@
 // application.cssFile = 'assets/main.css';
 // application.start();
 
+// nativescript
+import {nativeScriptBootstrap} from 'nativescript-angular/application';
+import {EventData} from 'data/observable';
+import {topmost} from 'ui/frame';
+
 import 'reflect-metadata';
 import 'rxjs/add/operator/map';
 
@@ -10,11 +15,6 @@ import 'rxjs/add/operator/map';
 import {provide} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {ROUTER_PROVIDERS, LocationStrategy} from 'angular2/router';
-
-// nativescript
-import {nativeScriptBootstrap} from 'nativescript-angular/application';
-import {EventData} from 'data/observable';
-import {topmost} from 'ui/frame';
 
 // 3rd party dependencies
 import {TranslateService} from 'ng2-translate/ng2-translate';
