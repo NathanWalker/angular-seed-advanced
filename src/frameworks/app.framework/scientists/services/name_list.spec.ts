@@ -1,4 +1,4 @@
-import {NameList} from './name-list';
+import {NameList} from './name_list';
 
 import {t} from '../../../test.framework/_providers';
 

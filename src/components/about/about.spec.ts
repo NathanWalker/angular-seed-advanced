@@ -4,7 +4,7 @@ import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 
 import {t, TEST_COMPONENT_PROVIDERS} from '../../frameworks/test.framework/_providers';
 import {AboutCmp} from './about';
-import {NameList} from '../../frameworks/app.framework/scientists/services/name-list';
+import {NameList} from '../../frameworks/app.framework/scientists/services/name_list';
 
 export function main() {
   t.describe('@Component: AboutCmp', () => {

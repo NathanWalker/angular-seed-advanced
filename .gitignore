@@ -28,17 +28,18 @@ build/Release
 # Users Environment Variables
 .lock-wscript
 .tsdrc
+.typingsrc
 
 #IDE configuration files
 .idea
 .vscode
+*.iml
 
 dist
 dev
 docs
 lib
 test
-tools/typings/tsd
 tmp
 
 src/**/*.js

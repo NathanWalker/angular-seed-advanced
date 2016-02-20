@@ -16,8 +16,7 @@
     "no-duplicate-variable": true,
     "no-empty": true,
     "no-eval": true,
-    "no-trailing-comma": true,
-    "no-trailing-whitespace": false,
+    "no-trailing-whitespace": true,
     "no-unused-expression": true,
     "no-unused-variable": true,
     "no-unreachable": true,
@@ -30,7 +29,14 @@
     ],
     "quotemark": [true, "single"],
     "semicolon": true,
+    "trailing-comma": true,
     "triple-equals": true,
-    "variable-name": false
+    "variable-name": false,
+
+    "component-selector-name": [true, "kebab-case"],
+    "component-selector-type": [true, "element"],
+    "host-parameter-decorator": true,
+    "input-parameter-decorator": true,
+    "output-parameter-decorator": true
   }
 }

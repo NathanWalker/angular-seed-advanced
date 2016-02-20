@@ -54,7 +54,6 @@ Provides all features available in [angular2-seed](https://github.com/mgechev/an
   - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/development/src/frameworks/test.framework/shorthand/ng2-jasmine.ts)
   - watch [video explanation **coming soon**](https://github.com/NathanWalker/angular2-seed-advanced)
 
-
 # How to start
 
 **Note** that this seed project requires node v4.x.x or higher and npm 2.14.7.
@@ -85,27 +84,16 @@ npm run build.dev
 npm run build.prod
 ```
 
-## Using the experimental hot loader support
-
-If you want to try the experimental [hot loading](http://blog.mgechev.com/2015/10/26/angular2-hot-loader-hot-loading-tooling/) support use:
-
-```
-npm start -- --hot-loader true
-```
-
-Note that the hot loader is still in experimental phase of development and there are some missing features. If you experience any issues with it report them at [here](https://github.com/mgechev/angular2-hot-loader/issues).
-
 _Does not rely on any global dependencies._
 
 # Table of Content
 
 - [Introduction](#introduction)
 - [How to start](#how-to-start)
-  * [Using the experimental hot loader support](#using-the-experimental-hot-loader-support)
 - [Table of Content](#table-of-content)
 - [Configuration](#configuration)
 - [How to extend?](#how-to-extend)
-- [Running test](#running-test)
+- [Running tests](#running-tests)
 - [Contributing](#contributing)
 - [Change Log](#change-log)
 - [License](#license)
@@ -137,14 +125,15 @@ npm run build.test.watch      # 1st window
 npm run karma.start           # 2nd window
 
 # e2e (aka. end-to-end, integration) - In three different shell windows
-npm start
-# npm run webdriver-update <- You may need to run this the first time
+# Make sure you don't have a global instance of Protractor
+# npm run webdriver-update <- You will need to run this the first time
 npm run webdriver-start
+npm run serve.e2e
 npm run e2e
 
 # e2e live mode - Protractor interactive mode
 # Instead of last command above, you can use:
-npm run e2e-live
+npm run e2e.live
 ```
 You can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
 

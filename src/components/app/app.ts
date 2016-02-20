@@ -8,7 +8,7 @@ import {
 
 import {HomeCmp} from '../home/home';
 import {AboutCmp} from '../about/about';
-import {NameList} from '../../frameworks/app.framework/scientists/services/name-list';
+import {NameList} from '../../frameworks/app.framework/scientists/services/name_list';
 
 @Base({
   selector: 'app',

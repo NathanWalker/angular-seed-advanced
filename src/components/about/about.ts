@@ -1,5 +1,5 @@
 import {Form} from '../../frameworks/app.framework/core/decorators/form.component';
-import {NameList} from '../../frameworks/app.framework/scientists/services/name-list';
+import {NameList} from '../../frameworks/app.framework/scientists/services/name_list';
 
 @Form({
   selector: 'about',
