@@ -21,8 +21,7 @@ export function main() {
     t.it('should get language', t.inject([Multilingual], (multilang) => {
       t.e(multilang.getLang()).toBe('en');
     }));
-    t.it('should support only english by default', t.inject([Multilingual], (multilang) => {
-      t.e(Multilingual.SUPPORTED_LANGUAGES.length).toBe(1);
+    t.it('should at a minimum support english', t.inject([Multilingual], (multilang) => {
       t.e(Multilingual.SUPPORTED_LANGUAGES[0].code).toBe('en');
     }));
     t.it('should default static files loader', t.inject([Multilingual], (multilang) => {

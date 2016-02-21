@@ -1,6 +1,7 @@
 import {Injectable} from 'angular2/core';
 
-import _ = require('lodash');
+import * as _includes from 'lodash/includes';
+import * as _map from 'lodash/map';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 import {Window} from '../../core/services/window';
@@ -27,7 +28,7 @@ export class Multilingual {
   constructor(private translate: TranslateService, private win: Window) {
     // use navigator lang if available
     let userLang = win.navigator.language.split('-')[0];
-    if (_.includes(_.map(Multilingual.SUPPORTED_LANGUAGES, 'code'), userLang)) {
+    if (_includes(_map(Multilingual.SUPPORTED_LANGUAGES, 'code'), userLang)) {
       // only if supported
       this._userLang = userLang;
     }

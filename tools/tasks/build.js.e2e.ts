@@ -5,14 +5,14 @@ import {APP_SRC, APP_DEST, TOOLS_DIR} from '../../config';
 import {templateLocals, makeTsProject} from '../../utils';
 const plugins = <any>gulpLoadPlugins();
 
+
 export = () => {
   let tsProject = makeTsProject();
   let src = [
     'typings/browser.d.ts',
     TOOLS_DIR + '/manual_typings/**/*.d.ts',
     join(APP_SRC, '**/*.ts'),
-    '!' + join(APP_SRC, '**/*.spec.ts'),
-    '!' + join(APP_SRC, '**/*.e2e.ts')
+    '!' + join(APP_SRC, '**/*.spec.ts')
   ];
   let result = gulp.src(src)
     .pipe(plugins.plumber())
@@ -23,4 +23,4 @@ export = () => {
     .pipe(plugins.sourcemaps.write())
     .pipe(plugins.template(templateLocals()))
     .pipe(gulp.dest(APP_DEST));
-};
+}

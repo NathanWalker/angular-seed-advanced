@@ -14,7 +14,7 @@ export function main() {
       t.injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         return tcb.createAsync(TestComponent)
           .then((rootTC) => {
-            let homeDOMEl = rootTC.debugElement.componentViewChildren[0].nativeElement;
+            let homeDOMEl = rootTC.debugElement.children[0].nativeElement;
 
             t.e(DOM.querySelectorAll(homeDOMEl, 'h2')[0].tagName).toEqual('H2');
             t.e(DOM.querySelectorAll(homeDOMEl, 'p')[0].className).toEqual('note');
@@ -26,6 +26,6 @@ export function main() {
 @Component({
   selector: 'test-cmp',
   directives: [HomeCmp],
-  template: '<div><home></home></div>'
+  template: '<home></home>'
 })
 class TestComponent {}

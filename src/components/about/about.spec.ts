@@ -16,8 +16,8 @@ export function main() {
           .then(rootTC => {
             rootTC.detectChanges();
 
-            let aboutInstance = rootTC.debugElement.componentViewChildren[0].componentInstance;
-            let aboutDOMEl = rootTC.debugElement.componentViewChildren[0].nativeElement;
+            let aboutInstance = rootTC.debugElement.children[0].componentInstance;
+            let aboutDOMEl = rootTC.debugElement.children[0].nativeElement;
             let nameListLen = function () {
               return aboutInstance.list.names.length;
             };
@@ -42,7 +42,7 @@ export function main() {
 @Component({
   providers: [NameList],
   selector: 'test-cmp',
-  template: '<div><about></about></div>',
+  template: '<about></about>',
   directives: [AboutCmp]
 })
 class TestComponent {}
