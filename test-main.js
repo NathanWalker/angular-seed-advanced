@@ -24,7 +24,7 @@ System.config({
   paths: {
     'angular2/*': 'node_modules/angular2/*.js',
     'rxjs/*': 'node_modules/rxjs/*.js',
-    'lodash/*': 'node_modules/lodash/*.js',
+    'lodash': 'node_modules/lodash/index.js',
     'ng2-translate/*': 'node_modules/ng2-translate/*.js'
   }
 });

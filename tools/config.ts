@@ -118,6 +118,7 @@ const SYSTEM_CONFIG_DEV = {
     [BOOTSTRAP_MODULE]: `${APP_BASE}${BOOTSTRAP_MODULE}`,
     'angular2/*': `${APP_BASE}angular2/*`,
     'rxjs/*': `${APP_BASE}rxjs/*`,
+    'lodash': `${APP_BASE}node_modules/lodash/index`,
     '*': `${APP_BASE}node_modules/*`
   },
   packages: {
@@ -132,6 +133,7 @@ export const SYSTEM_BUILDER_CONFIG = {
   defaultJSExtensions: true,
   paths: {
     [`${TMP_DIR}/*`]: `${TMP_DIR}/*`,
+    'lodash': `node_modules/lodash/index.js`,
     '*': 'node_modules/*'
   }
 };

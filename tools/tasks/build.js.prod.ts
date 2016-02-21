@@ -4,7 +4,7 @@ import {templateLocals, tsProjectFn, customIgnore} from '../utils';
 
 const INLINE_OPTIONS = {
   base: TMP_DIR ,
-  useRelativePaths: true,
+  useRelativePaths: false,
   removeLineBreaks: true
 };
 
