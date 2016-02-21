@@ -1,13 +1,13 @@
 import {t} from '../../../test.framework/_providers';
 import {AppConfig} from './app-config';
-import * as _keys from 'lodash/keys';
+import * as _ from 'lodash';
 
 export function main() {
   t.describe('app.framework: AppConfig', () => {
     t.be(() => AppConfig.RESET());
     
     t.it('PLATFORMS', () => {   
-      t.e(_keys(AppConfig.PLATFORMS).length).toBe(4);
+      t.e(_.keys(AppConfig.PLATFORMS).length).toBe(4);
       t.e(AppConfig.PLATFORM_TARGET).toBe(AppConfig.PLATFORMS.WEB);
       t.e(AppConfig.PLATFORMS.WEB).toBe('web');
       t.e(AppConfig.PLATFORMS.MOBILE_NATIVE).toBe('mobile_native');
