@@ -11,8 +11,7 @@
     }
   },
   "scripts": {
-    "clean-ng2": "rimraf node_modules/angular2/manual_typings node_modules/angular2/typings node_modules/angular2/bundles/typings",
-    "prepare-nativescript": "npm run clean-ng2; cp -R assets app/; cp -R components app/; cp -R frameworks app/;",
+    "prepare-nativescript": "cp -R assets app/; cp -R components app/; cp -R frameworks app/;",
     "start": "npm run prepare-nativescript; tns emulate ios"
   },
   "dependencies": {

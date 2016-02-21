@@ -1,6 +1,6 @@
 import {join} from 'path';
 import {APP_SRC, APP_DEST} from '../config';
-import {templateLocals, tsProjectFn} from '../utils';
+import {templateLocals, tsProjectFn, customIgnore} from '../utils';
 
 export = function buildJSDev(gulp, plugins) {
   return function () {
@@ -10,7 +10,8 @@ export = function buildJSDev(gulp, plugins) {
       'tools/manual_typings/**/*.d.ts',
       join(APP_SRC, '**/*.ts'),
       '!' + join(APP_SRC, '**/*.spec.ts'),
-      '!' + join(APP_SRC, '**/*.e2e.ts')
+      '!' + join(APP_SRC, '**/*.e2e.ts'),
+      ...customIgnore
     ];
     let result = gulp.src(src)
       .pipe(plugins.plumber())

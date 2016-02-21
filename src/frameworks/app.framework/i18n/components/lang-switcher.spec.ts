@@ -17,7 +17,7 @@ export function main() {
         return tcb.createAsync(TestComponent)
           .then(rootTC => {
             rootTC.detectChanges();
-            let appDOMEl = rootTC.debugElement.componentViewChildren[0].nativeElement;
+            let appDOMEl = rootTC.debugElement.children[0].nativeElement;
             t.e(DOM.querySelectorAll(appDOMEl, 'form > select option').length).toBe(1);
             t.e(DOM.querySelectorAll(appDOMEl, 'form > select option')[0].value).toBe('en');
           });
@@ -33,7 +33,7 @@ export function main() {
         return tcb.createAsync(TestComponent)
           .then(rootTC => {
             rootTC.detectChanges();
-            let appDOMEl = rootTC.debugElement.componentViewChildren[0].nativeElement;
+            let appDOMEl = rootTC.debugElement.children[0].nativeElement;
             t.e(DOM.querySelectorAll(appDOMEl, 'form > select option').length).toBe(5);
             t.e(DOM.querySelectorAll(appDOMEl, 'form > select option')[0].value).toBe('en');
             t.e(DOM.querySelectorAll(appDOMEl, 'form > select option')[1].value).toBe('es');

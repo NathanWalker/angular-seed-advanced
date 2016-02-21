@@ -118,7 +118,7 @@ const SYSTEM_CONFIG_DEV = {
     [BOOTSTRAP_MODULE]: `${APP_BASE}${BOOTSTRAP_MODULE}`,
     'angular2/*': `${APP_BASE}angular2/*`,
     'rxjs/*': `${APP_BASE}rxjs/*`,
-    'lodash': `${APP_BASE}node_modules/lodash/index`,
+    'lodash/*': `${APP_BASE}lodash/*`,
     '*': `${APP_BASE}node_modules/*`
   },
   packages: {

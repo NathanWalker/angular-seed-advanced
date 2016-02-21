@@ -25,20 +25,11 @@
     "serve.e2e": "gulp serve.e2e",
     "start.mobile": "npm run prepare; cd src; tns emulate ios",
     "serve.prod": "gulp serve.prod",
-    "start": "rimraf src/node_modules src/platforms src/references.d.ts; gulp serve.dev",
+    "start": "gulp serve.dev",
     "tasks.list": "gulp --tasks-simple",
     "test": "gulp test",
     "webdriver-start": "webdriver-manager start",
     "webdriver-update": "webdriver-manager update"
-  },
-  "nativescript": {
-    "id": "com.yourbundle.yourappname",
-    "tns-ios": {
-      "version": "1.5.2"
-    },
-    "tns-android": {
-      "version": "1.5.1"
-    }
   },
   "author": "Minko Gechev <mgechev>",
   "contributors": [
@@ -86,7 +77,6 @@
     "karma-mocha-reporter": "^1.1.1",
     "karma-phantomjs2-launcher": "^0.4.0",
     "merge-stream": "^1.0.0",
-    "nativescript-dev-typescript": "^0.2.3",
     "ng2lint": "0.0.6",
     "open": "0.0.5",
     "protractor": "^3.0.0",
@@ -115,7 +105,7 @@
     "angular2": "2.0.0-beta.7",
     "es6-module-loader": "^0.17.8",
     "es6-shim": "^0.33.3",
-    "lodash": "^4.0.1",
+    "lodash": "^4.5.0",
     "ng2-translate": "^1.6.4",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",

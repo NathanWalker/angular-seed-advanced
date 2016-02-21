@@ -1,5 +1,5 @@
 ## angular2-seed-advanced
-![Angular 2 Seed Advanced](/angular-advanced-logo.png)![Angular 2 Seed Advanced Integrations](/integrations.png)
+![Angular 2 Seed Advanced](/resources/angular-advanced-logo.png)![Angular 2 Seed Advanced Integrations](/resources/integrations.png)
 
 #### Please note: This is very much a wip.
 

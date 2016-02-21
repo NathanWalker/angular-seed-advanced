@@ -1,6 +1,6 @@
 import {join} from 'path';
 import {APP_SRC, TMP_DIR} from '../config';
-import {templateLocals, tsProjectFn} from '../utils';
+import {templateLocals, tsProjectFn, customIgnore} from '../utils';
 
 const INLINE_OPTIONS = {
   base: TMP_DIR ,
@@ -16,7 +16,8 @@ export = function buildJSProd(gulp, plugins) {
       'tools/manual_typings/**/*.d.ts',
       join(APP_SRC, '**/*.ts'),
       '!' + join(APP_SRC, '**/*.spec.ts'),
-      '!' + join(APP_SRC, '**/*.e2e.ts')
+      '!' + join(APP_SRC, '**/*.e2e.ts'),
+      ...customIgnore
     ];
     let result = gulp.src(src)
       .pipe(plugins.plumber())
