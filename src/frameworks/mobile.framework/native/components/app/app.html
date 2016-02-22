@@ -1,3 +1,11 @@
-<StackLayout>
-    <router-outlet></router-outlet>
+<StackLayout padding="10">
+  <GridLayout columns="auto, auto" width="100%" rows="auto" horizontalAlignment="center">
+    <Button [nsRouterLink]="['/Home']" text="Home" row="0" col="0"></Button>
+    <Button [nsRouterLink]="['/About']" text="About" row="0" col="1"></Button>  
+  </GridLayout>
+
+  <lang-switcher></lang-switcher>
+
+  <Label class="title" text="Hello"></Label>
+  <page-router-outlet></page-router-outlet>
 </StackLayout>

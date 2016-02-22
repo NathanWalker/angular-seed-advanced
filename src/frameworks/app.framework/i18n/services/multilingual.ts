@@ -7,7 +7,7 @@ import {Window} from '../../core/services/window';
 
 export interface Lang {
   code: string;
-  label: string;
+  title: string;
 }
 
 @Injectable()
@@ -16,7 +16,7 @@ export class Multilingual {
   // default supported languages
   // see main.ts bootstrap for example of how to provide different value
   public static SUPPORTED_LANGUAGES: Array<Lang> = [
-    { code: 'en', label: 'English' }
+    { code: 'en', title: 'English' }
   ];
   
   public static STATIC_FILES_LOADER: string = 'assets/i18n';

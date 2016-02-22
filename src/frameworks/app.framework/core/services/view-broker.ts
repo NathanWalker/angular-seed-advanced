@@ -6,8 +6,15 @@ export class ViewBroker {
     if (AppConfig.PLATFORM_TARGET === AppConfig.PLATFORMS.WEB) {
       return path;
     } else if (AppConfig.PLATFORM_TARGET === AppConfig.PLATFORMS.MOBILE_NATIVE) {
-      let parts = path.split('.');
-      return `./frameworks/mobile.framework/native${parts[1]}.html`; // {N} doesn't support xml as templateUrl afaik
+      if (path.indexOf('./frameworks/mobile.framework/native') > -1) {
+        // view ready
+        // multitple imports across different modules can cause the view to have already been brokered
+        return path;
+      } else {
+        // views for native should all come from ./frameworks/mobile.framework/native
+        path = path.slice(1); // remove leading '.'
+        return `./frameworks/mobile.framework/native${path}`; 
+      } 
     } else if (AppConfig.PLATFORM_TARGET === AppConfig.PLATFORMS.MOBILE_HYBRID) {
       return path;
     } else if (AppConfig.PLATFORM_TARGET === AppConfig.PLATFORMS.DESKTOP) {

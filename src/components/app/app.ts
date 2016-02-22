@@ -1,21 +1,20 @@
-import {Base} from '../../frameworks/app.framework/core/decorators/base.component';
+import {RouteComponent} from '../../frameworks/app.framework/core/decorators/route.component';
 import {LangSwitcherCmp} from '../../frameworks/app.framework/i18n/components/lang-switcher.component';
 
 import {
-  RouteConfig,
-  ROUTER_DIRECTIVES
+  RouteConfig
 } from 'angular2/router';
 
 import {HomeCmp} from '../home/home';
 import {AboutCmp} from '../about/about';
 import {NameList} from '../../frameworks/app.framework/scientists/services/name_list';
 
-@Base({
+@RouteComponent({
   selector: 'app',
   viewProviders: [NameList],
   templateUrl: './components/app/app.html',
   styleUrls: ['./components/app/app.css'],
-  directives: [ROUTER_DIRECTIVES, LangSwitcherCmp]
+  directives: [LangSwitcherCmp]
 })
 @RouteConfig([
   { path: '/', component: HomeCmp, as: 'Home' },

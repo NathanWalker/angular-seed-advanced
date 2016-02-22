@@ -17,7 +17,7 @@ export class DecoratorUtils {
     // custom decorator options
     if (opts) {
       if (opts.directives) {
-        DIRECTIVES.push(...opts.directive); 
+        DIRECTIVES.push(...opts.directives); 
       }
       if (opts.pipes) {
         PIPES.push(...opts.pipes); 
@@ -25,7 +25,7 @@ export class DecoratorUtils {
     }
     
     if (config.templateUrl) {
-      // use correct view for platform target
+      // correct view for platform target
       config.templateUrl = ViewBroker.TEMPLATE_URL(config.templateUrl);
     }
     

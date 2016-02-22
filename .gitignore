@@ -43,11 +43,11 @@ test
 tmp
 
 src/**/*.js
-src/hooks
-src/node_modules
-src/platforms
-src/*.d.ts
 !src/sw.js
-src/app/assets
-src/app/components
-src/app/frameworks
+nativescript/hooks
+nativescript/node_modules
+nativescript/platforms
+nativescript/*.d.ts
+nativescript/app/assets
+nativescript/app/components
+nativescript/app/frameworks
