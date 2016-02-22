@@ -1,3 +1,5 @@
+import {ROUTER_DIRECTIVES} from 'angular2/router';
+
 import {Lang} from '../../i18n/services/multilingual';
 
 interface IPlatforms {
@@ -9,13 +11,19 @@ interface IPlatforms {
 
 export class AppConfig {
   
+  // supported platforms
   public static PLATFORMS: IPlatforms = {
     WEB: 'web',
     MOBILE_NATIVE: 'mobile_native',
     MOBILE_HYBRID: 'mobile_hybrid',
     DESKTOP: 'desktop'
   };
+  
+  // current target (defaults to web)
   public static PLATFORM_TARGET: string = AppConfig.PLATFORMS.WEB; 
+  
+  // allows runtime config of platform specific router directives
+  public static ROUTER_DIRECTIVES: Array<any> = ROUTER_DIRECTIVES;
   
   public static DEBUG: any = {
     LEVEL_1: false, // .info only
@@ -25,14 +33,14 @@ export class AppConfig {
   };
   
   public static SUPPORTED_LANGUAGES: Array<Lang> = [
-    { code: 'en', label: 'English' },
-    { code: 'es', label: 'Spanish' },
-    { code: 'fr', label: 'French' },
-    { code: 'ru', label: 'Russian' },
-    { code: 'bg', label: 'Bulgarian' }
+    { code: 'en', title: 'English' },
+    { code: 'es', title: 'Spanish' },
+    { code: 'fr', title: 'French' },
+    { code: 'ru', title: 'Russian' },
+    { code: 'bg', title: 'Bulgarian' }
   ];
   
-  // reset defaults
+  // reset debug defaults
   public static RESET() {
     for (let key in AppConfig.DEBUG) {
       AppConfig.DEBUG[key] = false; 

@@ -1,21 +1,15 @@
-import {Component} from 'angular2/core';
-import {FORM_DIRECTIVES, ControlGroup, Control} from 'angular2/common';
+import {Form} from '../../core/decorators/form.component';
+import {ControlGroup, Control} from 'angular2/common';
 
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 import {Log} from '../../core/services/log';
 import {Multilingual, Lang} from '../services/multilingual';
+import {ViewBroker} from '../../core/services/view-broker';
 
-@Component({
+@Form({
   selector: 'lang-switcher',
-  template: `
-  <form [ngFormModel]="langForm">
-    Change Language: <select ngControl="lang" (change)="changeLang($event)">
-      <option *ngFor="#l of supportedLanguages" [value]="l.code">{{l.label}}</option>
-    </select>
-  </form>
-  `,
-  directives: [FORM_DIRECTIVES]
+  templateUrl: ViewBroker.TEMPLATE_URL('./frameworks/app.framework/i18n/components/lang-switcher.html')
 })
 export class LangSwitcherCmp {
   public langForm: ControlGroup;

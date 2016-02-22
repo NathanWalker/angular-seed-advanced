@@ -5,7 +5,7 @@
 ```
 git clone https://github.com/NathanWalker/angular2-seed-advanced.git
 cd angular2-seed-advanced
-cd src  // we set things up from `src` directory for the {N} integration as it does not use the seed build
+cd nativescript  // we set things up from `nativescript` directory for the {N} integration as it does not use the seed build
 npm install
 ```
 

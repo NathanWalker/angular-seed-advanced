@@ -1,0 +1,19 @@
+button {
+  font-size: 18;
+  horizontal-align: center;
+  color: blue;
+  margin:0 10px 0 0;
+}
+TextField {
+  background-color: #FAFAFA;
+  border-width: 1;
+  border-style: solid;
+  border-color: #C7C7CC;
+  border-radius: 2;
+}
+.link {
+  border-width: 0;
+}
+.pink {
+  color: #FF45F9;
+}

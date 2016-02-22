@@ -32,8 +32,8 @@ export function main() {
 
   t.describe('app.framework: Multilingual for French and should allow customization of location of i18n files', () => {
     const SUPPORTED_LANGUAGES: Array<Lang> = [
-      { code: 'en', label: 'English' },
-      { code: 'fr', label: 'French' }
+      { code: 'en', title: 'English' },
+      { code: 'fr', title: 'French' }
     ];
     t.bep(() => [
       TEST_COMMON_PROVIDERS({ Window: WindowMockFrench}),
