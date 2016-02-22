@@ -1,6 +1,7 @@
 import {join} from 'path';
 import {BOOTSTRAP_MODULE, APP_SRC, APP_DEST} from '../config';
 import {tsProjectFn, customIgnore} from '../utils';
+import {ViewBroker} from '../../src/frameworks/app.framework/core/services/view-broker';
 
 export = function buildJSTest(gulp, plugins) {
   return function () {
@@ -15,7 +16,7 @@ export = function buildJSTest(gulp, plugins) {
     ];
     let result = gulp.src(src)
       .pipe(plugins.plumber())
-      .pipe(plugins.inlineNg2Template({ base: APP_SRC, useRelativePaths: false }))
+      .pipe(plugins.inlineNg2Template({ base: APP_SRC, useRelativePaths: false, templateFunction: ViewBroker.TEMPLATE_URL }))
       .pipe(plugins.typescript(tsProject));
 
     return result.js
