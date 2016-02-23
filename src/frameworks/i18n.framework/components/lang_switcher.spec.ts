@@ -15,7 +15,7 @@ const SUPPORTED_LANGUAGES: Array<ILang> = [
 ];
 
 export function main() {
-  t.xdescribe('app.framework: @Component: LangSwitcherCmp', () => {
+  t.describe('i18n.framework: @Component: LangSwitcherCmp', () => {
  
     t.bep(() => TEST_COMPONENT_PROVIDERS({http: true}));
     
@@ -31,7 +31,7 @@ export function main() {
       }));
   });
   
-  t.xdescribe('app.framework: @Component: LangSwitcherCmp with multiple languages', () => {
+  t.describe('i18n.framework: @Component: LangSwitcherCmp with multiple languages', () => {
     t.be(() => Multilingual.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES);
     t.bep(() => TEST_COMPONENT_PROVIDERS({http: true}));
     

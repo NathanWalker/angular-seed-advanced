@@ -13,3 +13,6 @@ export const APP_PROVIDERS: any[] = [
 
 // scientists
 export * from './scientists/services/name_list';
+
+// services
+export * from './services/app_config';

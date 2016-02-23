@@ -7,7 +7,7 @@ import {ILang, Window} from '../../core.framework/index';
 import {Multilingual} from '../index';
 
 export function main() {
-  t.describe('app.framework: Multilingual', () => {
+  t.describe('i18n.framework: Multilingual', () => {
     t.bep(() => [
       TEST_COMMON_PROVIDERS(),
       provide(Multilingual, {
@@ -29,7 +29,7 @@ export function main() {
 
   });
 
-  t.describe('app.framework: Multilingual for French and should allow customization of location of i18n files', () => {
+  t.describe('i18n.framework: Multilingual for French and should allow customization of location of i18n files', () => {
     const SUPPORTED_LANGUAGES: Array<ILang> = [
       { code: 'en', title: 'English' },
       { code: 'fr', title: 'French' }

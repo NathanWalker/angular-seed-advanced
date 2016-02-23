@@ -11,12 +11,12 @@ import {TranslateService} from 'ng2-translate/ng2-translate';
 import {WEB_PROVIDERS} from './frameworks/web.framework/index';
 
 // config
-import {AppConfig, Window} from './frameworks/core.framework/index';
-AppConfig.PLATFORM_TARGET = AppConfig.PLATFORMS.WEB;
-AppConfig.DEBUG.LEVEL_4 = true;
+import {CoreConfig, Window} from './frameworks/core.framework/index';
+CoreConfig.PLATFORM_TARGET = CoreConfig.PLATFORMS.WEB;
+CoreConfig.DEBUG.LEVEL_4 = true;
 
 // app
-import {APP_PROVIDERS} from './frameworks/app.framework/index';
+import {APP_PROVIDERS, AppConfig} from './frameworks/app.framework/index';
 import {Multilingual} from './frameworks/i18n.framework/index';
 import {AppCmp} from './components/app/app';
 

@@ -1,6 +1,6 @@
 import {Injectable} from 'angular2/core';
 
-import {AppConfig, Console} from '../index';
+import {CoreConfig, Console} from '../index';
 
 @Injectable()
 export class Log {
@@ -10,28 +10,28 @@ export class Log {
   // out
   public o(msg: string) {
     
-    if (AppConfig.DEBUG.LEVEL_4) {
+    if (CoreConfig.DEBUG.LEVEL_4) {
       this.logger.log(msg);  
     }
   }
   
   // error
   public error(err: any) {
-    if (AppConfig.DEBUG.LEVEL_4 || AppConfig.DEBUG.LEVEL_3) {
+    if (CoreConfig.DEBUG.LEVEL_4 || CoreConfig.DEBUG.LEVEL_3) {
       this.logger.error(err);  
     }
   }
   
   // warn
   public warn(err: any) {
-    if (AppConfig.DEBUG.LEVEL_4 || AppConfig.DEBUG.LEVEL_2) {
+    if (CoreConfig.DEBUG.LEVEL_4 || CoreConfig.DEBUG.LEVEL_2) {
       this.logger.warn(err);  
     }
   }
   
   // info
   public info(err: any) {
-    if (AppConfig.DEBUG.LEVEL_4 || AppConfig.DEBUG.LEVEL_1) {
+    if (CoreConfig.DEBUG.LEVEL_4 || CoreConfig.DEBUG.LEVEL_1) {
       this.logger.info(err);  
     }
   }
