@@ -3,7 +3,7 @@ import {provide} from 'angular2/core';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 import {t, TEST_COMMON_PROVIDERS, WindowMockFrench} from '../../test.framework/index';
-import {ILang} from '../../core.framework/index';
+import {ILang, Window} from '../../core.framework/index';
 import {Multilingual} from '../index';
 
 export function main() {
