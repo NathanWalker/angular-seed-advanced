@@ -84,15 +84,21 @@ npm run build.dev
 npm run build.prod
 ```
 
-_Does not rely on any global dependencies._
+# Run NativeScript App
+
+```
+cd nativescript  // we set things up from `nativescript` directory because {N} does not use the seed build
+tns install      // please note: 'tns', not npm :)
+
+// you will see TypeScript warnings, this is normal, you can ignore :)
+// this will launch the iOS Simulator by default
+npm start        
+```
+
 
 # Table of Content
 
-- [Introduction](#introduction)
-- [How to start](#how-to-start)
-- [Table of Content](#table-of-content)
 - [Configuration](#configuration)
-- [How to extend?](#how-to-extend)
 - [Running tests](#running-tests)
 - [Contributing](#contributing)
 - [Change Log](#change-log)
@@ -115,7 +121,7 @@ Configure at runtime
 npm start -- --port 8080 --reload-port 4000 --base /my-app/
 ```
 
-# Running test
+# Running tests
 
 ```bash
 npm test

@@ -5,12 +5,12 @@ import {ControlGroup, Control} from 'angular2/common';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
-import {FormComponent, Log, ViewBroker, ILang} from '../../core.framework/index';
+import {FormComponent, CoreConfig, Log, ILang} from '../../core.framework/index';
 import {Multilingual} from '../index';
 
 @FormComponent({
   selector: 'lang-switcher',
-  templateUrl: ViewBroker.TEMPLATE_URL('./frameworks/i18n.framework/components/lang_switcher.html')
+  templateUrl: './frameworks/i18n.framework/components/lang_switcher.html'
 })
 export class LangSwitcherCmp {
   public langForm: ControlGroup;
@@ -22,7 +22,16 @@ export class LangSwitcherCmp {
     });
   }
   changeLang(e) {
-    this.log.o(`Language change: ${this.langForm.value.lang}`);
-    this.translate.use(this.langForm.value.lang);
+    let lang = this.supportedLanguages[0].code; // fallback to default 'en'
+    
+    if (CoreConfig.IS_MOBILE_NATIVE()) {
+      if (e) {
+        lang = this.supportedLanguages[e.newIndex].code;
+      }
+    } else {
+      lang = this.langForm.value.lang;
+    }
+    this.log.o(`Language change: ${lang}`);
+    this.translate.use(lang);
   }
 }

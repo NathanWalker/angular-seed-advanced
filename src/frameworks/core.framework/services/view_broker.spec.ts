@@ -1,24 +1,24 @@
 import {t} from '../../test.framework/index';
-import {AppConfig, ViewBroker} from '../index';
+import {CoreConfig, ViewBroker} from '../index';
 
 export function main() {
-  t.describe('app.framework: ViewBroker', () => {
-    t.be(() => AppConfig.RESET());
+  t.describe('core.framework: ViewBroker', () => {
+    t.be(() => CoreConfig.RESET());
     
     t.it('TEMPLATE_URL: web', () => {   
-      AppConfig.PLATFORM_TARGET = AppConfig.PLATFORMS.WEB;
+      CoreConfig.PLATFORM_TARGET = CoreConfig.PLATFORMS.WEB;
       t.e(ViewBroker.TEMPLATE_URL('./components/app/app.html')).toBe('./components/app/app.html');
     });
     t.it('TEMPLATE_URL: mobile_native', () => {
-      AppConfig.PLATFORM_TARGET = AppConfig.PLATFORMS.MOBILE_NATIVE;
-      t.e(ViewBroker.TEMPLATE_URL('./components/app/app.html')).toBe('./frameworks/mobile.framework/native/components/app/app.html');
+      CoreConfig.PLATFORM_TARGET = CoreConfig.PLATFORMS.MOBILE_NATIVE;
+      t.e(ViewBroker.TEMPLATE_URL('./components/app/app.html')).toBe('./frameworks/mobile.framework/nativescript/views/components/app/app.html');
     });
     t.it('TEMPLATE_URL: mobile_hybrid', () => {
-      AppConfig.PLATFORM_TARGET = AppConfig.PLATFORMS.MOBILE_HYBRID;
+      CoreConfig.PLATFORM_TARGET = CoreConfig.PLATFORMS.MOBILE_HYBRID;
       t.e(ViewBroker.TEMPLATE_URL('./components/app/app.html')).toBe('./components/app/app.html');
     });
     t.it('TEMPLATE_URL: desktop', () => {
-      AppConfig.PLATFORM_TARGET = AppConfig.PLATFORMS.DESKTOP;
+      CoreConfig.PLATFORM_TARGET = CoreConfig.PLATFORMS.DESKTOP;
       t.e(ViewBroker.TEMPLATE_URL('./components/app/app.html')).toBe('./components/app/app.html');
     });
   });

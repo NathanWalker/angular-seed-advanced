@@ -7,7 +7,7 @@ export * from './interfaces/iconsole';
 export * from './interfaces/iwindow';
 export * from './interfaces/ilang';
 
-export * from './services/app_config';
+export * from './services/core_config';
 export * from './services/console';
 export * from './services/log';
 export * from './services/view_broker';

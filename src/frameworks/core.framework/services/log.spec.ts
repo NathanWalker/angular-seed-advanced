@@ -1,7 +1,7 @@
 import {provide} from 'angular2/core';
 
 import {t} from '../../test.framework/index';
-import {AppConfig, Console, Log} from '../index';
+import {CoreConfig, Console, Log} from '../index';
 
 const providers: any[] = [
   provide(Console, { useValue: console }),
@@ -9,11 +9,11 @@ const providers: any[] = [
 ];
 
 export function main() {
-  t.describe('app.framework: Log', () => {
+  t.describe('core.framework: Log', () => {
     
     t.be(() => {
       // ensure statics are in default state
-      AppConfig.RESET();
+      CoreConfig.RESET();
       // spy
       spyOn(console, 'log');
       spyOn(console, 'error');
@@ -47,13 +47,13 @@ export function main() {
     t.describe('debug levels', () => {
       
       t.be(() => {
-        AppConfig.RESET();
+        CoreConfig.RESET();
       });
       
       t.bep(() => providers);
       
       t.it('LEVEL_4: everything', t.inject([Log], (log) => {
-        AppConfig.DEBUG.LEVEL_4 = true;
+        CoreConfig.DEBUG.LEVEL_4 = true;
         
         log.o('out');
         t.e(console.log).toHaveBeenCalledWith('out');
@@ -66,7 +66,7 @@ export function main() {
       }));
       
       t.it('LEVEL_3: error only', t.inject([Log], (log) => {
-        AppConfig.DEBUG.LEVEL_3 = true;
+        CoreConfig.DEBUG.LEVEL_3 = true;
 
         log.o('out');
         t.e(console.log).not.toHaveBeenCalledWith('out');
@@ -78,7 +78,7 @@ export function main() {
         t.e(console.info).not.toHaveBeenCalledWith('info');
         
         // always overrides lower levels and allows them to come through
-        AppConfig.DEBUG.LEVEL_4 = true;
+        CoreConfig.DEBUG.LEVEL_4 = true;
 
         log.o('out w/level_4');
         t.e(console.log).toHaveBeenCalledWith('out w/level_4');
@@ -91,7 +91,7 @@ export function main() {
       }));
       
       t.it('LEVEL_2: warn only', t.inject([Log], (log) => {
-        AppConfig.DEBUG.LEVEL_2 = true;
+        CoreConfig.DEBUG.LEVEL_2 = true;
 
         log.o('out');
         t.e(console.log).not.toHaveBeenCalledWith('out');
@@ -104,7 +104,7 @@ export function main() {
       }));
       
       t.it('LEVEL_1: info only', t.inject([Log], (log) => {
-        AppConfig.DEBUG.LEVEL_1 = true;
+        CoreConfig.DEBUG.LEVEL_1 = true;
 
         log.o('out');
         t.e(console.log).not.toHaveBeenCalledWith('out');
