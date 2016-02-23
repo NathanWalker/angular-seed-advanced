@@ -21,17 +21,16 @@ import {LocationStrategy} from 'angular2/router';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // config
-import {AppConfig} from './frameworks/app.framework/core/services/app-config';
+import {AppConfig} from './frameworks/core.framework/services/app_config';
 AppConfig.PLATFORM_TARGET = AppConfig.PLATFORMS.MOBILE_NATIVE;
 AppConfig.DEBUG.LEVEL_4 = true;
 AppConfig.ROUTER_DIRECTIVES = NS_ROUTER_DIRECTIVES;
 
 // app
 import {AppConfigNativeScript} from './frameworks/mobile.framework/index';
-import {Window} from './frameworks/app.framework/core/services/window';
-import {Console} from './frameworks/app.framework/core/services/console';
+import {Window, Console} from './frameworks/core.framework/index';
 import {APP_PROVIDERS} from './frameworks/app.framework/index';
-import {Multilingual} from './frameworks/app.framework/i18n/services/multilingual';
+import {Multilingual} from './frameworks/i18n.framework/index';
 import {AppCmp} from './components/app/app';
 
 declare var UIBarStyle: any;
