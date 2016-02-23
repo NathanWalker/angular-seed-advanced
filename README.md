@@ -14,12 +14,11 @@ Provides all features available in [angular2-seed](https://github.com/mgechev/an
 #### Integration with:
 - [lodash](https://lodash.com/)
 - [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n
+- [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#run-nativescript-app).
 
 #### Coming Soon...
 - [ ] [ngrx/store](https://github.com/ngrx/store) for state management (Redux)
-- [ ] [NativeScript](https://www.nativescript.org/) bootstrap ability for cross platform mobile apps.
 - [ ] [Electron](http://electron.atom.io/) bootstrap ability for cross platform desktop apps.
-- [ ] [angular cli](https://github.com/angular/angular-cli) to help in component, service, pipe creation, etc. (it does `not` use it for the build)
 - [ ] provider for LocalStorage (abstraction for IndexedDB, WebSQL, localStorage, perhaps a port of localForage)
 - [ ] sophisticated setup for Service Worker
 - [ ] integration with [ng2-bootstrap](https://github.com/valor-software/ng2-bootstrap)
@@ -87,6 +86,7 @@ npm run build.prod
 # Run NativeScript App
 
 ```
+npm install -g nativescript  // if you don't already have it installed globally
 cd nativescript  // we set things up from `nativescript` directory because {N} does not use the seed build
 tns install      // please note: 'tns', not npm :)
 
