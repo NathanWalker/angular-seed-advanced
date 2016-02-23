@@ -9,13 +9,11 @@ import {RootRouter} from 'angular2/src/router/router';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
-import {Window} from '../app.framework/core/services/window';
-import {Console} from '../app.framework/core/services/console';
-import {Log} from '../app.framework/core/services/log';
-import {Multilingual} from '../app.framework/i18n/services/multilingual';
+import {Window, Console, Log} from '../core.framework/index';
+import {Multilingual} from '../i18n.framework/index';
 
 // mocks
-import {WindowMock} from './core/mocks/iwindow.mock';
+import {WindowMock} from './core/mocks/window.mock';
 import {TranslateMock} from './libs/ng2-translate/ng2-translate.mock';
 
 // convenient shorthand 
@@ -76,3 +74,15 @@ export function TEST_COMPONENT_PROVIDERS(options?: any): any[] {
 
   return providers;  
 }
+
+// core
+export * from './core/mocks/window.mock';
+
+// e2e
+export * from './e2e/dropdowns';
+
+// libs
+export * from './libs/ng2-translate/ng2-translate.mock';
+
+// shorthand
+export * from './shorthand/ng2-jasmine';

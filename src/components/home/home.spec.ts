@@ -2,7 +2,7 @@ import {TestComponentBuilder} from 'angular2/testing';
 import {Component} from 'angular2/core';
 import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 
-import {t, TEST_COMPONENT_PROVIDERS} from '../../frameworks/test.framework/_providers';
+import {t, TEST_COMPONENT_PROVIDERS} from '../../frameworks/test.framework/index';
 import {HomeCmp} from './home';
 
 export function main() {

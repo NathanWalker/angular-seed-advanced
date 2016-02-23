@@ -3,6 +3,7 @@ import * as gulpLoadPlugins from 'gulp-load-plugins';
 import {join} from 'path';
 import {BOOTSTRAP_MODULE, APP_SRC, APP_DEST, TOOLS_DIR} from '../../config';
 import {makeTsProject} from '../../utils';
+import {ViewBroker} from '../../src/frameworks/core.framework/services/view-broker.service';
 const plugins = <any>gulpLoadPlugins();
 
 export = () => {
@@ -16,7 +17,7 @@ export = () => {
   ];
   let result = gulp.src(src)
     .pipe(plugins.plumber())
-    .pipe(plugins.inlineNg2Template({base: APP_SRC, useRelativePaths: true}))
+    .pipe(plugins.inlineNg2Template({base: APP_SRC, useRelativePaths: true, templateFunction: ViewBroker.TEMPLATE_URL }))
     .pipe(plugins.typescript(tsProject));
 
   return result.js

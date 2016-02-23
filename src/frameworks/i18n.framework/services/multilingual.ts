@@ -1,21 +1,19 @@
+// angular
 import {Injectable} from 'angular2/core';
 
+// libs
 import * as _ from 'lodash';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
-import {Window} from '../../core/services/window';
-
-export interface Lang {
-  code: string;
-  title: string;
-}
+// app
+import {Window, ILang} from '../../core.framework/index';
 
 @Injectable()
 export class Multilingual {
   
   // default supported languages
   // see main.ts bootstrap for example of how to provide different value
-  public static SUPPORTED_LANGUAGES: Array<Lang> = [
+  public static SUPPORTED_LANGUAGES: Array<ILang> = [
     { code: 'en', title: 'English' }
   ];
   

@@ -1,19 +1,20 @@
-import {Form} from '../../core/decorators/form.component';
+// angular
 import {ControlGroup, Control} from 'angular2/common';
 
+// libs
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
-import {Log} from '../../core/services/log';
-import {Multilingual, Lang} from '../services/multilingual';
-import {ViewBroker} from '../../core/services/view-broker';
+// app
+import {FormComponent, Log, ViewBroker, ILang} from '../../core.framework/index';
+import {Multilingual} from '../index';
 
-@Form({
+@FormComponent({
   selector: 'lang-switcher',
-  templateUrl: ViewBroker.TEMPLATE_URL('./frameworks/app.framework/i18n/components/lang-switcher.html')
+  templateUrl: ViewBroker.TEMPLATE_URL('./frameworks/i18n.framework/components/lang_switcher.html')
 })
 export class LangSwitcherCmp {
   public langForm: ControlGroup;
-  public supportedLanguages: Array<Lang> = Multilingual.SUPPORTED_LANGUAGES;
+  public supportedLanguages: Array<ILang> = Multilingual.SUPPORTED_LANGUAGES;
   
   constructor(private translate: TranslateService, private multilang: Multilingual, private log: Log) {
     this.langForm = new ControlGroup({

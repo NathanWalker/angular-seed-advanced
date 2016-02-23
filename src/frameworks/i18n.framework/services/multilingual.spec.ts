@@ -2,10 +2,9 @@ import {provide} from 'angular2/core';
 
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
-import {t, TEST_COMMON_PROVIDERS} from '../../../test.framework/_providers';
-import {WindowMockFrench} from '../../../test.framework/core/mocks/iwindow.mock';
-import {Window} from '../../core/services/window';
-import {Multilingual, Lang} from './multilingual';
+import {t, TEST_COMMON_PROVIDERS, WindowMockFrench} from '../../test.framework/index';
+import {ILang} from '../../core.framework/index';
+import {Multilingual} from '../index';
 
 export function main() {
   t.describe('app.framework: Multilingual', () => {
@@ -31,7 +30,7 @@ export function main() {
   });
 
   t.describe('app.framework: Multilingual for French and should allow customization of location of i18n files', () => {
-    const SUPPORTED_LANGUAGES: Array<Lang> = [
+    const SUPPORTED_LANGUAGES: Array<ILang> = [
       { code: 'en', title: 'English' },
       { code: 'fr', title: 'French' }
     ];

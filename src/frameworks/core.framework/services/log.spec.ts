@@ -1,9 +1,7 @@
 import {provide} from 'angular2/core';
 
-import {t} from '../../../test.framework/_providers';
-import {AppConfig} from './app-config';
-import {Console} from './console';
-import {Log} from './log';
+import {t} from '../../test.framework/index';
+import {AppConfig, Console, Log} from '../index';
 
 const providers: any[] = [
   provide(Console, { useValue: console }),

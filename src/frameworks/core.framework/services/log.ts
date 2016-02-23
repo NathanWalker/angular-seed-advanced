@@ -1,7 +1,6 @@
 import {Injectable} from 'angular2/core';
 
-import {AppConfig} from './app-config';
-import {Console} from './console';
+import {AppConfig, Console} from '../index';
 
 @Injectable()
 export class Log {

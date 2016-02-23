@@ -1,6 +1,5 @@
-import {t} from '../../../test.framework/_providers';
-import {AppConfig} from './app-config';
-import {ViewBroker} from './view-broker';
+import {t} from '../../test.framework/index';
+import {AppConfig, ViewBroker} from '../index';
 
 export function main() {
   t.describe('app.framework: ViewBroker', () => {

@@ -27,11 +27,10 @@ AppConfig.DEBUG.LEVEL_4 = true;
 AppConfig.ROUTER_DIRECTIVES = NS_ROUTER_DIRECTIVES;
 
 // app
-import {NSLocationStrategy} from './frameworks/mobile.framework/native/routing/ns-location-strategy';
-import {NativeScriptAppConfig} from './frameworks/mobile.framework/native/core/native-script-app-config';
+import {AppConfigNativeScript} from './frameworks/mobile.framework/index';
 import {Window} from './frameworks/app.framework/core/services/window';
 import {Console} from './frameworks/app.framework/core/services/console';
-import {APP_PROVIDERS} from './frameworks/app.framework/_providers';
+import {APP_PROVIDERS} from './frameworks/app.framework/index';
 import {Multilingual} from './frameworks/app.framework/i18n/services/multilingual';
 import {AppCmp} from './components/app/app';
 
@@ -59,7 +58,6 @@ nativeScriptBootstrap(AppCmp, [
   provide(Console, { useValue: console }),
   HTTP_PROVIDERS,
   NS_ROUTER_PROVIDERS,
-  provide(LocationStrategy, { useClass: NSLocationStrategy }),
   APP_PROVIDERS,
   provide(Multilingual, {
     useFactory: (translate, win) => {

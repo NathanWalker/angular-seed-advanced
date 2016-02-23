@@ -1,4 +1,4 @@
-import {AppConfig} from '../services/app-config';
+import {AppConfig} from '../services/app_config';
 import {DecoratorUtils} from './utils';
 
 export function RouteComponent(config: any={}) {

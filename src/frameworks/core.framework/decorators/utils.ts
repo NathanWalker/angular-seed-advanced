@@ -1,7 +1,11 @@
+// angular
 import {Component, ViewEncapsulation} from 'angular2/core';
 
-import {ViewBroker} from '../services/view-broker';
+// libs
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
+
+// app
+import {ViewBroker} from '../index';
 
 const _reflect: any = Reflect;
 

@@ -1,4 +1,4 @@
-import {t} from '../../frameworks/test.framework/_providers';
+import {t} from '../../frameworks/test.framework/index';
 
 t.describe('About', function() {
 

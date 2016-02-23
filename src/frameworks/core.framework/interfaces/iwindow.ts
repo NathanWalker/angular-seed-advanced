@@ -1,3 +1,4 @@
+// standard window interface
 export interface IWindow {
   navigator: any;
   location: any;

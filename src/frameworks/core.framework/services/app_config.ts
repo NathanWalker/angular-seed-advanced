@@ -1,6 +1,8 @@
+// angular
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {Lang} from '../../i18n/services/multilingual';
+// app
+import {ILang} from '../index';
 
 interface IPlatforms {
   WEB: string;
@@ -32,7 +34,7 @@ export class AppConfig {
     LEVEL_4: false  // .log + all the above
   };
   
-  public static SUPPORTED_LANGUAGES: Array<Lang> = [
+  public static SUPPORTED_LANGUAGES: Array<ILang> = [
     { code: 'en', title: 'English' },
     { code: 'es', title: 'Spanish' },
     { code: 'fr', title: 'French' },

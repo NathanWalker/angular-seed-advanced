@@ -1,6 +1,6 @@
 import {DecoratorUtils} from './utils';
 
-export function Base(config: any={}) {
+export function BaseComponent(config: any={}) {
   return function(cls) {
     return DecoratorUtils.annotateComponent(cls, config);
   };

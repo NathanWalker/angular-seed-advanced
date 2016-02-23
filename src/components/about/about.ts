@@ -1,7 +1,7 @@
-import {Form} from '../../frameworks/app.framework/core/decorators/form.component';
-import {NameList} from '../../frameworks/app.framework/scientists/services/name-list';
+import {FormComponent} from '../../frameworks/core.framework/index';
+import {NameList} from '../../frameworks/app.framework/index';
 
-@Form({
+@FormComponent({
   selector: 'about',
   templateUrl: './components/about/about.html'
 })

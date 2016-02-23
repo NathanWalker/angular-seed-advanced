@@ -1,4 +1,4 @@
-import {AppConfig} from './app-config';
+import {AppConfig} from './app_config';
 
 export class ViewBroker {
   

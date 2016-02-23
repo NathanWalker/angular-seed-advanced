@@ -17,6 +17,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "exclude": [
+    "nativescript",
     "node_modules",
     "typings/browser.d.ts",
     "typings/browser/**"

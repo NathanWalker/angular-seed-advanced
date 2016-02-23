@@ -1,5 +1,5 @@
-import {t} from '../../../test.framework/_providers';
-import {AppConfig} from './app-config';
+import {t} from '../../test.framework/index';
+import {AppConfig} from '../index';
 import * as _ from 'lodash';
 
 export function main() {

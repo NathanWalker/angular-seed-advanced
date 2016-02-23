@@ -1,3 +1,4 @@
+// standard console interface
 export interface IConsole {
   log(m: any): void;
   error(m: any): void;
