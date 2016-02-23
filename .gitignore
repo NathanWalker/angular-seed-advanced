@@ -50,8 +50,8 @@ src/**/*.js.map
 nativescript/hooks
 nativescript/node_modules
 nativescript/platforms
-nativescript/*.js
-nativescript/*.js.map
+nativescript/**/*.js
+nativescript/**/*.js.map
 nativescript/*.d.ts
 nativescript/app/assets
 nativescript/app/components

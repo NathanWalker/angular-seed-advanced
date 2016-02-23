@@ -11,8 +11,8 @@
 		}
 	},
 	"scripts": {
-		"prepare-nativescript": "cp -R ../src/assets app/; cp -R ../src/components app/; cp -R ../src/frameworks app/;",
-		"start": "npm run prepare-nativescript; tns emulate ios"
+		"prepare": "cp -R ../src/assets app/; cp -R ../src/components app/; cp -R ../src/frameworks app/;",
+		"start": "npm run prepare; tns emulate ios"
 	},
 	"dependencies": {
 		"angular2": "2.0.0-beta.3",
