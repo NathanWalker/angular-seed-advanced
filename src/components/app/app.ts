@@ -1,5 +1,6 @@
-import {RouteComponent} from '../../frameworks/app.framework/core/decorators/route.component';
-import {LangSwitcherCmp} from '../../frameworks/app.framework/i18n/components/lang-switcher.component';
+import {RouteComponent} from '../../frameworks/core.framework/index';
+import {LangSwitcherCmp} from '../../frameworks/i18n.framework/index';
+import {NameList} from '../../frameworks/app.framework/index';
 
 import {
   RouteConfig
@@ -7,7 +8,6 @@ import {
 
 import {HomeCmp} from '../home/home';
 import {AboutCmp} from '../about/about';
-import {NameList} from '../../frameworks/app.framework/scientists/services/name_list';
 
 @RouteComponent({
   selector: 'app',

@@ -1,7 +1,7 @@
 import {join} from 'path';
 import {BOOTSTRAP_MODULE, APP_SRC, APP_DEST} from '../config';
 import {tsProjectFn, customIgnore} from '../utils';
-import {ViewBroker} from '../../src/frameworks/app.framework/core/services/view-broker';
+import {ViewBroker} from '../../src/frameworks/core.framework/index';
 
 export = function buildJSTest(gulp, plugins) {
   return function () {

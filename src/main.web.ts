@@ -4,21 +4,20 @@ import {bootstrap} from 'angular2/platform/browser';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
 
-// 3rd party dependencies
+// libs
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // platform
-import {WEB_PROVIDERS} from './frameworks/web.framework/_providers';
+import {WEB_PROVIDERS} from './frameworks/web.framework/index';
 
 // config
-import {AppConfig} from './frameworks/app.framework/core/services/app-config';
+import {AppConfig, Window} from './frameworks/core.framework/index';
 AppConfig.PLATFORM_TARGET = AppConfig.PLATFORMS.WEB;
 AppConfig.DEBUG.LEVEL_4 = true;
 
 // app
-import {Window} from './frameworks/app.framework/core/services/window';
-import {APP_PROVIDERS} from './frameworks/app.framework/_providers';
-import {Multilingual} from './frameworks/app.framework/i18n/services/multilingual';
+import {APP_PROVIDERS} from './frameworks/app.framework/index';
+import {Multilingual} from './frameworks/i18n.framework/index';
 import {AppCmp} from './components/app/app';
 
 // include for production builds

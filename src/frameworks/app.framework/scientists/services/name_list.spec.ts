@@ -1,6 +1,6 @@
-import {NameList} from './name_list';
+import {t} from '../../../test.framework/index';
 
-import {t} from '../../../test.framework/_providers';
+import {NameList} from './name_list';
 
 export function main() {
   t.describe('app.framework: NameList', () => {

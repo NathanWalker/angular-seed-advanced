@@ -1,5 +1,4 @@
-import {t} from '../../frameworks/test.framework/_providers';
-import {selectDropdownByText} from '../../frameworks/test.framework/e2e/dropdowns';
+import {t, selectDropdownByText} from '../../frameworks/test.framework/index';
 
 t.describe('Home', function() {
 

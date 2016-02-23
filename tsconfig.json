@@ -8,7 +8,7 @@
         "noLib": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "sourceMap": true
+        "inlineSourceMap": true
     },
     "exclude": [
         "nativescript",
