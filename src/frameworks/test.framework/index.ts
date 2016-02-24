@@ -42,9 +42,8 @@ export function TEST_COMMON_PROVIDERS(options?: any): any[] {
 // component
 export function TEST_COMPONENT_PROVIDERS(options?: any): any[] {
   // options
-  // http:            boolean = needs HTTP_PROVIDERS
-  // router:          boolean = needs router
-  // router_primary:  token   = component to use for ROUTER_PRIMARY_COMPONENT
+  // http:            boolean = HTTP_PROVIDERS
+  // router:          Object = router setup { primary: token } (component to use for ROUTER_PRIMARY_COMPONENT)
   
   let providers: Array<any> = [
     TEST_COMMON_PROVIDERS(),
@@ -66,7 +65,7 @@ export function TEST_COMPONENT_PROVIDERS(options?: any): any[] {
       providers.push(...[
         RouteRegistry,
         provide(Location, {useClass: SpyLocation}),
-        provide(ROUTER_PRIMARY_COMPONENT, {useValue: options.router_primary}),
+        provide(ROUTER_PRIMARY_COMPONENT, {useValue: options.router.primary}),
         provide(Router, { useClass: RootRouter })
       ]);  
     }

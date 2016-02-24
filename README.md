@@ -5,8 +5,6 @@
 
 An **advanced** seed project for Angular 2 apps grown out of [Minko Gechev's](https://github.com/mgechev) [angular2-seed](https://github.com/mgechev/angular2-seed). This seed inherits all the genetics of its parent and will continually grow alongside it mirroring any changes to the underlying roots.
 
-**Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
-
 ### Features
 
 Provides all features available in [angular2-seed](https://github.com/mgechev/angular2-seed) with the following enhancements:
@@ -52,6 +50,8 @@ Provides all features available in [angular2-seed](https://github.com/mgechev/an
     - avoids `unused` variable warnings altogether in tests since you are always using a valid key from the shorthand `Object`
   - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/development/src/frameworks/test.framework/shorthand/ng2-jasmine.ts)
   - watch [video explanation **coming soon**](https://github.com/NathanWalker/angular2-seed-advanced)
+  
+**Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
 
 # How to start
 
@@ -137,6 +137,7 @@ npm run serve.coverage
 
 # e2e (aka. end-to-end, integration) - In three different shell windows
 # Make sure you don't have a global instance of Protractor
+
 # npm run webdriver-update <- You will need to run this the first time
 npm run webdriver-start
 npm run serve.e2e

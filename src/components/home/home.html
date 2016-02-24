@@ -2,5 +2,19 @@
   {{ 'LOVE_TECH' | translate }} <smile></smile>
 </h2>
 
-<p class="note" [innerHTML]="'SUCCESS_MSG' | translate">
+<p>
+  {{'ABOUT_REWARD' | translate}}
 </p>
+<p>
+  {{'ABOUT_ADD' | translate}}
+</p>
+
+<form (submit)="addName()">
+  <input [(ngModel)]="newName" placeholder="Awesome Computer Scientist">
+  <button type="submit">{{'ADD_BTN_TEXT' | translate}}</button>
+</form>
+
+<ul>
+  <li *ngFor="#name of nameList.get()">{{name}}</li>
+</ul>
+

@@ -1,4 +1,5 @@
 {
+  "rulesDirectory": ["node_modules/ng2lint/dist/src"],
   "rules": {
     "class-name": true,
     "curly": false,

@@ -1,20 +1,21 @@
+// angular
+import {ViewEncapsulation} from 'angular2/core';
+import {RouteConfig} from 'angular2/router';
+
+// app
 import {RouteComponent} from '../../frameworks/core.framework/index';
-import {LangSwitcherCmp} from '../../frameworks/i18n.framework/index';
-import {NameList} from '../../frameworks/app.framework/index';
-
-import {
-  RouteConfig
-} from 'angular2/router';
-
+import {NavbarCmp} from './navbar';
+import {ToolbarCmp} from './toolbar';
 import {HomeCmp} from '../home/home';
 import {AboutCmp} from '../about/about';
+import {NameList} from '../../frameworks/app.framework/index';
 
 @RouteComponent({
-  selector: 'app',
+  selector: 'sd-app',
   viewProviders: [NameList],
   templateUrl: './components/app/app.html',
-  styleUrls: ['./components/app/app.css'],
-  directives: [LangSwitcherCmp]
+  directives: [NavbarCmp, ToolbarCmp],
+  encapsulation: ViewEncapsulation.None
 })
 @RouteConfig([
   { path: '/', component: HomeCmp, as: 'Home' },

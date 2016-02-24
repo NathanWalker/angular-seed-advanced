@@ -1,5 +1,5 @@
 // angular
-import {Component, ViewEncapsulation} from 'angular2/core';
+import {Component} from 'angular2/core';
 
 // libs
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
@@ -36,7 +36,11 @@ export class DecoratorUtils {
     config.directives = config.directives ? config.directives.concat(DIRECTIVES) : DIRECTIVES;
     config.pipes = config.pipes ? config.pipes.concat(PIPES) : PIPES;
     config.host = config.host || {};
-    config.encapsulation = config.encapsulation || ViewEncapsulation.None;
+    
+    if (config.encapsulation) {
+      config.encapsulation = config.encapsulation;
+    }
+
     return config;
   }
   

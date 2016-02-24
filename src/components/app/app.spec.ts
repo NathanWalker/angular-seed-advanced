@@ -8,7 +8,7 @@ import {AppCmp} from './app';
 export function main() {
   t.describe('@Component: AppCmp', () => {
 
-    t.bep(() => TEST_COMPONENT_PROVIDERS({http: true, router: true, router_primary: AppCmp}));
+    t.bep(() => TEST_COMPONENT_PROVIDERS({ http: true, router: { primary: AppCmp } }));
     
     t.it('should work',
       t.injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
@@ -16,7 +16,7 @@ export function main() {
           .then(rootTC => {
             rootTC.detectChanges();
             let appDOMEl = rootTC.debugElement.children[0].nativeElement;
-            t.e(DOM.querySelectorAll(appDOMEl, 'section > nav > a')[1].href).toMatch(/http:\/\/localhost:\d+\/about/);
+            t.e(DOM.querySelectorAll(appDOMEl, 'sd-app > sd-navbar > nav > a')[1].href).toMatch(/http:\/\/localhost:\d+\/about/);
           });
       }));
   });
@@ -24,7 +24,7 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<app></app>',
+  template: '<sd-app></sd-app>',
   directives: [AppCmp]
 })
 class TestComponent {}
