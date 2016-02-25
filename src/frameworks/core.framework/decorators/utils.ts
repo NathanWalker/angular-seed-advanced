@@ -34,7 +34,7 @@ export class DecoratorUtils {
     }
     
     if (config.styleUrls && CoreConfig.IS_MOBILE_NATIVE()) {
-      // {N} doesn't support `styleUrls` 
+      // {N} doesn't support styleUrls
       delete config.styleUrls;
     }
     

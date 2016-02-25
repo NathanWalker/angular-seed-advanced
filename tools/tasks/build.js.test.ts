@@ -9,7 +9,7 @@ export = function buildJSTest(gulp, plugins) {
     let src = [
       'typings/browser.d.ts',
       join(APP_SRC, '**/*.ts'),
-      '!' + join(APP_SRC, 'app/**/*.ts'),
+      '!' + join(APP_SRC, 'frameworks/nativescript.framework/**/*.ts'),
       '!' + join(APP_SRC, '**/*.e2e.ts'),
       '!' + join(APP_SRC, `${BOOTSTRAP_MODULE}.ts`),
       ...customIgnore
