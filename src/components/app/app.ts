@@ -1,23 +1,25 @@
+// angular
+import {ViewEncapsulation} from 'angular2/core';
+import {RouteConfig} from 'angular2/router';
+
+// app
 import {RouteComponent} from '../../frameworks/core.framework/index';
-import {LangSwitcherCmp} from '../../frameworks/i18n.framework/index';
-import {NameList} from '../../frameworks/app.framework/index';
-
-import {
-  RouteConfig
-} from 'angular2/router';
-
-import {HomeCmp} from '../home/home';
-import {AboutCmp} from '../about/about';
+import {LangSwitcherComponent} from '../../frameworks/i18n.framework/index';
+import {NavbarComponent} from './navbar.component';
+import {ToolbarComponent} from './toolbar.component';
+import {HomeComponent} from '../home/home.component';
+import {AboutComponent} from '../about/about.component';
+import {NameListService} from '../../frameworks/app.framework/index';
 
 @RouteComponent({
-  selector: 'app',
-  viewProviders: [NameList],
-  templateUrl: './components/app/app.html',
-  styleUrls: ['./components/app/app.css'],
-  directives: [LangSwitcherCmp]
+  selector: 'sd-app',
+  viewProviders: [NameListService],
+  templateUrl: './components/app/app.component.html',
+  directives: [LangSwitcherComponent, NavbarComponent, ToolbarComponent],
+  encapsulation: ViewEncapsulation.None
 })
 @RouteConfig([
-  { path: '/', component: HomeCmp, as: 'Home' },
-  { path: '/about', component: AboutCmp, as: 'About' }
+  { path: '/', component: HomeComponent, as: 'Home' },
+  { path: '/about', component: AboutComponent, as: 'About' }
 ])
-export class AppCmp {}
+export class AppComponent {}

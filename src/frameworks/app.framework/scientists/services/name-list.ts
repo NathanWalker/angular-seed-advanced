@@ -1,5 +1,10 @@
 export class NameList {
-  names = ['Dijkstra', 'Knuth', 'Turing', 'Hopper'];
+  private names: Array<string> = [
+    'Edsger Dijkstra',
+    'Donald Knuth',
+    'Alan Turing',
+    'Grace Hopper'
+  ];
 
   get(): string[] {
     return this.names;

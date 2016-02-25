@@ -3,15 +3,12 @@
 	"main": "app.js",
 	"nativescript": {
 		"id": "com.yourdomain.appname",
-		"tns-android": {
-			"version": "1.6.0"
-		},
 		"tns-ios": {
 			"version": "1.6.0"
 		}
 	},
 	"scripts": {
-		"prepare": "cp -R ../src/assets app/; cp -R ../src/components app/; cp -R ../src/frameworks app/;",
+		"prepare": "cp -R ../src/assets app/; cp -R ../src/assets app/App_Resources/iOS/; cp -R ../src/components app/; cp -R ../src/frameworks app/;",
 		"start": "npm run prepare; tns emulate ios"
 	},
 	"dependencies": {

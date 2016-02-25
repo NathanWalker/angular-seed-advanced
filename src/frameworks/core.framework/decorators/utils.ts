@@ -5,7 +5,7 @@ import {Component, ViewEncapsulation} from 'angular2/core';
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
 
 // app
-import {ViewBroker} from '../index';
+import {CoreConfig, ViewBroker} from '../index';
 
 const _reflect: any = Reflect;
 
@@ -31,6 +31,11 @@ export class DecoratorUtils {
     if (config.templateUrl) {
       // correct view for platform target
       config.templateUrl = ViewBroker.TEMPLATE_URL(config.templateUrl);
+    }
+    
+    if (config.styleUrls && CoreConfig.IS_MOBILE_NATIVE()) {
+      // {N} doesn't support `styleUrls` 
+      delete config.styleUrls;
     }
     
     config.directives = config.directives ? config.directives.concat(DIRECTIVES) : DIRECTIVES;
