@@ -34,7 +34,7 @@ export class DecoratorUtils {
     }
     
     if (config.styleUrls && CoreConfig.IS_MOBILE_NATIVE()) {
-      // {N} doesn't support styleUrls
+      // {N} doesn't support all css properties, therefore remove styleUrls to be safe
       delete config.styleUrls;
     }
     
