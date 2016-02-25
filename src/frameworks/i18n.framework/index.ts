@@ -1,4 +1,4 @@
 // i18n
-export * from './services/multilingual';
+export * from './services/multilingual.service';
 
-export * from './components/lang_switcher.component';
+export * from './components/lang-switcher.component';
