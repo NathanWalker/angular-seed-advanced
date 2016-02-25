@@ -3,7 +3,7 @@ import {Injectable} from 'angular2/core';
 import {IWindow} from '../interfaces/iwindow';
 
 @Injectable()
-export class Window implements IWindow {
+export class WindowService implements IWindow {
   
   public navigator: any = {};
   public location: any = {};

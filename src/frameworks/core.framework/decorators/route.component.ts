@@ -1,10 +1,10 @@
-import {CoreConfig} from '../services/core_config';
+import {CoreConfigService} from '../services/core-config.service';
 import {DecoratorUtils} from './utils';
 
 export function RouteComponent(config: any={}) {
   return function(cls) {
     return DecoratorUtils.annotateComponent(cls, config, {
-      directives: CoreConfig.ROUTER_DIRECTIVES
+      directives: CoreConfigService.ROUTER_DIRECTIVES
     });
   };
 }

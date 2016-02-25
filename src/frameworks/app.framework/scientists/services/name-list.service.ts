@@ -1,4 +1,4 @@
-export class NameList {
+export class NameListService {
   private names: Array<string> = [
     'Edsger Dijkstra',
     'Donald Knuth',

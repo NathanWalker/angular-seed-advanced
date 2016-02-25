@@ -4,7 +4,7 @@ import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 
 import {t, TEST_COMPONENT_PROVIDERS} from '../../test.framework/index';
 import {ILang} from '../../core.framework/index';
-import {LangSwitcherCmp, Multilingual} from '../index';
+import {LangSwitcherComponent, MultilingualService} from '../index';
 
 const SUPPORTED_LANGUAGES: Array<ILang> = [
   { code: 'en', title: 'English' },
@@ -15,7 +15,7 @@ const SUPPORTED_LANGUAGES: Array<ILang> = [
 ];
 
 export function main() {
-  t.describe('i18n.framework: @Component: LangSwitcherCmp', () => {
+  t.describe('i18n.framework: @Component: LangSwitcherComponent', () => {
  
     t.bep(() => TEST_COMPONENT_PROVIDERS({http: true}));
     
@@ -31,8 +31,8 @@ export function main() {
       }));
   });
   
-  t.describe('i18n.framework: @Component: LangSwitcherCmp with multiple languages', () => {
-    t.be(() => Multilingual.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES);
+  t.describe('i18n.framework: @Component: LangSwitcherComponent with multiple languages', () => {
+    t.be(() => MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES);
     t.bep(() => TEST_COMPONENT_PROVIDERS({http: true}));
     
     t.it('should work',
@@ -55,6 +55,6 @@ export function main() {
 @Component({
   selector: 'test-cmp',
   template: '<div><lang-switcher></lang-switcher></div>',
-  directives: [LangSwitcherCmp]
+  directives: [LangSwitcherComponent]
 })
 class TestComponent {}

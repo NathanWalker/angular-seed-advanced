@@ -1,5 +1,5 @@
 import {t} from '../../test.framework/index';
-import {NativeScriptConfig} from './nativescript_config';
+import {NativeScriptConfig} from './nativescript-config';
 
 export function main() {
   t.describe('nativescript.framework: NativeScriptConfig', () => {

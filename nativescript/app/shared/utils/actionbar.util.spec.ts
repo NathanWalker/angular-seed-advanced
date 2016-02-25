@@ -1,5 +1,5 @@
-import {t} from '../../test.framework/index';
-import {ActionBarUtil} from './actionbar_utils';
+import {t} from '../../../../src/frameworks/test.framework/index';
+import {ActionBarUtil} from './actionbar.util';
 
 export function main() {
   t.describe('nativescript.framework: ActionBarUtil', () => {

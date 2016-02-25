@@ -5,18 +5,18 @@ import {ControlGroup, Control} from 'angular2/common';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
-import {FormComponent, CoreConfig, Log, ILang} from '../../core.framework/index';
-import {Multilingual} from '../index';
+import {FormComponent, CoreConfigService, LogService, ILang} from '../../core.framework/index';
+import {MultilingualService} from '../index';
 
 @FormComponent({
   selector: 'lang-switcher',
-  templateUrl: './frameworks/i18n.framework/components/lang_switcher.html'
+  templateUrl: './frameworks/i18n.framework/components/lang-switcher.component.html'
 })
-export class LangSwitcherCmp {
+export class LangSwitcherComponent {
   public langForm: ControlGroup;
-  public supportedLanguages: Array<ILang> = Multilingual.SUPPORTED_LANGUAGES;
+  public supportedLanguages: Array<ILang> = MultilingualService.SUPPORTED_LANGUAGES;
   
-  constructor(private translate: TranslateService, private multilang: Multilingual, private log: Log) {
+  constructor(private translate: TranslateService, private multilang: MultilingualService, private log: LogService) {
     this.langForm = new ControlGroup({
       lang: new Control(multilang.getLang())
     });
@@ -24,7 +24,7 @@ export class LangSwitcherCmp {
   changeLang(e) {
     let lang = this.supportedLanguages[0].code; // fallback to default 'en'
     
-    if (CoreConfig.IS_MOBILE_NATIVE()) {
+    if (CoreConfigService.IS_MOBILE_NATIVE()) {
       if (e) {
         lang = this.supportedLanguages[e.newIndex].code;
       }

@@ -1,13 +1,13 @@
 import {t} from '../../../test.framework/index';
 
-import {NameList} from './name_list';
+import {NameListService} from './name-list.service';
 
 export function main() {
-  t.describe('app.framework: NameList', () => {
+  t.describe('app.framework: NameListService', () => {
     let nameList;
 
     t.be(() => {
-      nameList = new NameList;
+      nameList = new NameListService;
     });
 
     t.it('should return the list of names', () => {

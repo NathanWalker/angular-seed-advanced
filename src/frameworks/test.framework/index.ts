@@ -9,8 +9,8 @@ import {RootRouter} from 'angular2/src/router/router';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
-import {Window, Console, Log} from '../core.framework/index';
-import {Multilingual} from '../i18n.framework/index';
+import {WindowService, ConsoleService, LogService} from '../core.framework/index';
+import {MultilingualService} from '../i18n.framework/index';
 
 // mocks
 import {WindowMock} from './core/mocks/window.mock';
@@ -30,9 +30,9 @@ export function TEST_COMMON_PROVIDERS(options?: any): any[] {
   // Window: token = custom window mock (mainly for changing out language)
   
   let providers = [
-    Log,
-    provide(Console, { useValue: console }),
-    provide(Window, { useClass: (options && options.Window) || WindowMock }),
+    LogService,
+    provide(ConsoleService, { useValue: console }),
+    provide(WindowService, { useClass: (options && options.Window) || WindowMock }),
     provide(TranslateService, { useClass: TranslateMock })
   ];
   
@@ -47,11 +47,11 @@ export function TEST_COMPONENT_PROVIDERS(options?: any): any[] {
   
   let providers: Array<any> = [
     TEST_COMMON_PROVIDERS(),
-    provide(Multilingual, {
+    provide(MultilingualService, {
       useFactory: (translate, win) => {
-        return new Multilingual(translate, win);
+        return new MultilingualService(translate, win);
       },
-      deps: [TranslateService, Window]
+      deps: [TranslateService, WindowService]
     })
   ];
   

@@ -8,7 +8,7 @@ interface IPlatforms {
   DESKTOP: string;
 }
 
-export class CoreConfig {
+export class CoreConfigService {
   
   public static DEBUG: any = {
     LEVEL_1: false, // .info only
@@ -29,29 +29,29 @@ export class CoreConfig {
   };
   
   // current target (defaults to web)
-  public static PLATFORM_TARGET: string = CoreConfig.PLATFORMS.WEB; 
+  public static PLATFORM_TARGET: string = CoreConfigService.PLATFORMS.WEB; 
   
   // convenient platform checks
   public static IS_WEB(): boolean {
-    return CoreConfig.PLATFORM_TARGET === CoreConfig.PLATFORMS.WEB;
+    return CoreConfigService.PLATFORM_TARGET === CoreConfigService.PLATFORMS.WEB;
   }
   
   public static IS_MOBILE_NATIVE(): boolean {
-    return CoreConfig.PLATFORM_TARGET === CoreConfig.PLATFORMS.MOBILE_NATIVE;
+    return CoreConfigService.PLATFORM_TARGET === CoreConfigService.PLATFORMS.MOBILE_NATIVE;
   }
   
   public static IS_MOBILE_HYBRID(): boolean {
-    return CoreConfig.PLATFORM_TARGET === CoreConfig.PLATFORMS.MOBILE_HYBRID;
+    return CoreConfigService.PLATFORM_TARGET === CoreConfigService.PLATFORMS.MOBILE_HYBRID;
   }
   
   public static IS_DESKTOP(): boolean {
-    return CoreConfig.PLATFORM_TARGET === CoreConfig.PLATFORMS.DESKTOP;
+    return CoreConfigService.PLATFORM_TARGET === CoreConfigService.PLATFORMS.DESKTOP;
   }
   
   // reset debug defaults
   public static RESET() {
-    for (let key in CoreConfig.DEBUG) {
-      CoreConfig.DEBUG[key] = false; 
+    for (let key in CoreConfigService.DEBUG) {
+      CoreConfigService.DEBUG[key] = false; 
     }
   }
 }

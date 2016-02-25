@@ -5,7 +5,7 @@ import {Component} from 'angular2/core';
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
 
 // app
-import {CoreConfig, ViewBroker} from '../index';
+import {CoreConfigService, ViewBrokerService} from '../index';
 
 const _reflect: any = Reflect;
 
@@ -30,10 +30,10 @@ export class DecoratorUtils {
     
     if (config.templateUrl) {
       // correct view for platform target
-      config.templateUrl = ViewBroker.TEMPLATE_URL(config.templateUrl);
+      config.templateUrl = ViewBrokerService.TEMPLATE_URL(config.templateUrl);
     }
     
-    if (config.styleUrls && CoreConfig.IS_MOBILE_NATIVE()) {
+    if (config.styleUrls && CoreConfigService.IS_MOBILE_NATIVE()) {
       // {N} doesn't support all css properties, therefore remove styleUrls to be safe
       delete config.styleUrls;
     }

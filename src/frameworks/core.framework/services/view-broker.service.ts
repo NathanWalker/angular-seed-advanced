@@ -1,17 +1,17 @@
-import {CoreConfig} from './core_config';
+import {CoreConfigService} from './core-config.service';
 
-export class ViewBroker {
+export class ViewBrokerService {
   
   public static TEMPLATE_URL(path: string) {  
-    if (CoreConfig.IS_WEB()) {
+    if (CoreConfigService.IS_WEB()) {
       return path;
-    } else if (CoreConfig.IS_MOBILE_NATIVE()) {
+    } else if (CoreConfigService.IS_MOBILE_NATIVE()) {
       // views for native should all come from ./frameworks/nativescript.framework
       path = path.slice(1); // remove leading '.'
       return `./frameworks/nativescript.framework${path}`; 
-    } else if (CoreConfig.IS_MOBILE_HYBRID()) {
+    } else if (CoreConfigService.IS_MOBILE_HYBRID()) {
       return path;
-    } else if (CoreConfig.IS_DESKTOP()) {
+    } else if (CoreConfigService.IS_DESKTOP()) {
       return path;
     }
   }

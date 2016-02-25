@@ -3,12 +3,12 @@ import {Component} from 'angular2/core';
 import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 
 import {t, TEST_COMPONENT_PROVIDERS} from '../../frameworks/test.framework/index';
-import {AppCmp} from './app';
+import {AppComponent} from './app.component';
 
 export function main() {
-  t.describe('@Component: AppCmp', () => {
+  t.describe('@Component: AppComponent', () => {
 
-    t.bep(() => TEST_COMPONENT_PROVIDERS({ http: true, router: { primary: AppCmp } }));
+    t.bep(() => TEST_COMPONENT_PROVIDERS({ http: true, router: { primary: AppComponent } }));
     
     t.it('should work',
       t.injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
@@ -25,6 +25,6 @@ export function main() {
 @Component({
   selector: 'test-cmp',
   template: '<sd-app></sd-app>',
-  directives: [AppCmp]
+  directives: [AppComponent]
 })
 class TestComponent {}

@@ -3,11 +3,11 @@ import {Component} from 'angular2/core';
 import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 
 import {t, TEST_COMPONENT_PROVIDERS} from '../../frameworks/test.framework/index';
-import {NameList} from '../../frameworks/app.framework/index';
-import {HomeCmp} from './home';
+import {NameListService} from '../../frameworks/app.framework/index';
+import {HomeComponent} from './home.component';
 
 export function main() {
-  t.describe('@Component: HomeCmp', () => {
+  t.describe('@Component: HomeComponent', () => {
     
     t.bep(() => TEST_COMPONENT_PROVIDERS({ http: true }));
     
@@ -23,7 +23,7 @@ export function main() {
               return homeInstance.nameList.names.length;
             };
 
-            expect(homeInstance.nameList).toEqual(jasmine.any(NameList));
+            expect(homeInstance.nameList).toEqual(jasmine.any(NameListService));
             expect(nameListLen()).toEqual(4);
             expect(DOM.querySelectorAll(homeDOMEl, 'li').length).toEqual(nameListLen());
 
@@ -41,9 +41,9 @@ export function main() {
 }
 
 @Component({
-  providers: [NameList],
+  providers: [NameListService],
   selector: 'test-cmp',
-  directives: [HomeCmp],
+  directives: [HomeComponent],
   template: '<sd-home></sd-home>'
 })
 class TestComponent {}

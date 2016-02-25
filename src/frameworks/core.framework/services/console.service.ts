@@ -3,7 +3,7 @@ import {Injectable} from 'angular2/core';
 import {IConsole} from '../interfaces/iconsole';
 
 @Injectable()
-export class Console implements IConsole {
+export class ConsoleService implements IConsole {
   
   public log(m: any): void { return; }
   public error(m: any): void { return; }

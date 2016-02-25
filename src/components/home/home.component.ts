@@ -1,14 +1,14 @@
 import {FormComponent} from '../../frameworks/core.framework/index';
-import {NameList} from '../../frameworks/app.framework/index';
+import {NameListService} from '../../frameworks/app.framework/index';
 
 @FormComponent({
   selector: 'sd-home',
-  templateUrl: './components/home/home.html',
-  styleUrls: ['./components/home/home.css']
+  templateUrl: './components/home/home.component.html',
+  styleUrls: ['./components/home/home.component.css']
 })
-export class HomeCmp {
+export class HomeComponent {
   public newName: string = '';
-  constructor(public nameList: NameList) { }
+  constructor(public nameList: NameListService) { }
   
   /*
    * @param newname  any text as input.

@@ -3,10 +3,10 @@ import {Component} from 'angular2/core';
 import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 
 import {t, TEST_COMPONENT_PROVIDERS} from '../../frameworks/test.framework/index';
-import {AboutCmp} from './about';
+import {AboutComponent} from './about.component';
 
 export function main() {
-  t.describe('@Component: AboutCmp', () => {
+  t.describe('@Component: AboutComponent', () => {
     t.bep(() => TEST_COMPONENT_PROVIDERS({http: true}));
     
     t.it('should work',
@@ -24,6 +24,6 @@ export function main() {
 @Component({
   selector: 'test-cmp',
   template: '<sd-about></sd-about>',
-  directives: [AboutCmp]
+  directives: [AboutComponent]
 })
 class TestComponent {}
