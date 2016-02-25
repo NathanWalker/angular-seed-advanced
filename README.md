@@ -1,7 +1,10 @@
 ## angular2-seed-advanced
 ![Angular 2 Seed Advanced](/resources/angular-advanced-logo.png)![Angular 2 Seed Advanced Integrations](/resources/integrations.png)
 
-#### Please note: This is very much a wip.
+[![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://github.com/mgechev/angular2-style-guide)
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![Dependency Status](https://david-dm.org/NathanWalker/angular2-seed-advanced.svg)](https://david-dm.org/NathanWalker/angular2-seed-advanced)
+[![devDependency Status](https://david-dm.org/NathanWalker/angular2-seed-advanced/dev-status.svg)](https://david-dm.org/NathanWalker/angular2-seed-advanced#info=devDependencies)
 
 An **advanced** seed project for Angular 2 apps grown out of [Minko Gechev's](https://github.com/mgechev) [angular2-seed](https://github.com/mgechev/angular2-seed). This seed inherits all the genetics of its parent and will continually grow alongside it mirroring any changes to the underlying roots.
 
@@ -88,11 +91,10 @@ npm run build.prod
 ```
 npm install -g nativescript  // if you don't already have it installed globally
 cd nativescript  // we set things up from `nativescript` directory because {N} does not use the seed build
-npm install
-tns platform add ios
+tns install
 
 // you will see TypeScript warnings, this is normal, you can ignore :)
-// Right now, only iOS is supported due to mismatch versions between runtimes (tns-ios/tns-android -- this will change soon)
+// This will launch iOS Simulator - for demo purposes (it may work on Android, I just test on iOS primarily. I'll add more tasks for Android soon.)
 npm start     
 ```
 
