@@ -26,7 +26,7 @@ Provides all features available in [angular2-seed](https://github.com/mgechev/an
 - Introduction of `frameworks` to help organize your code for different platforms:
     - `app.framework`: your shared application architecture code
     - `desktop.framework`: **coming soon**... [Electron](http://electron.atom.io/) specific code
-    - `mobile.framework`: **coming soon**...[NativeScript](https://www.nativescript.org/) specific code
+    - `nativescript.framework`: [NativeScript](https://www.nativescript.org/) specific code
     - `web.framework`: web specific code
     - `test.framework`: test specific code providing conveniences to make testing your code easier and faster 
 
