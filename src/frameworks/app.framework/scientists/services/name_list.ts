@@ -1,5 +1,5 @@
 export class NameList {
-  names = [
+  private names: Array<string> = [
     'Edsger Dijkstra',
     'Donald Knuth',
     'Alan Turing',

@@ -13,7 +13,12 @@ TextField {
 }
 .link {
   border-width: 0;
+  background-color: transparent;
 }
 .pink {
   color: #FF45F9;
+}
+
+.container {
+  padding:10;
 }

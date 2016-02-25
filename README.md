@@ -88,11 +88,12 @@ npm run build.prod
 ```
 npm install -g nativescript  // if you don't already have it installed globally
 cd nativescript  // we set things up from `nativescript` directory because {N} does not use the seed build
-tns install      // please note: 'tns', not npm :)
+npm install
+tns platform add ios
 
 // you will see TypeScript warnings, this is normal, you can ignore :)
-// this will launch the iOS Simulator by default
-npm start        
+// Right now, only iOS is supported due to mismatch versions between runtimes (tns-ios/tns-android -- this will change soon)
+npm start     
 ```
 
 

@@ -1,10 +1,18 @@
-import {Component} from 'angular2/core';
+// app
+import {BaseComponent, Log} from '../../frameworks/core.framework/index';
 import {LangSwitcherCmp} from '../../frameworks/i18n.framework/index';
 
-@Component({
+@BaseComponent({
   selector: 'sd-toolbar',
   templateUrl: './components/app/toolbar.html',
   styleUrls: ['./components/app/toolbar.css'],
   directives: [LangSwitcherCmp]
 })
-export class ToolbarCmp {}
+export class ToolbarCmp {
+  
+  constructor(public log: Log) { }
+  
+  public openLanguages(e: any): void {
+    this.log.o('openLanguages');
+  }
+}

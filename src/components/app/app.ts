@@ -4,6 +4,7 @@ import {RouteConfig} from 'angular2/router';
 
 // app
 import {RouteComponent} from '../../frameworks/core.framework/index';
+import {LangSwitcherCmp} from '../../frameworks/i18n.framework/index';
 import {NavbarCmp} from './navbar';
 import {ToolbarCmp} from './toolbar';
 import {HomeCmp} from '../home/home';
@@ -14,7 +15,7 @@ import {NameList} from '../../frameworks/app.framework/index';
   selector: 'sd-app',
   viewProviders: [NameList],
   templateUrl: './components/app/app.html',
-  directives: [NavbarCmp, ToolbarCmp],
+  directives: [LangSwitcherCmp, NavbarCmp, ToolbarCmp],
   encapsulation: ViewEncapsulation.None
 })
 @RouteConfig([

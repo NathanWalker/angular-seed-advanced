@@ -7,7 +7,7 @@ import {NameList} from '../../frameworks/app.framework/index';
   styleUrls: ['./components/home/home.css']
 })
 export class HomeCmp {
-  newName: string;
+  public newName: string = '';
   constructor(public nameList: NameList) { }
   
   /*
