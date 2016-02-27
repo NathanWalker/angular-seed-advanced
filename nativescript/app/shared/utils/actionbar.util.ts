@@ -1,5 +1,5 @@
 import {topmost} from 'ui/frame';
-import {ActionItem} from 'ui/action-bar';
+import {ActionItem, ActionItems} from 'ui/action-bar';
 
 declare var UIBarStyle: any;
 
@@ -9,6 +9,7 @@ export class ActionBarUtil {
     actionBar.title = title;
   }
   public static ADD_BUTTON(button: ActionItem) {
+    // NOTE: This MUST be called BEFORE SET_TITLE on start
     topmost().currentPage.actionBar.actionItems.addItem(button);
   }
   public static EMPTY_ITEMS() {
@@ -21,14 +22,9 @@ export class ActionBarUtil {
   public static STATUSBAR_STYLE(style: number) {
     if (topmost().ios) {
       let navigationBar = topmost().ios.controller.navigationBar;
-      switch (style) {
-        case 0:
-          navigationBar.barStyle = UIBarStyle.UIBarStyleDefault;
-          break;
-        case 1:
-          navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
-          break;
-      }
+      // 0: default
+      // 1: light
+      navigationBar.barStyle = style;
     }
   }
 }
