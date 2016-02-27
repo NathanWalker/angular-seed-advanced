@@ -6,20 +6,20 @@
 [![Dependency Status](https://david-dm.org/NathanWalker/angular2-seed-advanced.svg)](https://david-dm.org/NathanWalker/angular2-seed-advanced)
 [![devDependency Status](https://david-dm.org/NathanWalker/angular2-seed-advanced/dev-status.svg)](https://david-dm.org/NathanWalker/angular2-seed-advanced#info=devDependencies)
 
-An **advanced** seed project for Angular 2 apps grown out of [Minko Gechev's](https://github.com/mgechev) [angular2-seed](https://github.com/mgechev/angular2-seed). This seed inherits all the genetics of its parent and will continually grow alongside it mirroring any changes to the underlying roots.
+## Want to use [Angular 2](https://angular.io/) for a large project? Do you need potential i18n support? Enhanced testing support? Oh and building for multiple platforms too (web, *native* Android/iOS [Windows phone coming soon!], and even Windows/Mac Desktop [coming soon!])?  
 
-### Features
-
-Provides all features available in [angular2-seed](https://github.com/mgechev/angular2-seed) with the following enhancements:
+This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's](https://github.com/mgechev) [angular2-seed](https://github.com/mgechev/angular2-seed) that expands on all of it's great features to include core support for:
 
 #### Integration with:
-- [lodash](https://lodash.com/)
-- [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n
+- [lodash](https://lodash.com/) Helps reduce blocks of code down to single lines and enhances readability
+- [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n 
+  - Usage is optional but on by default
+  - Up to you and your team how you want to utilize it. It can be easily removed if not needed. 
 - [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#run-nativescript-app).
 
 #### Coming Soon...
 - [ ] [ngrx/store](https://github.com/ngrx/store) for state management (Redux)
-- [ ] [Electron](http://electron.atom.io/) bootstrap ability for cross platform desktop apps.
+- [ ] [Electron](http://electron.atom.io/) cross platform desktop apps.
 - [ ] provider for LocalStorage (abstraction for IndexedDB, WebSQL, localStorage, perhaps a port of localForage)
 - [ ] sophisticated setup for Service Worker
 - [ ] integration with [ng2-bootstrap](https://github.com/valor-software/ng2-bootstrap)
@@ -27,18 +27,18 @@ Provides all features available in [angular2-seed](https://github.com/mgechev/an
 #### Enhanced development workflow
 - Decorators for components which reduce boilerplate for common component setups
 - Introduction of `frameworks` to help organize your code for different platforms:
-    - `app.framework`: your shared application architecture code
-    - `desktop.framework`: **coming soon**... [Electron](http://electron.atom.io/) specific code
-    - `nativescript.framework`: [NativeScript](https://www.nativescript.org/) specific code
-    - `web.framework`: web specific code
-    - `test.framework`: test specific code providing conveniences to make testing your code easier and faster 
+  - `app.framework`: your shared application architecture code (grow your app here or create new frameworks)
+  - `core.framework`: foundation layer (decorators and low-level services)
+  - `desktop.framework`: **coming soon**... [Electron](http://electron.atom.io/) specific code
+  - `nativescript.framework`: [NativeScript](https://www.nativescript.org/) specific code
+  - `test.framework`: test specific code providing conveniences to make testing your code easier and faster 
 
 #### Enhanced testing support options
 - mocks for various services
 - configurable provider blocks for easy test setup of common application providers
   - tired of setting up similar providers over and over again for different tests?
   - configure a reusable test provider which can be configured on a case-by-base basis
-  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/development/src/frameworks/test.framework/_providers.ts#L45-L78)
+  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/development/src/frameworks/test.framework/index.ts#L27-L75)
   - watch [video explanation **coming soon**](https://github.com/NathanWalker/angular2-seed-advanced)
 - helpers for end-to-end (e2e, integration) tests
 - convenient shorthand to reduce test setup boilerplate and enhance speed of writing tests

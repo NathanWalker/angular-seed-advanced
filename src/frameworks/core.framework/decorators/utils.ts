@@ -45,6 +45,11 @@ export class DecoratorUtils {
     if (config.encapsulation) {
       config.encapsulation = config.encapsulation;
     }
+    
+    // initialize anything 
+    if (config.init) {
+      config.init()
+    }   
 
     return config;
   }
