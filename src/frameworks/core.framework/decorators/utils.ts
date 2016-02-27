@@ -41,7 +41,16 @@ export class DecoratorUtils {
     config.directives = config.directives ? config.directives.concat(DIRECTIVES) : DIRECTIVES;
     config.pipes = config.pipes ? config.pipes.concat(PIPES) : PIPES;
     config.host = config.host || {};
-    config.encapsulation = config.encapsulation || ViewEncapsulation.None;
+    
+    if (config.encapsulation) {
+      config.encapsulation = config.encapsulation;
+    }
+    
+    // initialize anything 
+    if (config.init) {
+      config.init()
+    }   
+
     return config;
   }
   

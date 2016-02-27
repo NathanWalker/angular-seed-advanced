@@ -1,7 +1,28 @@
-<StackLayout class="container">
+<!--<StackLayout class="container">
   <sd-navbar></sd-navbar>
   <lang-switcher></lang-switcher>
   <ScrollView>
     <page-router-outlet></page-router-outlet>
   </ScrollView>
-</StackLayout>
+</StackLayout>-->
+<!--<sd-toolbar>
+  <StackLayout class="container">
+    <Label text="Yo"></Label>
+    <lang-switcher></lang-switcher>
+    <ScrollView>
+      <page-router-outlet></page-router-outlet>
+    </ScrollView>
+  </StackLayout>
+</sd-toolbar>-->
+<RadSideDrawer id="drawer">
+  <RadSideDrawer.mainContent *mainContent>
+    <StackLayout class="container">
+      <Label text="Main Content"></Label>
+    </StackLayout>
+  </RadSideDrawer.mainContent>
+  <RadSideDrawer.drawerContent *drawerContent>
+    <StackLayout class="drawer-content">
+      <Label text="Drawer Content"></Label>
+    </StackLayout>
+  </RadSideDrawer.drawerContent>
+</RadSideDrawer>
