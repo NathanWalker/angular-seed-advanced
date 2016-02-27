@@ -1,3 +1,19 @@
+ActionBar {
+  background-color: #106CC8;
+  color:white;
+}
+
+.drawer-content {
+  background-color: #053140;
+  color: white;
+  padding-top: 20;
+  width:100%;
+  height:100%;
+}
+.drawer-content label {
+  font-size: 20;
+  margin: 10 0 15 25;
+}
 button {
   font-size: 18;
   horizontal-align: center;
@@ -21,4 +37,21 @@ TextField {
 
 .container {
   padding:10;
+}
+
+.drawerMenuContent {
+    margin:10;
+}
+
+.mainContent{
+    background-color: white;
+}
+
+.drawerContent {
+    background-color: white;
+}
+
+.headerContent {
+    padding:20;
+    background-color: #808080
 }
