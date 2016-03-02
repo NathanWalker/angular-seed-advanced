@@ -3,17 +3,14 @@
   <!--<Label [text]="'ABOUT_REWARD' | translate"></Label>-->
   <Label text="Your Angular 2 Advanced Seed App is working perfectly!" textWrap="true"></Label>
   <Label text="For reward, here is a list of awesome computer scientists..." textWrap="true"></Label>
-  <Label text="Well, that list is coming soon. This is a work in progress." textWrap="true"></Label>
 
-  <TextField [(ngModel)]="newName" hint="Awesome Computer Scientist" autocorrect="false" autocapitalizationType="none"></TextField>
-  <!--<Button text="Add" (tap)="addName()"></Button>
+  <TextField [(ngModel)]="newName" hint="Enter a new computer scientist..." autocorrect="false" autocapitalizationType="none"></TextField>
+  <Button text="Add" (tap)="addName()"></Button>
   <ListView [items]="nameList.get()" row="1" colSpan="2">
-    <item-template>
-      <template #name="item" #odd="odd" #even="even">
-        <StackLayout [class.odd]="odd" [class.even]="even">
-          <Label [text]="name"></Label>
-        </StackLayout>
-      </template>
-    </item-template>
-  </ListView>-->
+    <template #name="item" #odd="odd" #even="even">
+      <StackLayout [class.odd]="odd" [class.even]="even" class="list-item">
+        <Label [text]="name"></Label>
+      </StackLayout>
+    </template>
+  </ListView>
 </StackLayout>

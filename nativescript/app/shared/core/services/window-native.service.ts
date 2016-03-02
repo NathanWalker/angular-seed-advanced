@@ -1,4 +1,4 @@
-import {IWindow} from '../../frameworks/core.framework/interfaces/iwindow';
+import {IWindow} from '../../../frameworks/core.framework/interfaces/iwindow';
 
 export class WindowNative implements IWindow {
   public get navigator(): any {

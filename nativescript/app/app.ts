@@ -6,7 +6,7 @@ import {nativeScriptBootstrap} from 'nativescript-angular/application';
 import {NS_ROUTER_PROVIDERS, NS_ROUTER_DIRECTIVES} from 'nativescript-angular/router';
 
 // angular 
-import {provide} from 'angular2/core';
+import {provide, enableProdMode} from 'angular2/core';
 
 // config
 import {CoreConfigService, WindowService} from './frameworks/core.framework/index';
@@ -17,10 +17,13 @@ CoreConfigService.ROUTER_DIRECTIVES = NS_ROUTER_DIRECTIVES;
 // app
 import {NS_APP_PROVIDERS} from './frameworks/nativescript.framework/index';
 import {NSAppComponent} from './pages/app/app.component';
-import {WindowNative} from './shared/services/window-native.service';
+import {WindowNative, ModalNative} from './shared/core/index';
   
+enableProdMode();
+
 nativeScriptBootstrap(NSAppComponent, [
   provide(WindowService, { useClass: WindowNative }),
+  ModalNative,
   NS_ROUTER_PROVIDERS,
   NS_APP_PROVIDERS
 ]);

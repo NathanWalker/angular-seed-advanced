@@ -11,9 +11,7 @@ import {NavbarComponent} from './navbar.component';
 })
 export class ToolbarComponent {
   
-  constructor(public log: LogService) { 
-    log.o(`ToolbarComponent created!`);
-  }
+  constructor(private log: LogService) {}
   
   public openLanguages(e: any): void {
     this.log.o('openLanguages');

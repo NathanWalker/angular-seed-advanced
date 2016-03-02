@@ -6,12 +6,13 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
-import {ConsoleService, LogService, WindowService} from '../core.framework/index';
+import {ConsoleService, LogService, WindowService, StateService} from '../core.framework/index';
 import {AppConfigService} from '../app.framework/index';
 import {MultilingualService} from '../i18n.framework/index';
 
 export const NS_APP_PROVIDERS: any[] = [
   HTTP_PROVIDERS,
+  StateService,
   provide(ConsoleService, { useValue: console }),
   LogService,
   TranslateService,

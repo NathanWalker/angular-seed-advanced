@@ -1,37 +1,36 @@
 {
-  "name": "angular2-seed-advanced",
-  "main": "app.js",
-  "nativescript": {
-    "id": "com.yourdomain.appname",
-    "tns-ios": {
-      "version": "1.6.0"
-    }
-  },
-  "scripts": {
-    "prepare": "cp -R ../src/assets app/; cp -R ../src/assets app/App_Resources/iOS/; cp -R ../src/components app/; cp -R ../src/frameworks app/; rm -rf app/frameworks/test.framework; rm -rf app/components/**/*.e2e.*; rm -rf app/components/**/*.spec.*; rm -rf app/frameworks/**/**/*.spec.*; rm -rf app/frameworks/**/**/**/*.spec.*",
-    "start": "npm run prepare; tns emulate ios"
-  },
-  "dependencies": {
-    "angular2": "2.0.0-beta.7",
-    "es6-promise": "~3.0.2",
-    "es6-shim": "^0.33.3",
-    "lodash": "^4.5.0",
-    "nativescript-angular": "0.0.35",
-    "nativescript-telerik-ui": "^0.2.4",
-    "ng2-translate": "^1.7.3",
-    "parse5": "1.4.2",
-    "punycode": "1.3.2",
-    "querystring": "0.2.0",
-    "reflect-metadata": "0.1.2",
-    "rimraf": "^2.5.1",
-    "rxjs": "5.0.0-beta.2",
-    "tns-core-modules": "^1.7.0-angular-0",
-    "url": "0.10.3",
-    "zone.js": "0.5.15"
-  },
-  "devDependencies": {
-    "nativescript-dev-typescript": "^0.3.1",
-    "shelljs": "^0.5.3",
-    "typescript": "1.8.2"
-  }
+	"name": "angular2-seed-advanced",
+	"main": "app.js",
+	"nativescript": {
+		"id": "com.yourdomain.appname",
+		"tns-ios": {
+			"version": "1.6.0"
+		}
+	},
+	"scripts": {
+		"prepare": "cp -R ../src/assets app/; cp -R ../src/assets app/App_Resources/iOS/; cp -R ../src/components app/; cp -R ../src/frameworks app/; rm -rf app/frameworks/test.framework; rm -rf app/components/**/*.e2e.*; rm -rf app/components/**/*.spec.*; rm -rf app/frameworks/**/**/*.spec.*; rm -rf app/frameworks/**/**/**/*.spec.*",
+		"start": "npm run prepare; tns emulate ios"
+	},
+	"dependencies": {
+		"angular2": "2.0.0-beta.7",
+		"es6-promise": "~3.0.2",
+		"es6-shim": "^0.33.3",
+		"lodash": "^4.5.0",
+		"nativescript-angular": "0.0.35",
+		"ng2-translate": "^1.7.3",
+		"parse5": "1.4.2",
+		"punycode": "1.3.2",
+		"querystring": "0.2.0",
+		"reflect-metadata": "0.1.2",
+		"rimraf": "^2.5.1",
+		"rxjs": "5.0.0-beta.2",
+		"tns-core-modules": "^1.7.0-angular-0",
+		"url": "0.10.3",
+		"zone.js": "0.5.15"
+	},
+	"devDependencies": {
+		"nativescript-dev-typescript": "^0.3.1",
+		"shelljs": "^0.5.3",
+		"typescript": "1.8.2"
+	}
 }

@@ -3,6 +3,15 @@ ActionBar {
   color:white;
 }
 
+.nav button {
+  margin:0 10 0 0;
+  color: #106CC8;
+}
+
+SegmentedBar {
+  color: #106CC8;
+}
+
 .drawer-content {
   background-color: #053140;
   color: white;
@@ -17,15 +26,10 @@ ActionBar {
 button {
   font-size: 18;
   horizontal-align: center;
-  color: blue;
-  margin:0 10px 0 0;
+  color: #106CC8;
 }
 TextField {
-  background-color: #FAFAFA;
-  border-width: 1;
-  border-style: solid;
-  border-color: #C7C7CC;
-  border-radius: 2;
+  margin: 15 15 0 15;
 }
 .link {
   border-width: 0;
@@ -54,4 +58,26 @@ TextField {
 .headerContent {
     padding:20;
     background-color: #808080
+}
+
+.heading {
+  margin:10 0 0 0;
+  font-size: 24;
+  color:#106CC8;
+}
+
+.feature-list label {
+  font-size:16;
+  color:#555;
+  margin:0 0 5 0;
+}
+.list-item {
+  padding:5;
+}
+.odd {
+    background-color: #efefef;
+}
+
+.even {
+    background-color: #fff;
 }

@@ -1,23 +1,16 @@
-<<<<<<< 1e98c28970362ac1d28e5289724af04ac4eb2eec:src/components/home/home.ts
-import {BaseComponent} from '../../frameworks/core.framework/index';
+import {OnActivate, ComponentInstruction} from 'angular2/router';
 
-@BaseComponent({
-  selector: 'home',
-  templateUrl: './components/home/home.html',
-  styleUrls: ['./components/home/home.css']
-=======
-import {FormComponent} from '../../frameworks/core.framework/index';
+import {FormComponent, StateService} from '../../frameworks/core.framework/index';
 import {NameListService} from '../../frameworks/app.framework/index';
 
 @FormComponent({
   selector: 'sd-home',
   templateUrl: './components/home/home.component.html',
   styleUrls: ['./components/home/home.component.css']
->>>>>>> refactor: angular2-style-guide compliance:src/components/home/home.component.ts
 })
-export class HomeComponent {
+export class HomeComponent implements OnActivate {
   public newName: string = '';
-  constructor(public nameList: NameListService) { }
+  constructor(public nameList: NameListService, private state: StateService) { }
   
   /*
    * @param newname  any text as input.
@@ -27,5 +20,9 @@ export class HomeComponent {
     this.nameList.add(this.newName);
     this.newName = '';
     return false;
+  }
+  
+  routerOnActivate(nextInstruction: ComponentInstruction, prevInstruction: ComponentInstruction): any {
+    this.state.routeActivated('Home');
   }
 }

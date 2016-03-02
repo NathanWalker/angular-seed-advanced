@@ -1,4 +1,4 @@
-<StackLayout cssClass="drawerMenuContent">
-  <Button [nsRouterLink]="['/Home']" text="Home"></Button>
-  <Button [nsRouterLink]="['/About']" text="About"></Button>  
-</StackLayout>
+<GridLayout columns="auto, auto" width="100%" rows="auto" horizontalAlignment="left" class="nav">
+  <Button [nsRouterLink]="['/Home']" text="Home" row="0" col="0"></Button>
+  <Button [nsRouterLink]="['/About']" text="About" row="0" col="1"></Button>  
+</GridLayout>

@@ -5,11 +5,12 @@ import {provide} from 'angular2/core';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
-import {LogService, WindowService} from '../core.framework/index';
+import {LogService, WindowService, StateService} from '../core.framework/index';
 import {AppConfigService} from './services/app-config.service';
 import {MultilingualService} from '../i18n.framework/index';
 
 export const APP_PROVIDERS: any[] = [
+  StateService,
   LogService,
   TranslateService,
   provide(MultilingualService, {

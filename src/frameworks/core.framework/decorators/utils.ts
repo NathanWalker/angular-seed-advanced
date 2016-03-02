@@ -48,7 +48,7 @@ export class DecoratorUtils {
     
     // initialize anything 
     if (config.init) {
-      config.init()
+      config.init();
     }   
 
     return config;
