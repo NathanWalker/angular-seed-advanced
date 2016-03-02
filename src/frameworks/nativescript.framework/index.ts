@@ -10,17 +10,8 @@ import {ConsoleService, LogService, WindowService} from '../core.framework/index
 import {AppConfigService} from '../app.framework/index';
 import {MultilingualService} from '../i18n.framework/index';
 
-class WindowNative {
-  public get navigator(): any {
-    return {
-      language: 'en-US'
-    };
-  }
-}
-
 export const NS_APP_PROVIDERS: any[] = [
   HTTP_PROVIDERS,
-  provide(WindowService, { useClass: WindowNative }),
   provide(ConsoleService, { useValue: console }),
   LogService,
   TranslateService,
