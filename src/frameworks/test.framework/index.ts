@@ -9,7 +9,7 @@ import {RootRouter} from 'angular2/src/router/router';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
-import {WindowService, ConsoleService, LogService} from '../core.framework/index';
+import {WindowService, ConsoleService, LogService, StateService} from '../core.framework/index';
 import {MultilingualService} from '../i18n.framework/index';
 
 // mocks
@@ -30,6 +30,7 @@ export function TEST_COMMON_PROVIDERS(options?: any): any[] {
   // Window: token = custom window mock (mainly for changing out language)
   
   let providers = [
+    StateService,
     LogService,
     provide(ConsoleService, { useValue: console }),
     provide(WindowService, { useClass: (options && options.Window) || WindowMock }),
