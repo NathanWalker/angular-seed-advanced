@@ -18,9 +18,6 @@ export const NS_APP_PROVIDERS: any[] = [
   TranslateService,
   provide(MultilingualService, {
     useFactory: (translate, win) => {
-      // make compatible with local {N} resources
-      MultilingualService.STATIC_FILES_LOADER = `~/${MultilingualService.STATIC_FILES_LOADER}`;
-      console.log(`MultilingualService.STATIC_FILES_LOADER: ${MultilingualService.STATIC_FILES_LOADER}`);
       MultilingualService.SUPPORTED_LANGUAGES = AppConfigService.SUPPORTED_LANGUAGES;
       return new MultilingualService(translate, win);
     },

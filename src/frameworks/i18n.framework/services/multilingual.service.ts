@@ -6,7 +6,7 @@ import * as _ from 'lodash';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
-import {WindowService, ILang} from '../../core.framework/index';
+import {WindowService, ILang, CoreConfigService} from '../../core.framework/index';
 
 @Injectable()
 export class MultilingualService {
@@ -30,8 +30,11 @@ export class MultilingualService {
       this._userLang = userLang;
     }
 
-    // this will load translate json files
-    translate.useStaticFilesLoader(MultilingualService.STATIC_FILES_LOADER);
+    if (!CoreConfigService.IS_MOBILE_NATIVE()) {
+      // mobile native uses a custom loader
+      // this will load translate json files
+      translate.useStaticFilesLoader(MultilingualService.STATIC_FILES_LOADER);  
+    }
 
     // the lang to use, if the lang isn't available, it will use the current loader to get them
     translate.use(userLang);

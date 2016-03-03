@@ -9,6 +9,8 @@ import {Page, ShownModallyData} from "ui/page";
 // app
 import {LogService} from '../../frameworks/core.framework/index';
 
+declare const UIModalPresentationStyle: any;
+
 @Component({
   selector: 'menu-modal',
   template: `

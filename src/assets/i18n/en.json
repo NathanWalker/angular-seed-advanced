@@ -2,9 +2,10 @@
   "HOME": "Home",
   "ABOUT": "About",
   "HELLO": "Hello",
-  "LOVE_TECH": "I love technology",
+  "LOVE_TECH": "I love technology!",
   "ABOUT_ADD": "You want more? Add them yourself!",
-  "ABOUT_REWARD": "For reward, here is a list of awesome computer scientists!",
+  "ABOUT_REWARD": "For reward, here is a list of awesome computer scientists:",
+  "INPUT_HINT": "Enter a new computer scientist...",
   "ADD_BTN_TEXT": "Add",
-  "SUCCESS_MSG": "Your deployment of Angular 2 Advanced Seed worked perfectly!<br/>Click <em>about (above)</em> to get your reward!"
+  "SUCCESS_MSG": "Your deployment of Angular 2 Advanced Seed worked perfectly."
 }

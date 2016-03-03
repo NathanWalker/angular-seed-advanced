@@ -3,13 +3,22 @@ ActionBar {
   color:white;
 }
 
+.nav {
+  padding:10;
+}
+
 .nav button {
-  margin:0 10 0 0;
+  margin:0 20 0 0;
+  color: #777;
+}
+
+.nav button.active {
   color: #106CC8;
 }
 
 SegmentedBar {
   color: #106CC8;
+  margin: 0 10 0 10;
 }
 
 .drawer-content {
@@ -40,6 +49,10 @@ TextField {
 }
 
 .container {
+  padding:0;
+}
+
+.container-content {
   padding:10;
 }
 
@@ -80,4 +93,11 @@ TextField {
 
 .even {
     background-color: #fff;
+}
+
+.love-tech {
+  font-size:28;
+  font-weight: bold;
+  color: purple;
+  margin:8 0 8 0;
 }

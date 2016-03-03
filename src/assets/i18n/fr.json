@@ -2,9 +2,10 @@
   "HOME": "Accueil",
   "ABOUT": "Sur",
   "HELLO": "Bonjour",
-  "LOVE_TECH": "Je adore la technologie",
+  "LOVE_TECH": "Je adore la technologie!",
   "ABOUT_ADD": "Tu en veux plus? Ajoutez-les vous-même!",
-  "ABOUT_REWARD": "Pour récompense, voici une liste de scientifiques impressionnants d'ordinateur!",
+  "ABOUT_REWARD": "Pour récompense, voici une liste de scientifiques impressionnants d'ordinateur:",
+  "INPUT_HINT": "Entrez un nouveau chercheur en informatique...",
   "ADD_BTN_TEXT": "Ajouter",
-  "SUCCESS_MSG": "Votre déploiement de angulaire 2 Seed avancée a parfaitement fonctionné!<br/>Cliquez <em>environ (ci-dessus)</em> pour obtenir votre récompense!"
+  "SUCCESS_MSG": "Votre déploiement de angulaire 2 Seed avancée a parfaitement fonctionné."
 }

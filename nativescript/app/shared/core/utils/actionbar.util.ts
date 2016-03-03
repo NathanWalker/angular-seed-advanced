@@ -12,6 +12,11 @@ export class ActionBarUtil {
     // NOTE: This MUST be called BEFORE SET_TITLE on start
     topmost().currentPage.actionBar.actionItems.addItem(button);
   }
+  public static HIDE_BACK_BUTTON() {
+    if (topmost().ios) {
+      topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(true, false);
+    }
+  }
   public static EMPTY_ITEMS() {
     var actionBar = topmost().currentPage.actionBar;
     var actionItems = actionBar.actionItems.getItems();

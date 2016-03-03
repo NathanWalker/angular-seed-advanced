@@ -1,4 +1,4 @@
-import {RouteComponent, LogService} from '../../frameworks/core.framework/index';
+import {RouteComponent, LogService, StateService} from '../../frameworks/core.framework/index';
 
 @RouteComponent({
   selector: 'sd-navbar',
@@ -6,7 +6,24 @@ import {RouteComponent, LogService} from '../../frameworks/core.framework/index'
   styleUrls: ['./components/app/navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(public log: LogService) { 
-    log.o(`ToolbarComponent created!`);
+  // TODO: this is a hack to get {N} active route links to work
+  public activeLink: any = {
+    home: true,
+    about: false
+  };
+  
+  constructor(public log: LogService, public state: StateService) {  
+    state.change.subscribe((msg: string) => {
+      switch (msg) {
+        case 'Home':
+          this.activeLink.home = true;
+          this.activeLink.about = false;
+          break; 
+        case 'About':
+          this.activeLink.home = false;
+          this.activeLink.about = true;
+          break;
+      }
+    });
   }
 }
