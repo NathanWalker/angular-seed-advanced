@@ -1,3 +1,7 @@
+// nativescript
+import * as dialogs from 'ui/dialogs';
+
+// app
 import {IWindow} from '../../../frameworks/core.framework/interfaces/iwindow';
 
 export class WindowNative implements IWindow {
@@ -11,10 +15,10 @@ export class WindowNative implements IWindow {
       host: 'nativescript'
     };
   }
-  public alert(msg: string): void {
-    
+  public alert(msg: string): Promise<any> {
+    return dialogs.alert(msg);
   }
-  public confirm(msg: string): void {
-    
+  public confirm(msg: string): Promise<any> {
+    return dialogs.confirm(msg);
   }
 }
