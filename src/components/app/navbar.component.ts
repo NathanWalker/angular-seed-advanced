@@ -1,4 +1,6 @@
-import {RouteComponent, LogService, StateService} from '../../frameworks/core.framework/index';
+import {Store} from '@ngrx/store';
+
+import {RouteComponent, LogService, IRoute} from '../../frameworks/core.framework/index';
 
 @RouteComponent({
   selector: 'sd-navbar',
@@ -12,17 +14,19 @@ export class NavbarComponent {
     about: false
   };
   
-  constructor(public log: LogService, public state: StateService) {  
-    state.change.subscribe((msg: string) => {
-      switch (msg) {
-        case 'Home':
-          this.activeLink.home = true;
-          this.activeLink.about = false;
-          break; 
-        case 'About':
-          this.activeLink.home = false;
-          this.activeLink.about = true;
-          break;
+  constructor(public log: LogService, public store: Store<any>) {  
+    store.select('routes').subscribe((routeState: IRoute) => {
+      if (!routeState.isChanging) {
+        switch (routeState.name) {
+          case 'home':
+            this.activeLink.home = true;
+            this.activeLink.about = false;
+            break;
+          case 'about':
+            this.activeLink.home = false;
+            this.activeLink.about = true;
+            break;
+        }
       }
     });
   }

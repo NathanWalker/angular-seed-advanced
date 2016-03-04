@@ -1,6 +1,7 @@
-import {OnActivate, ComponentInstruction} from 'angular2/router';
+// libs
+import {Store} from '@ngrx/store';
 
-import {FormComponent, StateService} from '../../frameworks/core.framework/index';
+import {FormComponent, RouteCommon, IRoute} from '../../frameworks/core.framework/index';
 import {NameListService} from '../../frameworks/app.framework/index';
 
 @FormComponent({
@@ -8,9 +9,15 @@ import {NameListService} from '../../frameworks/app.framework/index';
   templateUrl: './components/home/home.component.html',
   styleUrls: ['./components/home/home.component.css']
 })
-export class HomeComponent implements OnActivate {
+export class HomeComponent extends RouteCommon {
   public newName: string = '';
-  constructor(public nameList: NameListService, private state: StateService) { }
+  constructor(private store: Store<any>, public nameList: NameListService) { 
+    super(store);
+    this.routeDesc = {
+      name: 'home',
+      title: 'Home'
+    };
+  }
   
   /*
    * @param newname  any text as input.
@@ -20,9 +27,5 @@ export class HomeComponent implements OnActivate {
     this.nameList.add(this.newName);
     this.newName = '';
     return false;
-  }
-  
-  routerOnActivate(nextInstruction: ComponentInstruction, prevInstruction: ComponentInstruction): any {
-    this.state.routeActivated('Home');
   }
 }

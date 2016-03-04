@@ -23,16 +23,20 @@ export class MultilingualService {
   constructor(private translate: TranslateService, private win: WindowService) {
     // use navigator lang if available
     let userLang = win.navigator.language.split('-')[0];
-    if (_.includes(_.map(MultilingualService.SUPPORTED_LANGUAGES, 'code'), userLang)) {
-      // only if supported
-      this._userLang = userLang;
-    }
-
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
-    translate.use(userLang);
+    
+    // init the lang
+    this.changeLang(userLang);
   }
   
   public getLang(): string {
     return this._userLang;
+  }
+  
+  public changeLang(lang: string) {
+    if (_.includes(_.map(MultilingualService.SUPPORTED_LANGUAGES, 'code'), lang)) {
+      // only if supported
+      this._userLang = lang;
+    }
+    this.translate.use(this._userLang);
   }
 }

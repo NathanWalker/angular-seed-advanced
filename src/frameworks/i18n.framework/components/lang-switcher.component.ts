@@ -1,12 +1,9 @@
 // angular
 import {ControlGroup, Control} from 'angular2/common';
 
-// libs
-import {TranslateService} from 'ng2-translate/ng2-translate';
-
 // app
 import {FormComponent, CoreConfigService, LogService, ILang} from '../../core.framework/index';
-import {MultilingualService} from '../index';
+import {MultilingualService, MultilingualActions} from '../index';
 
 @FormComponent({
   selector: 'lang-switcher',
@@ -16,7 +13,7 @@ export class LangSwitcherComponent {
   public langForm: ControlGroup;
   public supportedLanguages: Array<ILang> = MultilingualService.SUPPORTED_LANGUAGES;
   
-  constructor(private translate: TranslateService, private multilang: MultilingualService, private log: LogService) {
+  constructor(private log: LogService, private actions: MultilingualActions, private multilang: MultilingualService) {
     this.langForm = new ControlGroup({
       lang: new Control(multilang.getLang())
     });
@@ -32,6 +29,6 @@ export class LangSwitcherComponent {
       lang = this.langForm.value.lang;
     }
     this.log.o(`Language change: ${lang}`);
-    this.translate.use(lang);
+    this.actions.changeLang(lang);
   }
 }
