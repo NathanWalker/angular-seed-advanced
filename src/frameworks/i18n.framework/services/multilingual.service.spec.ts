@@ -23,9 +23,6 @@ export function main() {
     t.it('should at a minimum support english', () => {
       t.e(MultilingualService.SUPPORTED_LANGUAGES[0].code).toBe('en');
     });
-    t.it('should default static files loader', () => {
-      t.e(MultilingualService.STATIC_FILES_LOADER).toBe('assets/i18n');
-    });
 
   });
 
@@ -39,7 +36,6 @@ export function main() {
       provide(MultilingualService, {
         useFactory: (translate, win) => {
           MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES;
-          MultilingualService.STATIC_FILES_LOADER = 'public/i18n';
           return new MultilingualService(translate, win);
         },
         deps: [TranslateService, WindowService]
@@ -57,9 +53,6 @@ export function main() {
         // ensure it's reset back to the 1 default
         MultilingualService.SUPPORTED_LANGUAGES.splice(-1);
       }
-    });
-    t.it('i18n file location should be custom', () => {
-      t.e(MultilingualService.STATIC_FILES_LOADER).toBe('public/i18n');
     });
    
   });
