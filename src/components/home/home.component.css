@@ -1,10 +1,24 @@
-.note {
-  color: #a8a8a8;
+:host {
+  display: block;
+  padding: 0 16px;
 }
+
+input {
+  width: 250px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 0 0 8px;
+}
+
 smile {
-  width: 32px;
-  height: 32px;
+  background: url("./assets/svg/smile.svg");
+  height: 48px;
+  width: 48px;
   display: inline-block;
-  vertical-align: bottom;
-  background: url("./assets/img/smile.png");
+  transform: scale(0.6);
+  margin-top: -25px;
+  position: relative;
+  top: 16px;
 }

@@ -26,6 +26,9 @@ System.config({
     'rxjs/*': 'node_modules/rxjs/*.js',
     'lodash': 'node_modules/lodash/index.js',
     'ng2-translate/*': 'node_modules/ng2-translate/*.js'
+  },
+  map: {
+    '@ngrx/store': 'node_modules/@ngrx/store/dist/index.js'
   }
 });
 

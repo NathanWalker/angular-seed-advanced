@@ -24,6 +24,9 @@ exports.config = {
   },
 
   onPrepare: function() {
+    // needed for custom class decorators
+    require("reflect-metadata");
+    
     var SpecReporter = require('jasmine-spec-reporter');
     // add jasmine spec reporter
     jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: true}));

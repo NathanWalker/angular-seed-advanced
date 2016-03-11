@@ -13,7 +13,7 @@ import {TranslateLoader} from 'ng2-translate/ng2-translate';
 import {TNSTranslateLoader} from 'nativescript-ng2-translate/nativescript-ng2-translate';
 
 // config
-import {CoreConfigService, WindowService} from './frameworks/core.framework/index';
+import {CoreConfigService, WindowService, RouteReducer} from './frameworks/core.framework/index';
 CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.MOBILE_NATIVE;
 CoreConfigService.DEBUG.LEVEL_4 = true;
 CoreConfigService.ROUTER_DIRECTIVES = NS_ROUTER_DIRECTIVES;

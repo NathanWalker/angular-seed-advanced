@@ -8,21 +8,21 @@ import {TranslateLoader, TranslateStaticLoader, TranslateService} from 'ng2-tran
 // i18n
 import {MultilingualActions} from './state/multilingual.actions';
 
-// state
-export * from './state/multilingual.actions';
-export * from './state/multilingual.reducer';
+export const MULTILINGUAL_PROVIDERS: any[] = [
+  MultilingualActions,
+  provide(TranslateLoader, {
+    deps: [Http],
+    useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json')
+  }),
+  TranslateService
+];
 
 // services
 export * from './services/multilingual.service';
 
+// state
+export * from './state/multilingual.actions';
+export * from './state/multilingual.reducer';
+
 // components
 export * from './components/lang-switcher.component';
-
-export const MULTILINGUAL_PROVIDERS: any[] = [
-  MultilingualActions,
-  provide(TranslateLoader, {
-    useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
-    deps: [Http]
-  }),
-  TranslateService
-];

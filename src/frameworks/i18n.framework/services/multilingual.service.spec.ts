@@ -2,7 +2,7 @@ import {provide} from 'angular2/core';
 
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
-import {t, TEST_COMMON_PROVIDERS, WindowMockFrench} from '../../test.framework/index';
+import {t, TEST_COMMON_PROVIDERS, TEST_MULTILINGUAL_PROVIDERS, WindowMockFrench} from '../../test.framework/index';
 import {ILang, WindowService} from '../../core.framework/index';
 import {MultilingualService} from '../index';
 
@@ -10,14 +10,9 @@ export function main() {
   t.describe('i18n.framework: MultilingualService', () => {
     t.bep(() => [
       TEST_COMMON_PROVIDERS(),
-      provide(MultilingualService, {
-        useFactory: (translate, win) => {
-          return new MultilingualService(translate, win);
-        },
-        deps: [TranslateService, WindowService]
-      })
+      TEST_MULTILINGUAL_PROVIDERS()
     ]);
-    t.it('should get language', t.inject([MultilingualService], (multilang) => {
+    t.it('should get language', t.inject([MultilingualService], (multilang: MultilingualService) => {
       t.e(multilang.getLang()).toBe('en');
     }));
     t.it('should at a minimum support english', () => {
@@ -33,15 +28,18 @@ export function main() {
     ];
     t.bep(() => [
       TEST_COMMON_PROVIDERS({ Window: WindowMockFrench}),
-      provide(MultilingualService, {
-        useFactory: (translate, win) => {
-          MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES;
-          return new MultilingualService(translate, win);
-        },
-        deps: [TranslateService, WindowService]
+      TEST_MULTILINGUAL_PROVIDERS({
+        service: 
+          provide(MultilingualService, {
+            deps: [TranslateService, WindowService],
+            useFactory: (translate: TranslateService, win: WindowService) => {
+              MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES;
+              return new MultilingualService(translate, win);
+            }
+          })
       })
     ]);
-    t.it('should get language - french', t.inject([MultilingualService], (multilang) => {
+    t.it('should get language - french', t.inject([MultilingualService], (multilang: MultilingualService) => {
       t.e(multilang.getLang()).toBe('fr');
     }));
     t.it('should now support french', () => {

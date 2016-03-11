@@ -25,14 +25,14 @@ export function main() {
       
       t.bep(() => providers);
       
-      t.it('sanity', t.inject([LogService], (log) => {
+      t.it('sanity', t.inject([LogService], (log: LogService) => {
         t.e(log.o).toBeDefined();
         t.e(log.error).toBeDefined();
         t.e(log.warn).toBeDefined();
         t.e(log.info).toBeDefined();
       }));
       
-      t.it('should not log anything by default', t.inject([LogService], (log) => {
+      t.it('should not log anything by default', t.inject([LogService], (log: LogService) => {
         log.o('out');
         t.e(console.log).not.toHaveBeenCalledWith('out');
         log.error('error');
@@ -52,7 +52,7 @@ export function main() {
       
       t.bep(() => providers);
       
-      t.it('LEVEL_4: everything', t.inject([LogService], (log) => {
+      t.it('LEVEL_4: everything', t.inject([LogService], (log: LogService) => {
         CoreConfigService.DEBUG.LEVEL_4 = true;
         
         log.o('out');
@@ -65,7 +65,7 @@ export function main() {
         t.e(console.info).toHaveBeenCalledWith('info');
       }));
       
-      t.it('LEVEL_3: error only', t.inject([LogService], (log) => {
+      t.it('LEVEL_3: error only', t.inject([LogService], (log: LogService) => {
         CoreConfigService.DEBUG.LEVEL_3 = true;
 
         log.o('out');
@@ -90,7 +90,7 @@ export function main() {
         t.e(console.info).toHaveBeenCalledWith('info w/level_4');
       }));
       
-      t.it('LEVEL_2: warn only', t.inject([LogService], (log) => {
+      t.it('LEVEL_2: warn only', t.inject([LogService], (log: LogService) => {
         CoreConfigService.DEBUG.LEVEL_2 = true;
 
         log.o('out');
@@ -103,7 +103,7 @@ export function main() {
         t.e(console.info).not.toHaveBeenCalledWith('info');
       }));
       
-      t.it('LEVEL_1: info only', t.inject([LogService], (log) => {
+      t.it('LEVEL_1: info only', t.inject([LogService], (log: LogService) => {
         CoreConfigService.DEBUG.LEVEL_1 = true;
 
         log.o('out');

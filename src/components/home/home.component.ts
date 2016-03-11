@@ -1,7 +1,7 @@
 // libs
 import {Store} from '@ngrx/store';
 
-import {FormComponent, RouteCommon, IRoute} from '../../frameworks/core.framework/index';
+import {FormComponent, RouteCommon} from '../../frameworks/core.framework/index';
 import {NameListService} from '../../frameworks/app.framework/index';
 
 @FormComponent({

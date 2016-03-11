@@ -84,7 +84,7 @@ export class SeedConfig {
 
   // ----------------
   // SystemsJS Configuration.
-  protected SYSTEM_CONFIG_DEV = {
+  protected SYSTEM_CONFIG_DEV: any = {
     defaultJSExtensions: true,
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
@@ -100,7 +100,7 @@ export class SeedConfig {
 
   SYSTEM_CONFIG = this.SYSTEM_CONFIG_DEV;
 
-  SYSTEM_BUILDER_CONFIG = {
+  SYSTEM_BUILDER_CONFIG: any = {
     defaultJSExtensions: true,
     paths: {
       [`${this.TMP_DIR}/*`]: `${this.TMP_DIR}/*`,

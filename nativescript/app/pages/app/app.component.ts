@@ -6,15 +6,18 @@ import {registerElement} from 'nativescript-angular/element-registry';
 import {ActionItem} from 'ui/action-bar';
 import {topmost} from 'ui/frame';
 
+// libs
+import {Store} from '@ngrx/store';
+
 // app
 import {AppComponent} from '../../components/app/app.component';
-import {LogService, StateService} from '../../frameworks/core.framework/index';
+import {LogService, IRoute} from '../../frameworks/core.framework/index';
 import {ModalNative} from '../../shared/core/services/modal-native.service';
 import {ActionBarUtil} from '../../shared/core/utils/actionbar.util';
 
 export class NSAppComponent extends AppComponent {
   
-  constructor(@Inject(LogService) private log: LogService, @Inject(StateService) private state: StateService, @Inject(ModalNative) private modal: ModalNative) {
+  constructor(@Inject(LogService) private log: LogService, @Inject(Store) private store: Store<any>, @Inject(ModalNative) private modal: ModalNative) {
     super();
     log.o('NSAppCmp ----');
     
@@ -26,13 +29,13 @@ export class NSAppComponent extends AppComponent {
     
     ActionBarUtil.STATUSBAR_STYLE(1);
     
-    this.state.change.subscribe((msg: string) => {
-      this.log.o(`Route change: ${msg}`);
-      switch (msg) {
-        case 'Home':
+    store.select('routes').subscribe((route: IRoute) => {
+      this.log.o(`Route change: ${route.title}`);
+      switch (route.name) {
+        case 'home':
           ActionBarUtil.SET_TITLE('Angular 2 Seed Advanced');
           break; 
-        case 'About':
+        case 'about':
           ActionBarUtil.SET_TITLE('About');
           break;
       }

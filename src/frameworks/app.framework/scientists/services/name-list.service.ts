@@ -1,3 +1,6 @@
+import {Injectable} from 'angular2/core';
+
+@Injectable()
 export class NameListService {
   private names: Array<string> = [
     'Edsger Dijkstra',
@@ -6,10 +9,10 @@ export class NameListService {
     'Grace Hopper'
   ];
 
-  get(): string[] {
+  public get(): string[] {
     return this.names;
   }
-  add(value: string): void {
+  public add(value: string): void {
     this.names.push(value);
   }
 }

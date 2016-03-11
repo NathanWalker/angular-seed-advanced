@@ -33,7 +33,7 @@ h1 {
   height: 24px;
   width: 24px;
   cursor: pointer;
-  opacity: .7;
+  opacity: 0.7;
 }
 
 :host more:hover {

@@ -1,5 +1,5 @@
 // angular
-import {Component, ViewEncapsulation} from 'angular2/core';
+import {Component} from 'angular2/core';
 
 // libs
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
@@ -42,6 +42,10 @@ export class DecoratorUtils {
     config.pipes = config.pipes ? config.pipes.concat(PIPES) : PIPES;
     config.host = config.host || {};
     
+    if (config.changeDetection) {
+      config.changeDetection = config.changeDetection;
+    }
+    
     if (config.encapsulation) {
       config.encapsulation = config.encapsulation;
     }
@@ -54,7 +58,7 @@ export class DecoratorUtils {
     return config;
   }
   
-  public static annotateComponent(cls, config: any = {}, opts?: any) {
+  public static annotateComponent(cls: any, config: any = {}, opts?: any) {
     let annotations = _reflect.getMetadata('annotations', cls) || [];
     annotations.push(new Component(DecoratorUtils.getConfig(config, opts)));
     _reflect.defineMetadata('annotations', annotations, cls);

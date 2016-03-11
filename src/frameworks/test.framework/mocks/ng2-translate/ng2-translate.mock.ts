@@ -11,9 +11,6 @@ export class TranslateMock {
   public use(lang: string) {
     // console.log(lang);
   }
-  public useStaticFilesLoader(path: string) {
-    // console.log(path);
-  }
   public get(key: string | Array<string>, interpolateParams?: Object): Observable<string | any> {
     return Observable.of(key);
   }

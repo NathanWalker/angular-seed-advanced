@@ -17,7 +17,7 @@ const SUPPORTED_LANGUAGES: Array<ILang> = [
 export function main() {
   t.describe('i18n.framework: @Component: LangSwitcherComponent', () => {
  
-    t.bep(() => TEST_COMPONENT_PROVIDERS({http: true}));
+    t.bep(() => TEST_COMPONENT_PROVIDERS({http: true, state: true}));
     
     t.it('should work',
       t.injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {

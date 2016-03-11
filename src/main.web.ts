@@ -13,7 +13,7 @@ CoreConfigService.DEBUG.LEVEL_4 = true;
 
 // app
 import {ConsoleService, WindowService, RouteReducer} from './frameworks/core.framework/index';
-import {APP_PROVIDERS} from './frameworks/app.framework/index';
+import {APP_PROVIDERS, ScientistsReducer} from './frameworks/app.framework/index';
 import {MultilingualReducer} from './frameworks/i18n.framework/index';
 import {AppComponent} from './components/app/app.component';
 
@@ -23,7 +23,11 @@ bootstrap(AppComponent, [
   provide(APP_BASE_HREF, { useValue: '<%= APP_BASE %>' }),
   provide(WindowService, { useValue: window }),
   provide(ConsoleService, { useValue: console }),
-  provideStore(combineReducers({ routes: RouteReducer, i18n: MultilingualReducer })),
+  provideStore(combineReducers({ 
+    routes: RouteReducer, 
+    i18n: MultilingualReducer,
+    scientists: ScientistsReducer
+  })),
   APP_PROVIDERS
 ])
 .catch(err => console.error(err));
