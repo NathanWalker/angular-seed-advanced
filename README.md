@@ -14,6 +14,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n 
   - Usage is optional but on by default
   - Up to you and your team how you want to utilize it. It can be easily removed if not needed. 
+- [ngrx/store](https://github.com/ngrx/store) RxJS powered state management, inspired by **Redux**
 - [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#run-nativescript-app).
 
 Web side-by-side with NativeScript app:
@@ -21,7 +22,6 @@ Web side-by-side with NativeScript app:
 ![Web-NativeScript-Demo](/resources/chrome-nativescript-demo.gif)
 
 #### Coming Soon...
-- [ ] [ngrx/store](https://github.com/ngrx/store) for state management (Redux)
 - [ ] [Electron](http://electron.atom.io/) cross platform desktop apps.
 - [ ] provider for LocalStorage (abstraction for IndexedDB, WebSQL, localStorage, perhaps a port of localForage)
 - [ ] sophisticated setup for Service Worker
