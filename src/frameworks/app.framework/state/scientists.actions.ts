@@ -1,5 +1,5 @@
 // angular
-import {Injectable} from 'angular2/core';
+import {Injectable, Inject, forwardRef} from 'angular2/core';
 
 // libs
 import {Store, Action} from '@ngrx/store';
@@ -8,16 +8,20 @@ import {BehaviorSubject} from 'rxjs/Rx';
 
 // app
 import {NameListService} from '../scientists/services/name-list.service';
-import {SCIENTISTS_NAME_ADDED} from './scientists.reducer';
+import {SCIENTISTS_INIT, SCIENTISTS_NAME_ADDED} from './scientists.reducer';
 
 @Injectable()
 export class ScientistsActions {
   private actions$: BehaviorSubject<Action> = new BehaviorSubject({ type: null, payload: null });
+  private initialized: boolean = false;
 
   constructor(
     private store: Store<any>,
-    private nameList: NameListService
+    @Inject(forwardRef(() => NameListService)) private nameList: NameListService
   ) {
+
+    const listInit = this.actions$
+      .filter((action: Action) => action.type === SCIENTISTS_INIT);
 
     const nameAdded = this.actions$
       .filter((action: Action) => action.type === SCIENTISTS_NAME_ADDED)
@@ -26,11 +30,20 @@ export class ScientistsActions {
       });
 
     Observable
-      .merge(nameAdded)
-      .subscribe((action: Action) => store.dispatch(action));
+      .merge(nameAdded, listInit)
+      .subscribe(store);
+
+    this.init(nameList.get());    
   }
 
-  add(name: string) {
-    this.actions$.next({ type: SCIENTISTS_NAME_ADDED, payload: { name } });
+  public init(list: Array<string>) {
+    if (!this.initialized) {
+      this.initialized = true;
+      this.actions$.next({ type: SCIENTISTS_INIT, payload: list });
+    }
+  }  
+
+  public add(name: string) {
+    this.actions$.next({ type: SCIENTISTS_NAME_ADDED, payload: name });
   }
 }

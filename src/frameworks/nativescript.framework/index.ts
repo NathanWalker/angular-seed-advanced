@@ -3,7 +3,7 @@ import {provide} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
 // libs
-import {provideStore, combineReducers} from '@ngrx/store';
+import {provideStore} from '@ngrx/store';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
@@ -17,11 +17,11 @@ export const NS_APP_PROVIDERS: any[] = [
   LogService,
   NameListService,
   ScientistsActions,
-  provideStore(combineReducers({ 
+  provideStore({ 
     routes: RouteReducer, 
     i18n: MultilingualReducer, 
     scientists: ScientistsReducer 
-  })),
+  }),
   TranslateService,
   provide(MultilingualService, {
     deps: [TranslateService, WindowService],

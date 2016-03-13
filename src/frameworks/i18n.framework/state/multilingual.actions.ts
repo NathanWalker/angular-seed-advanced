@@ -27,7 +27,7 @@ export class MultilingualActions {
 
     Observable
       .merge(langChange)
-      .subscribe((action: Action) => store.dispatch(action));
+      .subscribe(store);
   }
 
   changeLang(lang: string) {

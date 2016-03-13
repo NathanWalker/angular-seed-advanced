@@ -4,7 +4,7 @@ import {bootstrap} from 'angular2/platform/browser';
 import {APP_BASE_HREF} from 'angular2/router';
 
 // libs
-import {provideStore, combineReducers} from '@ngrx/store';
+import {provideStore} from '@ngrx/store';
 
 // config
 import {CoreConfigService} from './frameworks/core.framework/index';
@@ -23,11 +23,11 @@ bootstrap(AppComponent, [
   provide(APP_BASE_HREF, { useValue: '<%= APP_BASE %>' }),
   provide(WindowService, { useValue: window }),
   provide(ConsoleService, { useValue: console }),
-  provideStore(combineReducers({ 
+  provideStore({ 
     routes: RouteReducer, 
     i18n: MultilingualReducer,
     scientists: ScientistsReducer
-  })),
+  }),
   APP_PROVIDERS
 ])
 .catch(err => console.error(err));

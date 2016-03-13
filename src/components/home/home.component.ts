@@ -1,8 +1,9 @@
 // libs
 import {Store} from '@ngrx/store';
 
+// app
 import {FormComponent, RouteCommon} from '../../frameworks/core.framework/index';
-import {NameListService} from '../../frameworks/app.framework/index';
+import {IScientist, ScientistsActions} from '../../frameworks/app.framework/index';
 
 @FormComponent({
   selector: 'sd-home',
@@ -10,13 +11,17 @@ import {NameListService} from '../../frameworks/app.framework/index';
   styleUrls: ['./components/home/home.component.css']
 })
 export class HomeComponent extends RouteCommon {
+  public names: Array<string>;
   public newName: string = '';
-  constructor(private store: Store<any>, public nameList: NameListService) { 
+  constructor(private store: Store<any>, private actions: ScientistsActions) { 
     super(store);
     this.routeDesc = {
       name: 'home',
       title: 'Home'
     };
+    store.select('scientists').subscribe((state: IScientist) => {
+      this.names = state.names;
+    });
   }
   
   /*
@@ -24,7 +29,7 @@ export class HomeComponent extends RouteCommon {
    * @returns return false to prevent default form submit behavior to refresh the page.
    */
   addName(): boolean {
-    this.nameList.add(this.newName);
+    this.actions.add(this.newName);
     this.newName = '';
     return false;
   }
