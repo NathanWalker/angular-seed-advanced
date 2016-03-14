@@ -10,16 +10,31 @@
 This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's](https://github.com/mgechev) [angular2-seed](https://github.com/mgechev/angular2-seed) that expands on all of it's great features to include core support for:
 
 #### Integration with:
-- [lodash](https://lodash.com/) Helps reduce blocks of code down to single lines and enhances readability
+- [ngrx/store](https://github.com/ngrx/store) RxJS powered state management, inspired by **Redux**
+- [ngrx-store-router](https://github.com/CodeSequence/ngrx-store-router) middleware for syncing state with Angular 2 Router.
 - [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n 
   - Usage is optional but on by default
   - Up to you and your team how you want to utilize it. It can be easily removed if not needed. 
-- [ngrx/store](https://github.com/ngrx/store) RxJS powered state management, inspired by **Redux**
+- [lodash](https://lodash.com/) Helps reduce blocks of code down to single lines and enhances readability
 - [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#run-nativescript-app).
 
 Web side-by-side with NativeScript app:
 
 ![Web-NativeScript-Demo](/resources/chrome-nativescript-demo.gif)
+
+# Table of Contents
+
+- [Coming soon](#coming-soon)
+- [Enhanced development workflow](#enhanced-development-workflow)
+- [Enhanced testing support options](#enhanced-testing-support-options)
+- [Prerequisites](#prerequisites)
+- [Usage](#usage)
+- [Run NativeScript App](#run-nativescript-app)
+- [Testing](#testing)
+- [Web Configuration Options](#web-configuration-options)
+- [How best to use for your project](#how-best-to-use-for-your-project)
+- [Contributing](#contributing)
+- [License](#license)
 
 #### Coming Soon...
 - [ ] [Electron](http://electron.atom.io/) cross platform desktop apps.
@@ -59,17 +74,23 @@ Web side-by-side with NativeScript app:
   
 **Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
 
-# How to start
+### Prerequisites
 
-**Note** that this seed project requires node v4.x.x or higher and npm 2.14.7.
-
-You must have `ts-node` installed as global. If you don't, use:
+* node v4.x.x or higher and npm 2.14.7.
+* `ts-node` installed as global. If you don't, use:
 
 ```bash
 npm install -g ts-node
 ```
 
-In order to start the seed use:
+* To run the NativeScript app:
+
+```
+npm install -g nativescript
+npm install -g typescript
+```
+
+## Usage
 
 
 ```bash
@@ -89,7 +110,7 @@ npm run build.dev
 npm run build.prod
 ```
 
-# Run NativeScript App
+## Run NativeScript App
 
 ```
 npm install -g nativescript  // if you don't already have it installed globally
@@ -101,33 +122,7 @@ tns install
 npm start     
 ```
 
-
-# Table of Content
-
-- [Configuration](#configuration)
-- [Running tests](#running-tests)
-- [Contributing](#contributing)
-- [Change Log](#change-log)
-- [License](#license)
-
-# Configuration
-
-Default application server configuration
-
-```javascript
-var PORT             = 5555;
-var LIVE_RELOAD_PORT = 4002;
-var DOCS_PORT        = 4003;
-var APP_BASE         = '/';
-```
-
-Configure at runtime
-
-```bash
-npm start -- --port 8080 --reload-port 4000 --base /my-app/
-```
-
-# Running tests
+## Testing
 
 ```bash
 npm test
@@ -155,14 +150,47 @@ npm run e2e.live
 ```
 You can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
 
-# Contributing
+## Web Configuration Options
+
+Default application server configuration
+
+```javascript
+var PORT             = 5555;
+var LIVE_RELOAD_PORT = 4002;
+var DOCS_PORT        = 4003;
+var APP_BASE         = '/';
+```
+
+Configure at runtime
+
+```bash
+npm start -- --port 8080 --reload-port 4000 --base /my-app/
+```
+
+## How best to use for your project
+
+#### Setup
+
+1. Download a zip of the seed. *This allows you to manually setup origin/upstream*
+2. `git remote add origin ....your private repo....`
+3. `git remote add upstream https://github.com/NathanWalker/angular2-seed-advanced.git`
+4. Create a new `framework` for your application in `src/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp.framework` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
+5. If you don't want an integration that comes out of box with this seed; for example. let's say you don't want to use i18n. Then just delete the `i18n.framework`, remove `ng2-translate` as dependency root `package.json` and `nativescript/package.json`. Then remove the references to `i18n` throughout.
+6. Remove `src/components` since those are just samples and create a new folder for your components, let's say `src/pages`. It's not absolutely necessary to remove and create a new differently named folder for your components but it will make merging in upstream changes a bit smoother.
+
+#### Merging latest upstream changes
+
+1. `git remote fetch upstream`
+2. `git merge upstream/master`  *you could rebase, but it wouldn't be worth it as the conflict resolution can often be more painful if there are conflicts*
+3. Handle any conflicts to get latest upstream into your application. If you removed `src/components` as mentioned above, they may show back up when merging in latest upstream. You can just remove the folder again.
+4. Continue building your app.
+
+If you have any suggestions, please post [here](https://github.com/NathanWalker/angular2-seed-advanced/issues).
+
+## Contributing
 
 Please see the [CONTRIBUTING](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/CONTRIBUTING.md) file for guidelines.
 
-# Changelog
-
-You can follow the [Angular 2 change log here](https://github.com/angular/angular/blob/master/CHANGELOG.md).
-
-# License
+## License
 
 MIT

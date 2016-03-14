@@ -28,7 +28,8 @@ System.config({
     'ng2-translate/*': 'node_modules/ng2-translate/*.js'
   },
   map: {
-    '@ngrx/store': 'node_modules/@ngrx/store/dist/index.js'
+    '@ngrx/store': 'node_modules/@ngrx/store/dist/index.js',
+    'ngrx-store-router': 'node_modules/ngrx-store-router/index.js'
   }
 });
 

@@ -1,10 +1,7 @@
 // angular
 import {provide, enableProdMode} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
+import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
 import {APP_BASE_HREF} from 'angular2/router';
-
-// libs
-import {provideStore} from '@ngrx/store';
 
 // config
 import {CoreConfigService} from './frameworks/core.framework/index';
@@ -12,22 +9,25 @@ CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.WEB;
 CoreConfigService.DEBUG.LEVEL_4 = true;
 
 // app
-import {ConsoleService, WindowService, RouteReducer} from './frameworks/core.framework/index';
-import {APP_PROVIDERS, ScientistsReducer} from './frameworks/app.framework/index';
-import {MultilingualReducer} from './frameworks/i18n.framework/index';
+import {ConsoleService, WindowService} from './frameworks/core.framework/index';
+import {MultilingualService} from './frameworks/i18n.framework/index';
+import {APP_PROVIDERS, AppConfigService} from './frameworks/app.framework/index';
 import {AppComponent} from './components/app/app.component';
+// custom i18n language support
+MultilingualService.SUPPORTED_LANGUAGES = AppConfigService.SUPPORTED_LANGUAGES;
 
-if ('<%= ENV %>' === 'prod') { enableProdMode(); }
+const ENV_PROVIDERS: Array<any> = [];
+if ('<%= ENV %>' === 'prod') {
+  enableProdMode();
+} else {
+  ENV_PROVIDERS.push(ELEMENT_PROBE_PROVIDERS);
+}
 
 bootstrap(AppComponent, [
+  ENV_PROVIDERS,
   provide(APP_BASE_HREF, { useValue: '<%= APP_BASE %>' }),
   provide(WindowService, { useValue: window }),
   provide(ConsoleService, { useValue: console }),
-  provideStore({ 
-    routes: RouteReducer, 
-    i18n: MultilingualReducer,
-    scientists: ScientistsReducer
-  }),
   APP_PROVIDERS
 ])
 .catch(err => console.error(err));

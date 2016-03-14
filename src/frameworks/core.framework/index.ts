@@ -1,6 +1,3 @@
-// core
-export * from './common/route-common.component';
-
 // decorators
 export * from './decorators/base.component';
 export * from './decorators/form.component';
@@ -17,6 +14,3 @@ export * from './services/console.service';
 export * from './services/log.service';
 export * from './services/view-broker.service';
 export * from './services/window.service';
-
-// state
-export * from './state/route.reducer';

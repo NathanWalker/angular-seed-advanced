@@ -9,14 +9,13 @@ import {RootRouter} from 'angular2/src/router/router';
 import {TEST_COMMON_PROVIDERS} from './common';
 import {TEST_MULTILINGUAL_PROVIDERS} from './i18n';
 
-// component
 export function TEST_COMPONENT_PROVIDERS(options?: any): any[] {
   // options
   // http:            boolean = HTTP_PROVIDERS
   // router:          Object = router setup `{ primary: token }` (component to use for ROUTER_PRIMARY_COMPONENT)
   
   let providers: Array<any> = [
-    TEST_COMMON_PROVIDERS(),
+    TEST_COMMON_PROVIDERS(options),
     TEST_MULTILINGUAL_PROVIDERS()
   ];
   

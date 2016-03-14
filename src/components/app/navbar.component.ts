@@ -1,6 +1,10 @@
+// libs
 import {Store} from '@ngrx/store';
+import {RouterState} from 'ngrx-store-router';
 
-import {RouteComponent, LogService, IRoute} from '../../frameworks/core.framework/index';
+// app
+import {AppStoreI} from '../../frameworks/app.framework/index';
+import {RouteComponent} from '../../frameworks/core.framework/index';
 
 @RouteComponent({
   selector: 'sd-navbar',
@@ -8,21 +12,21 @@ import {RouteComponent, LogService, IRoute} from '../../frameworks/core.framewor
   styleUrls: ['./components/app/navbar.component.css']
 })
 export class NavbarComponent {
-  // TODO: this is a hack to get {N} active route links to work
+  // TODO: remove when {N} router supports active states
   public activeLink: any = {
     home: true,
     about: false
   };
   
-  constructor(public log: LogService, public store: Store<any>) {  
-    store.select('routes').subscribe((routeState: IRoute) => {
-      if (!routeState.isChanging) {
-        switch (routeState.name) {
-          case 'home':
+  constructor(public store: Store<AppStoreI>) {  
+    store.select('router').subscribe((router: RouterState) => {
+      if (!router.navigating) {
+        switch (router.url) {
+          case '':
             this.activeLink.home = true;
             this.activeLink.about = false;
             break;
-          case 'about':
+          case '/about':
             this.activeLink.home = false;
             this.activeLink.about = true;
             break;

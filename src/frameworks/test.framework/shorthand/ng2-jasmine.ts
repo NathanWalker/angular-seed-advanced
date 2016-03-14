@@ -19,6 +19,7 @@ import {
 
 // intellisense via shorthand
 export interface TestApi {
+  ae: Function;
   afterEach: Function;
   ddescribe: Function;
   describe: Function;
@@ -43,6 +44,7 @@ export interface TestApi {
 
 // shorthand - reduces boilerplate in every test
 export const Ng2Jasmine: TestApi = {
+  ae: afterEach, // shorthand
   afterEach: afterEach,
   ddescribe: ddescribe,
   describe: describe,

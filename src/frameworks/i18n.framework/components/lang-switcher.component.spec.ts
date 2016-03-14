@@ -2,7 +2,7 @@ import {TestComponentBuilder} from 'angular2/testing';
 import {Component} from 'angular2/core';
 import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 
-import {t, TEST_COMPONENT_PROVIDERS} from '../../test.framework/index';
+import {t, TEST_COMPONENT_PROVIDERS, TEST_MULTILINGUAL_RESET} from '../../test.framework/index';
 import {ILang} from '../../core.framework/index';
 import {LangSwitcherComponent, MultilingualService} from '../index';
 
@@ -33,7 +33,7 @@ export function main() {
   
   t.describe('i18n.framework: @Component: LangSwitcherComponent with multiple languages', () => {
     t.be(() => MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES);
-    t.bep(() => TEST_COMPONENT_PROVIDERS({http: true}));
+    t.bep(() => TEST_COMPONENT_PROVIDERS({http: true, state: true}));
     
     t.it('should work',
       t.injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
@@ -49,6 +49,9 @@ export function main() {
             t.e(DOM.querySelectorAll(appDOMEl, 'form > select option')[4].value).toBe('bg');
           });
       }));
+
+    // ensure statics are reset when the test had modified statics in a beforeEach (be) or beforeEachProvider (bep)
+    t.ae(() => TEST_MULTILINGUAL_RESET());    
   });
 }
 
