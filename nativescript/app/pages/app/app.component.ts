@@ -8,10 +8,11 @@ import {topmost} from 'ui/frame';
 
 // libs
 import {Store} from '@ngrx/store';
+import {RouterState} from 'ngrx-store-router';
 
 // app
 import {AppComponent} from '../../components/app/app.component';
-import {LogService, IRoute} from '../../frameworks/core.framework/index';
+import {LogService} from '../../frameworks/core.framework/index';
 import {ModalNative} from '../../shared/core/services/modal-native.service';
 import {ActionBarUtil} from '../../shared/core/utils/actionbar.util';
 
@@ -29,13 +30,13 @@ export class NSAppComponent extends AppComponent {
     
     ActionBarUtil.STATUSBAR_STYLE(1);
     
-    store.select('routes').subscribe((route: IRoute) => {
-      this.log.o(`Route change: ${route.title}`);
-      switch (route.name) {
-        case 'home':
+    store.select('router').subscribe((router: RouterState) => {
+      this.log.o(`Route change: ${router.url}`);
+      switch (router.url) {
+        case '':
           ActionBarUtil.SET_TITLE('Angular 2 Seed Advanced');
           break; 
-        case 'about':
+        case '/about':
           ActionBarUtil.SET_TITLE('About');
           break;
       }

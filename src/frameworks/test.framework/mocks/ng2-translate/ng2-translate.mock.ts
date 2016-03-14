@@ -14,4 +14,7 @@ export class TranslateMock {
   public get(key: string | Array<string>, interpolateParams?: Object): Observable<string | any> {
     return Observable.of(key);
   }
+  public setDefaultLang(lang: string) {
+    return;
+  }
 }

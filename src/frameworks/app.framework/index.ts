@@ -1,40 +1,36 @@
 // angular
-import {provide} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {ROUTER_PROVIDERS} from 'angular2/router';
 
 // libs
-import {TranslateService} from 'ng2-translate/ng2-translate';
+import {provideStore} from '@ngrx/store';
+import {routerReducer, routerMiddleware, RouterState} from 'ngrx-store-router';
 
 // app
-import {LogService, WindowService} from '../core.framework/index';
-import {AppConfigService} from './services/app-config.service';
-import {NameListService} from './scientists/services/name-list.service';
-import {ScientistsActions} from './state/scientists.actions';
-import {MULTILINGUAL_PROVIDERS, MultilingualService} from '../i18n.framework/index';
+import {nameListReducer} from './services/name-list.service';
+import {LogService} from '../core.framework/index';
+import {MULTILINGUAL_PROVIDERS, MultilingualStateI, multilingualReducer} from '../i18n.framework/index';
+
+// state definition
+export interface AppStoreI {
+  router: RouterState;
+  i18n: MultilingualStateI;
+  names: Array<string>;
+};
 
 export const APP_PROVIDERS: any[] = [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
   LogService,
-  NameListService,
-  ScientistsActions,
   MULTILINGUAL_PROVIDERS,
-  provide(MultilingualService, {
-    deps: [TranslateService, WindowService],
-    useFactory: (translate: TranslateService, win: WindowService) => {
-      MultilingualService.SUPPORTED_LANGUAGES = AppConfigService.SUPPORTED_LANGUAGES;
-      return new MultilingualService(translate, win);
-    }
-  })
+  provideStore({ 
+    router: routerReducer, 
+    i18n: multilingualReducer,
+    names: nameListReducer
+  }),
+  routerMiddleware
 ];
 
-// scientists
-export * from './scientists/services/name-list.service';
-
-// general
+// services
 export * from './services/app-config.service';
-
-// state
-export * from './state/scientists.actions';
-export * from './state/scientists.reducer';
+export * from './services/name-list.service';
