@@ -118,8 +118,11 @@ cd nativescript  // we set things up from `nativescript` directory because {N} d
 tns install
 
 // you will see TypeScript warnings, this is normal, you can ignore :)
-// This will launch iOS Simulator - for demo purposes (it may work on Android, I just test on iOS primarily. I'll add more tasks for Android soon.)
-npm start     
+npm run start.ios   // iOS simulator
+
+// or...
+
+npm run start.android   // Android emulator - requires an image setup via AVD Manager (see {N} docs for more)
 ```
 
 ## Testing

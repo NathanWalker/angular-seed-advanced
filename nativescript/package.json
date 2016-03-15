@@ -6,11 +6,15 @@
 		"id": "com.yourdomain.appname",
 		"tns-ios": {
 			"version": "1.6.0"
+		},
+		"tns-android": {
+			"version": "1.6.3"
 		}
 	},
 	"scripts": {
 		"prepare": "cp -R ../src/assets app/; cp -R ../src/assets app/App_Resources/iOS/; cp -R ../src/components app/; cp -R ../src/frameworks app/; rm -rf app/frameworks/test.framework; rm -rf app/components/**/*.e2e.*; rm -rf app/components/**/*.spec.*; rm -rf app/frameworks/**/**/*.spec.*; rm -rf app/frameworks/**/**/**/*.spec.*",
-		"start": "npm run prepare; tns emulate ios"
+		"start.ios": "npm run prepare; tns emulate ios",
+    "start.android": "npm run prepare; tns emulate android"
 	},
 	"dependencies": {
 		"@ngrx/store": "^1.3.2",
