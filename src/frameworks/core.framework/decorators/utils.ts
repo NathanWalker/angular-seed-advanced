@@ -17,6 +17,12 @@ export class DecoratorUtils {
     
     // default pipes
     let PIPES: any[] = [TranslatePipe];
+
+    // default providers
+    let PROVIDERS: any[] = [];
+
+    // default viewProviders
+    let VIEW_PROVIDERS: any[] = [];      
     
     // custom decorator options
     if (opts) {
@@ -25,7 +31,13 @@ export class DecoratorUtils {
       }
       if (opts.pipes) {
         PIPES.push(...opts.pipes); 
-      }  
+      }
+      if (opts.providers) {
+        PROVIDERS.push(...opts.providers); 
+      }
+      if (opts.viewProviders) {
+        VIEW_PROVIDERS.push(...opts.viewProviders); 
+      }
     }
     
     if (config.templateUrl) {
@@ -40,6 +52,8 @@ export class DecoratorUtils {
     
     config.directives = config.directives ? config.directives.concat(DIRECTIVES) : DIRECTIVES;
     config.pipes = config.pipes ? config.pipes.concat(PIPES) : PIPES;
+    config.providers = config.providers ? config.providers.concat(PROVIDERS) : PROVIDERS;
+    config.viewProviders = config.viewProviders ? config.viewProviders.concat(VIEW_PROVIDERS) : VIEW_PROVIDERS;
     config.host = config.host || {};
     
     if (config.changeDetection) {
