@@ -56,7 +56,7 @@ Web side-by-side with NativeScript app:
 - configurable provider blocks for easy test setup of common application providers
   - tired of setting up similar providers over and over again for different tests?
   - configure a reusable test provider which can be configured on a case-by-base basis
-  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/development/src/frameworks/test.framework/index.ts#L27-L75)
+  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/frameworks/test.framework/providers/component.ts)
   - watch [video explanation **coming soon**](https://github.com/NathanWalker/angular2-seed-advanced)
 - helpers for end-to-end (e2e, integration) tests
 - convenient shorthand to reduce test setup boilerplate and enhance speed of writing tests
@@ -69,7 +69,7 @@ Web side-by-side with NativeScript app:
   - plays nice with `tslint` options like `"no-unused-variable": true` as the api hangs off a plain `Object` instead of globals 
     - what's the value of that you ask? have you ever isolated a test with `iit` or `ddescribe` but didn't import those or vice versa, used `iit` leaving an unused `it` now in your tests? yeah, `tslint` will be all over you :/
     - avoids `unused` variable warnings altogether in tests since you are always using a valid key from the shorthand `Object`
-  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/development/src/frameworks/test.framework/shorthand/ng2-jasmine.ts)
+  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/frameworks/test.framework/shorthand/ng2-jasmine.ts)
   - watch [video explanation **coming soon**](https://github.com/NathanWalker/angular2-seed-advanced)
   
 **Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
