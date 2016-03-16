@@ -24,7 +24,7 @@ Web side-by-side with NativeScript app:
 
 # Table of Contents
 
-- [Coming soon](#coming-soon)
+- [Additional features coming soon...](#additional-features-coming-soon)
 - [Enhanced development workflow](#enhanced-development-workflow)
 - [Enhanced testing support options](#enhanced-testing-support-options)
 - [Prerequisites](#prerequisites)
@@ -36,7 +36,7 @@ Web side-by-side with NativeScript app:
 - [Contributing](#contributing)
 - [License](#license)
 
-#### Coming Soon...
+#### Additional features coming soon...
 - [ ] [Electron](http://electron.atom.io/) cross platform desktop apps.
 - [ ] provider for LocalStorage (abstraction for IndexedDB, WebSQL, localStorage, perhaps a port of localForage)
 - [ ] sophisticated setup for Service Worker
