@@ -1,11 +1,11 @@
 {
   "HOME": "Accueil",
-  "ABOUT": "Sur",
+  "ABOUT": "À propos",
   "HELLO": "Bonjour",
-  "LOVE_TECH": "Je adore la technologie!",
-  "ABOUT_ADD": "Tu en veux plus? Ajoutez-les vous-même!",
-  "ABOUT_REWARD": "Pour récompense, voici une liste de scientifiques impressionnants d'ordinateur:",
-  "INPUT_HINT": "Entrez un nouveau chercheur en informatique...",
+  "LOVE_TECH": "J'adore la technologie !",
+  "ABOUT_ADD": "Vous en voulez plus? Ajoutez-les vous-même !",
+  "ABOUT_REWARD": "En récompense, voici une liste de géniaux informaticiens :",
+  "INPUT_HINT": "Ajouter un nouvel informaticien...",
   "ADD_BTN_TEXT": "Ajouter",
-  "SUCCESS_MSG": "Votre déploiement de angulaire 2 Seed avancée a parfaitement fonctionné."
+  "SUCCESS_MSG": "Votre déploiement d'Angular 2 Advanced Seed a parfaitement fonctionné."
 }
