@@ -20,9 +20,9 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - [lodash](https://lodash.com/) Helps reduce blocks of code down to single lines and enhances readability
 - [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#run-nativescript-app).
 
-Web side-by-side with NativeScript app:
+The zen of multiple platforms. Chrome, Android and iPhone all running the same code.
 
-![Web-NativeScript-Demo](/resources/chrome-nativescript-demo.gif)
+![Multiple Platforms](/resources/multiple-platforms.gif)
 
 # Table of Contents
 
