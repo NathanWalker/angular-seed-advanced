@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/NathanWalker/angular2-seed-advanced.png?label=ready&title=Ready)](https://waffle.io/NathanWalker/angular2-seed-advanced)
 ![Angular 2 Seed Advanced](/resources/angular-advanced-logo.png)![Angular 2 Seed Advanced Integrations](/resources/integrations.png)
 
 [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://github.com/mgechev/angular2-style-guide)
