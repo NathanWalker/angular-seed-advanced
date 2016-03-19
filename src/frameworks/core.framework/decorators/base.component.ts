@@ -1,7 +1,7 @@
 import {DecoratorUtils} from './utils';
 
-export function BaseComponent(config: any={}) {
+export function BaseComponent(metadata: any={}) {
   return function(cls: any) {
-    return DecoratorUtils.annotateComponent(cls, config);
+    return DecoratorUtils.annotateComponent(cls, metadata);
   };
 }

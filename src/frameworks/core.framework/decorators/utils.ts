@@ -10,17 +10,18 @@ import {CoreConfigService, ViewBrokerService} from '../index';
 const _reflect: any = Reflect;
 
 export class DecoratorUtils {
-  public static getConfig(config: any = {}, opts?: any) {
-    
+  public static getMetadata(metadata: any = {}, opts?: any) {
+
+    /**
+     * The following allow default component metadata to be configured
+     * For instance, here we make `TranslatePipe` available for all our components
+     */
     // default directives
     let DIRECTIVES: any[] = [];
-    
     // default pipes
     let PIPES: any[] = [TranslatePipe];
-
     // default providers
     let PROVIDERS: any[] = [];
-
     // default viewProviders
     let VIEW_PROVIDERS: any[] = [];      
     
@@ -40,41 +41,41 @@ export class DecoratorUtils {
       }
     }
     
-    if (config.templateUrl) {
+    if (metadata.templateUrl) {
       // correct view for platform target
-      config.templateUrl = ViewBrokerService.TEMPLATE_URL(config.templateUrl);
+      metadata.templateUrl = ViewBrokerService.TEMPLATE_URL(metadata.templateUrl);
     }
     
-    if (config.styleUrls && CoreConfigService.IS_MOBILE_NATIVE()) {
+    if (metadata.styleUrls && CoreConfigService.IS_MOBILE_NATIVE()) {
       // {N} doesn't support all css properties, therefore remove styleUrls to be safe
-      delete config.styleUrls;
+      delete metadata.styleUrls;
     }
     
-    config.directives = config.directives ? config.directives.concat(DIRECTIVES) : DIRECTIVES;
-    config.pipes = config.pipes ? config.pipes.concat(PIPES) : PIPES;
-    config.providers = config.providers ? config.providers.concat(PROVIDERS) : PROVIDERS;
-    config.viewProviders = config.viewProviders ? config.viewProviders.concat(VIEW_PROVIDERS) : VIEW_PROVIDERS;
-    config.host = config.host || {};
+    metadata.directives = metadata.directives ? metadata.directives.concat(DIRECTIVES) : DIRECTIVES;
+    metadata.pipes = metadata.pipes ? metadata.pipes.concat(PIPES) : PIPES;
+    metadata.providers = metadata.providers ? metadata.providers.concat(PROVIDERS) : PROVIDERS;
+    metadata.viewProviders = metadata.viewProviders ? metadata.viewProviders.concat(VIEW_PROVIDERS) : VIEW_PROVIDERS;
+    metadata.host = metadata.host || {};
     
-    if (config.changeDetection) {
-      config.changeDetection = config.changeDetection;
+    if (metadata.changeDetection) {
+      metadata.changeDetection = metadata.changeDetection;
     }
     
-    if (config.encapsulation) {
-      config.encapsulation = config.encapsulation;
+    if (metadata.encapsulation) {
+      metadata.encapsulation = metadata.encapsulation;
     }
     
     // initialize anything 
-    if (config.init) {
-      config.init();
+    if (metadata.init) {
+      metadata.init();
     }   
 
-    return config;
+    return metadata;
   }
   
-  public static annotateComponent(cls: any, config: any = {}, opts?: any) {
+  public static annotateComponent(cls: any, metadata: any = {}, opts?: any) {
     let annotations = _reflect.getMetadata('annotations', cls) || [];
-    annotations.push(new Component(DecoratorUtils.getConfig(config, opts)));
+    annotations.push(new Component(DecoratorUtils.getMetadata(metadata, opts)));
     _reflect.defineMetadata('annotations', annotations, cls);
     return cls;
   }
