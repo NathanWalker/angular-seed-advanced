@@ -7,6 +7,7 @@
 [![Dependency Status](https://david-dm.org/NathanWalker/angular2-seed-advanced.svg)](https://david-dm.org/NathanWalker/angular2-seed-advanced)
 [![devDependency Status](https://david-dm.org/NathanWalker/angular2-seed-advanced/dev-status.svg)](https://david-dm.org/NathanWalker/angular2-seed-advanced#info=devDependencies)
 [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/NathanWalker/angular-2-seed-advanced)
+[![Stories in Ready](https://badge.waffle.io/NathanWalker/angular2-seed-advanced.png?label=ready&title=Ready)](https://waffle.io/NathanWalker/angular2-seed-advanced)
 
 #### Want to use [Angular 2](https://angular.io/) for a large project? Do you need potential i18n support? Enhanced testing support? Oh and building for multiple platforms too? Web, *native* Mobile (Android/iOS), and even Desktop (Windows/Mac - coming soon!)?  
 
