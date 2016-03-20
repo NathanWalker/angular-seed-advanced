@@ -25,11 +25,13 @@ System.config({
     'angular2/*': 'node_modules/angular2/*.js',
     'rxjs/*': 'node_modules/rxjs/*.js',
     'lodash': 'node_modules/lodash/index.js',
-    'ng2-translate/*': 'node_modules/ng2-translate/*.js'
+    'ng2-translate/*': 'node_modules/ng2-translate/*.js',
+    'angulartics2': 'node_modules/angulartics2/index.js',
+    'angulartics2/*': 'node_modules/angulartics2/*.js'
   },
   map: {
     '@ngrx/store': 'node_modules/@ngrx/store/dist/index.js',
-    'ngrx-store-router': 'node_modules/ngrx-store-router/index.js'
+    'ngrx-store-router': 'node_modules/ngrx-store-router/index.js' 
   }
 });
 

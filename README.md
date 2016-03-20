@@ -19,6 +19,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n 
   - Usage is optional but on by default
   - Up to you and your team how you want to utilize it. It can be easily removed if not needed. 
+- [angulartics2](https://github.com/angulartics/angulartics2) Vendor-agnostic analytics for Angular2 applications.
 - [lodash](https://lodash.com/) Helps reduce blocks of code down to single lines and enhances readability
 - [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#run-nativescript-app).
 
@@ -44,7 +45,6 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - [ ] [Electron](http://electron.atom.io/) cross platform desktop apps.
 - [ ] provider for LocalStorage (abstraction for IndexedDB, WebSQL, localStorage, perhaps a port of localForage)
 - [ ] sophisticated setup for Service Worker
-- [ ] integration with [ng2-bootstrap](https://github.com/valor-software/ng2-bootstrap)
 
 #### Enhanced development workflow
 - Decorators for components which reduce boilerplate for common component setups

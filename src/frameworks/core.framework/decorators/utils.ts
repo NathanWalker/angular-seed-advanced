@@ -10,34 +10,24 @@ import {CoreConfigService, ViewBrokerService} from '../index';
 const _reflect: any = Reflect;
 
 export class DecoratorUtils {
-  public static getMetadata(metadata: any = {}, opts?: any) {
+  public static getMetadata(metadata: any = {}, customDecoratorMetadata?: any) {
 
     /**
-     * The following allow default component metadata to be configured
+     * The following allows default component metadata to be configured
      * For instance, here we make `TranslatePipe` available for all our components
      */
     // default directives
     let DIRECTIVES: any[] = [];
     // default pipes
-    let PIPES: any[] = [TranslatePipe];
-    // default providers
-    let PROVIDERS: any[] = [];
-    // default viewProviders
-    let VIEW_PROVIDERS: any[] = [];      
+    let PIPES: any[] = [TranslatePipe];   
     
     // custom decorator options
-    if (opts) {
-      if (opts.directives) {
-        DIRECTIVES.push(...opts.directives); 
+    if (customDecoratorMetadata) {
+      if (customDecoratorMetadata.directives) {
+        DIRECTIVES.push(...customDecoratorMetadata.directives); 
       }
-      if (opts.pipes) {
-        PIPES.push(...opts.pipes); 
-      }
-      if (opts.providers) {
-        PROVIDERS.push(...opts.providers); 
-      }
-      if (opts.viewProviders) {
-        VIEW_PROVIDERS.push(...opts.viewProviders); 
+      if (customDecoratorMetadata.pipes) {
+        PIPES.push(...customDecoratorMetadata.pipes); 
       }
     }
     
@@ -53,9 +43,6 @@ export class DecoratorUtils {
     
     metadata.directives = metadata.directives ? metadata.directives.concat(DIRECTIVES) : DIRECTIVES;
     metadata.pipes = metadata.pipes ? metadata.pipes.concat(PIPES) : PIPES;
-    metadata.providers = metadata.providers ? metadata.providers.concat(PROVIDERS) : PROVIDERS;
-    metadata.viewProviders = metadata.viewProviders ? metadata.viewProviders.concat(VIEW_PROVIDERS) : VIEW_PROVIDERS;
-    metadata.host = metadata.host || {};
     
     if (metadata.changeDetection) {
       metadata.changeDetection = metadata.changeDetection;
@@ -76,9 +63,9 @@ export class DecoratorUtils {
     return metadata;
   }
   
-  public static annotateComponent(cls: any, metadata: any = {}, opts?: any) {
+  public static annotateComponent(cls: any, metadata: any = {}, customDecoratorMetadata?: any) {
     let annotations = _reflect.getMetadata('annotations', cls) || [];
-    annotations.push(new Component(DecoratorUtils.getMetadata(metadata, opts)));
+    annotations.push(new Component(DecoratorUtils.getMetadata(metadata, customDecoratorMetadata)));
     _reflect.defineMetadata('annotations', annotations, cls);
     return cls;
   }

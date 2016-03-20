@@ -5,7 +5,7 @@ import {provide} from 'angular2/core';
 import {Store} from '@ngrx/store';
 
 // app
-import {WindowService, ConsoleService, LogService} from '../../core.framework/index';
+import {WindowService, ConsoleService, LogService, ANALYTICS_PROVIDERS} from '../../core.framework/index';
 
 // mocks
 import {WindowMock} from '../mocks/window.mock';
@@ -17,9 +17,10 @@ export function TEST_COMMON_PROVIDERS(options?: any): any[] {
   // state:        = needs Store (via ngrx/store)
   
   let providers = [
-    LogService,
     provide(ConsoleService, { useValue: console }),
-    provide(WindowService, { useClass: (options && options.Window) || WindowMock })
+    provide(WindowService, { useClass: (options && options.Window) || WindowMock }),
+    LogService,
+    ANALYTICS_PROVIDERS
   ];
 
   if (options) {

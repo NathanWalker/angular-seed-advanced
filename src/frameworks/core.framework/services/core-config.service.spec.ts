@@ -27,6 +27,7 @@ export function main() {
       t.e(CoreConfigService.DEBUG.LEVEL_2).toBe(false);
       t.e(CoreConfigService.DEBUG.LEVEL_3).toBe(false);
       t.e(CoreConfigService.DEBUG.LEVEL_4).toBe(false);
+      t.e(CoreConfigService.IS_DEBUG_MODE()).toBe(false);
     });
   });
 }

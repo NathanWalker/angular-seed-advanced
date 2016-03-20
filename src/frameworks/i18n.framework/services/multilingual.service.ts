@@ -7,9 +7,14 @@ import {Store, Reducer, Action} from '@ngrx/store';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
-import {WindowService, ILang} from '../../core.framework/index';
+import {WindowService, ILang, Analytics, AnalyticsService} from '../../core.framework/index';
 
-// state
+// analytics
+const CATEGORY: string = 'Multilingual';
+
+/**
+ * ngrx start --
+ */
 export interface MultilingualStateI {
   lang: string;
 }
@@ -18,12 +23,10 @@ const initialState: MultilingualStateI = {
   lang: 'en'
 };
 
-// actions
 export const MULTILINGUAL_ACTIONS: any = {
   LANG_CHANGE: '[Multilingual] LANG_CHANGE'
 };
 
-// reducer
 export const multilingualReducer: Reducer<MultilingualStateI> = (state: MultilingualStateI = initialState, action: Action) => {
   switch (action.type) {
     case MULTILINGUAL_ACTIONS.LANG_CHANGE:
@@ -32,10 +35,13 @@ export const multilingualReducer: Reducer<MultilingualStateI> = (state: Multilin
       return state;
   }
 };
+/**
+ * ngrx end --
+ */
 
 // service
 @Injectable()
-export class MultilingualService {
+export class MultilingualService extends Analytics {
   
   // default supported languages
   // see main.ts bootstrap for example of how to provide different value
@@ -43,7 +49,10 @@ export class MultilingualService {
     { code: 'en', title: 'English' }
   ];
   
-  constructor(private translate: TranslateService, private win: WindowService, private store: Store<any>) {
+  constructor(public analytics: AnalyticsService, private translate: TranslateService, private win: WindowService, private store: Store<any>) {
+    super(analytics);
+    this.category = CATEGORY;
+
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('en');
 
@@ -63,8 +72,9 @@ export class MultilingualService {
   
   public changeLang(lang: string) {
     if (_.includes(_.map(MultilingualService.SUPPORTED_LANGUAGES, 'code'), lang)) {
-      // only if supported
+      // only if lang supported
+      this.track(MULTILINGUAL_ACTIONS.LANG_CHANGE, { label: lang });
       this.store.dispatch({ type: MULTILINGUAL_ACTIONS.LANG_CHANGE, payload: { lang } });
     }
-  }
+  } 
 }

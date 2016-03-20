@@ -1,11 +1,11 @@
-import {Injectable} from 'angular2/core';
+import {Injectable, Inject, forwardRef} from 'angular2/core';
 
 import {CoreConfigService, ConsoleService} from '../index';
 
 @Injectable()
 export class LogService {
 
-  constructor(private logger: ConsoleService) {}
+  constructor(@Inject(forwardRef(() => ConsoleService)) private logger: ConsoleService) {}
   
   // out
   public o(msg: string) {
