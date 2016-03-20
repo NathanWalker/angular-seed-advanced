@@ -1,4 +1,5 @@
 // angular
+import {ChangeDetectionStrategy} from 'angular2/core';
 import {RouteConfig} from 'angular2/router';
 
 // app
@@ -14,7 +15,8 @@ import {AboutComponent} from '../about/about.component';
   selector: 'sd-app',
   viewProviders: [NameListService],
   templateUrl: './components/app/app.component.html',
-  directives: [LangSwitcherComponent, NavbarComponent, ToolbarComponent]
+  directives: [LangSwitcherComponent, NavbarComponent, ToolbarComponent],
+  changeDetection: ChangeDetectionStrategy.Default // Everything else uses OnPush
 })
 @RouteConfig([
   { path: '/', component: HomeComponent, as: 'Home' },
