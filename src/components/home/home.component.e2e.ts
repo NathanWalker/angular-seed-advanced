@@ -1,4 +1,4 @@
-import {t, selectDropdownByText} from '../../frameworks/test.framework/index';
+import {t, selectDropdownByValue} from '../../frameworks/test.framework/index';
 
 t.describe('Home', function() {
 
@@ -7,7 +7,7 @@ t.describe('Home', function() {
   });
 
   t.it('should have correct h2', function() {
-      t.e(element(by.css('sd-app sd-home h2')).getText()).toEqual('I love technology');
+      t.e(element(by.css('sd-app sd-home h2')).getText()).toEqual('I love technology!');
   });
  
   t.it('should have an input', function() {
@@ -27,11 +27,11 @@ t.describe('Home', function() {
   });
   
   t.it('language switcher should change language', function() {
-    t.e(element(by.css('sd-app sd-home h2')).getText()).toEqual('I love technology');
-    selectDropdownByText('sd-app sd-toolbar lang-switcher select', 'French', 500);
-    t.e(element(by.css('sd-app sd-home h2')).getText()).toEqual('Je adore la technologie');
-    t.e(element(by.css('sd-app sd-home p')).getText())
-      .toEqual(`Votre déploiement de angulaire 2 Seed avancée a parfaitement fonctionné! Cliquez environ (ci-dessus) pour obtenir votre récompense!`);
+    t.e(element(by.css('sd-app sd-home h2')).getText()).toEqual('I love technology!');
+    selectDropdownByValue('sd-app sd-toolbar lang-switcher select', 'fr', 500);
+    t.e(element(by.css('sd-app sd-home h2')).getText()).toEqual(`J'adore la technologie !`);
+    t.e(element(by.css('sd-app sd-home')).all(by.tagName('p')).first().getText())
+      .toEqual(`En récompense, voici une liste de géniaux informaticiens :`);
   });
 
 });

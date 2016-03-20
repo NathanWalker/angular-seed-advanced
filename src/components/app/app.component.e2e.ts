@@ -15,23 +15,16 @@ t.describe('App', function() {
   });
 
   t.it('should have correct nav text for Home', function() {
-      t.e(element(by.css('sd-app sd-navbar nav a:first-child')).getText()).toEqual('HOME');
+      t.e(element(by.css('sd-app sd-navbar nav a:first-child')).getText()).toEqual('Home');
   });
 
   t.it('should have correct nav text for About', function() {
-      t.e(element(by.css('sd-app sd-navbar nav a:last-child')).getText()).toEqual('ABOUT');
+      t.e(element(by.css('sd-app sd-navbar nav a:last-child')).getText()).toEqual('About');
   });
 
   t.it('should contain a language switcher', function() {
     t.e(element(by.css('sd-app sd-toolbar lang-switcher')).isPresent()).toEqual(true);
     t.e(element.all(by.css('sd-app sd-toolbar lang-switcher option')).count()).toEqual(5);
-  });
-  
-  t.it('language switcher should change language', function() {
-    t.e(element(by.css('sd-app section sd-home h2')).getText()).toEqual('I love technology');
-    selectDropdownByText(element(by.css('sd-app sd-toolbar lang-switcher select')), 'French', 500);
-    t.e(element(by.css('sd-app section sd-home h2')).getText()).toEqual('Je adore la technologie');
-    t.e(element(by.css('sd-app section h1')).getText()).toEqual('Bonjour!');
   });
 
 });
