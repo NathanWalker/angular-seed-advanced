@@ -6,6 +6,13 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true
     },
+    "files": [
+        "../typings/main/ambient/lodash/index.d.ts",
+        "../typings/main/ambient/ng2/index.d.ts",
+        "../typings/main/ambient/zone.js/index.d.ts",
+        "node_modules/tns-core-modules/tns-core-modules.d.ts",
+        "app/app.ts"
+    ],
     "exclude": [
         "node_modules",
         "platforms"

@@ -3,7 +3,6 @@ import {Inject} from 'angular2/core';
 
 // nativescript
 import {registerElement} from 'nativescript-angular/element-registry';
-import {ActionItem} from 'ui/action-bar';
 import {topmost} from 'ui/frame';
 
 // libs
@@ -22,25 +21,20 @@ export class NSAppComponent extends AppComponent {
     super();
     log.o('NSAppCmp ----');
     
-    // let btn = new ActionItem();
-    // btn.icon = 'res://ic_menu';
-    // btn.ios.position = 'left';
-    // btn.on('tap', this.openMenu.bind(this));
-    // ActionBarUtil.ADD_BUTTON(btn);
-    
     ActionBarUtil.STATUSBAR_STYLE(1);
-    
-    store.select('router').subscribe((router: RouterState) => {
-      this.log.o(`Route change: ${router.url}`);
-      switch (router.url) {
-        case '':
-          ActionBarUtil.SET_TITLE('Angular 2 Seed Advanced');
-          break; 
-        case '/about':
-          ActionBarUtil.SET_TITLE('About');
-          break;
-      }
-    });
+
+    // example of how to receive router updates from ngrx/store
+    // store.select('router').subscribe((router: RouterState) => {
+    //   this.log.o(`Route change: ${router.url}`);
+    //   switch (router.url) {
+    //     case '':
+    //       // do something on home
+    //       break; 
+    //     case '/about':
+    //       // do something on about
+    //       break;
+    //   }
+    // });
   }
   
   private openMenu() {
