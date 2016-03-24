@@ -26,7 +26,7 @@ export const nameListReducer: Reducer<any> = (state: any = initialState, action:
 
 @Injectable()
 export class NameListService {
-  public names: Observable<Array<string>>;
+  public names: Observable<any>;
 
   constructor(private store: Store<any>) {
     this.names = store.select('names');
