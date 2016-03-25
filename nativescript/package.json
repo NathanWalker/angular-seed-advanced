@@ -31,7 +31,7 @@
 		"querystring": "0.2.0",
 		"reflect-metadata": "0.1.2",
 		"rxjs": "5.0.0-beta.2",
-		"tns-core-modules": "^2.0.0-angular-0",
+		"tns-core-modules": "^2.0.0-angular-1",
 		"url": "0.10.3",
 		"zone.js": "0.5.15"
 	},
