@@ -32,7 +32,6 @@ build/Release
 
 #IDE configuration files
 .idea
-.vscode
 *.iml
 
 /tools/**/*.js
