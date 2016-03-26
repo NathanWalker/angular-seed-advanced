@@ -81,11 +81,6 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 ### Prerequisites
 
 * node v4.x.x or higher and npm 2.14.7.
-* `ts-node` installed as global. If you don't, use:
-
-```bash
-npm install -g ts-node
-```
 
 * To run the NativeScript app:
 
@@ -184,14 +179,15 @@ npm start -- --port 8080 --reload-port 4000 --base /my-app/
 4. Create a new `framework` for your application in `src/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp.framework` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
 5. If you don't want an integration that comes out of box with this seed; for example. let's say you don't want to use i18n. Then just delete the `i18n.framework`, remove `ng2-translate` as dependency root `package.json` and `nativescript/package.json`. Then remove the references to `i18n` throughout.
 6. Remove `src/components` since those are just samples and create a new folder for your components, let's say `src/pages`. It's not absolutely necessary to remove and create a new differently named folder for your components but it will make merging in upstream changes a bit smoother.
+You can read more about [configuring a remote for a fork here](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
 
 #### Merging latest upstream changes
 
-1. `git remote fetch upstream`
+1. `git fetch upstream`
 2. `git merge upstream/master`  *you could rebase, but it wouldn't be worth it as the conflict resolution can often be more painful if there are conflicts*
 3. Handle any conflicts to get latest upstream into your application. If you removed `src/components` as mentioned above, they may show back up when merging in latest upstream. You can just remove the folder again.
 4. Continue building your app.
-
+You can read more about [syncing a fork here](https://help.github.com/articles/syncing-a-fork/).
 If you have any suggestions, please post [here](https://github.com/NathanWalker/angular2-seed-advanced/issues).
 
 ## Contributing
