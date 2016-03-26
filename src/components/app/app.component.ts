@@ -4,7 +4,7 @@ import {RouteConfig} from 'angular2/router';
 
 // app
 import {NameListService} from '../../frameworks/app.framework/index';
-import {RouteComponent} from '../../frameworks/core.framework/index';
+import {RouteComponent, AnalyticsService} from '../../frameworks/core.framework/index';
 import {LangSwitcherComponent} from '../../frameworks/i18n.framework/index';
 import {NavbarComponent} from './navbar.component';
 import {ToolbarComponent} from './toolbar.component';
@@ -22,4 +22,8 @@ import {AboutComponent} from '../about/about.component';
   { path: '/', component: HomeComponent, as: 'Home' },
   { path: '/about', component: AboutComponent, as: 'About' }
 ])
-export class AppComponent {}
+export class AppComponent {
+  constructor(public analytics: AnalyticsService) {
+
+  }
+}

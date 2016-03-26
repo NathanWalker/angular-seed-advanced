@@ -1,7 +1,7 @@
 // libs
 import {provideStore, Store} from '@ngrx/store';
 
-import {t, TEST_COMMON_PROVIDERS, TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET, WindowMockFrench} from '../../test.framework/index';
+import {t, TEST_COMMON_PROVIDERS, TEST_ROUTER_PROVIDERS, TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET, WindowMockFrench} from '../../test.framework/index';
 import {ILang} from '../../core.framework/index';
 import {MultilingualService, MultilingualStateI, multilingualReducer} from '../index';
 
@@ -9,6 +9,7 @@ export function main() {
   t.describe('i18n.framework: MultilingualService', () => {
     t.bep(() => [
       TEST_COMMON_PROVIDERS(),
+      TEST_ROUTER_PROVIDERS(),
       TEST_MULTILINGUAL_PROVIDERS(),
       provideStore({i18n: multilingualReducer})
     ]);
@@ -33,7 +34,8 @@ export function main() {
     ];
     t.be(() => MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES);
     t.bep(() => [
-      TEST_COMMON_PROVIDERS({ Window: WindowMockFrench}),
+      TEST_COMMON_PROVIDERS({ Window: WindowMockFrench }),
+      TEST_ROUTER_PROVIDERS(),
       TEST_MULTILINGUAL_PROVIDERS(),
       provideStore({i18n: multilingualReducer})
     ]);

@@ -16,7 +16,10 @@ export function main() {
       return [
         NameListService,
         TEST_COMPONENT_PROVIDERS({
-          http: true
+          http: true,
+          router: {
+            primary: TestComponent
+          }
         }),
         provideStore({names: nameListReducer})
       ];
