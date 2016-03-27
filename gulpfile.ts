@@ -104,3 +104,11 @@ gulp.task('test', (done: any) =>
   runSequence('build.test',
               'karma.start',
               done));
+
+// --------------
+// Serve dev
+gulp.task('desktop', (done: any) =>
+  runSequence('build.dev',
+              'desktop.libs',
+              'desktop.build',
+              done));

@@ -5,6 +5,7 @@
   "repository": {
     "url": "https://github.com/NathanWalker/angular2-seed-advanced"
   },
+  "main": "dist/dev/main.desktop.js",
   "scripts": {
     "build.dev": "gulp build.dev",
     "build.dev.watch": "gulp build.dev.watch",
@@ -24,6 +25,7 @@
     "serve.dev": "gulp serve.dev",
     "serve.e2e": "gulp serve.e2e",
     "start": "gulp serve.dev",
+    "start.desktop": "gulp desktop && electron ./dist/dev",
     "tasks.list": "gulp --tasks-simple",
     "test": "gulp test",
     "webdriver-start": "webdriver-manager start",
@@ -47,6 +49,7 @@
     "connect-livereload": "^0.5.3",
     "cssnano": "^3.5.2",
     "doiuse": "^2.3.0",
+    "electron-prebuilt": "^0.37.2",
     "event-stream": "^3.3.2",
     "express": "~4.13.1",
     "extend": "^3.0.0",
@@ -117,6 +120,7 @@
     "lodash": "^4.5.0",
     "ng2-translate": "^1.10.3",
     "ngrx-store-router": "0.0.6",
+    "parse5": "^1.5.1",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
     "systemjs": "~0.19.18",

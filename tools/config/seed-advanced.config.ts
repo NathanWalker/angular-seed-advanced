@@ -2,23 +2,26 @@ import {argv} from 'yargs';
 import {SeedConfig} from './seed.config';
 
 export class SeedAdvancedConfig extends SeedConfig {
-  
-  TARGET_WEB           = !!argv['web'];
-  TARGET_MOBILE_HYBRID = !!argv['mobile-hybrid'];
-  TARGET_DESKTOP       = !!argv['desktop'];
 
   constructor() {
     super();
-    
+    let arg: string;
+    if (argv && argv._) {
+      arg = argv._[0];
+      if (arg === 'desktop') {
+        this.TARGET_DESKTOP = true;
+      } else if (arg === 'hybrid') {
+        this.TARGET_MOBILE_HYBRID = true;
+      }
+    }
     let bootstrap = 'main.web';
     if (this.ENABLE_HOT_LOADING) {
       bootstrap   = 'hot_loader_main';
-    } else if (this.TARGET_WEB) {
-      bootstrap   = 'main.web';
     } else if (this.TARGET_MOBILE_HYBRID) {
       bootstrap   = 'main.mobile.hybrid'; // Cordova
     } else if (this.TARGET_DESKTOP) {
-      bootstrap   = 'main.desktop'; // Electron
+      bootstrap = 'main-ui.desktop'; // Electron
+      this.APP_BASE = ''; // use relative
     }
     this.BOOTSTRAP_MODULE = bootstrap;
     

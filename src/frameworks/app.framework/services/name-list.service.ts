@@ -37,18 +37,19 @@ export const nameListReducer: Reducer<any> = (state: any = initialState, action:
  */
 
 @Injectable()
-export class NameListService extends Analytics {
+export class NameListService {
   public names: Observable<any>;
 
-  constructor(public analytics: AnalyticsService, private store: Store<any>) {
-    super(analytics);
-    this.category = CATEGORY;
+  // constructor(public analytics: AnalyticsService, private store: Store<any>) {
+  constructor(private store: Store<any>) {
+    // super(analytics);
+    // this.category = CATEGORY;
 
     this.names = store.select('names');
   }  
 
   add(name: string): void {
-    this.track(NAME_LIST_ACTIONS.NAME_ADDED, { label: name });
+    // this.track(NAME_LIST_ACTIONS.NAME_ADDED, { label: name });
     this.store.dispatch({ type: NAME_LIST_ACTIONS.NAME_ADDED, payload: name });
   }
 }

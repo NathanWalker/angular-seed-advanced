@@ -1,6 +1,8 @@
 // angular
+import {provide, enableProdMode} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
-import {ROUTER_PROVIDERS} from 'angular2/router';
+import {ROUTER_PROVIDERS, APP_BASE_HREF} from 'angular2/router';
+import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
 
 // libs
 import {Angulartics2} from 'angulartics2';
@@ -10,6 +12,13 @@ import {Angulartics2Segment} from 'angulartics2/src/providers/angulartics2-segme
 import {AnalyticsService} from './services/analytics.service';
 import {LogService} from './services/log.service';
 
+export const ENV_PROVIDERS: Array<any> = [];
+if ('<%= ENV %>' === 'prod') {
+  enableProdMode();
+} else {
+  ENV_PROVIDERS.push(ELEMENT_PROBE_PROVIDERS);
+}
+
 export const ANALYTICS_PROVIDERS: any[] = [
   Angulartics2,
   Angulartics2Segment,
@@ -18,6 +27,7 @@ export const ANALYTICS_PROVIDERS: any[] = [
 
 export const CORE_PROVIDERS: any[] = [
   HTTP_PROVIDERS,
+  provide(APP_BASE_HREF, { useValue: '<%= APP_BASE %>' }),
   ROUTER_PROVIDERS,
   LogService,
   ANALYTICS_PROVIDERS

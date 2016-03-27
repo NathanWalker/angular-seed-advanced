@@ -21,6 +21,9 @@ export class SeedConfig {
   ENABLE_HOT_LOADING   = argv['hot-loader'];
   HOT_LOADER_PORT      = 5578;
 
+  TARGET_MOBILE_HYBRID = false;
+  TARGET_DESKTOP       = false;  
+
   BOOTSTRAP_MODULE     = this.ENABLE_HOT_LOADING ? 'hot_loader_main' : 'main';
 
   APP_TITLE            = 'My Angular2 App';
