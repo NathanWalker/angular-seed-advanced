@@ -27,8 +27,8 @@ export class LangSwitcherComponent {
       if (e) {
         lang = this.supportedLanguages[e.newIndex].code;
       }
-    } else {
-      lang = this.langForm.value.lang;
+    } else if (e && e.target) {
+      lang = e.target.value;
     }
     this.log.o(`Language change: ${lang}`);
     this.multilang.changeLang(lang);
