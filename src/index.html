@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <base href="<%= APP_BASE %>">
+  <% if (!TARGET_DESKTOP) { %>
+    <base href="<%= APP_BASE %>">
+  <% } %>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><%= APP_TITLE %></title>
@@ -9,6 +11,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- inject:css -->
   <!-- endinject -->
+  
+  <% if (TARGET_DESKTOP) { %>
+  <!-- shims:js -->
+  <!-- endinject -->
+  <% } %>
   
   <!-- segment.io -->
   <script type="text/javascript">
@@ -47,8 +54,10 @@
   function module() {}
   </script>
 
+  <% if (!TARGET_DESKTOP) { %>
   <!-- shims:js -->
   <!-- endinject -->
+  <% } %>
 
   <% if (ENV === 'dev') { %>
   <script>

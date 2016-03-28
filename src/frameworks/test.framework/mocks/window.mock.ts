@@ -1,6 +1,7 @@
 export class WindowMock {
   public navigator: any = {
-    language: 'en-US'
+    language: 'en-US',
+    userAgent: 'testing'
   };
   public location: any = {};
   public alert(msg: string): void {

@@ -55,3 +55,4 @@ nativescript/*.d.ts
 nativescript/app/assets
 nativescript/app/components
 nativescript/app/frameworks
+desktop

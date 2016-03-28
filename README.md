@@ -9,7 +9,7 @@
 [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/NathanWalker/angular-2-seed-advanced)
 [![Stories in Progress](https://badge.waffle.io/NathanWalker/angular2-seed-advanced.png?label=in%20progress&title=Stories%20In%20Progress)](https://waffle.io/NathanWalker/angular2-seed-advanced)
 
-#### Want to use [Angular 2](https://angular.io/) for a large project? Do you need potential i18n support? Enhanced testing support? Oh and building for multiple platforms too? Web, *native* Mobile (Android/iOS), and even Desktop (Windows/Mac - coming soon!)?  
+#### Considering [Angular 2](https://angular.io/) for a large project? Do you need potential i18n support? Enhanced testing support? Oh and building for multiple platforms too? Web, *native* Mobile (Android/iOS), and even Desktop (Mac, Windows and Linux)?  
 
 This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's](https://github.com/mgechev) [angular2-seed](https://github.com/mgechev/angular2-seed) that expands on all of it's great features to include core support for:
 
@@ -25,29 +25,30 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
   - Can be changed to any vendor, [learn more here](https://github.com/angulartics/angulartics2#supported-providers)
 - [lodash](https://lodash.com/) Helps reduce blocks of code down to single lines and enhances readability
 - [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#run-nativescript-app).
+- [Electron](http://electron.atom.io/) cross platform desktop apps (Mac, Windows and Linux). [Setup instructions here](#run-electron-app).
 
-| ![Multiple Platforms](/resources/platforms.gif) |
+| ![Multiple Platforms](https://d2wp4shknjcfjl.cloudfront.net/api/file/ihp3WyiqS1WdRYaBEYKn) |
 | :---: |
 | *The zen of multiple platforms.* Chrome, Android and iPhone all running the same code. |
 
+| ![Desktop](https://d2wp4shknjcfjl.cloudfront.net/api/file/1O4FRGsSHS8g0Lz3EKNy) |
+| :---: |
+| *Programming Nirvana.* Mac and Windows desktop both running the same code. |
+
 # Table of Contents
 
-- [Additional features coming soon...](#additional-features-coming-soon)
 - [Enhanced development workflow](#enhanced-development-workflow)
 - [Enhanced testing support options](#enhanced-testing-support-options)
+- [Additional features coming soon...](#additional-features-coming-soon)
 - [Prerequisites](#prerequisites)
 - [Usage](#usage)
-- [Run NativeScript App](#run-nativescript-app)
+- [NativeScript App](#nativescript-app)
+- [Electron App](#electron-app)
 - [Testing](#testing)
 - [Web Configuration Options](#web-configuration-options)
 - [How best to use for your project](#how-best-to-use-for-your-project)
 - [Contributing](#contributing)
 - [License](#license)
-
-#### Additional features coming soon...
-- [ ] [Electron](http://electron.atom.io/) cross platform desktop apps.
-- [ ] provider for LocalStorage (abstraction for IndexedDB, WebSQL, localStorage, perhaps a port of localForage)
-- [ ] sophisticated setup for Service Worker
 
 #### Enhanced development workflow
 - Decorators for components which reduce boilerplate for common component setups
@@ -81,6 +82,10 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
   
 **Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
 
+#### Additional features coming soon...
+- [ ] provider for LocalStorage (abstraction for IndexedDB, WebSQL, localStorage, perhaps a port of localForage)
+- [ ] sophisticated setup for Service Worker
+
 ### Prerequisites
 
 * node v4.x.x or higher and npm 2.14.7.
@@ -112,7 +117,7 @@ npm run build.dev
 npm run build.prod
 ```
 
-## Run NativeScript App
+## NativeScript App
 
 ```
 npm install -g nativescript  // if you don't already have it installed globally
@@ -125,6 +130,31 @@ npm run start.ios   // iOS simulator
 // or...
 
 npm run start.android   // Android emulator - requires an image setup via AVD Manager (see {N} docs for more)
+```
+
+## Electron App
+
+#### Develop
+
+```
+npm run start.desktop
+```
+
+#### Release: Package Electron App for Mac, Windows or Linux
+
+* Mac:
+```
+npm run build.desktop.mac
+```
+
+* Windows:
+```
+npm run build.desktop.windows
+```
+
+* Linux:
+```
+npm run build.desktop.linux
 ```
 
 ## Testing
