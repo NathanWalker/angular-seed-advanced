@@ -17,6 +17,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "exclude": [
+    "desktop",
     "nativescript",
     "node_modules",
     "dist",

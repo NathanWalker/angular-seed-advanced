@@ -61,3 +61,8 @@ button {
 button:hover {
   background-color: #28739e;
 }
+
+/* platform specific */
+.desktop lang-switcher {
+  display: none;
+}

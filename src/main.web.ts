@@ -1,7 +1,7 @@
 // angular
 import {provide, enableProdMode} from 'angular2/core';
 import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
-import {APP_BASE_HREF} from 'angular2/router';
+import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from 'angular2/router';
 
 // config
 import {CoreConfigService} from './frameworks/core.framework/index';
@@ -17,20 +17,28 @@ import {AppComponent} from './components/app/app.component';
 MultilingualService.SUPPORTED_LANGUAGES = AppConfigService.SUPPORTED_LANGUAGES;
 
 const ENV_PROVIDERS: Array<any> = [];
-if ('<%= ENV %>' === 'prod') {
+if ('<%= ENV %>' === 'prod' || '<%= TARGET_DESKTOP_BUILD %>' === 'true') {
   enableProdMode();
 } else {
   ENV_PROVIDERS.push(ELEMENT_PROBE_PROVIDERS);
-}
+} 
 
-bootstrap(AppComponent, [
+let BOOTSTRAP_PROVIDERS: any[] = [
   ENV_PROVIDERS,
   provide(APP_BASE_HREF, { useValue: '<%= APP_BASE %>' }),
   provide(WindowService, { useValue: window }),
   provide(ConsoleService, { useValue: console }),
   CORE_PROVIDERS,
   APP_PROVIDERS
-])
+];
+
+if ('<%= TARGET_DESKTOP %>' === 'true') {
+  CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.DESKTOP;
+  // desktop (electron) must use hash
+  BOOTSTRAP_PROVIDERS.push(provide(LocationStrategy, {useClass: HashLocationStrategy}));
+}  
+
+bootstrap(AppComponent, BOOTSTRAP_PROVIDERS)
 .catch(err => console.error(err));
 
 // In order to start the Service Worker located at "./sw.js"

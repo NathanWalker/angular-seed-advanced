@@ -7,7 +7,8 @@ import {IWindow} from '../../../frameworks/core.framework/interfaces/iwindow';
 export class WindowNative implements IWindow {
   public get navigator(): any {
     return {
-      language: 'en-US'
+      language: 'en-US',
+      userAgent: 'nativescript'
     };
   }
   public get location(): any {

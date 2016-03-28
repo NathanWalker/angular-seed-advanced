@@ -7,6 +7,8 @@ import {Store} from '@ngrx/store';
 import {FormComponent, CoreConfigService, LogService, ILang} from '../../core.framework/index';
 import {MultilingualService} from '../index';
 
+declare var window: any;
+
 @FormComponent({
   selector: 'lang-switcher',
   templateUrl: './frameworks/i18n.framework/components/lang-switcher.component.html'
@@ -19,6 +21,13 @@ export class LangSwitcherComponent {
     this.langForm = new ControlGroup({
       lang: new Control(store.getState().i18n.lang)
     });
+
+    if (CoreConfigService.IS_DESKTOP()) {
+      // allow electron menu to talk to component
+      window.addEventListener('changeLang', (e: any) => {
+        this.changeLang({ target: { value: e.detail.value } });
+      });
+    }    
   }
   changeLang(e: any) {
     let lang = this.supportedLanguages[0].code; // fallback to default 'en'

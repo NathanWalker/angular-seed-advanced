@@ -104,3 +104,29 @@ gulp.task('test', (done: any) =>
   runSequence('build.test',
               'karma.start',
               done));
+
+// --------------
+// Desktop (Electron)
+
+// Development
+gulp.task('desktop', (done: any) =>
+  runSequence('build.dev',
+              'desktop.libs',
+              'desktop.build',
+              done));
+
+// Package
+gulp.task('desktop.mac', (done: any) =>
+  runSequence('desktop',
+              'desktop.package.mac',
+              done));
+
+gulp.task('desktop.windows', (done: any) =>
+  runSequence('desktop',
+              'desktop.package.windows',
+              done));
+
+gulp.task('desktop.linux', (done: any) =>
+  runSequence('desktop',
+              'desktop.package.linux',
+              done));
