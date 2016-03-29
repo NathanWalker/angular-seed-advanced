@@ -1,4 +1,4 @@
-![Angular 2 Seed Advanced](/resources/angular-advanced-logo.png)![Angular 2 Seed Advanced Integrations](/resources/integrations.png)
+![Angular 2 Seed Advanced](https://d2wp4shknjcfjl.cloudfront.net/api/file/olEzxJQ2KcXrZHzbt9UA)![Angular 2 Seed Advanced Integrations](https://d2wp4shknjcfjl.cloudfront.net/api/file/SPLl77rSTuGZ7APrXizi)
 
 [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://github.com/mgechev/angular2-style-guide)
 [![Build Status](https://travis-ci.org/NathanWalker/angular2-seed-advanced.svg?branch=master)](https://travis-ci.org/NathanWalker/angular2-seed-advanced)
@@ -212,7 +212,8 @@ npm start -- --port 8080 --reload-port 4000 --base /my-app/
 3. `git remote add upstream https://github.com/NathanWalker/angular2-seed-advanced.git`
 4. Create a new `framework` for your application in `src/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp.framework` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
 5. If you don't want an integration that comes out of box with this seed; for example. let's say you don't want to use i18n. Then just delete the `i18n.framework`, remove `ng2-translate` as dependency root `package.json` and `nativescript/package.json`. Then remove the references to `i18n` throughout.
-6. Remove `src/components` since those are just samples and create a new folder for your components, let's say `src/pages`. It's not absolutely necessary to remove and create a new differently named folder for your components but it will make merging in upstream changes a bit smoother.
+6. Remove `src/components` since those are just samples and create a new folder for your components, let's say `src/pages`. It's not absolutely necessary to remove and create a new differently named folder for your components but it might make merging in upstream changes a bit smoother.
+
 You can read more about [configuring a remote for a fork here](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
 
 #### Merging latest upstream changes
@@ -221,8 +222,10 @@ You can read more about [configuring a remote for a fork here](https://help.gith
 2. `git merge upstream/master`  *you could rebase, but it wouldn't be worth it as the conflict resolution can often be more painful if there are conflicts*
 3. Handle any conflicts to get latest upstream into your application. If you removed `src/components` as mentioned above, they may show back up when merging in latest upstream. You can just remove the folder again.
 4. Continue building your app.
+
 You can read more about [syncing a fork here](https://help.github.com/articles/syncing-a-fork/).
-If you have any suggestions, please post [here](https://github.com/NathanWalker/angular2-seed-advanced/issues).
+
+If you have any suggestions to this workflow, please post [here](https://github.com/NathanWalker/angular2-seed-advanced/issues).
 
 ## Contributing
 
