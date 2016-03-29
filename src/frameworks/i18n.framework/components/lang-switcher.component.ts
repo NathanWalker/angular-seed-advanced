@@ -5,9 +5,8 @@ import {ControlGroup, Control} from 'angular2/common';
 import {Store} from '@ngrx/store';
 // app
 import {FormComponent, CoreConfigService, LogService, ILang} from '../../core.framework/index';
+import {ElectronEventService} from '../../electron.framework/index';
 import {MultilingualService} from '../index';
-
-declare var window: any;
 
 @FormComponent({
   selector: 'lang-switcher',
@@ -24,7 +23,7 @@ export class LangSwitcherComponent {
 
     if (CoreConfigService.IS_DESKTOP()) {
       // allow electron menu to talk to component
-      window.addEventListener('changeLang', (e: any) => {
+      ElectronEventService.on('changeLang').subscribe((e: any) => {
         this.changeLang({ target: { value: e.detail.value } });
       });
     }    
