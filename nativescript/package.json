@@ -16,8 +16,8 @@
 		"start.ios": "npm run prepare; tns emulate ios",
 		"start.android": "npm run prepare; tns emulate android",
 		"prepare.windows": "xcopy /E /I /Y \"../src/assets\" \"app/assets\" & xcopy /E /I /Y \"../src/components\" \"app/components\" & xcopy /E /I /Y \"../src/frameworks\" \"app/frameworks\"",
-    "start.ios.windows": "npm run prepare.windows & tns emulate ios",
-    "start.android.windows": "npm run prepare.windows & tns emulate android"
+		"start.ios.windows": "npm run prepare.windows & tns emulate ios",
+		"start.android.windows": "npm run prepare.windows & tns emulate android"
 	},
 	"dependencies": {
 		"@ngrx/store": "^1.3.2",
@@ -35,13 +35,13 @@
 		"querystring": "0.2.0",
 		"reflect-metadata": "0.1.2",
 		"rxjs": "5.0.0-beta.2",
-		"tns-core-modules": "^2.0.0-angular-1",
+		"tns-core-modules": "^2.0.0-angular-2",
 		"url": "0.10.3",
 		"zone.js": "0.5.15"
 	},
 	"devDependencies": {
 		"nativescript-dev-typescript": "^0.3.1",
 		"shelljs": "^0.5.3",
-		"typescript": "1.8.2"
+		"typescript": "1.8.9"
 	}
 }
