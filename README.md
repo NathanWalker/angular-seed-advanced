@@ -161,8 +161,14 @@ npm run start.android.windows   // Android emulator*
 
 #### Develop
 
+* Mac:
 ```
 npm run start.desktop
+```
+
+* Windows:
+```
+npm run start.desktop.windows
 ```
 
 #### Release: Package Electron App for Mac, Windows or Linux
