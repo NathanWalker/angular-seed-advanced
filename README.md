@@ -120,18 +120,42 @@ npm run build.prod
 
 ## NativeScript App
 
-```
-npm install -g nativescript  // if you don't already have it installed globally
-cd nativescript  // we set things up from `nativescript` directory because {N} does not use the seed build
-tns install
+#### Setup
 
-// you will see TypeScript warnings, this is normal, you can ignore :)
+```
+npm install -g nativescript 
+
+// we set things up from the 'nativescript' directory
+// at the moment, {N} does not use the seed build
+cd nativescript  
+tns install
+```
+
+#### Run
+
+You will see TypeScript warnings when running the following commands. This is normal at the moment and you can ignore. This will be improved in the future.
+
+* Mac users:
+
+```
 npm run start.ios   // iOS simulator
 
 // or...
 
-npm run start.android   // Android emulator - requires an image setup via AVD Manager (see {N} docs for more)
+npm run start.android   // Android emulator*
 ```
+
+* Windows users:
+
+```
+npm run start.ios.windows   // iOS simulator
+
+// or...
+
+npm run start.android.windows   // Android emulator* 
+```
+
+* Requires an image setup via AVD Manager. [Learn more here](http://developer.android.com/intl/zh-tw/tools/devices/managing-avds.html) and [here](https://github.com/NativeScript/nativescript-cli#the-commands).
 
 ## Electron App
 
