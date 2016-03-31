@@ -89,7 +89,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 
 ### Prerequisites
 
-* node v4.x.x or higher and npm 2.14.7.
+* node v5.x.x or higher and npm 3 or higher.
 
 * To run the NativeScript app:
 
