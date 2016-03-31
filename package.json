@@ -69,6 +69,7 @@
     "gulp-postcss": "^6.1.0",
     "gulp-shell": "~0.5.2",
     "gulp-sourcemaps": "git+https://github.com/floridoo/gulp-sourcemaps.git#master",
+    "gulp-symdest": "^1.0.0",
     "gulp-template": "^3.1.0",
     "gulp-tslint": "^4.3.3",
     "gulp-typedoc": "^1.2.1",
