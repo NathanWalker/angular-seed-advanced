@@ -4,7 +4,8 @@ import {RouteConfig} from 'angular2/router';
 
 // app
 import {NameListService} from '../../frameworks/app.framework/index';
-import {RouteComponent, AnalyticsService, PlatformDirective} from '../../frameworks/core.framework/index';
+import {AnalyticsService} from '../../frameworks/analytics.framework/index';
+import {RouteComponent, PlatformDirective} from '../../frameworks/core.framework/index';
 import {LangSwitcherComponent} from '../../frameworks/i18n.framework/index';
 import {NavbarComponent} from './navbar.component';
 import {ToolbarComponent} from './toolbar.component';

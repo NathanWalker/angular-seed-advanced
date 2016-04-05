@@ -9,7 +9,7 @@ import {t, TEST_ROUTER_PROVIDERS} from '../../test.framework/index';
 import {AnalyticsService, Analytics} from '../index';
 
 export function main() {
-  t.describe('core.framework: AnalyticsService', () => {
+  t.describe('analytics.framework: AnalyticsService', () => {
     let analyticsService: AnalyticsService;
     let segment: Angulartics2Segment;
 
@@ -67,7 +67,7 @@ export function main() {
     });
   });
 
-  t.describe('core.framework: Analytics (Base Class)', () => {
+  t.describe('analytics.framework: Analytics (Base Class)', () => {
     let analyticsService: AnalyticsService;
     let analytics: Analytics;
 

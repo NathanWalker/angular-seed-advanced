@@ -10,7 +10,9 @@ import {routerReducer, routerMiddleware} from 'ngrx-store-router';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
-import {ConsoleService, LogService, AnalyticsService} from '../core.framework/index';
+
+import {ConsoleService, LogService} from '../core.framework/index';
+import {AnalyticsService} from '../analytics.framework/index';
 import {AppConfigService, nameListReducer} from '../app.framework/index';
 import {MultilingualService, multilingualReducer} from '../i18n.framework/index';
 import {NSAngulartics2Segment} from './services/ns-angulartics2-segment.service';

@@ -10,6 +10,7 @@ CoreConfigService.DEBUG.LEVEL_4 = true;
 
 // app
 import {WindowService, ConsoleService, CORE_PROVIDERS} from './frameworks/core.framework/index';
+import {ANALYTICS_PROVIDERS} from './frameworks/analytics.framework/index';
 import {MultilingualService} from './frameworks/i18n.framework/index';
 import {APP_PROVIDERS, AppConfigService} from './frameworks/app.framework/index';
 import {AppComponent} from './components/app/app.component';
@@ -29,6 +30,7 @@ let BOOTSTRAP_PROVIDERS: any[] = [
   provide(WindowService, { useValue: window }),
   provide(ConsoleService, { useValue: console }),
   CORE_PROVIDERS,
+  ANALYTICS_PROVIDERS,
   APP_PROVIDERS
 ];
 
