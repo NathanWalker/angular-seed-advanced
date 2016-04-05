@@ -18,6 +18,7 @@ export = () => {
       // TypeScript options (see typescript docs)
       module: 'commonjs',
       target: 'es5',
+      // excludeExternals: true,
       includeDeclarations: true,
       // Output options (see typedoc docs)
       out: DOCS_DEST,

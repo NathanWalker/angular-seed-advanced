@@ -56,3 +56,5 @@ nativescript/app/assets
 nativescript/app/components
 nativescript/app/frameworks
 desktop
+gulpfile.js
+gulpfile.js.map
