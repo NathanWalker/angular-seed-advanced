@@ -5,7 +5,8 @@ import {provide} from 'angular2/core';
 import {Store} from '@ngrx/store';
 
 // app
-import {WindowService, ConsoleService, LogService, ANALYTICS_PROVIDERS} from '../../core.framework/index';
+import {WindowService, ConsoleService, LogService} from '../../core.framework/index';
+import {ANALYTICS_PROVIDERS} from '../../analytics.framework/index';
 
 // mocks
 import {WindowMock} from '../mocks/window.mock';

@@ -6,8 +6,15 @@ import * as _ from 'lodash';
 import {Angulartics2} from 'angulartics2';
 import {Angulartics2Segment} from 'angulartics2/src/providers/angulartics2-segment';
 
-// app
-import {IAnalytics, IAnalyticsProperties} from '../../core.framework/index';
+export interface IAnalyticsProperties {
+  category?: string;
+  label?: string;
+  value?: number;
+}
+
+export interface IAnalytics {
+  track(action: string, properties: IAnalyticsProperties): void;
+}
 
 /**
  * Wrapper for Angulartics2

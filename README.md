@@ -55,6 +55,8 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - Introduction of `frameworks` to help organize your code for different platforms:
   - `app.framework`: your shared application architecture code (grow your app here or create new frameworks)
   - `core.framework`: foundation layer (decorators and low-level services)
+  - `analytics.framework`: analytics provided by [Segment](https://segment.com/)
+    - Only reports data in **production** build
   - `i18n.framework`: internationalization features
   - `nativescript.framework`: [NativeScript](https://www.nativescript.org/) specific code
   - `electron.framework`: [Electron](http://electron.atom.io/) specific code

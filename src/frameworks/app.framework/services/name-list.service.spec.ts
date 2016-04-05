@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Rx';
 
 // app
 import {t, TEST_ROUTER_PROVIDERS} from '../../test.framework/index';
-import {ANALYTICS_PROVIDERS} from '../../core.framework/index';
+import {ANALYTICS_PROVIDERS} from '../../analytics.framework/index';
 import {NameListService, nameListReducer} from './name-list.service';
 
 export function main() {
