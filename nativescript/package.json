@@ -8,13 +8,13 @@
 			"version": "1.7.0"
 		},
 		"tns-android": {
-			"version": "1.7.0"
+			"version": "1.7.1"
 		}
 	},
 	"scripts": {
 		"prepare": "cp -R ../src/assets app/; cp -R ../src/components app/; cp -R ../src/frameworks app/; rm -rf app/frameworks/test.framework; rm -rf app/components/**/*.e2e.*; rm -rf app/components/**/*.spec.*; rm -rf app/frameworks/**/**/*.spec.*; rm -rf app/frameworks/**/**/**/*.spec.*",
-		"start.ios": "npm run prepare; tns emulate ios",
-		"start.android": "npm run prepare; tns emulate android",
+		"start.ios": "npm run prepare && tns emulate ios",
+		"start.android": "npm run prepare && tns emulate android",
 		"prepare.windows": "xcopy /E /I /Y \"../src/assets\" \"app/assets\" & xcopy /E /I /Y \"../src/components\" \"app/components\" & xcopy /E /I /Y \"../src/frameworks\" \"app/frameworks\"",
 		"start.ios.windows": "npm run prepare.windows & tns emulate ios",
 		"start.android.windows": "npm run prepare.windows & tns emulate android"
@@ -35,7 +35,7 @@
 		"querystring": "0.2.0",
 		"reflect-metadata": "0.1.2",
 		"rxjs": "5.0.0-beta.2",
-		"tns-core-modules": "^2.0.0-angular-2",
+		"tns-core-modules": "^2.0.0-angular-3",
 		"url": "0.10.3",
 		"zone.js": "0.5.15"
 	},
