@@ -136,6 +136,7 @@ export class SeedConfig {
 
   SYSTEM_BUILDER_CONFIG: any = {
     defaultJSExtensions: true,
+    packageConfigPaths: [join(this.PROJECT_ROOT, 'node_modules', '*', 'package.json')],
     paths: {
       [`${this.TMP_DIR}/*`]: `${this.TMP_DIR}/*`,
       '*': 'node_modules/*'
