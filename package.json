@@ -113,7 +113,7 @@
     "tslint-stylish": "2.1.0-beta",
     "typedoc": "^0.3.12",
     "typescript": "~1.8.9",
-    "typings": "^0.7.9",
+    "typings": "^0.7.12",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "yargs": "^4.2.0"
