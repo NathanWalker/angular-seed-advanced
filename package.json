@@ -48,7 +48,7 @@
     "browser-sync": "^2.11.2",
     "chalk": "^1.1.1",
     "codelyzer": "0.0.12",
-    "colorguard": "^1.0.1",
+    "colorguard": "^1.1.1",
     "connect": "^3.4.1",
     "connect-history-api-fallback": "^1.1.0",
     "connect-livereload": "^0.5.3",
