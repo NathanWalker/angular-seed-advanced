@@ -7,7 +7,7 @@ version: "{build}"
 
 # Test against this version of Node.js
 environment:
-  nodejs_version: "4.1.0"
+  nodejs_version: "5.5.0"
   # https://github.com/DefinitelyTyped/tsd#tsdrc
   # Token has no scope (read-only access to public information)
   TSD_GITHUB_TOKEN: "51b0c1347cfd8c2c90ba0f60db7898171cbb17c8"

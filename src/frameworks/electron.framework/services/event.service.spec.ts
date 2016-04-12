@@ -1,5 +1,6 @@
 import {t} from '../../test.framework/index';
 import {ElectronEventService} from './event.service';
+declare var window: any;
 
 export function main() {
   t.describe('electron.framework: ElectronEventService', () => {
