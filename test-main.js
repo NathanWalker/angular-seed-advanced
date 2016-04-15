@@ -23,7 +23,15 @@ System.config({
   defaultJSExtensions: true,
   paths: {
     'angular2/*': 'node_modules/angular2/*.js',
-    'rxjs/*': 'node_modules/rxjs/*.js'
+    'rxjs/*': 'node_modules/rxjs/*.js',
+    'lodash': 'node_modules/lodash/index.js',
+    'ng2-translate/*': 'node_modules/ng2-translate/*.js',
+    'angulartics2': 'node_modules/angulartics2/index.js',
+    'angulartics2/*': 'node_modules/angulartics2/*.js'
+  },
+  map: {
+    '@ngrx/store': 'node_modules/@ngrx/store/dist/index.js',
+    'ngrx-store-router': 'node_modules/ngrx-store-router/index.js' 
   }
 });
 
@@ -37,7 +45,6 @@ Promise.all([
   var testing = modules[2];
   testing.setBaseTestProviders(providers.TEST_BROWSER_PLATFORM_PROVIDERS,
                        providers.TEST_BROWSER_APPLICATION_PROVIDERS);
-
   browser_adapter.BrowserDomAdapter.makeCurrent();
 }).then(function() {
   return Promise.all(

@@ -32,7 +32,6 @@ build/Release
 
 #IDE configuration files
 .idea
-.vscode
 *.iml
 
 /tools/**/*.js
@@ -43,6 +42,18 @@ lib
 test
 tmp
 
+src/**/*.js
+src/**/*.js.map
+!src/sw.js
+src/nativescript/hooks
+src/nativescript/node_modules
+src/nativescript/platforms
+src/nativescript/**/*.js
+src/nativescript/**/*.js.map
+src/nativescript/*.d.ts
+src/nativescript/app/assets
+src/nativescript/app/components
+src/nativescript/app/frameworks
+desktop
 gulpfile.js
 gulpfile.js.map
-

@@ -1,0 +1,103 @@
+ActionBar {
+  background-color: #106CC8;
+  color:white;
+}
+
+.nav {
+  padding:10;
+}
+
+.nav button {
+  margin:0 20 0 0;
+  color: #777;
+}
+
+.nav button.active {
+  color: #106CC8;
+}
+
+SegmentedBar {
+  color: #106CC8;
+  margin: 0 10 0 10;
+}
+
+.drawer-content {
+  background-color: #053140;
+  color: white;
+  padding-top: 20;
+  width:100%;
+  height:100%;
+}
+.drawer-content label {
+  font-size: 20;
+  margin: 10 0 15 25;
+}
+button {
+  font-size: 18;
+  horizontal-align: center;
+  color: #106CC8;
+}
+TextField {
+  margin: 15 15 0 15;
+}
+.link {
+  border-width: 0;
+  background-color: transparent;
+}
+.pink {
+  color: #FF45F9;
+}
+
+.container {
+  padding:0;
+}
+
+.container-content {
+  padding:10;
+}
+
+.drawerMenuContent {
+    margin:10;
+}
+
+.mainContent{
+    background-color: white;
+}
+
+.drawerContent {
+    background-color: white;
+}
+
+.headerContent {
+    padding:20;
+    background-color: #808080
+}
+
+.heading {
+  margin:10 0 0 0;
+  font-size: 24;
+  color:#106CC8;
+}
+
+.feature-list label {
+  font-size:16;
+  color:#555;
+  margin:0 0 5 0;
+}
+.list-item {
+  padding:5;
+}
+.odd {
+    background-color: #efefef;
+}
+
+.even {
+    background-color: #fff;
+}
+
+.love-tech {
+  font-size:28;
+  font-weight: bold;
+  color: purple;
+  margin:8 0 8 0;
+}

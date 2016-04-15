@@ -28,18 +28,32 @@ module.exports = function(config) {
       'node_modules/reflect-metadata/Reflect.js',
       // beta.7 IE 11 polyfills from https://github.com/angular/angular/issues/7144
       'node_modules/angular2/es6/dev/src/testing/shims_for_IE.js',
-
+      
       { pattern: 'node_modules/angular2/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
+      { pattern: 'node_modules/lodash/**/*.js', included: false, watched: false },
+      { pattern: 'node_modules/ng2-translate/**/*.js', included: false, watched: false },
+      { pattern: 'node_modules/@ngrx/**/*.js', included: false, watched: false },
+      { pattern: 'node_modules/ngrx-store-router/**/*.js', included: false, watched: false },
+      { pattern: 'node_modules/angulartics2/**/*.js', included: false, watched: false },
       { pattern: 'dist/dev/**/*.js', included: false, watched: true },
       { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false }, // PhantomJS2 (and possibly others) might require it
 
+      // suppress annoying 404 warnings for resources, images, etc.      
+      { pattern: 'dist/dev/assets/**/*.svg', watched: false, included: false, served: true },
+      
       'test-main.js'
     ],
+
+    // must go along with above, suppress annoying 404 warnings.   
+    proxies: {
+      '/assets/': '/base/dist/dev/assets/'
+    },  
 
 
     // list of files to exclude
     exclude: [
+      'src/frameworks/nativescript.framework/**/*spec.js',
       'node_modules/angular2/**/*spec.js'
     ],
 

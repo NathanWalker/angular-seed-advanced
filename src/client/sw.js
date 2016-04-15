@@ -1,4 +1,4 @@
-var staticCacheName = 'angular2-seed-v1';
+var staticCacheName = 'angular2-seed-advanced-v1';
 self.addEventListener('activate', function(event) {
   console.log("Activated service worker");
   event.waitUntil(

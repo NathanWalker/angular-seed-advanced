@@ -20,6 +20,10 @@ export class SeedConfig {
   ENABLE_HOT_LOADING   = argv['hot-loader'];
   HOT_LOADER_PORT      = 5578;
 
+  TARGET_MOBILE_HYBRID = false;
+  TARGET_DESKTOP       = false;
+  TARGET_DESKTOP_BUILD = false;
+
   BOOTSTRAP_MODULE     = this.ENABLE_HOT_LOADING ? 'hot_loader_main' : 'main';
 
   APP_TITLE            = 'My Angular2 App';
@@ -45,8 +49,8 @@ export class SeedConfig {
   JS_PROD_SHIMS_BUNDLE = 'shims.js';
   JS_PROD_APP_BUNDLE   = 'app.js';
 
-  VERSION_NPM          = '2.14.2';
-  VERSION_NODE         = '4.0.0';
+  VERSION_NPM          = '3.0.0';
+  VERSION_NODE         = '5.0.0';
 
   CODELYZER_RULES      = customRules();
 
@@ -114,9 +118,9 @@ export class SeedConfig {
 
   // ----------------
   // SystemsJS Configuration.
-  protected SYSTEM_CONFIG_DEV = {
+  protected SYSTEM_CONFIG_DEV: any = {
     defaultJSExtensions: true,
-    packageConfigPaths: [`${this.APP_BASE}node_modules/*/package.json`],
+    // packageConfigPaths: [`${this.APP_BASE}node_modules/*/package.json`],
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
       'angular2/*': `${this.APP_BASE}angular2/*`,
@@ -132,7 +136,7 @@ export class SeedConfig {
 
   SYSTEM_CONFIG = this.SYSTEM_CONFIG_DEV;
 
-  SYSTEM_BUILDER_CONFIG = {
+  SYSTEM_BUILDER_CONFIG: any = {
     defaultJSExtensions: true,
     packageConfigPaths: [join(this.PROJECT_ROOT, 'node_modules', '*', 'package.json')],
     paths: {

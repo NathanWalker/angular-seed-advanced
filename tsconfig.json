@@ -12,11 +12,12 @@
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "noImplicitAny": true,
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
     "noImplicitUseStrict": false,
     "noFallthroughCasesInSwitch": true
   },
   "exclude": [
+    "desktop",
     "node_modules",
     "dist",
     "typings/browser.d.ts",
