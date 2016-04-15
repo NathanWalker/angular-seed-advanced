@@ -66,7 +66,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - configurable provider blocks for easy test setup of common application providers
   - tired of setting up similar providers over and over again for different tests?
   - configure a reusable test provider which can be configured on a case-by-base basis
-  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/frameworks/test.framework/providers/component.ts)
+  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/client/app/frameworks/test.framework/providers/component.ts)
   - watch [video explanation **coming soon**](https://github.com/NathanWalker/angular2-seed-advanced)
 - helpers for end-to-end (e2e, integration) tests
 - convenient shorthand to reduce test setup boilerplate and enhance speed of writing tests
@@ -79,7 +79,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
   - plays nice with `tslint` options like `"no-unused-variable": true` as the api hangs off a plain `Object` instead of globals 
     - what's the value of that you ask? have you ever isolated a test with `iit` or `ddescribe` but didn't import those or vice versa, used `iit` leaving an unused `it` now in your tests? yeah, `tslint` will be all over you :/
     - avoids `unused` variable warnings altogether in tests since you are always using a valid key from the shorthand `Object`
-  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/frameworks/test.framework/shorthand/ng2-jasmine.ts)
+  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/client/app/frameworks/test.framework/shorthand/ng2-jasmine.ts)
   - watch [video explanation **coming soon**](https://github.com/NathanWalker/angular2-seed-advanced)
   
 **Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
@@ -241,7 +241,7 @@ npm start -- --port 8080 --reload-port 4000 --base /my-app/
 1. Download a zip of the seed. *This allows you to manually setup origin/upstream*
 2. `git remote add origin ....your private repo....`
 3. `git remote add upstream https://github.com/NathanWalker/angular2-seed-advanced.git`
-4. Create a new `framework` for your application in `src/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp.framework` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
+4. Create a new `framework` for your application in `src/client/app/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp.framework` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
 5. If you don't want an integration that comes out of box with this seed; for example. let's say you don't want to use i18n. Then just delete the `i18n.framework`, remove `ng2-translate` as dependency root `package.json` and `nativescript/package.json`. Then remove the references to `i18n` throughout.
 6. Remove `src/components` since those are just samples and create a new folder for your components, let's say `src/pages`. It's not absolutely necessary to remove and create a new differently named folder for your components but it might make merging in upstream changes a bit smoother.
 
