@@ -20,13 +20,13 @@ export class NSAppComponent extends AppComponent {
   
   constructor(@Inject(AnalyticsService) public analytics: AnalyticsService, @Inject(LogService) private log: LogService, @Inject(Store) private store: Store<any>, @Inject(ModalNative) private modal: ModalNative) {
     super(analytics);
-    log.o('NSAppCmp ----');
+    log.debug('NSAppCmp ----');
     
     ActionBarUtil.STATUSBAR_STYLE(1);
 
     // example of how to receive router updates from ngrx/store
     // store.select('router').subscribe((router: RouterState) => {
-    //   this.log.o(`Route change: ${router.url}`);
+    //   this.log.debug(`Route change: ${router.url}`);
     //   switch (router.url) {
     //     case '':
     //       // do something on home
@@ -40,7 +40,7 @@ export class NSAppComponent extends AppComponent {
   
   private openMenu() {
     this.modal.showModal(topmost().currentPage, './pages/menu/menu.component', 'Context', () => {
-      this.log.o(`modal closed`);
+      this.log.debug(`modal closed`);
     });
   }
 }

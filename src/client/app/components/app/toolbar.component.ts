@@ -14,6 +14,6 @@ export class ToolbarComponent {
   constructor(private log: LogService) {}
   
   public openLanguages(e: any): void {
-    this.log.o('openLanguages');
+    this.log.debug('openLanguages');
   }
 }

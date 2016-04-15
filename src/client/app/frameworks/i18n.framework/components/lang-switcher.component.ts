@@ -38,7 +38,7 @@ export class LangSwitcherComponent {
     } else if (e && e.target) {
       lang = e.target.value;
     }
-    this.log.o(`Language change: ${lang}`);
+    this.log.debug(`Language change: ${lang}`);
     this.multilang.changeLang(lang);
   }
 }

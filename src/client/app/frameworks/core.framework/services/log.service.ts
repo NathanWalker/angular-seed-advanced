@@ -7,8 +7,8 @@ export class LogService {
 
   constructor(@Inject(forwardRef(() => ConsoleService)) private logger: ConsoleService) {}
   
-  // out
-  public o(msg: string) {
+  // debug (standard output)
+  public debug(msg: string) {
     
     if (CoreConfigService.DEBUG.LEVEL_4) {
       this.logger.log(msg);  
