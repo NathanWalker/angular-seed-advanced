@@ -40,8 +40,8 @@ module.exports = function(config) {
       { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false }, // PhantomJS2 (and possibly others) might require it
 
       // suppress annoying 404 warnings for resources, images, etc.      
-      { pattern: 'dist/dev/assets/**/*.svg', watched: false, included: false, served: true },
-      
+      { pattern: 'dist/dev/assets/**/*', watched: false, included: false, served: true },      
+
       'test-main.js'
     ],
 
@@ -49,7 +49,6 @@ module.exports = function(config) {
     proxies: {
       '/assets/': '/base/dist/dev/assets/'
     },  
-
 
     // list of files to exclude
     exclude: [
