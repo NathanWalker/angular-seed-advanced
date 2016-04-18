@@ -20,8 +20,16 @@ import {AboutComponent} from '../about/about.component';
   changeDetection: ChangeDetectionStrategy.Default // Everything else uses OnPush
 })
 @RouteConfig([
-  { path: '/', component: HomeComponent, as: 'Home' },
-  { path: '/about', component: AboutComponent, as: 'About' }
+  {
+    path: '/',
+    name: 'Home',
+    component: HomeComponent
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: AboutComponent
+  }
 ])
 export class AppComponent {
   constructor(public analytics: AnalyticsService) {
