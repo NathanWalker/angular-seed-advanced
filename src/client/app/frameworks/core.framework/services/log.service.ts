@@ -5,11 +5,10 @@ import {CoreConfigService, ConsoleService} from '../index';
 @Injectable()
 export class LogService {
 
-  constructor(@Inject(forwardRef(() => ConsoleService)) private logger: ConsoleService) {}
+  constructor(@Inject(forwardRef(() => ConsoleService)) public logger: ConsoleService) {}
   
   // debug (standard output)
-  public debug(msg: string) {
-    
+  public debug(msg: string) { 
     if (CoreConfigService.DEBUG.LEVEL_4) {
       this.logger.debug(msg);  
     }
