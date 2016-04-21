@@ -1,4 +1,3 @@
-
 import 'reflect-metadata';
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
@@ -19,7 +18,6 @@ export = () => {
   ];
   let result = gulp.src(src)
     .pipe(plugins.plumber())
-    .pipe(plugins.sourcemaps.init())
     .pipe(plugins.inlineNg2Template({
       base: APP_SRC,
       useRelativePaths: false,
@@ -28,6 +26,5 @@ export = () => {
     .pipe(plugins.typescript(tsProject));
 
   return result.js
-    .pipe(plugins.sourcemaps.write())
     .pipe(gulp.dest(APP_DEST));
 }
