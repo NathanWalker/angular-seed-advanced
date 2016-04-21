@@ -15,10 +15,10 @@ export function main() {
       // ensure statics are in default state
       CoreConfigService.RESET();
       // spy
-      spyOn(console, 'debug');
-      spyOn(console, 'error');
-      spyOn(console, 'warn');
-      spyOn(console, 'info');
+      t.spyOn(console, 'debug');
+      t.spyOn(console, 'error');
+      t.spyOn(console, 'warn');
+      t.spyOn(console, 'info');
     });
     
     t.describe('api', () => {
