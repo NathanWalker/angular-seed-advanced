@@ -9,6 +9,7 @@ export = () => {
   let src = [
     'typings/main.d.ts',
     join(APP_SRC, '**/*.ts'),
+    '!' + join(APP_SRC, 'main.desktop.ts'),
     '!' + join(APP_SRC, '**/*.spec.ts'),
     '!' + join(APP_SRC, '**/*.e2e.ts')
   ];

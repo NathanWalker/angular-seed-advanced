@@ -1,4 +1,5 @@
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 export class StoreMock {
   public dispatch(action: any):void {

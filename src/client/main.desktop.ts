@@ -54,7 +54,7 @@ app.on('ready', () => {
     label: 'Language',
     submenu: []
   };
-  for (let lang of AppConfigService.SUPPORTED_LANGUAGES) {
+  for (var lang of AppConfigService.SUPPORTED_LANGUAGES) {
     let langOption = {
       label: lang.title,
       click:() => {
