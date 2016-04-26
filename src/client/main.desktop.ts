@@ -55,11 +55,12 @@ app.on('ready', () => {
     submenu: []
   };
   for (var lang of AppConfigService.SUPPORTED_LANGUAGES) {
+    let code = lang.code;
     let langOption = {
       label: lang.title,
       click:() => {
-        console.log(`Change lang: ${lang.code}`);
-        mainWindow.webContents.executeJavaScript(`window.dispatchEvent(new CustomEvent('changeLang', {detail: { value: '${lang.code}'} }));`);
+        console.log(`Change lang: ${code}`);
+        mainWindow.webContents.executeJavaScript(`window.dispatchEvent(new CustomEvent('changeLang', {detail: { value: '${code}'} }));`);
       }
     };
     langMenu.submenu.push(langOption);
