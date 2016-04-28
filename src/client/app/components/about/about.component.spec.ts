@@ -15,12 +15,12 @@ export function main() {
     });
     
     t.it('should work',
-      t.injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        return tcb.createAsync(TestComponent)
+      t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+        tcb.createAsync(TestComponent)
           .then((rootTC:any) => {
             let aboutDOMEl = rootTC.debugElement.children[0].nativeElement;
 
-            expect(DOM.querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
+            t.e(DOM.querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
           });
       }));
   });
@@ -28,7 +28,7 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-about></sd-about>',
-  directives: [AboutComponent]
+  directives: [AboutComponent],
+  template: '<sd-about></sd-about>'
 })
 class TestComponent {}

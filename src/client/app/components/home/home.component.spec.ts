@@ -26,29 +26,29 @@ export function main() {
     });
     
     t.it('should work',
-      t.injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        return tcb.createAsync(TestComponent)
-          .then((rootTC) => {
+      t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+        tcb.createAsync(TestComponent)
+          .then((rootTC:any) => {
             rootTC.detectChanges();
 
             let homeInstance = rootTC.debugElement.children[0].componentInstance;
             let homeDOMEl = rootTC.debugElement.children[0].nativeElement;
             // let nameListLen = function () {
-            //   return homeInstance.nameList.names.length;
+            //   return homeInstance.nameListService.names.length;
             // };
 
-            // expect(homeInstance.names).toEqual(jasmine.any(NameListService));
-            // expect(nameListLen()).toEqual(4);
-            expect(DOM.querySelectorAll(homeDOMEl, 'li').length).toEqual(4);
+            // t.e(homeInstance.names).toEqual(jasmine.any(NameListService));
+            // t.e(nameListLen()).toEqual(4);
+            t.e(DOM.querySelectorAll(homeDOMEl, 'li').length).toEqual(4);
 
             homeInstance.newName = 'Minko';
             homeInstance.addName();
             rootTC.detectChanges();
 
-            // expect(nameListLen()).toEqual(5);
-            expect(DOM.querySelectorAll(homeDOMEl, 'li').length).toEqual(5);
+            // t.e(nameListLen()).toEqual(5);
+            t.e(DOM.querySelectorAll(homeDOMEl, 'li').length).toEqual(5);
 
-            expect(DOM.querySelectorAll(homeDOMEl, 'li')[4].textContent).toEqual('Minko');
+            t.e(DOM.querySelectorAll(homeDOMEl, 'li')[4].textContent).toEqual('Minko');
           });
       }));
   });

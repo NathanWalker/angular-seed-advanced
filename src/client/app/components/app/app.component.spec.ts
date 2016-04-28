@@ -19,9 +19,9 @@ export function main() {
     });
     
     t.it('should work',
-      t.injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        return tcb.createAsync(TestComponent)
-          .then(rootTC => {
+      t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+        tcb.createAsync(TestComponent)
+          .then((rootTC:any) => {
             rootTC.detectChanges();
             let appDOMEl = rootTC.debugElement.children[0].nativeElement;
             t.e(DOM.querySelectorAll(appDOMEl, 'sd-app sd-navbar > nav > a')[1].href).toMatch(/\/about/);
@@ -32,7 +32,7 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-app></sd-app>',
-  directives: [AppComponent]
+  directives: [AppComponent],
+  template: '<sd-app></sd-app>'
 })
 class TestComponent {}

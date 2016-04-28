@@ -1,7 +1,7 @@
 // angular
 import {provide, enableProdMode} from 'angular2/core';
 import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
-import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from 'angular2/router';
+import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from 'angular2/platform/common';
 
 // config
 import {CoreConfigService} from './app/frameworks/core.framework/index';
