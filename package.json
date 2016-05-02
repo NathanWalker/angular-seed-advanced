@@ -127,7 +127,7 @@
     "@ngrx/store": "^1.4.0",
     "angular2": "2.0.0-beta.17",
     "angulartics2": "^1.0.10",
-    "es6-module-loader": "^0.17.11",
+    "es6-module-loader": "^0.17.8",
     "es6-promise": "^3.1.2",
     "es6-shim": "0.35.0",
     "lodash": "^4.11.1",
