@@ -1,6 +1,7 @@
 // angular
 import {provide} from 'angular2/core';
-import {Location, Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
+import {Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
+import {Location} from 'angular2/platform/common';
 import {SpyLocation} from 'angular2/src/mock/location_mock';
 import {RootRouter} from 'angular2/src/router/router';
 
