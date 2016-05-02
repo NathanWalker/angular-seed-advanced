@@ -15,5 +15,5 @@
 </form>
 
 <ul>
-  <li *ngFor="#name of nameListService.names | async">{{name}}</li>
+  <li *ngFor="let name of nameListService.names | async">{{name}}</li>
 </ul>
