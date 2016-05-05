@@ -1,5 +1,4 @@
 import {
-  AnyTestFn,
   afterEach,
   beforeEach,
   beforeEachProviders,
@@ -8,7 +7,6 @@ import {
   fdescribe,
   xdescribe,
   expect,
-  FunctionWithParamTokens,
   inject,
   injectAsync,
   iit,
@@ -25,19 +23,19 @@ export interface TestApi {
   describe: Function;
   fdescribe: Function;
   xdescribe: Function;
-  be(fn: FunctionWithParamTokens | AnyTestFn): void;
-  beforeEach(fn: FunctionWithParamTokens | AnyTestFn): void;
+  be(fn: Function): void;
+  beforeEach(fn: Function): void;
   beforeEachProviders(fn: any): void;
   bep(fn: any): void;
   e(actual: any): jasmine.Matchers;
   expect(actual: any): jasmine.Matchers;
   fail(e?: any): void;
-  inject(tokens: any[], fn: Function): FunctionWithParamTokens;
-  injectAsync(tokens: any[], fn: Function): FunctionWithParamTokens;
-  iit(name: string, fn: FunctionWithParamTokens | AnyTestFn, timeOut?: number): void;
-  it(name: string, fn: FunctionWithParamTokens | AnyTestFn, timeOut?: number): void;
-  fit(name: string, fn: FunctionWithParamTokens | AnyTestFn, timeOut?: number): void;
-  xit(name: string, fn: FunctionWithParamTokens | AnyTestFn, timeOut?: number): void;
+  inject(tokens: any[], fn: Function): Function;
+  injectAsync(tokens: any[], fn: Function): Function;
+  iit(name: string, fn: Function, timeOut?: number): void;
+  it(name: string, fn: Function, timeOut?: number): void;
+  fit(name: string, fn: Function, timeOut?: number): void;
+  xit(name: string, fn: Function, timeOut?: number): void;
   pending(reason?: string): void;
   spyOn(object: any, method: string): jasmine.Spy;
 };
