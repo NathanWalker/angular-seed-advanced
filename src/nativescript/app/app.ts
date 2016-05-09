@@ -6,7 +6,7 @@ import {nativeScriptBootstrap} from 'nativescript-angular/application';
 import {NS_ROUTER_PROVIDERS, NS_ROUTER_DIRECTIVES} from 'nativescript-angular/router';
 
 // angular 
-import {provide, enableProdMode} from 'angular2/core';
+import {provide, enableProdMode} from '@angular/core';
 
 // libs
 import {TranslateLoader} from 'ng2-translate/ng2-translate';

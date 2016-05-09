@@ -1,6 +1,6 @@
 import {DecoratorUtils} from './utils';
 
-import {FORM_DIRECTIVES} from 'angular2/common';
+import {FORM_DIRECTIVES} from '@angular/common';
 
 export function FormComponent(metadata: any={}) {
   return function(cls: any) {

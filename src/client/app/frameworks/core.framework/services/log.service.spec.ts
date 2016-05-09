@@ -1,4 +1,4 @@
-import {provide} from 'angular2/core';
+import {provide} from '@angular/core';
 
 import {t} from '../../test.framework/index';
 import {CoreConfigService, ConsoleService, LogService} from '../index';

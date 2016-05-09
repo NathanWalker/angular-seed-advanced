@@ -1,19 +1,18 @@
 import {
   afterEach,
+  async,
   beforeEach,
   beforeEachProviders,
   ddescribe,
   describe,
   fdescribe,
   xdescribe,
-  expect,
   inject,
-  injectAsync,
   iit,
   it,
   fit,
   xit
-} from 'angular2/testing';
+} from '@angular/core/testing';
 
 // intellisense via shorthand
 export interface TestApi {
@@ -23,6 +22,7 @@ export interface TestApi {
   describe: Function;
   fdescribe: Function;
   xdescribe: Function;
+  async(fn: Function): Function;
   be(fn: Function): void;
   beforeEach(fn: Function): void;
   beforeEachProviders(fn: any): void;
@@ -31,7 +31,6 @@ export interface TestApi {
   expect(actual: any): jasmine.Matchers;
   fail(e?: any): void;
   inject(tokens: any[], fn: Function): Function;
-  injectAsync(tokens: any[], fn: Function): Function;
   iit(name: string, fn: Function, timeOut?: number): void;
   it(name: string, fn: Function, timeOut?: number): void;
   fit(name: string, fn: Function, timeOut?: number): void;
@@ -48,6 +47,7 @@ export const Ng2Jasmine: TestApi = {
   describe: describe,
   fdescribe: fdescribe,
   xdescribe: xdescribe,
+  async: async,
   be: beforeEach,  // shorthand beforeEach
   beforeEach: beforeEach,
   beforeEachProviders: beforeEachProviders,
@@ -56,7 +56,6 @@ export const Ng2Jasmine: TestApi = {
   expect: expect,
   fail: fail,
   inject: inject,
-  injectAsync: injectAsync,
   iit: iit,
   it: it,
   fit: fit,

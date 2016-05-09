@@ -1,6 +1,6 @@
-import {TestComponentBuilder} from 'angular2/testing';
-import {Component, provide} from 'angular2/core';
-import {DOM} from 'angular2/src/platform/dom/dom_adapter';
+import {TestComponentBuilder} from '@angular/compiler/testing';
+import {Component, provide} from '@angular/core';
+import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
 import {PlatformDirective} from './platform.directive';
 import {t, WindowMock} from '../../test.framework/index';
@@ -19,7 +19,7 @@ export function main() {
     
     t.bep(() => [TestComponentBuilder, provide(WindowService, { useClass: WindowMock})]);
 
-    t.be(t.injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+    t.be(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
       return tcb
         .createAsync(TestComponent)
         .then(f => rootTC = f);
@@ -29,7 +29,7 @@ export function main() {
     t.it('should add platform class', () => {
       rootTC.detectChanges();
       let compDOMEl = rootTC.debugElement.children[0].nativeElement;
-      expect(DOM.classList(compDOMEl)).toEqual(['web']); 
+      expect(getDOM().classList(compDOMEl)).toEqual(['web']); 
     });
 });
 }

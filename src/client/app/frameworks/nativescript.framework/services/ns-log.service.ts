@@ -2,7 +2,7 @@
  * This is mainly for Android as it does not support console.debug
  * Extend to use console.log instead
  */
-import {Injectable, Inject, forwardRef} from 'angular2/core';
+import {Injectable, Inject, forwardRef} from '@angular/core';
 
 import {CoreConfigService, ConsoleService, LogService} from '../../core.framework/index';
 

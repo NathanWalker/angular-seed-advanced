@@ -1,5 +1,5 @@
 // angular
-import {Inject} from 'angular2/core';
+import {Inject} from '@angular/core';
 
 // nativescript
 import {registerElement} from 'nativescript-angular/element-registry';

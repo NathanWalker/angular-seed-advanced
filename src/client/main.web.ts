@@ -1,7 +1,8 @@
 // angular
-import {provide, enableProdMode} from 'angular2/core';
-import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
-import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from 'angular2/platform/common';
+import {provide, enableProdMode} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
+import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
+import {ELEMENT_PROBE_PROVIDERS} from '@angular/platform-browser';
 
 // config
 import {CoreConfigService} from './app/frameworks/core.framework/index';

@@ -1,6 +1,6 @@
 // angular
-import {ChangeDetectionStrategy} from 'angular2/core';
-import {RouteConfig} from 'angular2/router';
+import {ChangeDetectionStrategy} from '@angular/core';
+import {Routes} from '@angular/router';
 
 // app
 import {NameListService} from '../../frameworks/app.framework/index';
@@ -19,15 +19,13 @@ import {AboutComponent} from '../about/about.component';
   directives: [LangSwitcherComponent, NavbarComponent, ToolbarComponent, PlatformDirective],
   changeDetection: ChangeDetectionStrategy.Default // Everything else uses OnPush
 })
-@RouteConfig([
+@Routes([
   {
     path: '/',
-    name: 'Home',
     component: HomeComponent
   },
   {
     path: '/about',
-    name: 'About',
     component: AboutComponent
   }
 ])

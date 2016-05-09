@@ -1,5 +1,5 @@
 // angular
-import {Directive, ElementRef, Renderer} from 'angular2/core';
+import {Directive, ElementRef, Renderer} from '@angular/core';
 
 // app
 import {WindowService} from '../services/window.service';
