@@ -1,4 +1,5 @@
 import {argv} from 'yargs';
+import {join} from 'path';
 import {SeedConfig} from './seed.config';
 
 export class SeedAdvancedConfig extends SeedConfig {
@@ -40,6 +41,9 @@ export class SeedAdvancedConfig extends SeedConfig {
         '@ngrx/store': `${this.APP_BASE}node_modules/@ngrx/store/index`
       };
     }
+
+    // @ngrx
+    this.SYSTEM_CONFIG.packageConfigPaths.push(`${this.APP_BASE}node_modules/@ngrx/*/package.json`);
 
     this.SYSTEM_CONFIG.paths[this.BOOTSTRAP_MODULE] = `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`;
     this.SYSTEM_CONFIG.paths['angulartics2'] = `${this.APP_BASE}node_modules/angulartics2/index`;
