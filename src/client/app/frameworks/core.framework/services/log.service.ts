@@ -1,4 +1,4 @@
-import {Injectable, Inject, forwardRef} from 'angular2/core';
+import {Injectable, Inject, forwardRef} from '@angular/core';
 
 import {CoreConfigService, ConsoleService} from '../index';
 

@@ -1,6 +1,6 @@
-import {TestComponentBuilder} from 'angular2/testing';
-import {Component} from 'angular2/core';
-import {DOM} from 'angular2/src/platform/dom/dom_adapter';
+import {TestComponentBuilder} from '@angular/compiler/testing';
+import {Component} from '@angular/core';
+import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
 // libs 
 import {provideStore} from '@ngrx/store';
@@ -39,16 +39,16 @@ export function main() {
 
             // t.e(homeInstance.names).toEqual(jasmine.any(NameListService));
             // t.e(nameListLen()).toEqual(4);
-            t.e(DOM.querySelectorAll(homeDOMEl, 'li').length).toEqual(4);
+            t.e(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(4);
 
             homeInstance.newName = 'Minko';
             homeInstance.addName();
             rootTC.detectChanges();
 
             // t.e(nameListLen()).toEqual(5);
-            t.e(DOM.querySelectorAll(homeDOMEl, 'li').length).toEqual(5);
+            t.e(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(5);
 
-            t.e(DOM.querySelectorAll(homeDOMEl, 'li')[4].textContent).toEqual('Minko');
+            t.e(getDOM().querySelectorAll(homeDOMEl, 'li')[4].textContent).toEqual('Minko');
           });
       }));
   });

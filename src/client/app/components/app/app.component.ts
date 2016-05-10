@@ -1,10 +1,10 @@
 // angular
-import {ChangeDetectionStrategy} from 'angular2/core';
-import {RouteConfig} from 'angular2/router';
+import {ChangeDetectionStrategy} from '@angular/core';
+import {RouteConfig} from '@angular/router-deprecated';
 
 // app
 import {NameListService} from '../../frameworks/app.framework/index';
-import {AnalyticsService} from '../../frameworks/analytics.framework/index';
+// import {AnalyticsService} from '../../frameworks/analytics.framework/index';
 import {RouteComponent, PlatformDirective} from '../../frameworks/core.framework/index';
 import {LangSwitcherComponent} from '../../frameworks/i18n.framework/index';
 import {NavbarComponent} from './navbar.component';
@@ -22,17 +22,17 @@ import {AboutComponent} from '../about/about.component';
 @RouteConfig([
   {
     path: '/',
-    name: 'Home',
-    component: HomeComponent
+    component: HomeComponent,
+    name: 'Home'
   },
   {
     path: '/about',
-    name: 'About',
-    component: AboutComponent
+    component: AboutComponent,
+    name: 'About'
   }
 ])
 export class AppComponent {
-  constructor(public analytics: AnalyticsService) {
+  constructor() { //public analytics: AnalyticsService) {
 
   }
 }

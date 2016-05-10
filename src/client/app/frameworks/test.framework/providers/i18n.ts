@@ -1,5 +1,5 @@
 // angular
-import {provide} from 'angular2/core';
+import {provide} from '@angular/core';
 
 // libs
 import {TranslateService, TranslateLoader} from 'ng2-translate/ng2-translate';

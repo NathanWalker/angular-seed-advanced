@@ -1,6 +1,6 @@
-import {TestComponentBuilder} from 'angular2/testing';
-import {Component} from 'angular2/core';
-import {DOM} from 'angular2/src/platform/dom/dom_adapter';
+import {TestComponentBuilder} from '@angular/compiler/testing';
+import {Component} from '@angular/core';
+import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
 import {t, TEST_COMPONENT_PROVIDERS} from '../../frameworks/test.framework/index';
 import {AppComponent} from './app.component';
@@ -24,7 +24,7 @@ export function main() {
           .then((rootTC:any) => {
             rootTC.detectChanges();
             let appDOMEl = rootTC.debugElement.children[0].nativeElement;
-            t.e(DOM.querySelectorAll(appDOMEl, 'sd-app sd-navbar > nav > a')[1].href).toMatch(/\/about/);
+            t.e(getDOM().querySelectorAll(appDOMEl, 'sd-app sd-navbar > nav > a')[1].href).toMatch(/\/about/);
           });
       }));
   });

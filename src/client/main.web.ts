@@ -1,7 +1,8 @@
 // angular
-import {provide, enableProdMode} from 'angular2/core';
-import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
-import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from 'angular2/platform/common';
+import {provide, enableProdMode} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
+import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
+import {ELEMENT_PROBE_PROVIDERS} from '@angular/platform-browser';
 
 // config
 import {CoreConfigService} from './app/frameworks/core.framework/index';
@@ -10,7 +11,7 @@ CoreConfigService.DEBUG.LEVEL_4 = true;
 
 // app
 import {WindowService, ConsoleService, CORE_PROVIDERS} from './app/frameworks/core.framework/index';
-import {ANALYTICS_PROVIDERS} from './app/frameworks/analytics.framework/index';
+// import {ANALYTICS_PROVIDERS} from './app/frameworks/analytics.framework/index';
 import {MultilingualService} from './app/frameworks/i18n.framework/index';
 import {APP_PROVIDERS, AppConfigService} from './app/frameworks/app.framework/index';
 import {AppComponent} from './app/components/app/app.component';
@@ -30,7 +31,7 @@ let BOOTSTRAP_PROVIDERS: any[] = [
   provide(WindowService, { useValue: window }),
   provide(ConsoleService, { useValue: console }),
   CORE_PROVIDERS,
-  ANALYTICS_PROVIDERS,
+  // ANALYTICS_PROVIDERS, // tmp disabled until upgraded to rc.1
   APP_PROVIDERS
 ];
 

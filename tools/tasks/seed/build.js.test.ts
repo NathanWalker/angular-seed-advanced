@@ -1,10 +1,10 @@
 import 'reflect-metadata';
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
-import {join} from 'path';
-import {BOOTSTRAP_MODULE, APP_SRC, APP_DEST, TOOLS_DIR} from '../../config';
-import {makeTsProject} from '../../utils';
-import {ViewBrokerService} from '../../../src/client/app/frameworks/core.framework/services/view-broker.service';
+import { join } from 'path';
+import { BOOTSTRAP_MODULE, APP_SRC, APP_DEST, TOOLS_DIR } from '../../config';
+import { makeTsProject } from '../../utils';
+import { ViewBrokerService } from '../../../src/client/app/frameworks/core.framework/services/view-broker.service';
 const plugins = <any>gulpLoadPlugins();
 
 export = () => {

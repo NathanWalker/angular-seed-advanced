@@ -1,6 +1,6 @@
 // angular
-import {provide} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {provide} from '@angular/core';
+import {Http} from '@angular/http';
 
 // libs
 import {TranslateLoader, TranslateStaticLoader, TranslateService} from 'ng2-translate/ng2-translate';

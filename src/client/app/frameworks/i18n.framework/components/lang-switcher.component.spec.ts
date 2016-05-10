@@ -1,6 +1,6 @@
-import {TestComponentBuilder} from 'angular2/testing';
-import {Component} from 'angular2/core';
-import {DOM} from 'angular2/src/platform/dom/dom_adapter';
+import {TestComponentBuilder} from '@angular/compiler/testing';
+import {Component} from '@angular/core';
+import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
 import {t, TEST_COMPONENT_PROVIDERS, TEST_MULTILINGUAL_RESET} from '../../test.framework/index';
 import {ILang} from '../../core.framework/index';
@@ -20,13 +20,13 @@ export function main() {
     t.bep(() => TEST_COMPONENT_PROVIDERS({http: true, state: true, router: { primary: TestComponent }}));
     
     t.it('should work',
-      t.injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+      t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         return tcb.createAsync(TestComponent)
           .then(rootTC => {
             rootTC.detectChanges();
             let appDOMEl = rootTC.debugElement.children[0].nativeElement;
-            t.e(DOM.querySelectorAll(appDOMEl, 'form > select option').length).toBe(1);
-            t.e(DOM.querySelectorAll(appDOMEl, 'form > select option')[0].value).toBe('en');
+            t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option').length).toBe(1);
+            t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[0].value).toBe('en');
           });
       }));
   });
@@ -36,17 +36,17 @@ export function main() {
     t.bep(() => TEST_COMPONENT_PROVIDERS({http: true, state: true, router: { primary: TestComponent }}));
     
     t.it('should work',
-      t.injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+      t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         return tcb.createAsync(TestComponent)
           .then(rootTC => {
             rootTC.detectChanges();
             let appDOMEl = rootTC.debugElement.children[0].nativeElement;
-            t.e(DOM.querySelectorAll(appDOMEl, 'form > select option').length).toBe(5);
-            t.e(DOM.querySelectorAll(appDOMEl, 'form > select option')[0].value).toBe('en');
-            t.e(DOM.querySelectorAll(appDOMEl, 'form > select option')[1].value).toBe('es');
-            t.e(DOM.querySelectorAll(appDOMEl, 'form > select option')[2].value).toBe('fr');
-            t.e(DOM.querySelectorAll(appDOMEl, 'form > select option')[3].value).toBe('ru');
-            t.e(DOM.querySelectorAll(appDOMEl, 'form > select option')[4].value).toBe('bg');
+            t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option').length).toBe(5);
+            t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[0].value).toBe('en');
+            t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[1].value).toBe('es');
+            t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[2].value).toBe('fr');
+            t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[3].value).toBe('ru');
+            t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[4].value).toBe('bg');
           });
       }));
 
