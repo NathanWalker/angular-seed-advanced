@@ -29,4 +29,4 @@ export = () => {
       experimentalDecorators: true,
       version: true
     }));
-}
+};
