@@ -5,15 +5,15 @@
 	"nativescript": {
 		"id": "com.yourdomain.appname",
 		"tns-ios": {
-			"version": "1.7.0"
+			"version": "2.0.0"
 		},
 		"tns-android": {
 			"version": "1.7.1"
 		}
 	},
 	"scripts": {
-    "clean": "npm run cleanprep && rm -rf platforms node_modules",
-    "cleanprep": "rm -rf app/frameworks app/components app/assets",
+		"clean": "npm run cleanprep && rm -rf platforms node_modules",
+		"cleanprep": "rm -rf app/frameworks app/components app/assets",
 		"prepare": "npm run cleanprep && cp -R ../client/assets app/ && cp -R ../client/app/components app/ && cp -R ../client/app/frameworks app/ && rm -rf app/frameworks/test.framework && rm -rf app/components/**/*.e2e.* && rm -rf app/components/**/*.spec.* && rm -rf app/frameworks/**/**/*.spec.* && rm -rf app/frameworks/**/**/**/*.spec.*",
 		"start.ios": "npm run prepare && tns emulate ios",
 		"start.android": "npm run prepare && tns emulate android",
@@ -22,7 +22,7 @@
 		"start.android.windows": "npm run prepare.windows & tns emulate android"
 	},
 	"dependencies": {
-		"@ngrx/store": "^1.3.2",
+		"@ngrx/store": "1.3.3",
 		"angular2": "2.0.0-beta.14",
 		"angulartics2": "1.0.8",
 		"es6-promise": "^3.0.2",
