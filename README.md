@@ -168,11 +168,7 @@ npm run start.ios   // iOS simulator
 npm run start.android   // Android emulator*
 ```
 
-<<<<<<< HEAD
 * Windows users:
-=======
-`angular2-seed` supports progressive web apps with [angular/mobile-toolkit](https://github.com/angular/mobile-toolkit).
->>>>>>> upstream/master
 
 ```
 npm run start.ios.windows   // iOS simulator
