@@ -1,10 +1,10 @@
 // angular
 import {ChangeDetectionStrategy} from '@angular/core';
-import {Routes} from '@angular/router';
+import {RouteConfig} from '@angular/router-deprecated';
 
 // app
 import {NameListService} from '../../frameworks/app.framework/index';
-import {AnalyticsService} from '../../frameworks/analytics.framework/index';
+// import {AnalyticsService} from '../../frameworks/analytics.framework/index';
 import {RouteComponent, PlatformDirective} from '../../frameworks/core.framework/index';
 import {LangSwitcherComponent} from '../../frameworks/i18n.framework/index';
 import {NavbarComponent} from './navbar.component';
@@ -19,18 +19,20 @@ import {AboutComponent} from '../about/about.component';
   directives: [LangSwitcherComponent, NavbarComponent, ToolbarComponent, PlatformDirective],
   changeDetection: ChangeDetectionStrategy.Default // Everything else uses OnPush
 })
-@Routes([
+@RouteConfig([
   {
     path: '/',
-    component: HomeComponent
+    component: HomeComponent,
+    name: 'Home'
   },
   {
     path: '/about',
-    component: AboutComponent
+    component: AboutComponent,
+    name: 'About'
   }
 ])
 export class AppComponent {
-  constructor(public analytics: AnalyticsService) {
+  constructor() { //public analytics: AnalyticsService) {
 
   }
 }

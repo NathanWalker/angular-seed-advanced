@@ -1,6 +1,6 @@
 // angular
 import {HTTP_PROVIDERS} from '@angular/http';
-import {ROUTER_PROVIDERS} from '@angular/router';
+import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
 
 // app
 import {LogService} from './services/log.service';
