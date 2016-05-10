@@ -12,14 +12,16 @@ import {RouterState} from 'ngrx-store-router';
 // app
 import {AppComponent} from '../../components/app/app.component';
 import {LogService} from '../../frameworks/core.framework/index';
-import {AnalyticsService} from '../../frameworks/analytics.framework/index';
+// import {AnalyticsService} from '../../frameworks/analytics.framework/index';
 import {ModalNative} from '../../shared/core/services/modal-native.service';
 import {ActionBarUtil} from '../../shared/core/utils/actionbar.util';
 
 export class NSAppComponent extends AppComponent {
   
-  constructor(@Inject(AnalyticsService) public analytics: AnalyticsService, @Inject(LogService) private log: LogService, @Inject(Store) private store: Store<any>, @Inject(ModalNative) private modal: ModalNative) {
-    super(analytics);
+  // constructor( @Inject(AnalyticsService) public analytics: AnalyticsService, @Inject(LogService) private log: LogService, @Inject(Store) private store: Store<any>, @Inject(ModalNative) private modal: ModalNative) {
+  constructor(@Inject(LogService) private log: LogService, @Inject(Store) private store: Store<any>, @Inject(ModalNative) private modal: ModalNative) {
+    // super(analytics);
+    super();
     log.debug('NSAppCmp ----');
     
     ActionBarUtil.STATUSBAR_STYLE(1);
