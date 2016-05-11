@@ -3,7 +3,7 @@ import {t, selectDropdownByValue} from '../../frameworks/test.framework/index';
 t.describe('Home', function() {
 
   t.be(function() {
-    browser.get('');
+    browser.get('/');
   });
 
   t.it('should have correct h2', function() {

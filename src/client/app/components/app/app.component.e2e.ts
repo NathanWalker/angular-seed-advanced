@@ -3,7 +3,7 @@ import {t} from '../../frameworks/test.framework/index';
 t.describe('App', function() {
 
   t.be(function() {
-    browser.get('');
+    browser.get('/');
   });
 
   t.it('should have a title', function() {
