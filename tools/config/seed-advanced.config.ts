@@ -1,5 +1,6 @@
 import {argv} from 'yargs';
 import {SeedConfig} from './seed.config';
+import {angularPackages} from '../utils/project/angular-packages';
 
 export class SeedAdvancedConfig extends SeedConfig {
 
@@ -31,6 +32,23 @@ export class SeedAdvancedConfig extends SeedConfig {
     if (this.TARGET_DESKTOP) {
       // desktop configuration
       this.APP_BASE = ''; // paths must remain relative
+
+      // reset system config with new APP_BASE      
+      this.SYSTEM_CONFIG = {
+        defaultJSExtensions: true,
+        packageConfigPaths: [
+          `${this.APP_BASE}node_modules/*/package.json`,
+          `${this.APP_BASE}node_modules/**/package.json`,
+          `${this.APP_BASE}node_modules/@angular/*/package.json`
+        ],
+        paths: {
+          [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
+          'rxjs/*': `${this.APP_BASE}rxjs/*`,
+          'app/*': `/app/*`,
+          '*': `${this.APP_BASE}node_modules/*`
+        },
+        packages: angularPackages()
+      };
       
       this.SYSTEM_CONFIG.paths['ng2-translate/*'] = `${this.APP_BASE}node_modules/ng2-translate/*`;
       this.SYSTEM_CONFIG.paths['@ngrx/store'] = `${this.APP_BASE}node_modules/@ngrx/store/index`;
