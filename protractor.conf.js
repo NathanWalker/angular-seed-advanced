@@ -29,6 +29,7 @@ const config = {
   onPrepare: function() {
     // needed for custom class decorators
     require("reflect-metadata");
+    require("zone.js/dist/zone-node");
 
     const SpecReporter = require('jasmine-spec-reporter');
     // add jasmine spec reporter
