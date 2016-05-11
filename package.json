@@ -1,11 +1,7 @@
 {
   "name": "angular2-seed-advanced",
   "version": "0.0.0",
-<<<<<<< HEAD
   "description": "Advanced seed for Angular 2 apps",
-=======
-  "description": "Modular seed project for Angular 2 apps with fast, statically typed build",
->>>>>>> upstream/master
   "repository": {
     "url": "https://github.com/NathanWalker/angular2-seed-advanced"
   },
