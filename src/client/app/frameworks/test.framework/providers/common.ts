@@ -6,7 +6,7 @@ import {Store} from '@ngrx/store';
 
 // app
 import {WindowService, ConsoleService, LogService} from '../../core.framework/index';
-// import {ANALYTICS_PROVIDERS} from '../../analytics.framework/index';
+import {ANALYTICS_PROVIDERS} from '../../analytics.framework/index';
 
 // mocks
 import {WindowMock} from '../mocks/window.mock';
@@ -20,8 +20,8 @@ export function TEST_COMMON_PROVIDERS(options?: any): any[] {
   let providers = [
     provide(ConsoleService, { useValue: console }),
     provide(WindowService, { useClass: (options && options.Window) || WindowMock }),
-    LogService
-    // ANALYTICS_PROVIDERS
+    LogService,
+    ANALYTICS_PROVIDERS
   ];
 
   if (options) {
