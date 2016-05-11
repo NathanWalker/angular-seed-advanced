@@ -1,5 +1,7 @@
 import {t} from '../../frameworks/test.framework/index';
 
+declare var browser: any, element: any, by: any;
+
 t.describe('About', function() {
 
   t.be(function () {

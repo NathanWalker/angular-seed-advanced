@@ -1,4 +1,4 @@
-import {t} from '../../../client/app/frameworks/test.framework/index';
+import {t} from '../app/frameworks/test.framework/index';
 import {NativeScriptConfig} from './nativescript-config';
 
 export function main() {

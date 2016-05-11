@@ -1,3 +1,5 @@
+declare var browser: any, element: any, by: any;
+
 /**
 * Usage: selectDropdownByNumber ( selector, index)
 * selector : select element
