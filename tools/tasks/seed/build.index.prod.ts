@@ -2,17 +2,19 @@ import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { join, sep, normalize } from 'path';
 import * as slash from 'slash';
-import { templateLocals } from '../../utils';
+
 import {
   APP_BASE,
-  APP_SRC,
   APP_DEST,
+  APP_SRC,
   CSS_DEST,
-  JS_DEST,
   CSS_PROD_BUNDLE,
+  JS_DEST,
   JS_PROD_APP_BUNDLE,
   JS_PROD_SHIMS_BUNDLE
 } from '../../config';
+import { templateLocals } from '../../utils';
+
 const plugins = <any>gulpLoadPlugins();
 
 export = () => {

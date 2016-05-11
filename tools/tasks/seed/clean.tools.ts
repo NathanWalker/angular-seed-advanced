@@ -1,8 +1,9 @@
-import * as util from 'gulp-util';
 import * as chalk from 'chalk';
+import { lstatSync, readdirSync } from 'fs';
+import * as util from 'gulp-util';
 import * as rimraf from 'rimraf';
-import { readdirSync, lstatSync } from 'fs';
 import { join } from 'path';
+
 import { TOOLS_DIR } from '../../config';
 
 export = (done: any) => {

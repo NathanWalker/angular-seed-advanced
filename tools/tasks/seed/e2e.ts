@@ -1,5 +1,5 @@
-import * as gulp from 'gulp';
 import * as express from 'express';
+import * as gulp from 'gulp';
 import { protractor } from 'gulp-protractor';
 
 class Protractor {
@@ -19,7 +19,7 @@ export = (done: any) => {
     .server(5555, './dist/prod')
     .then((server: any) => {
       gulp
-        .src('./dist/dev/**/*.e2e.js')
+        .src('./dist/dev/**/*.e2e-spec.js')
         .pipe(protractor({ configFile: 'protractor.conf.js' }))
         .on('error', (error: string) => { throw error; })
         .on('end', () => { server.close(done); });
