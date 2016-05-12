@@ -11,7 +11,7 @@ export function main() {
     });
     t.it('TEMPLATE_URL: mobile_native', () => {
       CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.MOBILE_NATIVE;
-      t.e(ViewBrokerService.TEMPLATE_URL('./app/components/home/home.html')).toBe('./frameworks/nativescript.framework/app/components/home/home.html');
+      t.e(ViewBrokerService.TEMPLATE_URL('./app/components/home/home.html')).toBe('./app/components/home/home.tns.html');
     });
     t.it('TEMPLATE_URL: mobile_hybrid', () => {
       CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.MOBILE_HYBRID;

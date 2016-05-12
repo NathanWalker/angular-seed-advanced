@@ -10,8 +10,8 @@ import {Store} from '@ngrx/store';
 import {RouterState} from 'ngrx-store-router';
 
 // app
-import {AppComponent} from '../../components/app/app.component';
-import {LogService} from '../../frameworks/core.framework/index';
+import {AppComponent} from '../../app/components/app/app.component';
+import {LogService} from '../../app/frameworks/core.framework/index';
 // import {AnalyticsService} from '../../frameworks/analytics.framework/index';
 import {ModalNative} from '../../shared/core/services/modal-native.service';
 import {ActionBarUtil} from '../../shared/core/utils/actionbar.util';

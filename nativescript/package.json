@@ -12,26 +12,19 @@
 		}
 	},
 	"scripts": {
-		"clean": "npm run cleanprep && rm -rf platforms node_modules",
-		"cleanprep": "rm -rf app/frameworks app/components app/assets",
-		"prepare": "npm run cleanprep && cp -R ../client/assets app/ && cp -R ../client/app/components app/ && cp -R ../client/app/frameworks app/ && rm -rf app/frameworks/test.framework && rm -rf app/components/**/*.e2e.* && rm -rf app/components/**/*.spec.* && rm -rf app/frameworks/**/**/*.spec.* && rm -rf app/frameworks/**/**/**/*.spec.*",
-		"start.ios": "npm run prepare && tns emulate ios",
-		"start.android": "npm run prepare && tns emulate android",
-		"prepare.windows": "xcopy /E /I /Y \"../client/assets\" \"app/assets\" & xcopy /E /I /Y \"../client/app/components\" \"app/components\" & xcopy /E /I /Y \"../client/app/frameworks\" \"app/frameworks\"",
-		"start.ios.windows": "npm run prepare.windows & tns emulate ios",
-		"start.android.windows": "npm run prepare.windows & tns emulate android"
+		"clean": "rm -rf platforms node_modules"
 	},
 	"dependencies": {
 		"@ngrx/store": "^1.5.0",
 		"@angular/common": "2.0.0-rc.1",
 		"@angular/compiler": "2.0.0-rc.1",
 		"@angular/core": "2.0.0-rc.1",
-    "@angular/http": "2.0.0-rc.1",
+		"@angular/http": "2.0.0-rc.1",
 		"@angular/router-deprecated": "2.0.0-rc.1",
 		"@angular/platform-browser": "2.0.0-rc.1",
 		"@angular/platform-browser-dynamic": "2.0.0-rc.1",
 		"@angular/platform-server": "2.0.0-rc.1",
-		"angulartics2": "1.0.10",
+		"angulartics2": "^1.0.11",
 		"es6-promise": "^3.0.2",
 		"es6-shim": "^0.35.0",
 		"lodash": "^4.12.0",

@@ -1,10 +1,11 @@
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { join } from 'path';
-import { APP_SRC, APP_DEST, TOOLS_DIR } from '../../config';
-import { templateLocals, makeTsProject } from '../../utils';
-const plugins = <any>gulpLoadPlugins();
 
+import { APP_DEST, APP_SRC, TOOLS_DIR } from '../../config';
+import { makeTsProject, templateLocals } from '../../utils';
+
+const plugins = <any>gulpLoadPlugins();
 
 export = () => {
   let tsProject = makeTsProject();

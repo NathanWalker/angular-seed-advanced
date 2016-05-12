@@ -1,9 +1,13 @@
 // Place your settings in this file to overwrite default and user settings.
 {
   "files.exclude": {
-		"**/nativescript/platforms": true
+		"**/nativescript/platforms": true,
+    "src/client/**/*.js": true,
+    "nativescript/app/**/*.js": true
 	},
   "search.exclude": {
-		"**/nativescript/platforms": true
+		"**/nativescript/platforms": true,
+    "src/client/**/*.js": true,
+    "nativescript/app/**/*.js": true
 	}
 }
