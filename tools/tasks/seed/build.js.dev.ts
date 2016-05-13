@@ -1,9 +1,11 @@
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import * as merge from 'merge-stream';
-import {join} from 'path';
-import {APP_SRC, APP_DEST, TOOLS_DIR} from '../../config';
-import {templateLocals, makeTsProject} from '../../utils';
+import { join } from 'path';
+
+import { APP_DEST, APP_SRC, TOOLS_DIR } from '../../config';
+import { makeTsProject, templateLocals } from '../../utils';
+
 const plugins = <any>gulpLoadPlugins();
 
 export = () => {
@@ -15,7 +17,7 @@ export = () => {
   let src = [
     join(APP_SRC, '**/*.ts'),
     '!' + join(APP_SRC, '**/*.spec.ts'),
-    '!' + join(APP_SRC, '**/*.e2e.ts')
+    '!' + join(APP_SRC, '**/*.e2e-spec.ts')
   ];
 
   let projectFiles = gulp.src(src).pipe(plugins.cached());
@@ -23,7 +25,6 @@ export = () => {
     .pipe(plugins.plumber())
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.typescript(tsProject));
-
 
   return result.js
     .pipe(plugins.sourcemaps.write())

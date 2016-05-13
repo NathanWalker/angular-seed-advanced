@@ -18,7 +18,7 @@ export function main() {
       ];
     });
 
-    t.it('names should be Observable', t.injectAsync([NameListService], (nameList: NameListService) => {
+    t.it('names should be Observable', t.inject([NameListService], (nameList: NameListService) => {
       let names = nameList.names;
       t.e(names).toEqual(jasmine.any(Observable));
       return new Promise((resolve) => {
@@ -30,7 +30,7 @@ export function main() {
       
     }));
 
-    t.it('add should work', t.injectAsync([NameListService], (nameList: NameListService) => {
+    t.it('add should work', t.inject([NameListService], (nameList: NameListService) => {
       nameList.add('test');
       return new Promise((resolve) => {
         nameList.names.subscribe((names: Array<string>) => {

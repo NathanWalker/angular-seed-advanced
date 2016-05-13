@@ -1,6 +1,6 @@
 // angular
-import {provide} from 'angular2/core';
-import {HTTP_PROVIDERS} from 'angular2/http';
+import {provide} from '@angular/core';
+import {HTTP_PROVIDERS} from '@angular/http';
 
 // libs
 import {Angulartics2} from 'angulartics2';

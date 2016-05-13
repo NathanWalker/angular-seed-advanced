@@ -1,5 +1,6 @@
 import * as gulp from 'gulp';
-import {APP_DEST} from '../../config';
+
+import { APP_DEST } from '../../config';
 
 export = () => {
   return require('angular2-service-worker')
@@ -14,4 +15,3 @@ export = () => {
     })
     .pipe(gulp.dest(APP_DEST));
 };
-

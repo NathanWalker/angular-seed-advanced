@@ -1,6 +1,7 @@
 import * as gulp from 'gulp';
-import {join} from 'path';
-import {APP_SRC, APP_DEST} from '../../config';
+import { join } from 'path';
+
+import { APP_DEST, APP_SRC } from '../../config';
 
 export = () => {
   let src = [

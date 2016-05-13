@@ -1,5 +1,5 @@
 // angular
-import {Injectable} from 'angular2/core';
+import {Injectable} from '@angular/core';
 
 // libs
 import * as _ from 'lodash';
@@ -25,7 +25,7 @@ const initialState: MultilingualStateI = {
 };
 
 export const MULTILINGUAL_ACTIONS: any = {
-  LANG_CHANGE: '[Multilingual] LANG_CHANGE'
+  LANG_CHANGE: `[${CATEGORY}] LANG_CHANGE`
 };
 
 export const multilingualReducer: Reducer<MultilingualStateI> = (state: MultilingualStateI = initialState, action: Action) => {

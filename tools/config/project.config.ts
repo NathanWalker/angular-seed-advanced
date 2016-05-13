@@ -1,6 +1,6 @@
-import {join} from 'path';
-import {SeedAdvancedConfig} from './seed-advanced.config';
-import {InjectableDependency} from './seed.config.interfaces';
+import { join } from 'path';
+import { SeedAdvancedConfig } from './seed-advanced.config';
+import { InjectableDependency } from './seed.config.interfaces';
 
 export class ProjectConfig extends SeedAdvancedConfig {
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');

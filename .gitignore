@@ -35,6 +35,7 @@ build/Release
 *.iml
 
 /tools/**/*.js
+!/tools/install.js
 dist
 dev
 docs
@@ -45,15 +46,14 @@ tmp
 src/**/*.js
 src/**/*.js.map
 !src/sw.js
-src/nativescript/hooks
-src/nativescript/node_modules
-src/nativescript/platforms
-src/nativescript/**/*.js
-src/nativescript/**/*.js.map
-src/nativescript/*.d.ts
-src/nativescript/app/assets
-src/nativescript/app/components
-src/nativescript/app/frameworks
+nativescript/hooks
+nativescript/node_modules
+nativescript/platforms
+nativescript/**/*.js
+nativescript/**/*.js.map
+nativescript/*.d.ts
+nativescript/app/app
+nativescript/app/assets
 desktop
 gulpfile.js
 gulpfile.js.map

@@ -1,9 +1,11 @@
 import {t} from '../../frameworks/test.framework/index';
 
+declare var browser: any, element: any, by: any;
+
 t.describe('App', function() {
 
   t.be(function() {
-    browser.get('');
+    browser.get('/');
   });
 
   t.it('should have a title', function() {

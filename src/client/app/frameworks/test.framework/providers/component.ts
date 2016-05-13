@@ -1,5 +1,5 @@
 // angular
-import {HTTP_PROVIDERS} from 'angular2/http';
+import {HTTP_PROVIDERS} from '@angular/http';
 
 // app
 import {TEST_COMMON_PROVIDERS} from './common';

@@ -9,7 +9,7 @@
   <Button [text]="'ADD_BTN_TEXT' | translate" (tap)="addName()"></Button>
   
   <ListView [items]="nameListService.names | async" row="1" colSpan="2" height="300">
-    <template #name="item" #odd="odd" #even="even">
+    <template let-name="item" let-odd="odd" let-even="even">
       <StackLayout [class.odd]="odd" [class.even]="even" class="list-item">
         <Label [text]="name"></Label>
       </StackLayout>

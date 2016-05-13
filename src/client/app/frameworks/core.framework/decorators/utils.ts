@@ -1,5 +1,5 @@
 // angular
-import {Component, ChangeDetectionStrategy} from 'angular2/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 
 // libs
 import {TranslatePipe} from 'ng2-translate/ng2-translate';

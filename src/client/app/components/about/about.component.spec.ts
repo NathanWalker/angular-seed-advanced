@@ -1,6 +1,6 @@
-import {TestComponentBuilder} from 'angular2/testing';
-import {Component} from 'angular2/core';
-import {DOM} from 'angular2/src/platform/dom/dom_adapter';
+import {TestComponentBuilder} from '@angular/compiler/testing';
+import {Component} from '@angular/core';
+import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
 import {t, TEST_COMPONENT_PROVIDERS} from '../../frameworks/test.framework/index';
 import {AboutComponent} from './about.component';
@@ -20,7 +20,7 @@ export function main() {
           .then((rootTC:any) => {
             let aboutDOMEl = rootTC.debugElement.children[0].nativeElement;
 
-            t.e(DOM.querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
+            t.e(getDOM().querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
           });
       }));
   });

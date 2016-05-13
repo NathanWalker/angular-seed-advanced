@@ -1,5 +1,5 @@
 // angular
-import {ControlGroup, Control} from 'angular2/common';
+import {ControlGroup, Control} from '@angular/common';
 
 // libs
 import {Store} from '@ngrx/store';
