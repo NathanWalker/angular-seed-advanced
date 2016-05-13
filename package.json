@@ -40,8 +40,8 @@
     "test": "gulp test --color",
     "e2e.ci": "gulp build.prod --color && gulp build.js.e2e --color && gulp e2e --color",
     "tests.all": "npm test && npm run e2e.ci",
-    "webdriver-start": "webdriver-manager start",
-    "webdriver-update": "webdriver-manager update"
+    "webdriver-start": "node_modules/protractor/bin/webdriver-manager start",
+    "webdriver-update": "node_modules/protractor/bin/webdriver-manager update"
   },
   "author": "Minko Gechev <mgechev>",
   "contributors": [
