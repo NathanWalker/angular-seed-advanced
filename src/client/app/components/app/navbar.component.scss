@@ -1,19 +1,25 @@
+@import '../../../css/variables';
+
 :host {
-  border-color: #e1e1e1;
+  border-color: $navbar-host-border;
   border-style: solid;
   border-width: 0 0 1px;
   display: block;
   height: 48px;
-  padding: 0 16px; }
+  padding: 0 16px;
+}
 
 nav a {
-  color: #8f8f8f;
+  color: $navbar-link-color;
   font-size: 14px;
   font-weight: 500;
   line-height: 48px;
   margin-right: 20px;
   text-decoration: none;
-  vertical-align: middle; }
+  vertical-align: middle;
+}
 
 nav a.router-link-active {
-  color: #106cc8; }
+  color: $brand-primary-color;
+}
+

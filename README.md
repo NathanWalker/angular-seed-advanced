@@ -109,6 +109,9 @@ cd angular2-seed-advanced
 
 # install the project's dependencies
 npm install
+# install scss_lint Gem (NOTE: may require sudo. For Mac El Capitan, do gem install -n /usr/local/bin scss_lint)
+
+gem install scss_lint
 # watches your files and uses livereload by default
 npm start
 # api document for the app
