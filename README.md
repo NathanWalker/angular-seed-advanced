@@ -98,6 +98,9 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 ```
 npm install -g nativescript
 npm install -g typescript
+
+cd nativescript
+tns install sass
 ```
 
 ## Usage
