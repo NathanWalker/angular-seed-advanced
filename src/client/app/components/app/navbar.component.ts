@@ -1,6 +1,7 @@
 // libs
 import {Store} from '@ngrx/store';
 import {RouterState} from 'ngrx-store-router';
+import {UIROUTER_DIRECTIVES} from "ui-router-ng2";
 
 // app
 import {AppStoreI} from '../../frameworks/app.framework/index';
@@ -8,6 +9,7 @@ import {RouteComponent} from '../../frameworks/core.framework/index';
 
 @RouteComponent({
   selector: 'sd-navbar',
+  directives: [UIROUTER_DIRECTIVES],
   templateUrl: './app/components/app/navbar.component.html',
   styleUrls: ['./app/components/app/navbar.component.css']
 })
