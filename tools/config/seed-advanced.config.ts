@@ -66,13 +66,15 @@ export class SeedAdvancedConfig extends SeedConfig {
     this.SYSTEM_CONFIG.paths['angulartics2'] = `${this.APP_BASE}node_modules/angulartics2/index`;
     this.SYSTEM_CONFIG.paths['angulartics2/*'] = `${this.APP_BASE}node_modules/angulartics2/*`;
     this.SYSTEM_CONFIG.paths['lodash'] = `${this.APP_BASE}node_modules/lodash/index`;
-    this.SYSTEM_CONFIG.paths['ngrx-store-router'] = `${this.APP_BASE}node_modules/ngrx-store-router/index`;    
-    
+    this.SYSTEM_CONFIG.paths['ngrx-store-router'] = `${this.APP_BASE}node_modules/ngrx-store-router/index`;     this.SYSTEM_CONFIG.paths['ui-router-ng2'] = `node_modules/ui-router-ng2/_bundles/ui-router-ng2.js`;
+
+
     // Prod
     delete this.SYSTEM_BUILDER_CONFIG['packageConfigPaths']; // not all libs are distributed the same
     this.SYSTEM_BUILDER_CONFIG.paths['angulartics2'] = `node_modules/angulartics2/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['lodash'] = `node_modules/lodash/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['ngrx-store-router'] = `node_modules/ngrx-store-router/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/store'] = `node_modules/@ngrx/store/index.js`;
+    this.SYSTEM_BUILDER_CONFIG.paths['ui-router-ng2'] = `node_modules/ui-router-ng2/_bundles/ui-router-ng2.js`;
   }
 }
