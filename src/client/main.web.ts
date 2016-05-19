@@ -3,6 +3,8 @@ import {provide, enableProdMode} from '@angular/core';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {ELEMENT_PROBE_PROVIDERS} from '@angular/platform-browser';
+import {PathLocationStrategy, PlatformLocation} from "@angular/common";
+import {BrowserPlatformLocation} from '@angular/platform-browser';
 
 // config
 import {CoreConfigService} from './app/frameworks/core.framework/index';
@@ -15,6 +17,9 @@ import {ANALYTICS_PROVIDERS} from './app/frameworks/analytics.framework/index';
 import {MultilingualService} from './app/frameworks/i18n.framework/index';
 import {APP_PROVIDERS, AppConfigService} from './app/frameworks/app.framework/index';
 import {AppComponent} from './app/components/app/app.component';
+import {trace, UIROUTER_PROVIDERS, UiView, UIRouterConfig, Category, UIROUTER_DIRECTIVES} from "ui-router-ng2";
+import {MyUIRouterConfig} from "./app/router.config";
+
 // custom i18n language support
 MultilingualService.SUPPORTED_LANGUAGES = AppConfigService.SUPPORTED_LANGUAGES;
 
@@ -23,13 +28,17 @@ if ('<%= ENV %>' === 'prod' || '<%= TARGET_DESKTOP_BUILD %>' === 'true') {
   enableProdMode();
 } else {
   ENV_PROVIDERS.push(ELEMENT_PROBE_PROVIDERS);
-} 
+}
 
 let BOOTSTRAP_PROVIDERS: any[] = [
   ENV_PROVIDERS,
   provide(APP_BASE_HREF, { useValue: '<%= APP_BASE %>' }),
   provide(WindowService, { useValue: window }),
   provide(ConsoleService, { useValue: console }),
+  provide(LocationStrategy, { useClass: PathLocationStrategy }),
+  provide(PlatformLocation, { useClass: BrowserPlatformLocation }),
+  provide(UIRouterConfig, { useClass: MyUIRouterConfig }),
+  ...UIROUTER_PROVIDERS,
   CORE_PROVIDERS,
   ANALYTICS_PROVIDERS,
   APP_PROVIDERS
@@ -39,9 +48,11 @@ if ('<%= TARGET_DESKTOP %>' === 'true') {
   CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.DESKTOP;
   // desktop (electron) must use hash
   BOOTSTRAP_PROVIDERS.push(provide(LocationStrategy, {useClass: HashLocationStrategy}));
-}  
+}
 
-bootstrap(AppComponent, BOOTSTRAP_PROVIDERS)
+trace.enable(Category.TRANSITION, Category.VIEWCONFIG);
+
+bootstrap(UiView, BOOTSTRAP_PROVIDERS)
 .catch((err:any) => console.error(err));
 
 // In order to start the Service Worker located at "./worker.js"

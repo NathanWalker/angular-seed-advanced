@@ -53,9 +53,11 @@ export class SeedAdvancedConfig extends SeedConfig {
       this.SYSTEM_CONFIG.paths['ng2-translate/*'] = `${this.APP_BASE}node_modules/ng2-translate/*`;
       this.SYSTEM_CONFIG.paths['@ngrx/store'] = `${this.APP_BASE}node_modules/@ngrx/store/index`;
       this.SYSTEM_CONFIG.paths['reflect-metadata'] = `${this.APP_BASE}node_modules/reflect-metadata/Reflect`;
+      this.SYSTEM_CONFIG.paths['ui-router-ng2'] = `${this.APP_BASE}node_modules/ui-router-ng2/_bundles/ui-router-ng2`;
     } else {
       this.SYSTEM_CONFIG['map'] = {
-        '@ngrx/store': `${this.APP_BASE}node_modules/@ngrx/store/index`
+        '@ngrx/store': `${this.APP_BASE}node_modules/@ngrx/store/index`,
+        'ui-router-ng2': `${this.APP_BASE}node_modules/ui-router-ng2/_bundles/ui-router-ng2`
       };
     }
 
@@ -74,5 +76,6 @@ export class SeedAdvancedConfig extends SeedConfig {
     this.SYSTEM_BUILDER_CONFIG.paths['lodash'] = `node_modules/lodash/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['ngrx-store-router'] = `node_modules/ngrx-store-router/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/store'] = `node_modules/@ngrx/store/index.js`;
+    this.SYSTEM_BUILDER_CONFIG.paths['ui-router-ng2'] = `node_modules/ui-router-ng2/_bundles/ui-router-ng2.js`;
   }
 }
