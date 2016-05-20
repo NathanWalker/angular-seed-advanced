@@ -163,13 +163,6 @@ npm run start.desktop.windows
 ```
 
 #### Develop with livesync
-
-##### prerequisites
-```
-npm install -g electron-prebuilt
-```
-
-##### dev
 ```
 npm run start.livesync.desktop
 ```
