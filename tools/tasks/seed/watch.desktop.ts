@@ -1,7 +1,7 @@
 import * as gulp from 'gulp';
 import * as runSequence from 'run-sequence';
 
-const electron = require('electron-connect').server.create({ "path": "dist/dev" });
+const electron = require('electron-connect').server.create({ 'path': 'dist/dev' });
 
 export = () => {
   electron.start();
