@@ -5,7 +5,6 @@ const electron = require('electron-connect').server.create({ "path": "dist/dev" 
 
 export = () => {
   electron.start();
-  //gulp.watch('./src/**/*', electron.restart);
   gulp.watch(['./src/**/*'], reload);
 };
 
