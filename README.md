@@ -162,6 +162,18 @@ npm run start.desktop
 npm run start.desktop.windows
 ```
 
+#### Develop with livesync
+
+##### prerequisites
+```
+npm install -g electron-prebuilt
+```
+
+##### dev
+```
+npm run start.livesync.desktop
+```
+
 #### Release: Package Electron App for Mac, Windows or Linux
 
 * Mac:
