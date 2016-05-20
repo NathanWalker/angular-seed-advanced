@@ -2,21 +2,12 @@ import {TestComponentBuilder} from '@angular/compiler/testing';
 import {Component} from '@angular/core';
 import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
-import {t, TEST_COMPONENT_PROVIDERS} from '../../frameworks/test.framework/index';
+import {t, TEST_COMPONENT_PROVIDERS, TEST_HTTP_PROVIDERS} from '../../frameworks/test.framework/index';
+import {NameListService} from '../../frameworks/app.framework/index';
 import {AppComponent} from './app.component';
 
 export function main() {
   t.describe('@Component: AppComponent', () => {
-
-    t.bep(() => {
-      return TEST_COMPONENT_PROVIDERS({
-        http: true,
-        router: {
-          primary: AppComponent
-        },
-        state: true
-      });
-    });
     
     t.it('should work',
       t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
@@ -31,6 +22,16 @@ export function main() {
 }
 
 @Component({
+  providers: [
+    TEST_HTTP_PROVIDERS(),
+    NameListService,
+    TEST_COMPONENT_PROVIDERS({
+      state: true,
+      router: {
+        primary: AppComponent
+      }
+    })
+  ],
   selector: 'test-cmp',
   directives: [AppComponent],
   template: '<sd-app></sd-app>'
