@@ -22,7 +22,7 @@
     "gulp": "gulp",
     "karma": "karma",
     "karma.start": "karma start",
-    "postinstall": "typings install && gulp check.versions && npm prune && gulp webdriver && cd nativescript && npm i nativescript-dev-sass --save && cd .. && node tools/install.js",
+    "postinstall": "typings install && gulp check.versions && npm prune && gulp webdriver && node tools/install.js",
     "reinstall": "npm cache clean && npm install",
     "serve.coverage": "remap-istanbul -b src/ -i coverage/coverage-final.json -o coverage -t html && npm run gulp -- serve.coverage --color",
     "serve.dev": "gulp serve.dev --color",
