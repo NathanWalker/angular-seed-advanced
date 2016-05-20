@@ -85,10 +85,6 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
   
 **Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
 
-#### Additional features coming soon...
-- [ ] provider for LocalStorage (abstraction for IndexedDB, WebSQL, localStorage, perhaps a port of localForage)
-- [ ] sophisticated setup for Service Worker
-
 ### Prerequisites
 
 * node v5.x.x or higher and npm 3 or higher.
@@ -137,13 +133,13 @@ Create `.tns.html` NativeScript view files for every web component view file you
 #### Run
 
 ```
-npm run start.ios           // iOS simulator
-npm run start.livesync.ios  // iOS with livesync dev workflow
+iOS:             npm run start.ios
+iOS (livesync):  npm run start.livesync.ios
 
 // or...
 
-npm run start.android           // Android emulator*
-npm run start.livesync.android  // Android with livesync dev workflow
+Android:             npm run start.android
+Android (livesync):  npm run start.livesync.android
 ```
 
 * Requires an image setup via AVD Manager. [Learn more here](http://developer.android.com/intl/zh-tw/tools/devices/managing-avds.html) and [here](https://github.com/NativeScript/nativescript-cli#the-commands).
@@ -152,36 +148,23 @@ npm run start.livesync.android  // Android with livesync dev workflow
 
 #### Develop
 
-* Mac:
 ```
-npm run start.desktop
-```
-
-* Windows:
-```
-npm run start.desktop.windows
+Mac:      npm run start.desktop
+Windows:  npm run start.desktop.windows
 ```
 
 #### Develop with livesync
 ```
-npm run start.livesync.desktop
+Mac:      npm run start.livesync.desktop
+Windows:  npm run start.livesync.desktop.windows
 ```
 
 #### Release: Package Electron App for Mac, Windows or Linux
 
-* Mac:
 ```
-npm run build.desktop.mac
-```
-
-* Windows:
-```
-npm run build.desktop.windows
-```
-
-* Linux:
-```
-npm run build.desktop.linux
+Mac:      npm run build.desktop.mac
+Windows:  npm run build.desktop.windows
+Linux:    npm run build.desktop.linux
 ```
 
 ## Testing

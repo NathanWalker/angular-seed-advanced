@@ -47,7 +47,7 @@ export class NameListService extends Analytics {
   }  
 
   init() {
-    this.http.get(`/assets/data.json`)
+    this.http.get(`assets/data.json`)
       .subscribe((results: string[]) => {
         this.store.dispatch({ type: NAME_LIST_ACTIONS.INIT, payload: results });
       });
