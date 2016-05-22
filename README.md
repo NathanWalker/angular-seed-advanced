@@ -216,13 +216,16 @@ npm start -- --port 8080 --reload-port 4000 --base /my-app/
 
 #### Setup
 
-1. Download a zip of the seed. *This allows you to manually setup origin/upstream*
+1. Download a zip of the seed. (**Do not fork**)
 2. `npm run setup` - This will initialize `git` as well as setup `upstream` properly.
 3. `git remote add origin ...your private repo...`
-4. `npm run merge` - This will go ahead and setup the first merge (Important)
-5. Create a new `framework` for your application in `src/client/app/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp.framework` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
-6. If you don't want an integration that comes out of box with this seed; for example. let's say you don't want to use i18n. Then just delete the `i18n.framework`, remove `ng2-translate` as dependency root `package.json` and `nativescript/package.json`. Then remove the references to `i18n` throughout.
-7. Remove `src/components` since those are just samples and create a new folder for your components, let's say `src/pages`. It's not absolutely necessary to remove and create a new differently named folder for your components but it might make merging in upstream changes a bit smoother.
+4. `git add .; git commit -m'setup'` - To setup the first commit
+5. `npm run merge` - This will fetch upstream and run the first merge (*Important)
+  * IMPORTANT: You will see a wall of Conflicts after doing above. This is normal. There actually will not be any conflicts as it's just reporting every single file which both sides (`upstream` and your first commit) added.
+6. `git add .; git commit -m'ready'`. Yes, you will be committing all those conflicts, which actually are not a problem in this 1 time case.
+7. Now you have `git` setup and ready to develop your application as well as merge in upstream changes in the future.
+8. Create a new `framework` for your application in `src/client/app/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp.framework` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
+9. If you don't want an integration that comes out of box with this seed; for example. let's say you don't want to use i18n. Then just delete the `i18n.framework`, remove `ng2-translate` as dependency root `package.json` and `nativescript/package.json`. Then remove any references to `i18n` throughout.
 
 You can read more about [configuring a remote for a fork here](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
 
@@ -230,7 +233,7 @@ You can read more about [configuring a remote for a fork here](https://help.gith
 
 1. `npm run merge.preview` - This will fetch `upstream` and show you how the merge would look
 2. `npm run merge` - This will actually do the merge
-3. Handle any conflicts to get latest upstream into your application. If you removed `src/components` as mentioned above, they may show back up when merging in latest upstream. You can just remove the folder again.
+3. Handle any conflicts to get latest upstream into your application.
 4. Continue building your app.
 
 You can read more about [syncing a fork here](https://help.github.com/articles/syncing-a-fork/).
