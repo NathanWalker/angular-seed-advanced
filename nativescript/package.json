@@ -42,8 +42,8 @@
 		"zone.js": "^0.6.12"
 	},
 	"devDependencies": {
-		"babel-traverse": "6.8.0",
-		"babel-types": "6.8.1",
+		"babel-traverse": "6.9.0",
+		"babel-types": "6.9.0",
 		"babylon": "6.8.0",
 		"filewalker": "0.1.2",
 		"lazy": "1.0.11",

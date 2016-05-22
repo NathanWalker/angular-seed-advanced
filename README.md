@@ -133,13 +133,15 @@ Create `.tns.html` NativeScript view files for every web component view file you
 #### Run
 
 ```
-iOS:             npm run start.ios
-iOS (livesync):  npm run start.livesync.ios
+iOS:                      npm run start.ios
+iOS (livesync emulator):  npm run start.livesync.ios
+iOS (livesync device):    npm run start.livesync.ios.device
 
 // or...
 
-Android:             npm run start.android
-Android (livesync):  npm run start.livesync.android
+Android:                      npm run start.android
+Android (livesync emulator):  npm run start.livesync.android
+Android (livesync device):    npm run start.livesync.android.device
 ```
 
 * Requires an image setup via AVD Manager. [Learn more here](http://developer.android.com/intl/zh-tw/tools/devices/managing-avds.html) and [here](https://github.com/NativeScript/nativescript-cli#the-commands).
