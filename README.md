@@ -217,18 +217,19 @@ npm start -- --port 8080 --reload-port 4000 --base /my-app/
 #### Setup
 
 1. Download a zip of the seed. *This allows you to manually setup origin/upstream*
-2. `git remote add origin ....your private repo....`
-3. `git remote add upstream https://github.com/NathanWalker/angular2-seed-advanced.git`
-4. Create a new `framework` for your application in `src/client/app/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp.framework` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
-5. If you don't want an integration that comes out of box with this seed; for example. let's say you don't want to use i18n. Then just delete the `i18n.framework`, remove `ng2-translate` as dependency root `package.json` and `nativescript/package.json`. Then remove the references to `i18n` throughout.
-6. Remove `src/components` since those are just samples and create a new folder for your components, let's say `src/pages`. It's not absolutely necessary to remove and create a new differently named folder for your components but it might make merging in upstream changes a bit smoother.
+2. `npm run setup` - This will initialize `git` as well as setup `upstream` properly.
+3. `git remote add origin ...your private repo...`
+4. `npm run merge` - This will go ahead and setup the first merge (Important)
+5. Create a new `framework` for your application in `src/client/app/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp.framework` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
+6. If you don't want an integration that comes out of box with this seed; for example. let's say you don't want to use i18n. Then just delete the `i18n.framework`, remove `ng2-translate` as dependency root `package.json` and `nativescript/package.json`. Then remove the references to `i18n` throughout.
+7. Remove `src/components` since those are just samples and create a new folder for your components, let's say `src/pages`. It's not absolutely necessary to remove and create a new differently named folder for your components but it might make merging in upstream changes a bit smoother.
 
 You can read more about [configuring a remote for a fork here](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
 
 #### Merging latest upstream changes
 
-1. `git fetch upstream`
-2. `git merge upstream/master`  *you could rebase, but it wouldn't be worth it as the conflict resolution can often be more painful if there are conflicts*
+1. `npm run merge.preview` - This will fetch `upstream` and show you how the merge would look
+2. `npm run merge` - This will actually do the merge
 3. Handle any conflicts to get latest upstream into your application. If you removed `src/components` as mentioned above, they may show back up when merging in latest upstream. You can just remove the folder again.
 4. Continue building your app.
 
