@@ -15,7 +15,7 @@ import {WindowMock} from '../mocks/window.mock';
 export function TEST_CORE_PROVIDERS(options?: any): any[] {
   // options:
   // window:   = custom window mock (mainly for changing out language)
-  
+
   let providers = [
     provide(ConsoleService, { useValue: console }),
     provide(WindowService, { useClass: (options && options.window) || WindowMock }),
