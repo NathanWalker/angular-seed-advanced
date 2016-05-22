@@ -6,8 +6,8 @@ import {provideStore} from '@ngrx/store';
 import {Observable} from 'rxjs/Rx';
 
 // app
-import {t, TEST_ROUTER_PROVIDERS, GET_HTTP_PROVIDERS_INJECTOR} from '../../test.framework/index';
-import {ANALYTICS_PROVIDERS} from '../../analytics.framework/index';
+import {t} from '../../test.framework/index';
+import {TEST_CORE_PROVIDERS, GET_HTTP_PROVIDERS_INJECTOR, TEST_ROUTER_PROVIDERS} from '../../core.framework/testing/index';
 import {NameListService, nameListReducer} from './name-list.service';
 
 export function main() {
@@ -16,9 +16,9 @@ export function main() {
     
     t.be(() => {
       let injector = GET_HTTP_PROVIDERS_INJECTOR([
-        provideStore({ names: nameListReducer }),
+        TEST_CORE_PROVIDERS(),
         TEST_ROUTER_PROVIDERS(),
-        ANALYTICS_PROVIDERS,
+        provideStore({ names: nameListReducer }),
         NameListService
       ]);
       
@@ -32,22 +32,15 @@ export function main() {
     t.it('names should be Observable', () => {
       let names = nameList.names;
       t.e(names).toEqual(jasmine.any(Observable));
-      return new Promise((resolve) => {
-        names.subscribe((names: Array<string>) => {
-          t.e(names).toEqual(['Dijkstra', 'Hopper']);
-          resolve();
-        });
+      names.subscribe((names: Array<string>) => {
+        t.e(names).toEqual(['Dijkstra', 'Hopper']);
       });
-      
     });
 
     t.it('add should work', () => {
       nameList.add('test');
-      return new Promise((resolve) => {
-        nameList.names.subscribe((names: Array<string>) => {
-          t.e(names).toEqual(['Dijkstra', 'Hopper', 'test']);
-          resolve();
-        });
+      nameList.names.subscribe((names: Array<string>) => {
+        t.e(names).toEqual(['Dijkstra', 'Hopper', 'test']);
       });
     });  
   });

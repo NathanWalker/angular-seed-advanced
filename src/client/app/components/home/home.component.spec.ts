@@ -5,8 +5,10 @@ import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 // libs 
 import {provideStore} from '@ngrx/store';
 
-import {t, TEST_COMPONENT_PROVIDERS, TEST_HTTP_PROVIDERS} from '../../frameworks/test.framework/index';
+import {t} from '../../frameworks/test.framework/index';
+import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from '../../frameworks/core.framework/testing/index';
 import {NameListService, nameListReducer} from '../../frameworks/app.framework/index';
+import {TEST_MULTILINGUAL_PROVIDERS} from '../../frameworks/i18n.framework/testing/index';
 import {HomeComponent} from './home.component';
 
 export function main() {
@@ -37,15 +39,13 @@ export function main() {
 }
 
 @Component({
-  providers: [
-    provideStore({ names: nameListReducer }),
+  viewProviders: [
+    TEST_CORE_PROVIDERS(),
     TEST_HTTP_PROVIDERS(),
-    NameListService,
-    TEST_COMPONENT_PROVIDERS({
-      router: {
-        primary: TestComponent
-      }
-    })
+    TEST_ROUTER_PROVIDERS(),
+    TEST_MULTILINGUAL_PROVIDERS(),
+    provideStore({ names: nameListReducer }),
+    NameListService
   ],
   selector: 'test-cmp',
   directives: [HomeComponent],

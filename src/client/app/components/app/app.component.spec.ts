@@ -2,8 +2,10 @@ import {TestComponentBuilder} from '@angular/compiler/testing';
 import {Component} from '@angular/core';
 import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
-import {t, TEST_COMPONENT_PROVIDERS, TEST_HTTP_PROVIDERS} from '../../frameworks/test.framework/index';
+import {t} from '../../frameworks/test.framework/index';
+import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from '../../frameworks/core.framework/testing/index';
 import {NameListService} from '../../frameworks/app.framework/index';
+import {TEST_MULTILINGUAL_PROVIDERS} from '../../frameworks/i18n.framework/testing/index';
 import {AppComponent} from './app.component';
 
 export function main() {
@@ -22,15 +24,16 @@ export function main() {
 }
 
 @Component({
-  providers: [
+  viewProviders: [
+    TEST_CORE_PROVIDERS(),
     TEST_HTTP_PROVIDERS(),
     NameListService,
-    TEST_COMPONENT_PROVIDERS({
-      state: true,
+    TEST_ROUTER_PROVIDERS({
       router: {
         primary: AppComponent
       }
-    })
+    }),
+    TEST_MULTILINGUAL_PROVIDERS()
   ],
   selector: 'test-cmp',
   directives: [AppComponent],

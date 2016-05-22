@@ -5,11 +5,11 @@ import {provide} from '@angular/core';
 import {TranslateService, TranslateLoader} from 'ng2-translate/ng2-translate';
 
 // app
-import {MultilingualService} from '../../i18n.framework/index';
+import {MultilingualService} from '../index';
 
 // mocks
-import {TranslateMock} from '../mocks/ng2-translate/ng2-translate.mock';
-import {TranslateLoaderMock} from '../mocks/ng2-translate/ng2-translate-loader.mock';
+import {TranslateMock} from './mocks/ng2-translate.mock';
+import {TranslateLoaderMock} from './mocks/ng2-translate-loader.mock';
 
 export function TEST_MULTILINGUAL_PROVIDERS(): any[] {
   

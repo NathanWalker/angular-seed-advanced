@@ -1,13 +1,16 @@
 // angular
-import {provide} from '@angular/core';
+import {provide, Component} from '@angular/core';
 import {Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT} from '@angular/router-deprecated';
 // import {ROUTER_FAKE_PROVIDERS} from '@angular/router/testing';
 import {Location} from '@angular/common';
 import {SpyLocation} from '@angular/common/testing';
 import {RootRouter} from '@angular/router-deprecated/src/router';
 
-// app
-import {TestComponent} from '../mocks/component.mock';
+@Component({
+  selector: 'test',
+  template: '<div class="testing"></div>'
+})
+export class TestComponent { }
 
 export function TEST_ROUTER_PROVIDERS(options?: any): any[] {
   let primary = TestComponent;
