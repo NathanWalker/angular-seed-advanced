@@ -41,11 +41,11 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - [Additional features coming soon...](#additional-features-coming-soon)
 - [Prerequisites](#prerequisites)
 - [Usage](#usage)
-- [Progressive Web Apps](#progressive-web-apps)
 - [NativeScript App](#nativescript-app)
 - [Electron App](#electron-app)
 - [Testing](#testing)
 - [Web Configuration Options](#web-configuration-options)
+- [Feature Branches](#feature-branches)
 - [How best to use for your project](#how-best-to-use-for-your-project)
 - [Contributing](#contributing)
 - [License](#license)
@@ -213,6 +213,12 @@ Configure at runtime
 ```bash
 npm start -- --port 8080 --reload-port 4000 --base /my-app/
 ```
+
+## Feature Branches
+
+Several branches exist with certain features integrated:
+
+* [ui-router-ng2](https://github.com/NathanWalker/angular2-seed-advanced/tree/ui-router)
 
 ## How best to use for your project
 
