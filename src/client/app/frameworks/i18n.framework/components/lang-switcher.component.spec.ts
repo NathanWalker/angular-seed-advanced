@@ -14,6 +14,7 @@ import {TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET} from '../testing/i
 const SUPPORTED_LANGUAGES: Array<ILang> = [
   { code: 'en', title: 'English' },
   { code: 'es', title: 'Spanish' },
+  { code: 'de', title: 'German' },
   { code: 'fr', title: 'French' },
   { code: 'ru', title: 'Russian' },
   { code: 'bg', title: 'Bulgarian' }
@@ -61,12 +62,13 @@ export function main() {
             .then(rootTC => {
               rootTC.detectChanges();
               let appDOMEl = rootTC.debugElement.children[0].nativeElement;
-              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option').length).toBe(5);
+              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option').length).toBe(6);
               t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[0].value).toBe('en');
               t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[1].value).toBe('es');
-              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[2].value).toBe('fr');
-              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[3].value).toBe('ru');
-              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[4].value).toBe('bg');
+              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[2].value).toBe('de');
+              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[3].value).toBe('fr');
+              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[4].value).toBe('ru');
+              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[5].value).toBe('bg');
             });
         }))); 
     });
