@@ -36,7 +36,7 @@ System.config({
     'rxjs': 'node_modules/rxjs',
     '@angular': 'node_modules/@angular',
     '@ngrx/store': 'node_modules/@ngrx/store/index.js',
-    'ngrx-store-router': 'node_modules/ngrx-store-router/index.js' 
+    'ngrx-store-router': 'node_modules/ngrx-store-router/index.js'
   },
   packages: {
     '@angular/core': {
