@@ -30,7 +30,7 @@
 </head>
 <body>
 
-  <sd-app>Loading...</sd-app>
+  <ui-view>Loading...</ui-view>
 
   <script>
   // function.name (all IE)
@@ -82,6 +82,10 @@
         'Report this error at https://github.com/NathanWalker/angular2-seed-advanced/issues');
     });
   </script>
+  <% } %>
+
+  <% if (TARGET_DESKTOP && ENV !== 'prod') { %>
+  <script>require('electron-connect').client.create()</script> 
   <% } %>
 
 </body>

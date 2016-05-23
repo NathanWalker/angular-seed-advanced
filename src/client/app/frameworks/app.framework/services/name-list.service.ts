@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 
 // libs
 import {Store, Reducer, Action} from '@ngrx/store';
-import {Observable} from 'rxjs/Rx';
 
 // app
 import {Analytics, AnalyticsService} from '../../analytics.framework/index';
+import {HttpService} from '../../core.framework/index';
 
 // analytics
 const CATEGORY: string = 'NameList';
@@ -13,19 +14,15 @@ const CATEGORY: string = 'NameList';
 /**
  * ngrx setup start --
  */
-const initialState: Array<string> = [
-  'Edsger Dijkstra',
-  'Donald Knuth',
-  'Alan Turing',
-  'Grace Hopper'
-];
-
 export const NAME_LIST_ACTIONS: any = {
+  INIT: `[${CATEGORY}] INIT`,
   NAME_ADDED: `[${CATEGORY}] NAME_ADDED`
 };
 
-export const nameListReducer: Reducer<any> = (state: any = initialState, action: Action) => {
+export const nameListReducer: Reducer<any> = (state: any = [], action: Action) => {
   switch (action.type) {
+    case NAME_LIST_ACTIONS.INIT:
+      return [...action.payload];
     case NAME_LIST_ACTIONS.NAME_ADDED:
       return [...state, action.payload];
     default:
@@ -40,12 +37,21 @@ export const nameListReducer: Reducer<any> = (state: any = initialState, action:
 export class NameListService extends Analytics {
   public names: Observable<any>;
 
-  constructor(public analytics: AnalyticsService, private store: Store<any>) {
+  constructor(public analytics: AnalyticsService, private store: Store<any>, private http: HttpService) {
     super(analytics);
     this.category = CATEGORY;
 
     this.names = store.select('names');
+
+    this.init();
   }  
+
+  init() {
+    this.http.get(`assets/data.json`)
+      .subscribe((results: string[]) => {
+        this.store.dispatch({ type: NAME_LIST_ACTIONS.INIT, payload: results });
+      });
+  }
 
   add(name: string): void {
     this.track(NAME_LIST_ACTIONS.NAME_ADDED, { label: name });

@@ -2,17 +2,12 @@ import {TestComponentBuilder} from '@angular/compiler/testing';
 import {Component} from '@angular/core';
 import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
-import {t, TEST_COMPONENT_PROVIDERS} from '../../frameworks/test.framework/index';
+import {t} from '../../frameworks/test.framework/index';
+import {TEST_CORE_PROVIDERS} from '../../frameworks/core.framework/testing/index';
 import {AboutComponent} from './about.component';
 
 export function main() {
   t.describe('@Component: AboutComponent', () => {
-    t.bep(() => {
-      return TEST_COMPONENT_PROVIDERS({
-        http: true, 
-        state: true
-      });
-    });
     
     t.it('should work',
       t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
@@ -27,6 +22,9 @@ export function main() {
 }
 
 @Component({
+  viewProviders: [
+    TEST_CORE_PROVIDERS()
+  ],
   selector: 'test-cmp',
   directives: [AboutComponent],
   template: '<sd-about></sd-about>'

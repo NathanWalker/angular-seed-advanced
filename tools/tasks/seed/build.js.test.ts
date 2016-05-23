@@ -9,6 +9,10 @@ import { ViewBrokerService } from '../../../src/client/app/frameworks/core.frame
 
 const plugins = <any>gulpLoadPlugins();
 
+/**
+ * Executes the build process, transpiling the TypeScript files (excluding the
+ * spec and e2e-spec files) for the test environment.
+ */
 export = () => {
   let tsProject = makeTsProject();
   let src = [
