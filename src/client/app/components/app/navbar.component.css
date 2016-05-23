@@ -17,6 +17,6 @@ nav a {
   vertical-align: middle;
 }
 
-nav a.router-link-active {
+nav a.active {
   color: #106cc8;
 }
