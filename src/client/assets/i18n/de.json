@@ -1,0 +1,11 @@
+{
+  "HOME": "Home",
+  "ABOUT": "Über",
+  "HELLO": "Hallo",
+  "LOVE_TECH": "Ich liebe Technologie!",
+  "ABOUT_ADD": "Willst du mehr? Füge neue Wissenschaftler hinzu!",
+  "ABOUT_REWARD": "Anbei eine Liste großartiger Wissenschaftler ... ",
+  "INPUT_HINT": "Gebe einen neuen Wissenschaftler ein",
+  "ADD_BTN_TEXT": "Hinzufügen",
+  "SUCCESS_MSG": "Deine Angular Installation funktioniert problemlos!"
+}
