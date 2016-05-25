@@ -44,6 +44,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - [NativeScript App](#nativescript-app)
 - [Electron App](#electron-app)
 - [Testing](#testing)
+- [Framework How-Tos](#framework-how-tos)
 - [Web Configuration Options](#web-configuration-options)
 - [Feature Branches](#feature-branches)
 - [How best to use for your project](#how-best-to-use-for-your-project)
@@ -196,6 +197,20 @@ npm run e2e
 npm run e2e.live
 ```
 You can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
+
+## Framework How-Tos
+
+### i18n.framework
+
+* how to add a language?
+  - `src/client/assets/i18n/`
+    - add `[language code].json` (copy existing one and adapt the translation strings)
+  - `src/client/app/frameworks/app.framework/services/app-config.service.spec.ts`
+    - fix test
+  - `src/client/app/frameworks/app.framework/services/app-config.service.ts`
+    - add language to `SUPPORTED_LANGUAGES`
+  - `src/client/app/frameworks/app.framework/i18n.framework/components/lang-switcher.component.spec.ts`
+    - fix test
 
 ## Web Configuration Options
 
