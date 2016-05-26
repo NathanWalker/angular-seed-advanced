@@ -6,7 +6,6 @@ import {HTTP_PROVIDERS} from '@angular/http';
 import {Angulartics2} from 'angulartics2';
 import {Angulartics2Segment} from 'angulartics2/src/providers/angulartics2-segment';
 import {provideStore} from '@ngrx/store';
-import {routerReducer, routerMiddleware} from 'ngrx-store-router';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
@@ -23,12 +22,10 @@ export const NS_APP_PROVIDERS: any[] = [
   HTTP_PROVIDERS,
   provide(ConsoleService, { useValue: console }),
   provide(LogService, { useClass: NSLogService }),
-  provideStore({ 
-    router: routerReducer, 
+  provideStore({  
     i18n: multilingualReducer, 
     names: nameListReducer 
   }),
-  routerMiddleware,
   Angulartics2,
   provide(Angulartics2Segment, { useClass: NSAngulartics2Segment }),
   AnalyticsService,

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
 // libs
-import {Store, Reducer, Action} from '@ngrx/store';
+import {Store, ActionReducer, Action} from '@ngrx/store';
 
 // app
 import {Analytics, AnalyticsService} from '../../analytics.framework/index';
@@ -19,7 +19,7 @@ export const NAME_LIST_ACTIONS: any = {
   NAME_ADDED: `[${CATEGORY}] NAME_ADDED`
 };
 
-export const nameListReducer: Reducer<any> = (state: any = [], action: Action) => {
+export const nameListReducer: ActionReducer<any> = (state: any = [], action: Action) => {
   switch (action.type) {
     case NAME_LIST_ACTIONS.INIT:
       return [...action.payload];

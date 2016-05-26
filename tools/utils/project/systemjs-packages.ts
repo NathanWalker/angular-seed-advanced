@@ -1,6 +1,5 @@
-export function angularPackages() {
+export function systemJsPackages() {
   return {
-    rxjs: { defaultExtension: false },
     '@angular/core': {
       main: 'index.js',
       defaultExtension: 'js'
@@ -31,6 +30,17 @@ export function angularPackages() {
     },
     '@angular/router': {
       main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@ngrx/core': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@ngrx/store': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    'rxjs': {
       defaultExtension: 'js'
     }
   };

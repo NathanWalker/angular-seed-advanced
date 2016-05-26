@@ -35,8 +35,7 @@ System.config({
   map: {
     'rxjs': 'node_modules/rxjs',
     '@angular': 'node_modules/@angular',
-    '@ngrx/store': 'node_modules/@ngrx/store/index.js',
-    'ngrx-store-router': 'node_modules/ngrx-store-router/index.js' 
+    '@ngrx': 'node_modules/@ngrx'
   },
   packages: {
     '@angular/core': {
@@ -68,6 +67,14 @@ System.config({
       defaultExtension: 'js'
     },
     '@angular/router': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@ngrx/core': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@ngrx/store': {
       main: 'index.js',
       defaultExtension: 'js'
     },

@@ -13,7 +13,6 @@ export = () => {
     'node_modules/lodash/**/*',
     'node_modules/ng2-translate/**/*',
     'node_modules/@ngrx/**/*',
-    'node_modules/ngrx-store-router/**/*',
     'node_modules/zone.js/**/*'
   ];
   return gulp.src(src, { base: 'node_modules' })

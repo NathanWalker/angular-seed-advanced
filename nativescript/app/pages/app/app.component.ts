@@ -7,7 +7,6 @@ import {topmost} from 'ui/frame';
 
 // libs
 import {Store} from '@ngrx/store';
-import {RouterState} from 'ngrx-store-router';
 
 // app
 import {AppComponent} from '../../app/components/app/app.component';
@@ -23,19 +22,6 @@ export class NSAppComponent extends AppComponent {
     log.debug('NSAppCmp ----');
     
     ActionBarUtil.STATUSBAR_STYLE(1);
-
-    // example of how to receive router updates from ngrx/store
-    // store.select('router').subscribe((router: RouterState) => {
-    //   this.log.debug(`Route change: ${router.url}`);
-    //   switch (router.url) {
-    //     case '':
-    //       // do something on home
-    //       break; 
-    //     case '/about':
-    //       // do something on about
-    //       break;
-    //   }
-    // });
   }
   
   private openMenu() {

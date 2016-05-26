@@ -14,7 +14,6 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 
 #### Integration with:
 - [ngrx/store](https://github.com/ngrx/store) RxJS powered state management, inspired by **Redux**
-- [ngrx-store-router](https://github.com/CodeSequence/ngrx-store-router) middleware for syncing state with Angular 2 Router.
 - [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n 
   - Usage is optional but on by default
   - Up to you and your team how you want to utilize it. It can be easily removed if not needed. 

@@ -45,7 +45,6 @@ module.exports = function(config) {
       { pattern: 'node_modules/lodash/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/ng2-translate/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/@ngrx/**/*.js', included: false, watched: false },
-      { pattern: 'node_modules/ngrx-store-router/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/angulartics2/**/*.js', included: false, watched: false },
       
       { pattern: 'dist/dev/**/*.js', included: false, watched: true },
