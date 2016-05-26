@@ -8,13 +8,12 @@ import { makeTsProject, templateLocals,  } from '../../utils';
 const plugins = <any>gulpLoadPlugins();
 
 /**
- * Executes the build process, transpiling the TypeScript files within the
- * `tools` directory.
+ * Executes the build process, transpiling the TypeScript files within the `tools` directory.
  */
 export = () => {
   let tsProject = makeTsProject();
   let src = [
-    'typings/main.d.ts',
+    'typings/index.d.ts',
     TOOLS_DIR + '/manual_typings/**/*.d.ts',
     join(TOOLS_DIR, '**/*.ts')
   ];

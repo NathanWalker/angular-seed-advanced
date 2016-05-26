@@ -1,4 +1,3 @@
-debugger;
 if (!Object.hasOwnProperty('name')) {
   Object.defineProperty(Function.prototype, 'name', {
     get: function() {
@@ -62,11 +61,11 @@ System.config({
       main: 'index.js',
       defaultExtension: 'js'
     },
-    '@angular/router-deprecated': {
+    '@angular/router': {
       main: 'index.js',
       defaultExtension: 'js'
     },
-    '@angular/router': {
+    '@angular/router-deprecated': {
       main: 'index.js',
       defaultExtension: 'js'
     },
@@ -88,7 +87,6 @@ Promise.all([
   System.import('@angular/core/testing'),
   System.import('@angular/platform-browser-dynamic/testing')
 ]).then(function (providers) {
-  debugger;
   var testing = providers[0];
   var testingBrowser = providers[1];
 
