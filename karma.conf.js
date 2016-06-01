@@ -21,8 +21,6 @@ module.exports = function(config) {
       // Polyfills.
       'node_modules/core-js/client/shim.min.js',
 
-      'node_modules/reflect-metadata/Reflect.js',
-
       // System.js for module loading
       'node_modules/systemjs/dist/system-polyfills.js',
       'node_modules/systemjs/dist/system.src.js',
@@ -63,7 +61,8 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      'src/client/app/frameworks/nativescript.framework/**/*spec.js'
+      'src/client/app/frameworks/nativescript.framework/**/*spec.js',
+      'node_modules/**/*spec.js'
     ],
 
 
