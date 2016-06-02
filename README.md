@@ -234,11 +234,11 @@ Several branches exist with certain features integrated:
 #### Setup
 
 1. Download a zip of the seed. (**Do not fork**)
-2. `npm run setup` - This will initialize `git` as well as setup `upstream` properly.
+2. `npm run git.setup` - This will initialize `git` as well as setup `upstream` properly.
 3. `git remote add origin ...your private repo...`
-4. `git add .; git commit -m'setup'` - To setup the first commit
-5. `npm run merge` - This will fetch upstream and run the first merge (*Important)
-  * IMPORTANT: You will see a wall of Conflicts after doing above. This is normal. There actually will not be any conflicts as it's just reporting every single file which both sides (`upstream` and your first commit) added.
+4. `npm run git.prepare` - This will prepare git to handle the merge
+5. `npm run git.merge` - This will fetch upstream and run the first merge (*Important)
+  * IMPORTANT: You will see a wall of Conflicts after doing above (a Conflict for every single file). This is normal. There actually will not be any problematic conflicts as it's just reporting every single file which both sides (`upstream` and your first commit) added.
 6. `git add .; git commit -m'ready'`. Yes, you will be committing all those conflicts, which actually are not a problem in this 1 time case.
 7. Now you have `git` setup and ready to develop your application as well as merge in upstream changes in the future.
 8. Create a new `framework` for your application in `src/client/app/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp.framework` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
@@ -248,8 +248,8 @@ You can read more about [configuring a remote for a fork here](https://help.gith
 
 #### Merging latest upstream changes
 
-1. `npm run merge.preview` - This will fetch `upstream` and show you how the merge would look
-2. `npm run merge` - This will actually do the merge
+1. `npm run git.merge.preview` - This will fetch `upstream` and show you how the merge would look
+2. `npm run git.merge` - This will actually do the merge
 3. Handle any conflicts to get latest upstream into your application.
 4. Continue building your app.
 
