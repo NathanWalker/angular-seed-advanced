@@ -35,7 +35,7 @@ build/Release
 *.iml
 
 /tools/**/*.js
-!/tools/install.js
+tools/install.js
 dist
 dev
 docs
