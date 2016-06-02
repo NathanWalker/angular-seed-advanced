@@ -5,8 +5,7 @@ import {APP_DEST} from '../../config';
 export = () => {
   let src = [
     'node_modules/systemjs/**/*',
-    'node_modules/reflect-metadata/**/*',
-    'node_modules/es6-shim/**/*',
+    'node_modules/core-js/**/*',
     'node_modules/@angular/**/*',
     'node_modules/rxjs/**/*',
     'node_modules/angulartics2/**/*',
