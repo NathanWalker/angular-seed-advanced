@@ -43,39 +43,42 @@ export const multilingualReducer: ActionReducer<MultilingualStateI> = (state: Mu
 // service
 @Injectable()
 export class MultilingualService extends Analytics {
-  
+
   // default supported languages
   // see main.ts bootstrap for example of how to provide different value
   public static SUPPORTED_LANGUAGES: Array<ILang> = [
-    { code: 'en', title: 'English' }
+    {code: 'en', title: 'English'}
   ];
-  
+
+  private static DEFAULT_LANG: string = 'en';
+
   constructor(public analytics: AnalyticsService, private translate: TranslateService, private win: WindowService, private store: Store<any>) {
     super(analytics);
     this.category = CATEGORY;
 
     // this language will be used as a fallback when a translation isn't found in the current language
-    translate.setDefaultLang('en');
+    translate.setDefaultLang(MultilingualService.DEFAULT_LANG);
 
     // use browser/platform lang if available
     let userLang = win.navigator.language.split('-')[0];
-
 
     // subscribe to changes
     store.select('i18n').subscribe((state: MultilingualStateI) => {
       // update ng2-translate which will cause translations to occur wherever the TranslatePipe is used in the view
       this.translate.use(state.lang);
     });
-    
+
     // init the lang
-    this.changeLang(userLang);
+    if (userLang != MultilingualService.DEFAULT_LANG) {
+      this.changeLang(userLang);
+    }
   }
-  
+
   public changeLang(lang: string) {
     if (_.includes(_.map(MultilingualService.SUPPORTED_LANGUAGES, 'code'), lang)) {
       // only if lang supported
-      this.track(MULTILINGUAL_ACTIONS.LANG_CHANGE, { label: lang });
-      this.store.dispatch({ type: MULTILINGUAL_ACTIONS.LANG_CHANGE, payload: { lang } });
+      this.track(MULTILINGUAL_ACTIONS.LANG_CHANGE, {label: lang});
+      this.store.dispatch({type: MULTILINGUAL_ACTIONS.LANG_CHANGE, payload: {lang}});
     }
-  } 
+  }
 }
