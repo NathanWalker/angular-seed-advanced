@@ -13,7 +13,7 @@ import {NameListService} from '../../frameworks/app.framework/index';
 export class HomeComponent {
   public newName: string = '';
   constructor(private store: Store<any>, public nameListService: NameListService) { 
-
+  
   }
   
   /*

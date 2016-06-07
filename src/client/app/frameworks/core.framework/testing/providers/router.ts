@@ -7,7 +7,7 @@ import {SpyLocation} from '@angular/common/testing';
 import {RootRouter} from '@angular/router-deprecated/src/router';
 
 @Component({
-  selector: 'test',
+  selector: 'test-cmp',
   template: '<div class="testing"></div>'
 })
 export class TestComponent { }

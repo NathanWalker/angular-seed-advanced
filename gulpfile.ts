@@ -4,7 +4,6 @@ import * as runSequence from 'run-sequence';
 import { PROJECT_TASKS_DIR, SEED_TASKS_DIR } from './tools/config';
 import { loadTasks } from './tools/utils';
 
-
 loadTasks(SEED_TASKS_DIR);
 loadTasks(PROJECT_TASKS_DIR);
 
@@ -126,7 +125,15 @@ gulp.task('desktop', (done: any) =>
               'desktop.build',
               done));
 
-// Package
+// Release and Package
+
+// TODO: integrate prod build into electron package
+// gulp.task('desktop.prod', (done: any) =>
+//   runSequence('build.prod',
+//               'desktop.libs',
+//               'desktop.build',
+//               done));
+
 gulp.task('desktop.mac', (done: any) =>
   runSequence('desktop',
               'desktop.package.mac',

@@ -11,7 +11,7 @@ import {WindowMock} from '../../core.framework/testing/index';
   viewProviders: [
     provide(WindowService, { useClass: WindowMock})
   ],
-  selector: 'test',
+  selector: 'test-cmp',
   template: `<div platform></div>`,
   directives: [PlatformDirective]
 })
