@@ -2,9 +2,10 @@
 import {RouteComponent} from '../../frameworks/core.framework/index';
 
 @RouteComponent({
+  moduleId: module.id,
   selector: 'sd-navbar',
-  templateUrl: './app/components/app/navbar.component.html',
-  styleUrls: ['./app/components/app/navbar.component.css']
+  templateUrl: 'navbar.component.html',
+  styleUrls: ['navbar.component.css']
 })
 export class NavbarComponent {
 }

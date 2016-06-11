@@ -10,7 +10,7 @@ const plugins = <any>gulpLoadPlugins();
 
 const INLINE_OPTIONS = {
   base: TMP_DIR,
-  useRelativePaths: false,
+  useRelativePaths: true,
   removeLineBreaks: true
 };
 

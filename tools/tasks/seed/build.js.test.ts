@@ -26,7 +26,7 @@ export = () => {
     .pipe(plugins.plumber())
     .pipe(plugins.inlineNg2Template({
       base: APP_SRC,
-      useRelativePaths: false,
+      useRelativePaths: true,
       templateFunction: ViewBrokerService.TEMPLATE_URL
     }))
     .pipe(plugins.typescript(tsProject));
