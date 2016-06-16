@@ -57,7 +57,6 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
   - `analytics.framework`: analytics provided by [Segment](https://segment.com/)
     - Only reports data in **production** build
   - `i18n.framework`: internationalization features
-  - `nativescript.framework`: [NativeScript](https://www.nativescript.org/) specific code
   - `electron.framework`: [Electron](http://electron.atom.io/) specific code
   - `test.framework`: test specific code providing conveniences to make testing your code easier and faster 
 

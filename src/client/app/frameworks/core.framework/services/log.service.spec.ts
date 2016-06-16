@@ -15,7 +15,7 @@ export function main() {
       // ensure statics are in default state
       CoreConfigService.RESET();
       // spy
-      t.spyOn(console, 'debug');
+      t.spyOn(console, 'log');
       t.spyOn(console, 'error');
       t.spyOn(console, 'warn');
       t.spyOn(console, 'info');
@@ -34,7 +34,7 @@ export function main() {
       
       t.it('should not log anything by default', t.inject([LogService], (log: LogService) => {
         log.debug('debug');
-        t.e(console.debug).not.toHaveBeenCalledWith('debug');
+        t.e(console.log).not.toHaveBeenCalledWith('debug');
         log.error('error');
         t.e(console.error).not.toHaveBeenCalledWith('error');
         log.warn('warn');
@@ -56,7 +56,7 @@ export function main() {
         CoreConfigService.DEBUG.LEVEL_4 = true;
         
         log.debug('debug');
-        t.e(console.debug).toHaveBeenCalledWith('debug');
+        t.e(console.log).toHaveBeenCalledWith('debug');
         log.error('error');
         t.e(console.error).toHaveBeenCalledWith('error');
         log.warn('warn');
@@ -69,7 +69,7 @@ export function main() {
         CoreConfigService.DEBUG.LEVEL_3 = true;
 
         log.debug('debug');
-        t.e(console.debug).not.toHaveBeenCalledWith('debug');
+        t.e(console.log).not.toHaveBeenCalledWith('debug');
         log.error('error');
         t.e(console.error).toHaveBeenCalledWith('error');
         log.warn('warn');
@@ -81,7 +81,7 @@ export function main() {
         CoreConfigService.DEBUG.LEVEL_4 = true;
 
         log.debug('debug w/level_4');
-        t.e(console.debug).toHaveBeenCalledWith('debug w/level_4');
+        t.e(console.log).toHaveBeenCalledWith('debug w/level_4');
         log.error('error w/level_4');
         t.e(console.error).toHaveBeenCalledWith('error w/level_4');
         log.warn('warn w/level_4');
@@ -94,7 +94,7 @@ export function main() {
         CoreConfigService.DEBUG.LEVEL_2 = true;
 
         log.debug('debug');
-        t.e(console.debug).not.toHaveBeenCalledWith('debug');
+        t.e(console.log).not.toHaveBeenCalledWith('debug');
         log.error('error');
         t.e(console.error).not.toHaveBeenCalledWith('error');
         log.warn('warn');
@@ -107,7 +107,7 @@ export function main() {
         CoreConfigService.DEBUG.LEVEL_1 = true;
 
         log.debug('debug');
-        t.e(console.debug).not.toHaveBeenCalledWith('debug');
+        t.e(console.log).not.toHaveBeenCalledWith('debug');
         log.error('error');
         t.e(console.error).not.toHaveBeenCalledWith('error');
         log.warn('warn');

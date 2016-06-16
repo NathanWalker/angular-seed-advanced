@@ -19,7 +19,7 @@ CoreConfigService.DEBUG.LEVEL_4 = true;
 CoreConfigService.ROUTER_DIRECTIVES = NS_ROUTER_DIRECTIVES;
 
 // app
-import {NS_APP_PROVIDERS} from './app/frameworks/nativescript.framework/index';
+import {NS_APP_PROVIDERS} from './shared/nativescript.framework/index';
 import {NSAppComponent} from './pages/app/app.component';
 import {WindowNative, ModalNative, NSHttpService} from './shared/core/index';
   
