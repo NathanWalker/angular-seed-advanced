@@ -20,11 +20,16 @@ export class LangSwitcherComponent {
   public supportedLanguages: Array<ILang> = MultilingualService.SUPPORTED_LANGUAGES;
 
   constructor(private log: LogService, private store: Store<any>, private multilang: MultilingualService) {
-    store.take(1).subscribe((s: any) => {
-      // s && s.18n - ensures testing works in all cases (since some tests dont use i18n state)
-      this.langForm = new ControlGroup({
-        lang: new Control(s && s.i18n ? s.i18n.lang : '')
-      });
+    let langControl = new Control();
+    this.langForm = new ControlGroup({
+      lang: langControl
+    });
+
+    store.subscribe((s: any) => {
+      // s && s.i18n - ensures testing works in all cases (since some tests dont use i18n state)
+      if (s && s.i18n && s.i18n.lang) {
+        langControl.updateValue(s.i18n.lang);
+      }
     });
 
     if (CoreConfigService.IS_DESKTOP()) {
@@ -32,11 +37,11 @@ export class LangSwitcherComponent {
       ElectronEventService.on('changeLang').subscribe((e: any) => {
         this.changeLang({ target: { value: e.detail.value } });
       });
-    }    
+    }
   }
   changeLang(e: any) {
-    let lang = this.supportedLanguages[0].code; // fallback to default 'en'
-    
+    let lang = MultilingualService.DEFAULT_LANGUAGE;
+
     if (CoreConfigService.IS_MOBILE_NATIVE()) {
       if (e) {
         lang = this.supportedLanguages[e.newIndex].code;
@@ -45,6 +50,6 @@ export class LangSwitcherComponent {
       lang = e.target.value;
     }
     this.log.debug(`Language change: ${lang}`);
-    this.multilang.changeLang(lang);
+    this.multilang.changeLang(lang, true);
   }
 }
