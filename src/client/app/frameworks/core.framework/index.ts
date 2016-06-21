@@ -5,12 +5,14 @@ import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
 // app
 import {LogService} from './services/log.service';
 import {HttpService} from './services/http.service';
+import {LocalForageService} from './services/localforage.service';
 
 export const CORE_PROVIDERS: any[] = [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
-  LogService, 
-  HttpService
+  LogService,
+  HttpService,
+  LocalForageService
 ];
 
 // decorators
@@ -30,6 +32,7 @@ export * from './services/log.service';
 export * from './services/http.service';
 export * from './services/view-broker.service';
 export * from './services/window.service';
+export * from './services/localforage.service';
 
 // directives
 export * from './directives/platform.directive';
