@@ -64,6 +64,7 @@ export class MultilingualService extends Analytics {
     // subscribe to changes
     store.select('i18n').subscribe((state: MultilingualStateI) => {
       // update ng2-translate which will cause translations to occur wherever the TranslatePipe is used in the view
+      
       this.translate.use(state.lang);
     });
     

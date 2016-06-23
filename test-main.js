@@ -65,10 +65,6 @@ System.config({
       main: 'index.js',
       defaultExtension: 'js'
     },
-    '@angular/router-deprecated': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
     '@ngrx/core': {
       main: 'index.js',
       defaultExtension: 'js'

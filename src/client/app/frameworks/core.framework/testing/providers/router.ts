@@ -1,30 +1,38 @@
 // angular
-import {provide, Component} from '@angular/core';
-import {Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT} from '@angular/router-deprecated';
+import {ComponentResolver, Injector} from '@angular/core';
 // import {ROUTER_FAKE_PROVIDERS} from '@angular/router/testing';
 import {Location} from '@angular/common';
 import {SpyLocation} from '@angular/common/testing';
-import {RootRouter} from '@angular/router-deprecated/src/router';
-
-@Component({
-  selector: 'test-cmp',
-  template: '<div class="testing"></div>'
-})
-export class TestComponent { }
+import {
+  UrlSerializer,
+  DefaultUrlSerializer,
+  RouterOutletMap,
+  Router,
+  ActivatedRoute
+} from '@angular/router';
 
 export function TEST_ROUTER_PROVIDERS(options?: any): any[] {
-  let primary = TestComponent;
-  if (options) {
-    if (options.router && options.router.primary) {
-      primary = options.router.primary;
-    }
-  }
+  // config: RouterConfig
+  // component: the test component to use
 
   return [
-    // ROUTER_FAKE_PROVIDERS
-    RouteRegistry,
-    provide(Location, { useClass: SpyLocation }),
-    provide(ROUTER_PRIMARY_COMPONENT, { useValue: primary }),
-    provide(Router, { useClass: RootRouter })
+    RouterOutletMap,
+    {provide: UrlSerializer, useClass: DefaultUrlSerializer},
+    {provide: Location, useClass: SpyLocation},
+    {
+      provide: Router,
+      useFactory: (
+        resolver:ComponentResolver,
+        urlSerializer:UrlSerializer,
+        outletMap:RouterOutletMap,
+        location:Location,
+        injector:Injector) => {
+        const r = new Router(options.component, resolver, urlSerializer, outletMap, location, injector, options.config);
+        r.initialNavigation();
+        return r;
+      },
+      deps: [ComponentResolver, UrlSerializer, RouterOutletMap, Location, Injector]
+    },
+    {provide: ActivatedRoute, useFactory: (r:Router) => r.routerState.root, deps: [Router]}
   ];
 }

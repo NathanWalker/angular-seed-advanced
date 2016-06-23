@@ -1,5 +1,5 @@
 // angular
-import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 
 interface IPlatforms {
   WEB: string;

@@ -1,6 +1,7 @@
 import {TestComponentBuilder} from '@angular/compiler/testing';
 import {Component} from '@angular/core';
 import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
+import {disableDeprecatedForms, provideForms} from '@angular/forms/index';
 
 import {t} from '../../frameworks/test.framework/index';
 import {TEST_CORE_PROVIDERS} from '../../frameworks/core.framework/testing/index';
@@ -8,6 +9,10 @@ import {AboutComponent} from './about.component';
 
 export function main() {
   t.describe('@Component: AboutComponent', () => {
+    // Disable old forms
+    let providerArr: any[];
+
+    t.be(() => { providerArr = [disableDeprecatedForms(), provideForms()]; });
     
     t.it('should work',
       t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
