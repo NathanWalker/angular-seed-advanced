@@ -34,7 +34,7 @@
     "start": "gulp serve.dev --color",
     "start.desktop": "gulp desktop && NODE_ENV=development electron ./dist/dev",
     "start.livesync.desktop": "gulp desktop && NODE_ENV=development gulp desktop.watch",
-    "start.livesync.desktop.windows": "gulp desktop && SET NODE_ENV=development gulp desktop.watch",
+    "start.livesync.desktop.windows": "gulp desktop && SET NODE_ENV=development && gulp desktop.watch",
     "start.desktop.windows": "gulp desktop && SET NODE_ENV=development && electron ./dist/dev",
     "start.ios": "cd nativescript && tns emulate ios",
     "start.livesync.ios": "cd nativescript && tns livesync ios --emulator --watch",
