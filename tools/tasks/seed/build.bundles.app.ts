@@ -15,11 +15,15 @@ const BUNDLER_OPTIONS = {
   mangle: false
 };
 
+/**
+ * Executes the build process, bundlig the JavaScript files using the SystemJS builder.
+ */
 export = (done: any) => {
   let builder = new Builder(SYSTEM_BUILDER_CONFIG);
   builder
     .buildStatic(join(TMP_DIR, BOOTSTRAP_MODULE),
                  join(JS_DEST, JS_PROD_APP_BUNDLE),
                  BUNDLER_OPTIONS)
-    .then(() => done());
+    .then(() => done())
+    .catch(err => done(err));
 };

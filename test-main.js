@@ -1,4 +1,3 @@
-debugger;
 if (!Object.hasOwnProperty('name')) {
   Object.defineProperty(Function.prototype, 'name', {
     get: function() {
@@ -35,8 +34,7 @@ System.config({
   map: {
     'rxjs': 'node_modules/rxjs',
     '@angular': 'node_modules/@angular',
-    '@ngrx/store': 'node_modules/@ngrx/store/index.js',
-    'ngrx-store-router': 'node_modules/ngrx-store-router/index.js' 
+    '@ngrx': 'node_modules/@ngrx'
   },
   packages: {
     '@angular/core': {
@@ -63,11 +61,19 @@ System.config({
       main: 'index.js',
       defaultExtension: 'js'
     },
+    '@angular/router': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
     '@angular/router-deprecated': {
       main: 'index.js',
       defaultExtension: 'js'
     },
-    '@angular/router': {
+    '@ngrx/core': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@ngrx/store': {
       main: 'index.js',
       defaultExtension: 'js'
     },
@@ -81,7 +87,6 @@ Promise.all([
   System.import('@angular/core/testing'),
   System.import('@angular/platform-browser-dynamic/testing')
 ]).then(function (providers) {
-  debugger;
   var testing = providers[0];
   var testingBrowser = providers[1];
 

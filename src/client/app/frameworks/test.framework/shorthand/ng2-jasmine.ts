@@ -7,6 +7,7 @@ import {
   describe,
   fdescribe,
   xdescribe,
+  fakeAsync,
   inject,
   iit,
   it,
@@ -23,6 +24,7 @@ export interface TestApi {
   fdescribe: Function;
   xdescribe: Function;
   async(fn: Function): Function;
+  fakeAsync(fn: Function): Function;
   be(fn: Function): void;
   beforeEach(fn: Function): void;
   beforeEachProviders(fn: any): void;
@@ -48,6 +50,7 @@ export const Ng2Jasmine: TestApi = {
   fdescribe: fdescribe,
   xdescribe: xdescribe,
   async: async,
+  fakeAsync: fakeAsync,
   be: beforeEach,  // shorthand beforeEach
   beforeEach: beforeEach,
   beforeEachProviders: beforeEachProviders,

@@ -131,11 +131,10 @@ function displayFinalHelp()
     console.log("  npm start");
     console.log("");
     console.log("Run your Mobile app via NativeScript with:");
-    console.log("  npm run start.ios");
-    console.log("or...");
-    console.log("  npm run start.android");
+    console.log("  iOS:     npm run start.ios");
+    console.log("  Android: npm run start.android");
     console.log("");
-    console.log("Run your Desktop app via Election with:");
+    console.log("Run your Desktop app via Electron with:");
     console.log("  Mac:     npm run start.desktop");
     console.log("  Windows: npm run start.desktop.windows");
     console.log("");

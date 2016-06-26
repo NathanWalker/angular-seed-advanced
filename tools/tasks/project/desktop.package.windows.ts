@@ -7,6 +7,6 @@ export = () => {
     'dist/dev/**/*'
   ];
   return gulp.src(src, { base: 'dist/dev' })
-    .pipe(electron({ version: '0.37.2', platform: 'win32', winIcon: 'src/assets/logo.ico' }))
+    .pipe(electron({ version: '0.37.2', platform: 'win32', winIcon: 'src/client/assets/logo.ico' }))
     .pipe(symdest('desktop/windows'));
 };

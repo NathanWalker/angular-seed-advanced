@@ -6,14 +6,15 @@ import {FormComponent} from '../../frameworks/core.framework/index';
 import {NameListService} from '../../frameworks/app.framework/index';
 
 @FormComponent({
+  moduleId: module.id,
   selector: 'sd-home',
-  templateUrl: './app/components/home/home.component.html',
-  styleUrls: ['./app/components/home/home.component.css']
+  templateUrl: 'home.component.html',
+  styleUrls: ['home.component.css']
 })
 export class HomeComponent {
   public newName: string = '';
   constructor(private store: Store<any>, public nameListService: NameListService) { 
-
+  
   }
   
   /*

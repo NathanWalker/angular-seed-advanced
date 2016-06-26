@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 
 // libs
 import * as _ from 'lodash';
-import {Store, Reducer, Action} from '@ngrx/store';
+import {Store, ActionReducer, Action} from '@ngrx/store';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
@@ -28,7 +28,7 @@ export const MULTILINGUAL_ACTIONS: any = {
   LANG_CHANGE: `[${CATEGORY}] LANG_CHANGE`
 };
 
-export const multilingualReducer: Reducer<MultilingualStateI> = (state: MultilingualStateI = initialState, action: Action) => {
+export const multilingualReducer: ActionReducer<MultilingualStateI> = (state: MultilingualStateI = initialState, action: Action) => {
   switch (action.type) {
     case MULTILINGUAL_ACTIONS.LANG_CHANGE:
       return Object.assign({}, state, action.payload);

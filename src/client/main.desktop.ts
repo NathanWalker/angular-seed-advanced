@@ -2,11 +2,12 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 console.log(`Electron launching with NODE_ENV: ${process.env.NODE_ENV}`);
 
 // electron
-const app: any = require('app');
-const Menu: any = require('menu');
-const shell: any = require('shell');
-const crashReporter: any = require('crash-reporter');
-const BrowserWindow: any = require('browser-window');
+const electron = require('electron');
+const app = electron.app;
+const Menu: any = electron.Menu;
+const shell: any = electron.shell;
+// const {crashReporter} = require('electron');
+const BrowserWindow = electron.BrowserWindow;
 let mainWindow: any = null;
 let template: any;
 let menu: any;
@@ -14,12 +15,14 @@ let menu: any;
 // app
 import {AppConfigService} from './app/frameworks/app.framework/services/app-config.service';
 
-crashReporter.start({
-  productName: 'Angular2SeedAdvanced',
-  companyName: 'NathanWalker',
-  submitURL: 'https://github.com/NathanWalker/angular2-seed-advanced',
-  autoSubmit: true
-});
+// Sample
+// You would need a valid `submitURL` to use
+// crashReporter.start({
+//   productName: 'Angular2SeedAdvanced',
+//   companyName: 'NathanWalker',
+//   submitURL: 'https://github.com/NathanWalker/angular2-seed-advanced',
+//   autoSubmit: true
+// });
 
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')();

@@ -5,7 +5,7 @@ import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
 
 // app
-import {CoreConfigService, ViewBrokerService} from '../index';
+import {ViewBrokerService} from '../index';
 
 declare var Reflect: any;
 const _reflect: any = Reflect;
@@ -35,11 +35,6 @@ export class DecoratorUtils {
     if (metadata.templateUrl) {
       // correct view for platform target
       metadata.templateUrl = ViewBrokerService.TEMPLATE_URL(metadata.templateUrl);
-    }
-    
-    if (metadata.styleUrls && CoreConfigService.IS_MOBILE_NATIVE()) {
-      // {N} doesn't support all css properties, therefore remove styleUrls to be safe
-      delete metadata.styleUrls;
     }
     
     metadata.directives = metadata.directives ? metadata.directives.concat(DIRECTIVES) : DIRECTIVES;
