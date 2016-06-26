@@ -1,9 +1,10 @@
 import {BaseComponent} from '../../frameworks/core.framework/index';
 
 @BaseComponent({
+  moduleId: module.id,
   selector: 'sd-about',
-  templateUrl: './app/components/about/about.component.html',
-  styleUrls: ['./app/components/about/about.component.css']
+  templateUrl: 'about.component.html',
+  styleUrls: ['about.component.css']
 })
 export class AboutComponent  {
   

@@ -7,10 +7,14 @@ import { makeTsProject, templateLocals } from '../../utils';
 
 const plugins = <any>gulpLoadPlugins();
 
+/**
+ * Executes the build process, transpiling the TypeScript files (including the e2e-spec files, excluding the spec files)
+ * for the e2e environment.
+ */
 export = () => {
   let tsProject = makeTsProject();
   let src = [
-    'typings/browser.d.ts',
+    'typings/index.d.ts',
     TOOLS_DIR + '/manual_typings/**/*.d.ts',
     join(APP_SRC, '**/*.ts'),
     '!' + join(APP_SRC, '**/*.spec.ts')
