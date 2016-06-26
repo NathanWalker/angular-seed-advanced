@@ -4,7 +4,8 @@
   border-width: 0 0 1px;
   display: block;
   height: 48px;
-  padding: 0 16px; }
+  padding: 0 16px;
+}
 
 nav a {
   color: #8f8f8f;
@@ -13,7 +14,9 @@ nav a {
   line-height: 48px;
   margin-right: 20px;
   text-decoration: none;
-  vertical-align: middle; }
+  vertical-align: middle;
+}
 
-nav .router-link-active {
-  color: #106cc8; }
+nav a.router-link-active {
+  color: #106cc8;
+}

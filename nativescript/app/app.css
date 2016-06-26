@@ -57,20 +57,20 @@ TextField {
 }
 
 .drawerMenuContent {
-  margin:10;
+    margin:10;
 }
 
 .mainContent{
-  background-color: white;
+    background-color: white;
 }
 
 .drawerContent {
-  background-color: white;
+    background-color: white;
 }
 
 .headerContent {
-  padding:20;
-  background-color: #808080
+    padding:20;
+    background-color: #808080
 }
 
 .heading {
@@ -88,11 +88,11 @@ TextField {
   padding:5;
 }
 .odd {
-  background-color: #efefef;
+    background-color: #efefef;
 }
 
 .even {
-  background-color: #fff;
+    background-color: #fff;
 }
 
 .love-tech {
