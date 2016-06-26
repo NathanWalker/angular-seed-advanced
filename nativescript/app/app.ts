@@ -3,7 +3,7 @@
 
 // nativescript
 import {nativeScriptBootstrap} from 'nativescript-angular/application';
-import {NS_ROUTER_PROVIDERS, NS_ROUTER_DIRECTIVES} from 'nativescript-angular/router';
+import {NS_ROUTER_DIRECTIVES, nsProvideRouter} from 'nativescript-angular/router';
 
 // angular 
 import {provide, enableProdMode} from '@angular/core';
@@ -20,6 +20,7 @@ CoreConfigService.ROUTER_DIRECTIVES = NS_ROUTER_DIRECTIVES;
 
 // app
 import {NS_APP_PROVIDERS} from './shared/nativescript.framework/index';
+import {routes} from './app/components/app/app.routes';
 import {NSAppComponent} from './pages/app/app.component';
 import {WindowNative, ModalNative, NSHttpService} from './shared/core/index';
   
@@ -30,11 +31,11 @@ nativeScriptBootstrap(NSAppComponent, [
   provide(WindowService, { useClass: WindowNative }),
   ModalNative,
   provide(HttpService, { useClass: NSHttpService }),
-  NS_ROUTER_PROVIDERS,
   provide(TranslateLoader, {
     useFactory: () => {
       return new TNSTranslateLoader('assets/i18n');
     }
   }),
-  NS_APP_PROVIDERS
+  NS_APP_PROVIDERS,
+  nsProvideRouter(routes, { enableTracing: false })
 ]);

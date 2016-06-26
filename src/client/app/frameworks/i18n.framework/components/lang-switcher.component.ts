@@ -1,6 +1,3 @@
-// angular
-import {ControlGroup, Control} from '@angular/common';
-
 // libs
 import {Store} from '@ngrx/store';
 import 'rxjs/add/operator/take';
@@ -16,15 +13,13 @@ import {MultilingualService} from '../index';
   templateUrl: 'lang-switcher.component.html'
 })
 export class LangSwitcherComponent {
-  public langForm: ControlGroup;
+  public lang: string;
   public supportedLanguages: Array<ILang> = MultilingualService.SUPPORTED_LANGUAGES;
 
   constructor(private log: LogService, private store: Store<any>, private multilang: MultilingualService) {
     store.take(1).subscribe((s: any) => {
       // s && s.18n - ensures testing works in all cases (since some tests dont use i18n state)
-      this.langForm = new ControlGroup({
-        lang: new Control(s && s.i18n ? s.i18n.lang : '')
-      });
+      this.lang = s && s.i18n ? s.i18n.lang : '';
     });
 
     if (CoreConfigService.IS_DESKTOP()) {

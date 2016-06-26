@@ -1,6 +1,5 @@
 // angular
 import {HTTP_PROVIDERS} from '@angular/http';
-import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
 
 // app
 import {LogService} from './services/log.service';
@@ -8,7 +7,6 @@ import {HttpService} from './services/http.service';
 
 export const CORE_PROVIDERS: any[] = [
   HTTP_PROVIDERS,
-  ROUTER_PROVIDERS,
   LogService, 
   HttpService
 ];
