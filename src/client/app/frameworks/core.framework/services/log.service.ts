@@ -10,7 +10,8 @@ export class LogService {
   // debug (standard output)
   public debug(msg: string) { 
     if (CoreConfigService.DEBUG.LEVEL_4) {
-      this.logger.debug(msg);  
+      // console.debug does not work on {N} apps... use `log`
+      this.logger.log(msg);  
     }
   }
   

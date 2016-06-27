@@ -8,10 +8,14 @@ import { makeTsProject, templateLocals } from '../../utils';
 
 const plugins = <any>gulpLoadPlugins();
 
+/**
+ * Executes the build process, transpiling the TypeScript files (except the spec and e2e-spec files) for the development
+ * environment.
+ */
 export = () => {
   let tsProject = makeTsProject();
   let typings = gulp.src([
-    'typings/browser.d.ts',
+    'typings/index.d.ts',
     TOOLS_DIR + '/manual_typings/**/*.d.ts'
   ]);
   let src = [

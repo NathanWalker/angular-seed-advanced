@@ -3,11 +3,15 @@ import {Component, provide} from '@angular/core';
 import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
 import {PlatformDirective} from './platform.directive';
-import {t, WindowMock} from '../../test.framework/index';
+import {t} from '../../test.framework/index';
 import {WindowService} from '../../core.framework/index';
+import {WindowMock} from '../../core.framework/testing/index';
 
 @Component({ 
-  selector: 'test',
+  viewProviders: [
+    provide(WindowService, { useClass: WindowMock})
+  ],
+  selector: 'test-cmp',
   template: `<div platform></div>`,
   directives: [PlatformDirective]
 })
@@ -16,8 +20,6 @@ class TestComponent {}
 export function main() {
   t.describe('core.framework: PlatformDirective', () => {
     let rootTC: any;
-    
-    t.bep(() => [TestComponentBuilder, provide(WindowService, { useClass: WindowMock})]);
 
     t.be(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
       return tcb
