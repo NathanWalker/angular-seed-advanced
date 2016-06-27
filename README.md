@@ -44,6 +44,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - [Testing](#testing)
 - [Framework How-Tos](#framework-how-tos)
 - [Web Configuration Options](#web-configuration-options)
+- [Change Detection OnPush Note](#change-detection-onpush-note)
 - [Feature Branches](#feature-branches)
 - [Integration Guides](https://github.com/NathanWalker/angular2-seed-advanced/wiki)
 - [How best to use for your project](#how-best-to-use-for-your-project)
@@ -222,6 +223,17 @@ Configure at runtime
 ```bash
 npm start -- --port 8080 --reload-port 4000 --base /my-app/
 ```
+
+## Change Detection OnPush Note
+
+*Please Note:* The seed uses Angular's `ChangeDetectionStrategy.OnPush` by default which requires some understanding of immutability and one-way data flows. Please check out the following resources to learn more:
+
+* http://blog.thoughtram.io/angular/2016/02/22/angular-2-change-detection-explained.html
+* http://victorsavkin.com/post/110170125256/change-detection-in-angular-2
+* http://www.syntaxsuccess.com/viewarticle/change-detection-in-angular-2.0
+* http://ngcourse.rangle.io/handout/change-detection/change_detection_strategy_onpush.html
+
+If you experience issues with changes not occuring in your views, you can disable this by commenting out [these lines](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/client/app/frameworks/core.framework/decorators/utils.ts#L43-L48). The seed uses `OnPush` by default because it  provides optimal performance and if you decide to turn it off while developing your application, you can always turn it back on when you're ready to refactor your data services to utilize `OnPush` properly.
 
 ## Feature Branches
 
