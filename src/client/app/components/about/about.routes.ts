@@ -1,6 +1,8 @@
+import { RouterConfig } from '@angular/router';
+
 import { AboutComponent } from './about.component';
 
-export const AboutRoutes = [
+export const AboutRoutes: RouterConfig = [
   {
     path: 'about',
     component: AboutComponent
