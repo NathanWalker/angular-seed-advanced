@@ -63,8 +63,8 @@ function transformPath() {
   return function (filepath: string) {
     if (TARGET_DESKTOP) {
       let path = join(APP_BASE, filepath);
-      if (path.indexOf('dist/dev') > -1) {
-        path = path.replace(/dist\/dev\//g, '');
+      if (path.indexOf('dist/dev') > -1 || path.indexOf('dist\\dev') > -1) {
+        path = path.replace(/(dist\/dev\/)|(dist\\dev\\)/g, '');
       }
       arguments[0] = path.substring(1) + `?${Date.now()}`;
     } else {
