@@ -38,12 +38,15 @@ module.exports = function(config) {
       // Angular itself
       { pattern: 'node_modules/@angular/**/*.js', included: false, watched: true },
 
+      // Angular-Material2
+      { pattern: 'node_modules/@angular2-material/**/*.js', included: false, watched: true },
+
       // Advanced seed
       { pattern: 'node_modules/lodash/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/ng2-translate/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/@ngrx/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/angulartics2/**/*.js', included: false, watched: false },
-      
+
       { pattern: 'dist/dev/**/*.js', included: false, watched: true },
       { pattern: 'dist/dev/**/*.html', included: false, watched: true, served: true },
       { pattern: 'dist/dev/**/*.css', included: false, watched: true, served: true },
@@ -58,7 +61,7 @@ module.exports = function(config) {
     // must go along with above, suppress annoying 404 warnings.
     proxies: {
       '/assets/': '/base/dist/dev/assets/'
-    },  
+    },
 
     // list of files to exclude
     exclude: [

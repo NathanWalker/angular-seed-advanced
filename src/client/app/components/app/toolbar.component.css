@@ -1,18 +1,27 @@
-:host {
-  background-color: #106cc8;
-  color: rgba(255, 255, 255, 0.87);
-  display: block;
-  height: 48px;
-  padding: 0 16px;
-  position: relative;
+.sd-toolbar-menu {
+  padding: 0 14px 0 14px;
+  color: white;
 }
 
-h1 {
-  display: inline;
-  font-size: 20px;
+.sd-icon-button {
+  box-shadow: none;
+  user-select: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  filter: none;
   font-weight: normal;
-  letter-spacing: 0.1px;
-  line-height: 48px;
+  height: auto;
+  line-height: inherit;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+}
+
+.sd-toolbar-filler {
+  flex: 1 1 auto;
 }
 
 :host lang-switcher,

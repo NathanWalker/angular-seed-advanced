@@ -1,3 +1,4 @@
+<div class="home-card-container">
 <h2>
   {{ 'LOVE_TECH' | translate }} <smile></smile>
 </h2>
@@ -8,12 +9,19 @@
 <p>
   {{'ABOUT_ADD' | translate}}
 </p>
-
-<form (submit)="addName()">
-  <input [(ngModel)]="newName" name="newName" [placeholder]="'INPUT_HINT' | translate">
-  <button type="submit">{{'ADD_BTN_TEXT' | translate}}</button>
-</form>
-
-<ul>
-  <li *ngFor="let name of nameListService.names | async">{{name}}</li>
-</ul>
+  <md-card class="home-card">
+    <form (submit)="addName()" class="home-form">
+      <div>
+        <input [(ngModel)]="newName" name="newName" [placeholder]="'INPUT_HINT' | translate">
+        <!--<md-input [(ngModel)]="newName" name="newName" [placeholder]="'INPUT_HINT' | translate" class="home-input"></md-input>-->
+        <button md-raised-button color="accent" type="submit" class="home-button">{{'ADD_BTN_TEXT' | translate}}</button>
+      </div>
+    </form>
+    <md-list class="home-list">
+      <md-list-item *ngFor="let name of nameListService.names | async">
+        <h3 md-line>{{name}}</h3>
+        <p md-line class="demo-secondary-text"></p>
+      </md-list-item>
+    </md-list>
+  </md-card>
+</div>

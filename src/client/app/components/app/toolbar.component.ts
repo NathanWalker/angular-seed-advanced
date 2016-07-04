@@ -1,4 +1,5 @@
 // app
+import {MdToolbar} from '@angular2-material/toolbar';
 import {BaseComponent, LogService} from '../../frameworks/core/index';
 import {LangSwitcherComponent} from '../../frameworks/i18n/index';
 import {NavbarComponent} from './navbar.component';
@@ -8,12 +9,12 @@ import {NavbarComponent} from './navbar.component';
   selector: 'sd-toolbar',
   templateUrl: 'toolbar.component.html',
   styleUrls: ['toolbar.component.css'],
-  directives: [LangSwitcherComponent, NavbarComponent]
+  directives: [LangSwitcherComponent, NavbarComponent, MdToolbar]
 })
 export class ToolbarComponent {
-  
+
   constructor(private log: LogService) {}
-  
+
   public openLanguages(e: any): void {
     this.log.debug('openLanguages');
   }

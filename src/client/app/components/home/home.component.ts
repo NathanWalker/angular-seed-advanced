@@ -9,14 +9,14 @@ import {NameListService} from '../../frameworks/app/index';
   moduleId: module.id,
   selector: 'sd-home',
   templateUrl: 'home.component.html',
-  styleUrls: ['home.component.css']
+  styleUrls: ['home.component.css'],
 })
 export class HomeComponent {
   public newName: string = '';
-  constructor(private store: Store<any>, public nameListService: NameListService) { 
-  
+  constructor(private store: Store<any>, public nameListService: NameListService) {
+
   }
-  
+
   /*
    * @param newname  any text as input.
    * @returns return false to prevent default form submit behavior to refresh the page.
