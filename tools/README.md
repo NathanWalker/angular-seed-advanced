@@ -46,6 +46,7 @@ The seed provides the following tasks:
 | `build.js.test.ts`     | Transpiles the TypeScript files (excluding specs and e2e specs) for the `test` environment |
 | `build.js.tools.ts`    | Transpiles the TypeScript files located in `/tools` |
 | `check.versions.ts`    | Checks if the required Node and NPM (as defined in `/config/seed.config.ts`) are installed |
+| `clean.all.src.js.ts`     | Cleans all .js and .map files created by {N} builds within the `src/client` directory |
 | `clean.all.ts`         | Cleans all files within the `/dist` directory |
 | `clean.dev.ts`         | Cleans all files within the `/dist/dev` directory |
 | `clean.prod.ts`        | Cleans all files within the `/dist/prod` directory |
