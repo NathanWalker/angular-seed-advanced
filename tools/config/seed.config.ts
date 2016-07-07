@@ -40,7 +40,7 @@ export class SeedConfig {
 
   /**
    * The current environment.
-   * The default environment is `dev`, which can be overriden by the `--env` flag when running `npm start`.
+   * The default environment is `dev`, which can be overriden by the `--config-env ENV_NAME` flag when running `npm start`.
    */
   ENV = getEnvironment();
 
@@ -272,7 +272,6 @@ export class SeedConfig {
    * @type {InjectableDependency[]}
    */
   NPM_DEPENDENCIES: InjectableDependency[] = [
-    { src: 'systemjs/dist/system-polyfills.src.js', inject: 'shims', env: ENVIRONMENTS.DEVELOPMENT },
     { src: 'zone.js/dist/zone.js', inject: 'libs' },
     { src: 'core-js/client/shim.min.js', inject: 'shims' },
     { src: 'systemjs/dist/system.src.js', inject: 'shims', env: ENVIRONMENTS.DEVELOPMENT },
@@ -312,9 +311,9 @@ export class SeedConfig {
   protected SYSTEM_CONFIG_DEV: any = {
     defaultJSExtensions: true,
     packageConfigPaths: [
-      `node_modules/*/package.json`,
-      `node_modules/**/package.json`,
-      `node_modules/@angular/*/package.json`
+      `/node_modules/*/package.json`,
+      `/node_modules/**/package.json`,
+      `/node_modules/@angular/*/package.json`
     ],
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
@@ -331,7 +330,7 @@ export class SeedConfig {
       '*': `node_modules/*`
     },
     packages: {
-      rxjs: { defaultExtension: false }
+      rxjs: { defaultExtension: 'js' }
     }
   };
 

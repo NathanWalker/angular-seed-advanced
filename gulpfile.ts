@@ -58,6 +58,7 @@ gulp.task('build.test', (done: any) =>
   runSequence('clean.dev',
               'tslint',
               'build.assets.dev',
+              'build.html_css',
               'build.js.test',
               'build.index.dev',
               done));
