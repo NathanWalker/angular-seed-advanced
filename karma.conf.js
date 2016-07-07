@@ -62,7 +62,6 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      'src/client/app/frameworks/nativescript.framework/**/*spec.js',
       'node_modules/**/*spec.js'
     ],
 

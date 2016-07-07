@@ -53,21 +53,21 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 
 #### Enhanced development workflow
 - Decorators for components which reduce boilerplate for common component setups
-- Introduction of `frameworks` to help organize your code for different platforms:
-  - `app.framework`: your shared application architecture code (grow your app here or create new frameworks)
-  - `core.framework`: foundation layer (decorators and low-level services)
-  - `analytics.framework`: analytics provided by [Segment](https://segment.com/)
+- Shared code can be found in `frameworks`:
+  - `app`: your shared application architecture code
+  - `core`: foundation layer (decorators and low-level services)
+  - `analytics`: analytics provided by [Segment](https://segment.com/)
     - Only reports data in **production** build
-  - `i18n.framework`: internationalization features
-  - `electron.framework`: [Electron](http://electron.atom.io/) specific code
-  - `test.framework`: test specific code providing conveniences to make testing your code easier and faster 
+  - `i18n`: internationalization features
+  - `electron`: [Electron](http://electron.atom.io/) specific code
+  - `test`: test specific code providing conveniences to make testing your code easier and faster 
 
 #### Enhanced testing support options
 - mocks for various services
 - configurable provider blocks for easy test setup of common application providers
   - tired of setting up similar providers over and over again for different tests?
   - configure a reusable test provider which can be configured on a case-by-base basis
-  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/client/app/frameworks/core.framework/testing/providers/core.ts)
+  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/client/app/frameworks/core/testing/providers/core.ts)
 - helpers for end-to-end (e2e, integration) tests
 - convenient shorthand to reduce test setup boilerplate and enhance speed of writing tests
   - are your test cases buried by multiple import lines requiring you to scroll just to get to the substance of the test?
@@ -77,7 +77,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
   - plays nice with `tslint` options like `"no-unused-variable": true` as the api hangs off a plain `Object` instead of globals 
     - what's the value of that you ask? have you ever isolated a test with `iit` or `ddescribe` but didn't import those or vice versa, used `iit` leaving an unused `it` now in your tests? yeah, `tslint` will be all over you :/
     - avoids `unused` variable warnings altogether in tests since you are always using a valid key from the shorthand `Object`
-  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/client/app/frameworks/test.framework/shorthand/ng2-jasmine.ts)
+  - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/client/app/frameworks/test/shorthand/ng2-jasmine.ts)
   
 **Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
 
@@ -195,16 +195,16 @@ You can learn more about [Protractor Interactive Mode here](https://github.com/a
 
 ## Framework How-Tos
 
-### i18n.framework
+### i18n
 
 * how to add a language?
   - `src/client/assets/i18n/`
     - add `[language code].json` (copy existing one and adapt the translation strings)
-  - `src/client/app/frameworks/app.framework/services/app-config.service.spec.ts`
+  - `src/client/app/frameworks/app/services/app-config.service.spec.ts`
     - fix test
-  - `src/client/app/frameworks/app.framework/services/app-config.service.ts`
+  - `src/client/app/frameworks/app/services/app-config.service.ts`
     - add language to `SUPPORTED_LANGUAGES`
-  - `src/client/app/frameworks/app.framework/i18n.framework/components/lang-switcher.component.spec.ts`
+  - `src/client/app/frameworks/i18n/components/lang-switcher.component.spec.ts`
     - fix test
 
 ## Web Configuration Options
@@ -233,7 +233,7 @@ npm start -- --port 8080 --reload-port 4000 --base /my-app/
 * http://www.syntaxsuccess.com/viewarticle/change-detection-in-angular-2.0
 * http://ngcourse.rangle.io/handout/change-detection/change_detection_strategy_onpush.html
 
-If you experience issues with changes not occuring in your views, you can disable this by commenting out [these lines](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/client/app/frameworks/core.framework/decorators/utils.ts#L43-L48). The seed uses `OnPush` by default because it  provides optimal performance and if you decide to turn it off while developing your application, you can always turn it back on when you're ready to refactor your data services to utilize `OnPush` properly.
+If you experience issues with changes not occuring in your views, you can disable this by commenting out [these lines](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/client/app/frameworks/core/decorators/utils.ts#L43-L48). The seed uses `OnPush` by default because it  provides optimal performance and if you decide to turn it off while developing your application, you can always turn it back on when you're ready to refactor your data services to utilize `OnPush` properly.
 
 ## Feature Branches
 
@@ -254,8 +254,8 @@ Several branches exist with certain features integrated:
 6. `git add .; git commit -m'ready'`. Yes, you will be committing all those conflicts, which actually are not a problem in this 1 time case.
 7. Now you have `git` setup and ready to develop your application as well as merge in upstream changes in the future.
 8. `npm install` (and all other usage docs in this `README` apply)
-9. Create a new `framework` for your application in `src/client/app/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp.framework` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
-10. If you don't want an integration that comes out of box with this seed; for example. let's say you don't want to use i18n. Then just delete the `i18n.framework`, remove `ng2-translate` as dependency root `package.json` and `nativescript/package.json`. Then remove any references to `i18n` throughout.
+9. Create a new `framework` for your application in `src/client/app/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
+10. If you don't want an integration that comes out of box with this seed; for example. let's say you don't want to use i18n. Then just delete the `i18n`, remove `ng2-translate` as dependency root `package.json` and `nativescript/package.json`. Then remove any references to `i18n` throughout.
 
 You can read more about [configuring a remote for a fork here](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
 

@@ -5,15 +5,15 @@ import {bootstrap} from '@angular/platform-browser-dynamic';
 import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 // config
-import {CoreConfigService} from './app/frameworks/core.framework/index';
+import {CoreConfigService} from './app/frameworks/core/index';
 CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.WEB;
 CoreConfigService.DEBUG.LEVEL_4 = true;
 
 // app
-import {WindowService, ConsoleService, CORE_PROVIDERS} from './app/frameworks/core.framework/index';
-import {ANALYTICS_PROVIDERS} from './app/frameworks/analytics.framework/index';
-import {MultilingualService} from './app/frameworks/i18n.framework/index';
-import {APP_PROVIDERS, AppConfigService} from './app/frameworks/app.framework/index';
+import {WindowService, ConsoleService, CORE_PROVIDERS} from './app/frameworks/core/index';
+import {ANALYTICS_PROVIDERS} from './app/frameworks/analytics/index';
+import {MultilingualService} from './app/frameworks/i18n/index';
+import {APP_PROVIDERS, AppConfigService} from './app/frameworks/app/index';
 import {APP_ROUTER_PROVIDERS} from './app/components/app/app.routes';
 import {AppComponent} from './app/components/app/app.component';
 // custom i18n language support

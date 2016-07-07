@@ -1,8 +1,8 @@
-import {t} from '../../../app/frameworks/test.framework/index';
+import {t} from '../../../app/frameworks/test/index';
 import {ActionBarUtil} from './actionbar.util';
 
 export function main() {
-  t.describe('nativescript.framework: ActionBarUtil', () => {
+  t.describe('nativescript: ActionBarUtil', () => {
     
     t.it('sanity', () => {   
       t.e(ActionBarUtil.SET_TITLE).toBeDefined();

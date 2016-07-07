@@ -1,5 +1,5 @@
 // app
-import {RouteComponent} from '../../frameworks/core.framework/index';
+import {RouteComponent} from '../../frameworks/core/index';
 
 @RouteComponent({
   moduleId: module.id,

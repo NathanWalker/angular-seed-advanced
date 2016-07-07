@@ -5,7 +5,7 @@ import { join} from 'path';
 
 import { APP_DEST, APP_SRC, BOOTSTRAP_MODULE, TOOLS_DIR, ENABLE_SCSS } from '../../config';
 import { makeTsProject } from '../../utils';
-import { ViewBrokerService } from '../../../src/client/app/frameworks/core.framework/services/view-broker.service';
+import { ViewBrokerService } from '../../../src/client/app/frameworks/core/services/view-broker.service';
 
 const plugins = <any>gulpLoadPlugins();
 

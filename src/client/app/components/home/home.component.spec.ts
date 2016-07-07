@@ -6,10 +6,10 @@ import {disableDeprecatedForms, provideForms} from '@angular/forms/index';
 // libs 
 import {provideStore} from '@ngrx/store';
 
-import {t} from '../../frameworks/test.framework/index';
-import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from '../../frameworks/core.framework/testing/index';
-import {NameListService, nameListReducer} from '../../frameworks/app.framework/index';
-import {TEST_MULTILINGUAL_PROVIDERS} from '../../frameworks/i18n.framework/testing/index';
+import {t} from '../../frameworks/test/index';
+import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from '../../frameworks/core/testing/index';
+import {NameListService, nameListReducer} from '../../frameworks/app/index';
+import {TEST_MULTILINGUAL_PROVIDERS} from '../../frameworks/i18n/testing/index';
 import {HomeComponent} from './home.component';
 
 export function main() {
