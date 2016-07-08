@@ -1,21 +1,20 @@
 {
 	"version": "0.2.0",
 	"configurations": [
-		{
-			"name": "Launch localhost with sourcemaps",
-			"type": "chrome",
-			"request": "launch",
-			"url": "http://localhost:5555/",
-			"sourceMaps": true,
-            "webRoot": "${workspaceRoot}/dist/dev",
-            "runtimeArgs": [
-                "--remote-debugging-port=9222", //Open in port 9222 (standard chrome debug port)
-                "--user-data-dir=${workspaceRoot}\\ChromeDebugger-UserData\\", //Can be any directory. Makes chrome load in a different directory so that it opens in a new instance.
-                //"--user-data-dir=${env.LOCALAPPDATA}\\Google\\Chrome\\User Data\\", //CHROME DEFAULT
-                "--new-window" //Open in new window
-            ]
-            
-		},
+	{
+		"name": "Launch localhost with sourcemaps",
+		"type": "chrome",
+		"request": "launch",
+		"url": "http://localhost:5555/",
+		"sourceMaps": true,
+		"webRoot": "${workspaceRoot}/dist/dev",
+		"runtimeArgs": [
+			"--remote-debugging-port=9222", //Open in port 9222 (standard chrome debug port)
+			"--user-data-dir=${workspaceRoot}\\ChromeDebugger-UserData\\", //Can be any directory. Makes chrome load in a different directory so that it opens in a new instance.
+			//"--user-data-dir=${env.LOCALAPPDATA}\\Google\\Chrome\\User Data\\", //CHROME DEFAULT
+			"--new-window" //Open in new window
+		]
+	},
         {
             "name": "Launch Electron App",
             "type": "node",
