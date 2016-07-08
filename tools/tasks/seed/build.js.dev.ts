@@ -31,7 +31,7 @@ export = () => {
     .pipe(plugins.typescript(tsProject));
 
   return result.js
-    .pipe(plugins.sourcemaps.write())
+    .pipe(plugins.sourcemaps.write('.', {includeContent: false, sourceRoot: '../../src/client'}))
     .pipe(plugins.template(templateLocals()))
     .pipe(gulp.dest(APP_DEST));
 };
