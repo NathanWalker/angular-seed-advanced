@@ -31,7 +31,7 @@
 		"es6-promise": "^3.0.2",
 		"es6-shim": "^0.35.0",
 		"lodash": "^4.13.1",
-		"nativescript-angular": "0.1.8",
+		"nativescript-angular": "0.2.0",
 		"nativescript-ng2-translate": "^1.1.0",
 		"ng2-translate": "2.2.2",
 		"parse5": "1.4.2",

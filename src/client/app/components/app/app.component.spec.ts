@@ -4,10 +4,10 @@ import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 import {disableDeprecatedForms, provideForms} from '@angular/forms/index';
 import {RouterConfig} from '@angular/router';
 
-import {t} from '../../frameworks/test.framework/index';
-import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from '../../frameworks/core.framework/testing/index';
-import {NameListService} from '../../frameworks/app.framework/index';
-import {TEST_MULTILINGUAL_PROVIDERS} from '../../frameworks/i18n.framework/testing/index';
+import {t} from '../../frameworks/test/index';
+import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from '../../frameworks/core/testing/index';
+import {NameListService} from '../../frameworks/app/index';
+import {TEST_MULTILINGUAL_PROVIDERS} from '../../frameworks/i18n/testing/index';
 import {AppComponent} from './app.component';
 import {HomeComponent} from '../home/home.component';
 import {AboutComponent} from '../about/about.component';

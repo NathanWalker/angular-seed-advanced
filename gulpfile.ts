@@ -58,6 +58,7 @@ gulp.task('build.test', (done: any) =>
   runSequence('clean.dev',
               'tslint',
               'build.assets.dev',
+              'build.html_css',
               'build.js.test',
               'build.index.dev',
               done));
@@ -78,10 +79,10 @@ gulp.task('build.tools', (done: any) =>
 
 // --------------
 // Docs
-// gulp.task('docs', (done: any) =>
-//   runSequence('build.docs',
-//               'serve.docs',
-//               done));
+gulp.task('docs', (done: any) =>
+  runSequence('build.docs',
+              'serve.docs',
+              done));
 
 // --------------
 // Serve dev

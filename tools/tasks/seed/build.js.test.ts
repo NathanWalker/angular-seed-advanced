@@ -3,9 +3,9 @@ import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { join} from 'path';
 
-import { APP_DEST, APP_SRC, BOOTSTRAP_MODULE, TOOLS_DIR } from '../../config';
+import { APP_DEST, APP_SRC, BOOTSTRAP_MODULE, TOOLS_DIR, ENABLE_SCSS } from '../../config';
 import { makeTsProject } from '../../utils';
-import { ViewBrokerService } from '../../../src/client/app/frameworks/core.framework/services/view-broker.service';
+import { ViewBrokerService } from '../../../src/client/app/frameworks/core/services/view-broker.service';
 
 const plugins = <any>gulpLoadPlugins();
 
@@ -27,7 +27,8 @@ export = () => {
     .pipe(plugins.inlineNg2Template({
       base: APP_SRC,
       useRelativePaths: true,
-      templateFunction: ViewBrokerService.TEMPLATE_URL
+      templateFunction: ViewBrokerService.TEMPLATE_URL,
+      supportNonExistentFiles: ENABLE_SCSS
     }))
     .pipe(plugins.typescript(tsProject));
 

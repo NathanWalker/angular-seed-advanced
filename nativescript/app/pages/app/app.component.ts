@@ -10,8 +10,8 @@ import {Store} from '@ngrx/store';
 
 // app
 import {AppComponent} from '../../app/components/app/app.component';
-import {LogService} from '../../app/frameworks/core.framework/index';
-import {AnalyticsService} from '../../app/frameworks/analytics.framework/index';
+import {LogService} from '../../app/frameworks/core/index';
+import {AnalyticsService} from '../../app/frameworks/analytics/index';
 import {ModalNative} from '../../shared/core/services/modal-native.service';
 import {ActionBarUtil} from '../../shared/core/utils/actionbar.util';
 

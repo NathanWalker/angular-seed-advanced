@@ -13,7 +13,7 @@ let template: any;
 let menu: any;
 
 // app
-import {AppConfigService} from './app/frameworks/app.framework/services/app-config.service';
+import {AppConfigService} from './app/frameworks/app/services/app-config.service';
 
 // Sample
 // You would need a valid `submitURL` to use

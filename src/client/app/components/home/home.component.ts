@@ -2,8 +2,8 @@
 import {Store} from '@ngrx/store';
 
 // app
-import {FormComponent} from '../../frameworks/core.framework/index';
-import {NameListService} from '../../frameworks/app.framework/index';
+import {FormComponent} from '../../frameworks/core/index';
+import {NameListService} from '../../frameworks/app/index';
 
 @FormComponent({
   moduleId: module.id,

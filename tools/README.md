@@ -18,7 +18,7 @@ The subfolders provide further folders to distinguish between files which are pr
 
 ## Configuration
 
-The configuration of the seed contains of a basic configuration provided by `/config/seed.config.ts` file. You can add you own custom configuration within the `/config/project.config.ts` file, which extends the seed configuration.
+The configuration of the seed contains of a basic configuration provided by `/config/seed.config.ts` file. You can add your own custom configuration within the `/config/project.config.ts` file, which extends the seed configuration.
 
 ## Manual Typings
 
@@ -37,7 +37,7 @@ The seed provides the following tasks:
 | `build.bundles.app.ts` | Bundles the JavaScript files using the SystemJS Builder |
 | `build.bundles.ts`     | Bundles the JavaScript shim dependencies |
 | `build.docs.ts`        | Builds the documentation for the TypeScript files using `typedoc` |
-| `build.html_css.ts`    | Builds the `html` and `css` files and applies css postprocessing |
+| `build.html_css.ts`    | Builds the `html` and `css` files and applies CSS postprocessing |
 | `build.index.dev.ts`   | Builds the `index.html` for the `dev` environment |
 | `build.index.prod.ts`  | Builds the `index.html` for the `prod` environment |
 | `build.js.dev.ts`      | Transpiles the TypeScript files (excluding specs and e2e specs) for the `dev` environment |
@@ -46,11 +46,12 @@ The seed provides the following tasks:
 | `build.js.test.ts`     | Transpiles the TypeScript files (excluding specs and e2e specs) for the `test` environment |
 | `build.js.tools.ts`    | Transpiles the TypeScript files located in `/tools` |
 | `check.versions.ts`    | Checks if the required Node and NPM (as defined in `/config/seed.config.ts`) are installed |
+| `clean.all.src.js.ts`     | Cleans all .js and .map files created by {N} builds within the `src/client` directory |
 | `clean.all.ts`         | Cleans all files within the `/dist` directory |
 | `clean.dev.ts`         | Cleans all files within the `/dist/dev` directory |
 | `clean.prod.ts`        | Cleans all files within the `/dist/prod` directory |
 | `clean.tools.ts`       | Cleans all JavaScript files (which got transpiled from the TypeScript files) within the `/tools` directory  |
-| `copy.js.prod.ts`      | Copies all TypeScript files (exluding specs and e2e specs) over to the `/tmp` dir |
+| `copy.js.prod.ts`      | Copies all TypeScript files (excluding specs and e2e specs) over to the `/tmp` dir |
 | `css-lint.ts`          | Lints all `css` files using `stylelint` |
 | `e2e.ts`               | Runs all e2e specs using `protractor` |
 | `generate.manifest.ts` | Generates a `manifest` file for the application |
@@ -75,10 +76,10 @@ The seed provides the following utilities:
 
 | Filename               | Description |
 | :--------------------- | :---------- |
-| `clean.ts`             | Provides an utility to clean files and directories |
-| `code_change_tools.ts` | Provides utilites to make use of BrowserSync to refresh the browser after a code change |
-| `server.ts`            | Provides utilites to start `express` servers for the application, the documentation and the unit test coverage |
-| `task_tools.ts`        | Provides utilites to start tasks (matching task names as string input parameters from the `gulpfile.ts` to the corresponding files) |
-| `template_locals.ts`   | Provides an utiltiy for template locals |
-| `tsproject.ts`         | Provides an utility to configure the TypeScript transpilation |
-| `watch.ts`             | Provides an utility to watch for file changes and notify live reloads |
+| `clean.ts`             | Provides a utility to clean files and directories |
+| `code_change_tools.ts` | Provides utilities to make use of BrowserSync to refresh the browser after a code change |
+| `server.ts`            | Provides utilities to start `express` servers for the application, the documentation and the unit test coverage |
+| `task_tools.ts`        | Provides utilities to start tasks (matching task names as string input parameters from the `gulpfile.ts` to the corresponding files) |
+| `template_locals.ts`   | Provides a utility for template locals |
+| `tsproject.ts`         | Provides a utility to configure the TypeScript transpilation |
+| `watch.ts`             | Provides a utility to watch for file changes and notify live reloads |
