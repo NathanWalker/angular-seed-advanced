@@ -7,6 +7,13 @@
     "echoCommand": true,
     "tasks": [
         {
+            "taskName": "reinstall",
+            "isBuildCommand": true,
+            "showOutput": "always",
+            "isWatching": true,
+            "isTestCommand": false
+        },
+        {
             "taskName": "start",
             "isBuildCommand": true,
             "showOutput": "always",
