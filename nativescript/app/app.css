@@ -3,19 +3,6 @@ ActionBar {
   color:white;
 }
 
-.nav {
-  padding:10;
-}
-
-.nav button {
-  margin:0 20 0 0;
-  color: #777;
-}
-
-.nav button.active {
-  color: #106CC8;
-}
-
 SegmentedBar {
   color: #106CC8;
   margin: 0 10 0 10;
@@ -73,31 +60,10 @@ TextField {
     background-color: #808080
 }
 
-.heading {
-  margin:10 0 0 0;
-  font-size: 24;
-  color:#106CC8;
-}
-
-.feature-list label {
-  font-size:16;
-  color:#555;
-  margin:0 0 5 0;
-}
-.list-item {
-  padding:5;
-}
 .odd {
     background-color: #efefef;
 }
 
 .even {
     background-color: #fff;
-}
-
-.love-tech {
-  font-size:28;
-  font-weight: bold;
-  color: purple;
-  margin:8 0 8 0;
 }
