@@ -3,11 +3,13 @@
   "files.exclude": {
 		"**/nativescript/platforms": true,
     "src/client/**/*.js": true,
-    "nativescript/app/**/*.js": true
+    "nativescript/app/**/*.js": true,
+    "ChromeDebugger-UserData/**/*": true,
 	},
   "search.exclude": {
 		"**/nativescript/platforms": true,
     "src/client/**/*.js": true,
-    "nativescript/app/**/*.js": true
+    "nativescript/app/**/*.js": true,
+    "ChromeDebugger-UserData/**/*": true,
 	}
 }
