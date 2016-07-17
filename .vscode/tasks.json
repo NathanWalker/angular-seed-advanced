@@ -8,9 +8,9 @@
     "tasks": [
         {
             "taskName": "reinstall",
-            "isBuildCommand": true,
+            "isBuildCommand": false,
             "showOutput": "always",
-            "isWatching": true,
+            "isWatching": false,
             "isTestCommand": false
         },
         {
