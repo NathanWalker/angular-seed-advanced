@@ -7,15 +7,15 @@ import {t} from '../../test/index';
 import {WindowService} from '../../core/index';
 import {WindowMock} from '../../core/testing/index';
 
-@Component({ 
+@Component({
   viewProviders: [
-    provide(WindowService, { useClass: WindowMock})
+    provide(WindowService, { useClass: WindowMock })
   ],
   selector: 'test-cmp',
   template: `<div platform></div>`,
   directives: [PlatformDirective]
 })
-class TestComponent {}
+class TestComponent { }
 
 export function main() {
   t.describe('core: PlatformDirective', () => {
@@ -26,12 +26,15 @@ export function main() {
         .createAsync(TestComponent)
         .then(f => rootTC = f);
     }));
-    
-    //specs
-    t.it('should add platform class', () => {
-      rootTC.detectChanges();
-      let compDOMEl = rootTC.debugElement.children[0].nativeElement;
-      expect(getDOM().classList(compDOMEl)).toEqual(['web']); 
-    });
-});
+
+    t.it('should add platform class',
+      t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+        tcb.createAsync(TestComponent)
+          .then((rootTC: any) => {
+            rootTC.detectChanges();
+            let compDOMEl = rootTC.debugElement.children[0].nativeElement;
+            t.e(getDOM().classList(compDOMEl)).toEqual(['web']);
+          });
+      }));
+  });
 }

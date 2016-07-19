@@ -9,25 +9,23 @@ import {AboutComponent} from './about.component';
 
 export function main() {
   t.describe('@Component: AboutComponent', () => {
-    // Disable old forms
-    let providerArr: any[];
 
-    t.be(() => { providerArr = [disableDeprecatedForms(), provideForms()]; });
-    
     t.it('should work',
-      t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+      t.async(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         tcb.createAsync(TestComponent)
           .then((rootTC:any) => {
             let aboutDOMEl = rootTC.debugElement.children[0].nativeElement;
 
             t.e(getDOM().querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
           });
-      }));
+      })));
   });
 }
 
 @Component({
-  viewProviders: [
+  providers: [
+    disableDeprecatedForms(),
+    provideForms(),
     TEST_CORE_PROVIDERS()
   ],
   selector: 'test-cmp',

@@ -14,13 +14,9 @@ import {HomeComponent} from './home.component';
 
 export function main() {
   t.describe('@Component: HomeComponent', () => {
-    // Disable old forms
-    let providerArr: any[];
-
-    t.be(() => { providerArr = [disableDeprecatedForms(), provideForms()]; });
     
     t.it('should work',
-      t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+      t.async(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         tcb.createAsync(TestComponent)
           .then((rootTC:any) => {
             rootTC.detectChanges();
@@ -39,12 +35,14 @@ export function main() {
 
             t.e(getDOM().querySelectorAll(homeDOMEl, 'li')[0].textContent).toEqual('Minko');
           });
-      }));
+      })));
   });
 }
 
 @Component({
-  viewProviders: [
+  providers: [
+    disableDeprecatedForms(),
+    provideForms(),
     TEST_CORE_PROVIDERS(),
     TEST_HTTP_PROVIDERS(),
     TEST_ROUTER_PROVIDERS(),
