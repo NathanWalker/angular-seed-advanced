@@ -57,7 +57,7 @@ export = () => {
   }
 
   return result.js
-    .pipe(plugins.sourcemaps.write())
     .pipe(plugins.template(templateLocals()))
+    .pipe(plugins.sourcemaps.write('.', {includeContent: true, sourceRoot: '../../src/client'}))
     .pipe(gulp.dest(APP_DEST));
 };

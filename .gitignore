@@ -57,3 +57,7 @@ nativescript/app/assets
 desktop
 gulpfile.js
 gulpfile.js.map
+
+
+#VSCode Chrome Debugger Extension (launch.json configuration)
+ChromeDebugger-UserData
