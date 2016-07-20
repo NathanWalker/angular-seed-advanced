@@ -12,6 +12,30 @@ ul {
   padding: 0 0 0 8px;
 }
 
+.home-card-container {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.home-card {
+  font-size: 14px;
+  width: 450px;
+}
+
+.home-form {
+  padding: 20px;
+}
+
+.home-input {
+  font-size: 14px;
+  width: 200px;
+}
+
+.home-button {
+  font-size: 16px;
+  margin: 10px;
+}
+
 smile {
   background: url("./assets/svg/smile.svg");
   height: 48px;

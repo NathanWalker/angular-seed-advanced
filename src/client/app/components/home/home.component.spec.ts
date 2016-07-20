@@ -1,9 +1,9 @@
 import {TestComponentBuilder} from '@angular/compiler/testing';
 import {Component} from '@angular/core';
-import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
+//import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 import {disableDeprecatedForms, provideForms} from '@angular/forms/index';
 
-// libs 
+// libs
 import {provideStore} from '@ngrx/store';
 
 import {t} from '../../frameworks/test/index';
@@ -22,10 +22,10 @@ export function main() {
             rootTC.detectChanges();
 
             let homeInstance = rootTC.debugElement.children[0].componentInstance;
-            let homeDOMEl = rootTC.debugElement.children[0].nativeElement;
+            let listItems = rootTC.debugElement.children[0].queryAll(By.css('md-list-item'));
 
             t.e(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
-            t.e(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(0);
+            expect(listItems[0].nativeElement.className).toEqual(0);
 
             homeInstance.newName = 'Minko';
             homeInstance.addName();
@@ -55,5 +55,5 @@ export function main() {
   template: '<sd-home></sd-home>'
 })
 class TestComponent {
-  
+
 }
