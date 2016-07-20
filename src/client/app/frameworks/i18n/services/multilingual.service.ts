@@ -5,6 +5,7 @@ import {Injectable} from '@angular/core';
 import * as _ from 'lodash';
 import {Store, ActionReducer, Action} from '@ngrx/store';
 import {TranslateService} from 'ng2-translate/ng2-translate';
+import 'rxjs/add/operator/take';
 
 // app
 import {Analytics, AnalyticsService} from '../../analytics/index';
