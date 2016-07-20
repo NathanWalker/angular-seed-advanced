@@ -18,4 +18,10 @@ export class TranslateMock {
   public setDefaultLang(lang: string) {
     return;
   }
+  public getLangs() {
+    return ['en'];
+  }
+  public reloadLang(lang: string): Observable<string> {
+    return Observable.of('en');
+  }
 }
