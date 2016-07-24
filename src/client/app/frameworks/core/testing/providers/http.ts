@@ -3,8 +3,6 @@ import {ReflectiveInjector, provide} from '@angular/core';
 import {BaseRequestOptions, ConnectionBackend, Http, HTTP_PROVIDERS} from '@angular/http';
 import {MockBackend} from '@angular/http/testing';
 
-import {HttpService} from '../../index';
-
 let providers: any[] = [
   HTTP_PROVIDERS,
   BaseRequestOptions,
@@ -14,8 +12,7 @@ let providers: any[] = [
       return new Http(backend, defaultOptions);
     },
     deps: [MockBackend, BaseRequestOptions]
-  }),
-  HttpService
+  })
 ];
 
 /*
