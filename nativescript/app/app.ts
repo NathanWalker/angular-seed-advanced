@@ -13,10 +13,10 @@ import {TranslateLoader} from 'ng2-translate/ng2-translate';
 import {TNSTranslateLoader} from 'nativescript-ng2-translate/nativescript-ng2-translate';
 
 // config
-import {CoreConfigService, WindowService, HttpService} from './app/frameworks/core/index';
-CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.MOBILE_NATIVE;
-CoreConfigService.DEBUG.LEVEL_4 = true;
-CoreConfigService.ROUTER_DIRECTIVES = NS_ROUTER_DIRECTIVES;
+import {Config, WindowService, HttpService} from './app/frameworks/core/index';
+Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
+Config.DEBUG.LEVEL_4 = true;
+Config.ROUTER_DIRECTIVES = NS_ROUTER_DIRECTIVES;
 
 // app
 import {NS_APP_PROVIDERS} from './shared/nativescript/index';

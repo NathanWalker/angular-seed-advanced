@@ -1,7 +1,7 @@
 import {provide} from '@angular/core';
 
 import {t} from '../../test/index';
-import {CoreConfigService, ConsoleService, LogService} from '../index';
+import {Config, ConsoleService, LogService} from '../index';
 
 const providers: any[] = [
   provide(ConsoleService, { useValue: console }),
@@ -13,7 +13,7 @@ export function main() {
     
     t.be(() => {
       // ensure statics are in default state
-      CoreConfigService.RESET();
+      Config.RESET();
       // spy
       t.spyOn(console, 'log');
       t.spyOn(console, 'error');
@@ -47,13 +47,13 @@ export function main() {
     t.describe('debug levels', () => {
       
       t.be(() => {
-        CoreConfigService.RESET();
+        Config.RESET();
       });
       
       t.bep(() => providers);
       
       t.it('LEVEL_4: everything', t.inject([LogService], (log: LogService) => {
-        CoreConfigService.DEBUG.LEVEL_4 = true;
+        Config.DEBUG.LEVEL_4 = true;
         
         log.debug('debug');
         t.e(console.log).toHaveBeenCalledWith('debug');
@@ -66,7 +66,7 @@ export function main() {
       }));
       
       t.it('LEVEL_3: error only', t.inject([LogService], (log: LogService) => {
-        CoreConfigService.DEBUG.LEVEL_3 = true;
+        Config.DEBUG.LEVEL_3 = true;
 
         log.debug('debug');
         t.e(console.log).not.toHaveBeenCalledWith('debug');
@@ -78,7 +78,7 @@ export function main() {
         t.e(console.info).not.toHaveBeenCalledWith('info');
         
         // always overrides lower levels and allows them to come through
-        CoreConfigService.DEBUG.LEVEL_4 = true;
+        Config.DEBUG.LEVEL_4 = true;
 
         log.debug('debug w/level_4');
         t.e(console.log).toHaveBeenCalledWith('debug w/level_4');
@@ -91,7 +91,7 @@ export function main() {
       }));
       
       t.it('LEVEL_2: warn only', t.inject([LogService], (log: LogService) => {
-        CoreConfigService.DEBUG.LEVEL_2 = true;
+        Config.DEBUG.LEVEL_2 = true;
 
         log.debug('debug');
         t.e(console.log).not.toHaveBeenCalledWith('debug');
@@ -104,7 +104,7 @@ export function main() {
       }));
       
       t.it('LEVEL_1: info only', t.inject([LogService], (log: LogService) => {
-        CoreConfigService.DEBUG.LEVEL_1 = true;
+        Config.DEBUG.LEVEL_1 = true;
 
         log.debug('debug');
         t.e(console.log).not.toHaveBeenCalledWith('debug');

@@ -61,7 +61,6 @@ export class MultilingualService extends Analytics {
     // use browser/platform lang if available
     let userLang = win.navigator.language.split('-')[0];
 
-
     // subscribe to changes
     // store.select('i18n').subscribe((state: MultilingualStateI) => {
     //   // update ng2-translate which will cause translations to occur wherever the TranslatePipe is used in the view

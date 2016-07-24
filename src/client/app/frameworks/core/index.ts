@@ -7,7 +7,7 @@ import {HttpService} from './services/http.service';
 
 export const CORE_PROVIDERS: any[] = [
   HTTP_PROVIDERS,
-  LogService, 
+  LogService,
   HttpService
 ];
 
@@ -22,7 +22,7 @@ export * from './interfaces/iwindow';
 export * from './interfaces/ilang';
 
 // services
-export * from './services/core-config.service';
+export * from './services/config.service';
 export * from './services/console.service';
 export * from './services/log.service';
 export * from './services/http.service';

@@ -8,7 +8,7 @@ interface IPlatforms {
   DESKTOP: string;
 }
 
-export class CoreConfigService {
+export class Config {
   
   public static DEBUG: any = {
     LEVEL_1: false, // .info only
@@ -29,28 +29,28 @@ export class CoreConfigService {
   };
   
   // current target (defaults to web)
-  public static PLATFORM_TARGET: string = CoreConfigService.PLATFORMS.WEB; 
+  public static PLATFORM_TARGET: string = Config.PLATFORMS.WEB; 
   
   // convenient platform checks
   public static IS_WEB(): boolean {
-    return CoreConfigService.PLATFORM_TARGET === CoreConfigService.PLATFORMS.WEB;
+    return Config.PLATFORM_TARGET === Config.PLATFORMS.WEB;
   }
   
   public static IS_MOBILE_NATIVE(): boolean {
-    return CoreConfigService.PLATFORM_TARGET === CoreConfigService.PLATFORMS.MOBILE_NATIVE;
+    return Config.PLATFORM_TARGET === Config.PLATFORMS.MOBILE_NATIVE;
   }
   
   public static IS_MOBILE_HYBRID(): boolean {
-    return CoreConfigService.PLATFORM_TARGET === CoreConfigService.PLATFORMS.MOBILE_HYBRID;
+    return Config.PLATFORM_TARGET === Config.PLATFORMS.MOBILE_HYBRID;
   }
   
   public static IS_DESKTOP(): boolean {
-    return CoreConfigService.PLATFORM_TARGET === CoreConfigService.PLATFORMS.DESKTOP;
+    return Config.PLATFORM_TARGET === Config.PLATFORMS.DESKTOP;
   }
   
   public static IS_DEBUG_MODE(): boolean {
-    for (let key in CoreConfigService.DEBUG) {
-      if (CoreConfigService.DEBUG[key]) {
+    for (let key in Config.DEBUG) {
+      if (Config.DEBUG[key]) {
         // if any level is on, debug mode is on
         return true;
       }
@@ -60,8 +60,8 @@ export class CoreConfigService {
   
   // reset debug defaults
   public static RESET() {
-    for (let key in CoreConfigService.DEBUG) {
-      CoreConfigService.DEBUG[key] = false; 
+    for (let key in Config.DEBUG) {
+      Config.DEBUG[key] = false; 
     }
   }
 }

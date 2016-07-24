@@ -1,9 +1,9 @@
-import {CoreConfigService} from './core-config.service';
+import {Config} from './config.service';
 
 export class ViewBrokerService {
 
   public static TEMPLATE_URL(path: string): string {
-    if (CoreConfigService.IS_MOBILE_NATIVE()) {
+    if (Config.IS_MOBILE_NATIVE()) {
       let paths = path.split('.');
       paths.splice(-1);
       return `${paths.join('.')}.tns.html`;
@@ -13,7 +13,7 @@ export class ViewBrokerService {
   }
 
   public static STYLE_URLS(paths: string[]): string[] {
-    if (CoreConfigService.IS_MOBILE_NATIVE()) {
+    if (Config.IS_MOBILE_NATIVE()) {
       return paths.map((path) => {
         let parts = path.split('.');
         parts.splice(-1);

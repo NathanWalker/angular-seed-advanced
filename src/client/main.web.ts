@@ -5,9 +5,9 @@ import {bootstrap} from '@angular/platform-browser-dynamic';
 import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 // config
-import {CoreConfigService} from './app/frameworks/core/index';
-CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.WEB;
-CoreConfigService.DEBUG.LEVEL_4 = true;
+import {Config} from './app/frameworks/core/index';
+Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
+Config.DEBUG.LEVEL_4 = true;
 
 // app
 import {WindowService, ConsoleService, CORE_PROVIDERS} from './app/frameworks/core/index';
@@ -41,7 +41,7 @@ let BOOTSTRAP_PROVIDERS: any[] = [
 ];
 
 if ('<%= TARGET_DESKTOP %>' === 'true') {
-  CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.DESKTOP;
+  Config.PLATFORM_TARGET = Config.PLATFORMS.DESKTOP;
   // desktop (electron) must use hash
   BOOTSTRAP_PROVIDERS.push(provide(LocationStrategy, {useClass: HashLocationStrategy}));
 }  
