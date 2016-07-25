@@ -1,6 +1,6 @@
 // angular
 import {provide, enableProdMode} from '@angular/core';
-import {disableDeprecatedForms, provideForms} from '@angular/forms/index';
+import {disableDeprecatedForms, provideForms} from '@angular/forms';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
 
