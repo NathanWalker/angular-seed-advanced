@@ -12,6 +12,10 @@ export function systemJsPackages() {
       main: 'index.js',
       defaultExtension: 'js'
     },
+    '@angular/forms': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
     '@angular/http': {
       main: 'index.js',
       defaultExtension: 'js'
