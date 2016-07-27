@@ -1,7 +1,7 @@
 import {TestComponentBuilder} from '@angular/compiler/testing';
 import {Component} from '@angular/core';
 import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
-import {disableDeprecatedForms, provideForms} from '@angular/forms/index';
+import {disableDeprecatedForms, provideForms} from '@angular/forms';
 
 // libs 
 import {provideStore} from '@ngrx/store';
