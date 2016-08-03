@@ -3,10 +3,12 @@ import {HTTP_PROVIDERS} from '@angular/http';
 
 // app
 import {LogService} from './services/log.service';
+import {RouterExtensions} from './services/router-extensions';
 
 export const CORE_PROVIDERS: any[] = [
   HTTP_PROVIDERS,
-  LogService
+  LogService,
+  RouterExtensions,
 ];
 
 // decorators
@@ -25,6 +27,7 @@ export * from './services/console.service';
 export * from './services/log.service';
 export * from './services/view-broker.service';
 export * from './services/window.service';
+export * from './services/router-extensions';
 
 // directives
 export * from './directives/platform.directive';
