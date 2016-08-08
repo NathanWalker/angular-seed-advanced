@@ -16,8 +16,14 @@ export interface ExtendedNavigationExtras extends NavigationExtras {
   // END - Options for nativescript
 }
 
+export interface IRouterExtensions {
+  navigate(commands: any[], extras?: ExtendedNavigationExtras): Promise<boolean>;
+  navigateByUrl(url: string | UrlTree, options?: ExtendedNavigationExtras): Promise<boolean>;
+  back(): void;
+}
+
 @Injectable()
-export class RouterExtensions {
+export class RouterExtensions implements IRouterExtensions {
 
   constructor(public router: Router, private locationStrategy: LocationStrategy) { }
 
