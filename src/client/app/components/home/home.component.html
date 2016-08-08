@@ -18,4 +18,6 @@
   <li *ngFor="let name of nameListService.names | async">{{name}}</li>
 </ul>
 
-<a href (click)="readAbout()">About</a>
+<p>
+  <a class="link" (click)="readAbout()">About</a>
+</p>

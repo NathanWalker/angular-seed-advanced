@@ -22,3 +22,13 @@ smile {
   position: relative;
   top: 16px;
 }
+
+a.link {
+  color: #0000ee;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+a.link:hover {
+  color: #ff0000;
+}
