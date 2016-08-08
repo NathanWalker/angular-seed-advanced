@@ -27,12 +27,16 @@ export class HomeComponent {
     return false;
   }
 
-  readAbout() {
+  readAbout(event: Event) {
     this.routerext.navigate(['/about'], {
       transition: {
         duration: 1000,
         name: 'slideTop',
       }
     });
+
+    if (event && 'preventDefault' in event) {
+      event.preventDefault();
+    }
   }
 }
