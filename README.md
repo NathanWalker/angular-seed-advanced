@@ -260,7 +260,7 @@ public userAction() {
 
 This ensures that when the same code is run in the {N} app, the native `dialogs` module will be used.
 
-* Understand this video: http://www.nativescriptsnacks.com/videos/2016/06/13/zoned-callbacks.html … As far as dealing with {N} and 3rd party plugins, you want to understand that.
+* Lastly, understand this video: http://www.nativescriptsnacks.com/videos/2016/06/13/zoned-callbacks.html … As far as dealing with {N} and 3rd party plugins, you want to understand that.
 
 The advice I like to give is:
 
