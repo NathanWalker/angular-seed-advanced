@@ -10,11 +10,12 @@ import {MultilingualService} from '../index';
 @FormComponent({
   moduleId: module.id,
   selector: 'lang-switcher',
-  templateUrl: 'lang-switcher.component.html'
+  templateUrl: 'lang-switcher.component.html',
+  styleUrls: ['lang-switcher.component.css']
 })
 export class LangSwitcherComponent {
   public lang: string;
-  public supportedLanguages: Array<ILang> = MultilingualService.SUPPORTED_LANGUAGES;
+  public supportedLanguages: Array<any> = MultilingualService.SUPPORTED_LANGUAGES;
 
   constructor(private log: LogService, private store: Store<any>, private multilang: MultilingualService) {
     store.take(1).subscribe((s: any) => {
@@ -27,19 +28,27 @@ export class LangSwitcherComponent {
       ElectronEventService.on('changeLang').subscribe((e: any) => {
         this.changeLang({ target: { value: e.detail.value } });
       });
-    }    
+    } else if (Config.IS_MOBILE_NATIVE()) {
+      // DropDown component supports Array of strings
+      this.supportedLanguages = this.supportedLanguages.map(lang => lang.title);
+    }
   }
-  changeLang(e: any) {
+
+  public changeLang(e: any) {
     let lang = this.supportedLanguages[0].code; // fallback to default 'en'
-    
+    let commitChange = () => {
+      this.log.debug(`Language change: ${lang}`);
+      this.multilang.changeLang(lang);
+    }
     if (Config.IS_MOBILE_NATIVE()) {
-      if (e) {
-        lang = this.supportedLanguages[e.newIndex].code;
+      if (e && e.propertyName == 'selectedIndex') {
+        let title = this.supportedLanguages[e.value];
+        lang = MultilingualService.SUPPORTED_LANGUAGES.filter(l => l.title === title)[0].code;
+        commitChange();
       }
     } else if (e && e.target) {
       lang = e.target.value;
+      commitChange();
     }
-    this.log.debug(`Language change: ${lang}`);
-    this.multilang.changeLang(lang);
   }
 }

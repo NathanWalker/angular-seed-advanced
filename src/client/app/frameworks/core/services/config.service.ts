@@ -19,6 +19,10 @@ export class Config {
   
   // allows runtime config of platform specific router directives
   public static ROUTER_DIRECTIVES: Array<any> = ROUTER_DIRECTIVES;
+
+  // Used by component decorators
+  // {N} provides at runtime  
+  public static FONT_ICON_PIPES: any = [];
   
   // supported platforms
   public static PLATFORMS: IPlatforms = {

@@ -5,7 +5,7 @@ import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
 
 // app
-import {ViewBrokerService} from '../index';
+import {Config, ViewBrokerService} from '../index';
 
 declare var Reflect: any;
 const _reflect: any = Reflect;
@@ -20,7 +20,10 @@ export class DecoratorUtils {
     // default directives
     let DIRECTIVES: any[] = [];
     // default pipes
-    let PIPES: any[] = [TranslatePipe];
+    let PIPES: any[] = [
+      TranslatePipe,
+      Config.FONT_ICON_PIPES // {N} provides for these at runtime
+    ];
 
     // custom decorator options
     if (customDecoratorMetadata) {

@@ -8,6 +8,10 @@ SegmentedBar {
   margin: 0 10 0 10;
 }
 
+.fa {
+  font-family: FontAwesome, fontawesome-webfont;
+}
+
 .drawer-content {
   background-color: #053140;
   color: white;

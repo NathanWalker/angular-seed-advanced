@@ -1,4 +1,8 @@
-<GridLayout columns="auto, auto" width="100%" rows="auto" horizontalAlignment="left" class="nav">
-  <Button [nsRouterLink]="['/']" [text]="'HOME' | translate" row="0" col="0"></Button>
-  <Button [nsRouterLink]="['/about']" [text]="'ABOUT' | translate" pageTransition="slideLeft" row="0" col="1"></Button>
-</GridLayout>
+<ActionBar title="Angular 2 Seed Advanced">
+  <ActionItem>
+    <Button class="fa btn-action" [text]="'fa-ellipsis-h' | fonticonPure"></Button>
+  </ActionItem>
+  <ActionItem ios.position="right" [nsRouterLink]="['/about']" pageTransition="slideLeft">
+    <Button class="btn btn-action" [text]="'ABOUT' | translate"></Button>
+  </ActionItem>
+</ActionBar>

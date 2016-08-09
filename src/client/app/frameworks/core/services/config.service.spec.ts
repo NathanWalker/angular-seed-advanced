@@ -22,6 +22,9 @@ export function main() {
     t.it('ROUTER_DIRECTIVES', () => {
       t.e(Config.ROUTER_DIRECTIVES).toBeDefined();
     });
+    t.it('FONT_ICON_PIPES', () => {
+      t.e(Config.FONT_ICON_PIPES).toBeDefined();
+    });
     t.it('DEBUG', () => {
       t.e(Config.DEBUG.LEVEL_1).toBe(false);
       t.e(Config.DEBUG.LEVEL_2).toBe(false);
