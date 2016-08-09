@@ -45,6 +45,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - [Framework How-Tos](#framework-how-tos)
 - [Web Configuration Options](#web-configuration-options)
 - [Change Detection OnPush Note](#change-detection-onpush-note)
+- [General Best Practice Guide to Sharing Code](#general-best-practice-guide-to-sharing-code)
 - [Feature Branches](#feature-branches)
 - [Integration Guides](https://github.com/NathanWalker/angular2-seed-advanced/wiki)
 - [How best to use for your project](#how-best-to-use-for-your-project)
