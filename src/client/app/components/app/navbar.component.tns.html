@@ -1,6 +1,7 @@
 <ActionBar title="Angular 2 Seed Advanced">
   <ActionItem>
-    <Button class="fa btn-action" [text]="'fa-ellipsis-h' | fonticonPure"></Button>
+    <!-- TODO: Make this DropDown component plugin when supported -->
+    <Button class="fa btn-action" [text]="'fa-ellipsis-h' | fonticon"></Button>
   </ActionItem>
   <ActionItem ios.position="right" [nsRouterLink]="['/about']" pageTransition="slideLeft">
     <Button class="btn btn-action" [text]="'ABOUT' | translate"></Button>
