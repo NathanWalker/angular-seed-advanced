@@ -5,10 +5,10 @@
     "nativescript": {
         "id": "com.yourdomain.appname",
         "tns-ios": {
-            "version": "2.1.1"
+            "version": "2.2.0"
         },
         "tns-android": {
-            "version": "2.1.1"
+            "version": "2.2.0"
         }
     },
     "scripts": {
