@@ -194,20 +194,6 @@ npm run e2e.live
 ```
 You can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
 
-## Framework How-Tos
-
-### i18n
-
-* how to add a language?
-  - `src/client/assets/i18n/`
-    - add `[language code].json` (copy existing one and adapt the translation strings)
-  - `src/client/app/frameworks/app/services/app-config.service.spec.ts`
-    - fix test
-  - `src/client/app/frameworks/app/services/app-config.service.ts`
-    - add language to `SUPPORTED_LANGUAGES`
-  - `src/client/app/frameworks/i18n/components/lang-switcher.component.spec.ts`
-    - fix test
-
 ## Web Configuration Options
 
 Default application server configuration
@@ -224,6 +210,20 @@ Configure at runtime
 ```bash
 npm start -- --port 8080 --reload-port 4000 --base /my-app/
 ```
+
+## Framework How-Tos
+
+### i18n
+
+* how to add a language?
+  - `src/client/assets/i18n/`
+    - add `[language code].json` (copy existing one and adapt the translation strings)
+  - `src/client/app/frameworks/app/services/app-config.service.spec.ts`
+    - fix test
+  - `src/client/app/frameworks/app/services/app-config.service.ts`
+    - add language to `SUPPORTED_LANGUAGES`
+  - `src/client/app/frameworks/i18n/components/lang-switcher.component.spec.ts`
+    - fix test
 
 ## Change Detection OnPush Note
 
