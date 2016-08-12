@@ -11,6 +11,11 @@ export const CORE_PROVIDERS: any[] = [
   RouterExtensions,
 ];
 
+// utilities
+// generally static helpers (non-injectables)
+export * from './utils/config';
+export * from './utils/view-broker';
+
 // decorators
 export * from './decorators/base.component';
 export * from './decorators/form.component';
@@ -22,10 +27,8 @@ export * from './interfaces/iwindow';
 export * from './interfaces/ilang';
 
 // services
-export * from './services/config.service';
 export * from './services/console.service';
 export * from './services/log.service';
-export * from './services/view-broker.service';
 export * from './services/window.service';
 export * from './services/router-extensions';
 

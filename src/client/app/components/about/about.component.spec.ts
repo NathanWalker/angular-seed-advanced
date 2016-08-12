@@ -16,7 +16,7 @@ export function main() {
           .then((rootTC:any) => {
             let aboutDOMEl = rootTC.debugElement.children[0].nativeElement;
 
-            t.e(getDOM().querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
+	          t.e(getDOM().querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
           });
       })));
   });
@@ -32,4 +32,4 @@ export function main() {
   directives: [AboutComponent],
   template: '<sd-about></sd-about>'
 })
-class TestComponent {}
+class TestComponent { }

@@ -1,6 +1,5 @@
 import {TestComponentBuilder} from '@angular/compiler/testing';
 import {Component} from '@angular/core';
-import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
 import {RouterConfig} from '@angular/router';
 
@@ -19,13 +18,12 @@ const config:RouterConfig = [
 
 export function main() {
   t.describe('@Component: AppComponent', () => {
-    t.it('should work',
+
+    t.it('should build without a problem',
       t.async(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         tcb.createAsync(TestComponent)
-          .then((rootTC:any) => {
-            rootTC.detectChanges();
-            let appDOMEl = rootTC.debugElement.children[0].nativeElement;
-            t.e(getDOM().querySelectorAll(appDOMEl, 'sd-app sd-navbar > nav > a')[1].href).toMatch(/\/about/);
+          .then((fixture) => {
+            t.e(fixture.nativeElement.innerText.indexOf('HOME')).toBeTruthy();
           });
       })));
   });

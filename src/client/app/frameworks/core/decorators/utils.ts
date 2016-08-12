@@ -5,7 +5,7 @@ import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
 
 // app
-import {ViewBrokerService} from '../index';
+import {ViewBroker} from '../index';
 
 declare var Reflect: any;
 const _reflect: any = Reflect;

@@ -1,7 +1,8 @@
 // angular
 import {provide, enableProdMode} from '@angular/core';
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
-import {bootstrap} from '@angular/platform-browser-dynamic';
+// The browser platform with a compiler
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 // config
@@ -15,7 +16,8 @@ import {ANALYTICS_PROVIDERS} from './app/frameworks/analytics/index';
 import {MultilingualService} from './app/frameworks/i18n/index';
 import {APP_PROVIDERS, AppConfigService} from './app/frameworks/app/index';
 import {APP_ROUTER_PROVIDERS} from './app/components/app/app.routes';
-import {AppComponent} from './app/components/app/app.component';
+// The app module
+import {AppModule} from './app/components/app/app.module';
 // custom i18n language support
 MultilingualService.SUPPORTED_LANGUAGES = AppConfigService.SUPPORTED_LANGUAGES;
 
@@ -46,7 +48,7 @@ if ('<%= TARGET_DESKTOP %>' === 'true') {
   BOOTSTRAP_PROVIDERS.push(provide(LocationStrategy, {useClass: HashLocationStrategy}));
 }  
 
-bootstrap(AppComponent, BOOTSTRAP_PROVIDERS)
+platformBrowserDynamic().bootstrapModule(AppModule, BOOTSTRAP_PROVIDERS)
 .catch((err:any) => console.error(err));
 
 // In order to start the Service Worker located at "./worker.js"

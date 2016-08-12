@@ -1,9 +1,10 @@
-import {TestComponentBuilder} from '@angular/compiler/testing';
+import {TestComponentBuilder, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
-import {disableDeprecatedForms, provideForms} from '@angular/forms';
+import {disableDeprecatedForms, provideForms, FormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
 
-// libs 
+// libs
 import {provideStore} from '@ngrx/store';
 
 import {t} from '../../frameworks/test/index';
@@ -14,26 +15,31 @@ import {HomeComponent} from './home.component';
 
 export function main() {
   t.describe('@Component: HomeComponent', () => {
+
+    t.be(() => {
+      TestBed.configureTestingModule({ imports: [FormsModule, RouterModule] });
+    });
     
     t.it('should work',
       t.async(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         tcb.createAsync(TestComponent)
-          .then((rootTC:any) => {
+          .then((rootTC: any) => {
+
             rootTC.detectChanges();
 
             let homeInstance = rootTC.debugElement.children[0].componentInstance;
             let homeDOMEl = rootTC.debugElement.children[0].nativeElement;
 
-            t.e(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
-            t.e(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(0);
+            expect(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
+            expect(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(0);
 
             homeInstance.newName = 'Minko';
             homeInstance.addName();
+
             rootTC.detectChanges();
 
-            t.e(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(1);
-
-            t.e(getDOM().querySelectorAll(homeDOMEl, 'li')[0].textContent).toEqual('Minko');
+            expect(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(1);
+            expect(getDOM().querySelectorAll(homeDOMEl, 'li')[0].textContent).toEqual('Minko');
           });
       })));
   });
@@ -55,5 +61,5 @@ export function main() {
   template: '<sd-home></sd-home>'
 })
 class TestComponent {
-  
+
 }
