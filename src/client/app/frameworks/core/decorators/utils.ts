@@ -34,12 +34,12 @@ export class DecoratorUtils {
 
     if (metadata.templateUrl) {
       // correct view for platform target
-      metadata.templateUrl = ViewBrokerService.TEMPLATE_URL(metadata.templateUrl);
+      metadata.templateUrl = ViewBroker.TEMPLATE_URL(metadata.templateUrl);
     }
 
     if (metadata.styleUrls) {
       // correct view for platform target
-      metadata.styleUrls = ViewBrokerService.STYLE_URLS(metadata.styleUrls);
+      metadata.styleUrls = ViewBroker.STYLE_URLS(metadata.styleUrls);
     }
 
     metadata.directives = metadata.directives ? metadata.directives.concat(DIRECTIVES) : DIRECTIVES;

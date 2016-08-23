@@ -1,18 +1,7 @@
 import {
-  afterEach,
   async,
-  beforeEach,
-  beforeEachProviders,
-  ddescribe,
-  describe,
-  fdescribe,
-  xdescribe,
   fakeAsync,
-  inject,
-  iit,
-  it,
-  fit,
-  xit
+  inject
 } from '@angular/core/testing';
 
 // intellisense via shorthand

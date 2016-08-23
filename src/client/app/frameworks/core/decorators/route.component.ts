@@ -1,4 +1,4 @@
-import {Config} from '../services/config';
+import {Config} from '../utils/config';
 import {DecoratorUtils} from './utils';
 
 export function RouteComponent(metadata: any={}) {
