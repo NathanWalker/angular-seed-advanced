@@ -1,11 +1,14 @@
 import {t} from '../../test/index';
-import {Config} from '../index';
+import {Config} from './config';
 import * as _ from 'lodash';
 
 export function main() {
   t.describe('core: Config', () => {
     t.be(() => Config.RESET());
 
+    t.it('ENV', () => {
+      t.e(Config.ENV).toBeDefined();
+    });    
     t.it('PLATFORMS', () => {
       t.e(_.keys(Config.PLATFORMS).length).toBe(4);
       t.e(Config.PLATFORM_TARGET).toBeDefined();

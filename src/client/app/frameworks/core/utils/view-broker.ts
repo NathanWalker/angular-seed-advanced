@@ -1,6 +1,6 @@
-import {Config} from './config.service';
+import {Config} from './config';
 
-export class ViewBrokerService {
+export class ViewBroker {
 
   public static TEMPLATE_URL(path: string): string {
     if (Config.IS_MOBILE_NATIVE()) {

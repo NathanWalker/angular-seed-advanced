@@ -1,16 +1,18 @@
 // angular
-import {ComponentResolver, Injector} from '@angular/core';
-// import {ROUTER_FAKE_PROVIDERS} from '@angular/router/testing';
-import {Location, LocationStrategy, HashLocationStrategy, PlatformLocation} from '@angular/common';
+import {ComponentResolver, Injector, Type, NgModuleFactoryLoader} from '@angular/core';
+import {Location, LocationStrategy} from '@angular/common';
 import {BrowserPlatformLocation} from '@angular/platform-browser';
 import {SpyLocation} from '@angular/common/testing';
+import {SpyNgModuleFactoryLoader} from '@angular/router/testing/router_testing_module';
 import {
+  RouterOutletMap,
   UrlSerializer,
   DefaultUrlSerializer,
-  RouterOutletMap,
   Router,
-  ActivatedRoute
+  ActivatedRoute,
+  RouterConfig
 } from '@angular/router';
+import {MockLocationStrategy} from '../mocks/mock-location-strategy';
 
 export function TEST_ROUTER_PROVIDERS(options?: any): any[] {
   // config: RouterConfig
@@ -20,22 +22,21 @@ export function TEST_ROUTER_PROVIDERS(options?: any): any[] {
     RouterOutletMap,
     { provide: UrlSerializer, useClass: DefaultUrlSerializer },
     { provide: Location, useClass: SpyLocation },
+    { provide: NgModuleFactoryLoader, useClass: SpyNgModuleFactoryLoader },
+    { provide: LocationStrategy, useClass: MockLocationStrategy },
     {
       provide: Router,
-      useFactory: (
-        resolver: ComponentResolver,
-        urlSerializer: UrlSerializer,
-        outletMap: RouterOutletMap,
-        location: Location,
-        injector: Injector) => {
-        const r = new Router(options.component, resolver, urlSerializer, outletMap, location, injector, options.config);
-        // r.initialNavigation();
-        return r;
+      useFactory: (resolver: ComponentResolver, urlSerializer: UrlSerializer,
+        outletMap: RouterOutletMap, location: Location, injector: Injector, ngModuleFactoryLoader: NgModuleFactoryLoader) => {
+        return new Router(
+          options.component, resolver, urlSerializer, outletMap, location, injector, ngModuleFactoryLoader, options.config);
       },
       deps: [ComponentResolver, UrlSerializer, RouterOutletMap, Location, Injector]
     },
-    { provide: ActivatedRoute, useFactory: (r: Router) => r.routerState.root, deps: [Router] },
-    { provide: PlatformLocation, useClass: BrowserPlatformLocation },
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    {
+      provide: ActivatedRoute,
+      useFactory: (r: Router) => r.routerState.root,
+      deps: [Router]
+    }    
   ];
 }

@@ -1,6 +1,6 @@
+import {TestBed} from '@angular/core/testing';
 // libs
 import {provideStore, Store} from '@ngrx/store';
-
 import {t} from '../../test/index';
 // import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS, WindowMockFrench} from '../../core/testing/index';
 import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from '../../core/testing/index';
@@ -12,13 +12,15 @@ import {MultilingualService, MultilingualStateI, multilingualReducer} from '../i
 export function main() {
   t.describe('i18n:', () => {
     t.describe('MultilingualService', () => {
-      t.bep(() => [
-        TEST_CORE_PROVIDERS(),
-        TEST_HTTP_PROVIDERS(),
-        TEST_ROUTER_PROVIDERS(),
-        TEST_MULTILINGUAL_PROVIDERS(),
-        provideStore({ i18n: multilingualReducer })
-      ]);
+      TestBed.configureTestingModule({
+        providers: [
+          TEST_CORE_PROVIDERS(),
+          TEST_HTTP_PROVIDERS(),
+          TEST_ROUTER_PROVIDERS(),
+          TEST_MULTILINGUAL_PROVIDERS(),
+          provideStore({ i18n: multilingualReducer })
+        ]
+      });
       t.it('should at a minimum support english', () => {
         t.e(MultilingualService.SUPPORTED_LANGUAGES.length).toBe(1);
         t.e(MultilingualService.SUPPORTED_LANGUAGES[0].code).toBe('en');
@@ -53,8 +55,8 @@ export function main() {
     //     provideStore({ i18n: multilingualReducer })
     //   ]);
     //   // ensure statics are reset when the test had modified statics in a beforeEach (be) or beforeEachProvider (bep)
-    //   t.ae(() => TEST_MULTILINGUAL_RESET());  
-      
+    //   t.ae(() => TEST_MULTILINGUAL_RESET());
+
     //   t.it('should now support french by default', t.inject([MultilingualService, Store, WindowService], (multilang: MultilingualService, store: Store<any>, win: WindowService) => {
     //     t.e(MultilingualService.SUPPORTED_LANGUAGES.length).toBe(2);
     //     t.e(MultilingualService.SUPPORTED_LANGUAGES[0].code).toBe('en');
@@ -64,8 +66,8 @@ export function main() {
     //     store.select('i18n').subscribe((i18n: MultilingualStateI) => {
     //       t.e(i18n.lang).toBe('fr');
     //     });
-    //   }));     
-    
+    //   }));
+
     // });
   });
 
