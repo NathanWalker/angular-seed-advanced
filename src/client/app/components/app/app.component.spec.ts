@@ -1,4 +1,4 @@
-import {TestComponentBuilder} from '@angular/compiler/testing';
+import {TestComponentBuilder} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
 import {RouterConfig} from '@angular/router';
