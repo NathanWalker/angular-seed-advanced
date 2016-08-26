@@ -5,7 +5,7 @@ import { join} from 'path';
 
 import { APP_DEST, APP_SRC, TOOLS_DIR, ENABLE_SCSS } from '../../config';
 import { makeTsProject } from '../../utils';
-import { ViewBrokerService } from '../../../src/client/app/frameworks/core/services/view-broker.service';
+import {ViewBroker} from '../../../nativescript/app/app/frameworks/core/utils/view-broker';
 
 const plugins = <any>gulpLoadPlugins();
 
@@ -25,7 +25,7 @@ export = () => {
     .pipe(plugins.inlineNg2Template({
       base: APP_SRC,
       useRelativePaths: true,
-      templateFunction: ViewBrokerService.TEMPLATE_URL,
+      templateFunction: ViewBroker.TEMPLATE_URL,
       supportNonExistentFiles: ENABLE_SCSS
     }))
     .pipe(plugins.typescript(tsProject));

@@ -2,10 +2,8 @@
 import {ChangeDetectionStrategy} from '@angular/core';
 
 // app
-import {NameListService} from '../../frameworks/app/index';
 import {AnalyticsService} from '../../frameworks/analytics/index';
 import {RouteComponent, PlatformDirective, LogService, Config} from '../../frameworks/core/index';
-import {LangSwitcherComponent} from '../../frameworks/i18n/index';
 import {NavbarComponent} from './navbar.component';
 import {ToolbarComponent} from './toolbar.component';
 
@@ -17,7 +15,7 @@ import {ToolbarComponent} from './toolbar.component';
   moduleId: module.id,
   selector: 'sd-app',
   templateUrl: 'app.component.html',
-  directives: [LangSwitcherComponent, NavbarComponent, ToolbarComponent, PlatformDirective],
+  directives: [NavbarComponent, ToolbarComponent, PlatformDirective],
   changeDetection: ChangeDetectionStrategy.Default // Everything else uses OnPush
 })
 export class AppComponent {

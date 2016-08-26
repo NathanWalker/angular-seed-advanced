@@ -18,7 +18,6 @@ export * from './utils/view-broker';
 
 // decorators
 export * from './decorators/base.component';
-export * from './decorators/form.component';
 export * from './decorators/route.component';
 
 // interfaces
