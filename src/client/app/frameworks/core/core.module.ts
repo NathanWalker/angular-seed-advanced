@@ -1,5 +1,5 @@
 // angular
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -52,5 +52,10 @@ export class CoreModule {
         {provide: ConsoleService, useValue: options.console }
       ]
     };
+  }
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+    if (parentModule) {
+      throw new Error('CoreModule already loaded; Import in root module only.');
+    }
   }
 }

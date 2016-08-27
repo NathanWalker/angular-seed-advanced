@@ -24,11 +24,11 @@ smile {
 }
 
 a.link {
-  color: #0000ee;
+  color: #00e;
   cursor: pointer;
   text-decoration: underline;
 }
 
 a.link:hover {
-  color: #ff0000;
+  color: #f00;
 }

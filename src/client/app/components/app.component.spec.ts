@@ -1,16 +1,15 @@
 import {TestComponentBuilder, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {disableDeprecatedForms, provideForms, FormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {RouterConfig, RouterModule} from '@angular/router';
 
 import {t} from '../frameworks/test/index';
 import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from '../frameworks/core/testing/index';
 import {NameListService} from '../frameworks/sample/index';
 import {TEST_MULTILINGUAL_PROVIDERS} from '../frameworks/i18n/testing/index';
-import {TranslateModule} from 'ng2-translate/ng2-translate';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
-import {AboutComponent} from './+about/about.component';
+import {AboutComponent} from './about/about.component';
 
 const config:RouterConfig = [
   {path: '', component: HomeComponent},
@@ -20,7 +19,7 @@ const config:RouterConfig = [
 // test module configuration for each test
 const testModuleConfig = () => {
   TestBed.configureTestingModule({
-    imports: [FormsModule, RouterModule, TranslateModule.forRoot()]
+    imports: [FormsModule, RouterModule]
   });
 };
 
@@ -41,8 +40,6 @@ export function main() {
 
 @Component({
   providers: [
-    disableDeprecatedForms(),
-    provideForms(),
     TEST_CORE_PROVIDERS(),
     TEST_HTTP_PROVIDERS(),
     NameListService,

@@ -1,14 +1,10 @@
 // angular
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 
-// libs
-import { Angulartics2 } from 'angulartics2';
-import { Angulartics2Segment } from 'angulartics2/src/providers/angulartics2-segment';
-
 // app
-import { AnalyticsService } from './services/analytics.service';
+import { ANALYTICS_PROVIDERS } from './index';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -19,11 +15,7 @@ import { AnalyticsService } from './services/analytics.service';
     CommonModule,
     HttpModule
   ],
-  providers: [
-    Angulartics2,
-    Angulartics2Segment,
-    AnalyticsService
-  ]
+  providers: ANALYTICS_PROVIDERS
 })
 export class AnalyticsModule {
 

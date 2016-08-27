@@ -1,10 +1,8 @@
 import {TestComponentBuilder} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
-import {disableDeprecatedForms, provideForms} from '@angular/forms';
 
 import {t} from '../../frameworks/test/index';
-import {TEST_CORE_PROVIDERS} from '../../frameworks/core/testing/index';
 import {AboutComponent} from './about.component';
 
 export function main() {
@@ -23,11 +21,6 @@ export function main() {
 }
 
 @Component({
-  providers: [
-    disableDeprecatedForms(),
-    provideForms(),
-    TEST_CORE_PROVIDERS()
-  ],
   selector: 'test-cmp',
   directives: [AboutComponent],
   template: '<sd-about></sd-about>'

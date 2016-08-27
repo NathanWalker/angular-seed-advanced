@@ -1,11 +1,11 @@
 // angular
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, Http } from '@angular/http';
 
 // libs
-import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
 // app
 import { LangSwitcherComponent } from './components/lang-switcher.component';
@@ -38,5 +38,9 @@ import { MultilingualService } from './services/multilingual.service';
   ]
 })
 export class MultilingualModule {
-
+  constructor(@Optional() @SkipSelf() parentModule: MultilingualModule) {
+    if (parentModule) {
+      throw new Error('MultilingualModule already loaded; Import in root module only.');
+    }
+  }
 }
