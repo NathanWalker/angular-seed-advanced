@@ -1,9 +1,6 @@
 // angular
 import {Component, ChangeDetectionStrategy} from '@angular/core';
 
-// libs
-import {TranslatePipe} from 'ng2-translate/ng2-translate';
-
 // app
 import {ViewBroker} from '../index';
 
@@ -19,16 +16,11 @@ export class DecoratorUtils {
      */
     // default directives
     let DIRECTIVES: any[] = [];
-    // default pipes
-    let PIPES: any[] = [TranslatePipe];
 
     // custom decorator options
     if (customDecoratorMetadata) {
       if (customDecoratorMetadata.directives) {
         DIRECTIVES.push(...customDecoratorMetadata.directives);
-      }
-      if (customDecoratorMetadata.pipes) {
-        PIPES.push(...customDecoratorMetadata.pipes);
       }
     }
 
@@ -43,7 +35,6 @@ export class DecoratorUtils {
     }
 
     metadata.directives = metadata.directives ? metadata.directives.concat(DIRECTIVES) : DIRECTIVES;
-    metadata.pipes = metadata.pipes ? metadata.pipes.concat(PIPES) : PIPES;
 
     if (metadata.changeDetection) {
       metadata.changeDetection = metadata.changeDetection;

@@ -1,7 +1,6 @@
 // angular
-import {ComponentResolver, Injector, Type, NgModuleFactoryLoader} from '@angular/core';
+import {ComponentResolver, Injector, NgModuleFactoryLoader} from '@angular/core';
 import {Location, LocationStrategy} from '@angular/common';
-import {BrowserPlatformLocation} from '@angular/platform-browser';
 import {SpyLocation} from '@angular/common/testing';
 import {SpyNgModuleFactoryLoader} from '@angular/router/testing/router_testing_module';
 import {
@@ -9,8 +8,7 @@ import {
   UrlSerializer,
   DefaultUrlSerializer,
   Router,
-  ActivatedRoute,
-  RouterConfig
+  ActivatedRoute
 } from '@angular/router';
 import {MockLocationStrategy} from '../mocks/mock-location-strategy';
 
@@ -37,6 +35,6 @@ export function TEST_ROUTER_PROVIDERS(options?: any): any[] {
       provide: ActivatedRoute,
       useFactory: (r: Router) => r.routerState.root,
       deps: [Router]
-    }    
+    }
   ];
 }

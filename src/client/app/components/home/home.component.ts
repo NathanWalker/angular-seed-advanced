@@ -2,10 +2,11 @@
 import {Store} from '@ngrx/store';
 
 // app
-import {FormComponent, RouterExtensions} from '../../frameworks/core/index';
+import {RouterExtensions} from '../../frameworks/core/index';
 import {NameListService} from '../../frameworks/app/index';
+import {Component} from '@angular/core';
 
-@FormComponent({
+@Component({
   moduleId: module.id,
   selector: 'sd-home',
   templateUrl: 'home.component.html',
