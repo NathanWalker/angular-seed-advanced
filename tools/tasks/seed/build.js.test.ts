@@ -5,7 +5,7 @@ import { join} from 'path';
 
 import { APP_DEST, APP_SRC, TOOLS_DIR, ENABLE_SCSS } from '../../config';
 import { makeTsProject } from '../../utils';
-import {ViewBroker} from '../../../nativescript/app/app/frameworks/core/utils/view-broker';
+import { ViewBroker } from '../../../src/client/app/frameworks/core/utils/view-broker';
 
 const plugins = <any>gulpLoadPlugins();
 

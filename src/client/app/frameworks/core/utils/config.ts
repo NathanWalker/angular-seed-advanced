@@ -16,8 +16,6 @@ interface IPlatforms {
 
 export class Config {
 
-  public static ENV: IEnv = JSON.parse('<%= ENV_CONFIG %>');
-
   public static DEBUG: any = {
     LEVEL_1: false, // .info only
     LEVEL_2: false, // .warn only

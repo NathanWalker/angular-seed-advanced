@@ -3,12 +3,11 @@ import {Store} from '@ngrx/store';
 import 'rxjs/add/operator/take';
 
 // app
-import {Config, LogService, ILang} from '../../core/index';
+import {BaseComponent, Config, LogService, ILang} from '../../core/index';
 import {ElectronEventService} from '../../electron/index';
 import {MultilingualService} from '../index';
-import {Component} from '@angular/core';
 
-@Component({
+@BaseComponent({
   moduleId: module.id,
   selector: 'lang-switcher',
   templateUrl: 'lang-switcher.component.html'

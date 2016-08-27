@@ -1,8 +1,8 @@
 // app
 import {ILang} from '../../core/index';
 
-export class AppConfigService {
-  
+export class AppConfig {
+
   public static SUPPORTED_LANGUAGES: Array<ILang> = [
     { code: 'en', title: 'English' },
     { code: 'es', title: 'Spanish' },

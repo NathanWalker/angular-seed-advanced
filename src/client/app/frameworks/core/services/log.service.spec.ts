@@ -20,13 +20,13 @@ export function main() {
       t.spyOn(console, 'error');
       t.spyOn(console, 'warn');
       t.spyOn(console, 'info');
-    });
-
-    t.describe('api', () => {
 
       TestBed.configureTestingModule({
         providers: providers
       });
+    });
+
+    t.describe('api', () => {
 
       t.it('sanity', t.inject([LogService], (log: LogService) => {
         t.e(log.debug).toBeDefined();
@@ -51,10 +51,6 @@ export function main() {
 
       t.be(() => {
         Config.RESET();
-      });
-
-      TestBed.configureTestingModule({
-        providers: providers
       });
 
       t.it('LEVEL_4: everything', t.inject([LogService], (log: LogService) => {

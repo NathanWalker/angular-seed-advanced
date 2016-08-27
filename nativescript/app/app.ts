@@ -2,11 +2,12 @@
 // import 'rxjs/add/operator/map';
 
 // nativescript
-import {nativeScriptBootstrap} from 'nativescript-angular/application';
-import {NS_ROUTER_DIRECTIVES, nsProvideRouter} from 'nativescript-angular/router';
+import { NativeScriptModule, platformNativeScriptDynamic, onAfterLivesync, onBeforeLivesync } from "nativescript-angular/platform";
+import { NativeScriptRouterModule, NS_ROUTER_DIRECTIVES } from "nativescript-angular/router";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
-// angular 
-import {provide, enableProdMode} from '@angular/core';
+// angular
+import { NgModule } from "@angular/core";
 
 // libs
 import {TranslateLoader} from 'ng2-translate/ng2-translate';
@@ -23,17 +24,58 @@ import {NS_APP_PROVIDERS} from './shared/nativescript/index';
 import {routes} from './app/components/app/app.routes';
 import {NSAppComponent} from './pages/app/app.component';
 import {WindowNative} from './shared/core/index';
-  
+
 // Uncomment when ready to publish to App Stores:
 // enableProdMode();
 
-nativeScriptBootstrap(NSAppComponent, [
-  provide(WindowService, { useClass: WindowNative }),
-  provide(TranslateLoader, {
-    useFactory: () => {
-      return new TNSTranslateLoader('assets/i18n');
+@NgModule({
+  declarations: [],
+  imports: [
+    NativeScriptModule,
+    NativeScriptFormsModule,
+    NativeScriptRouterModule
+  ],
+  exports: [
+    NativeScriptModule,
+    NativeScriptFormsModule,
+    NativeScriptRouterModule
+  ],
+  providers: [
+    { provide: WindowService, useClass: WindowNative },
+    {
+      provide: TranslateLoader, useFactory: () => {
+        return new TNSTranslateLoader('assets/i18n');
+      }
+    },
+    NS_APP_PROVIDERS
+  ]
+})
+class AppModule { }
+
+function makeExampleModule(componentType) {
+    let imports: any[] = [AppModule];
+    if (componentType.routes) {
+        imports.push(NativeScriptRouterModule.forRoot(componentType.routes))
     }
-  }),
-  NS_APP_PROVIDERS,
-  nsProvideRouter(routes, { enableTracing: false })
-]);
+    let entries = [];
+    if (componentType.entries) {
+        entries = componentType.entries;
+    }
+    entries.push(componentType);
+    let providers = [];
+    if (componentType.providers) {
+        providers = componentType.providers
+    }
+    @NgModule({
+        bootstrap: [componentType],
+        imports: imports,
+        entryComponents: entries,
+        declarations: entries,
+        providers: providers,
+    })
+    class ExampleModuleForComponent {}
+
+    return ExampleModuleForComponent;
+}
+
+platformNativeScriptDynamic().bootstrapModule(makeExampleModule(NSAppComponent));

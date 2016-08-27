@@ -1,56 +1,55 @@
 {
-    "name": "angular2-seed-advanced",
-    "main": "app.js",
-    "version": "0.0.0",
-    "nativescript": {
-        "id": "com.yourdomain.appname",
-        "tns-ios": {
-            "version": "2.2.1"
-        },
-        "tns-android": {
-            "version": "2.2.0"
-        }
+  "name": "angular2-seed-advanced",
+  "main": "app.js",
+  "version": "0.0.0",
+  "nativescript": {
+    "id": "com.yourdomain.appname",
+    "tns-ios": {
+      "version": "2.2.1"
     },
-    "scripts": {
-        "clean": "rm -rf platforms node_modules"
-    },
-    "dependencies": {
-        "@angular/common": "2.0.0-rc.4",
-        "@angular/compiler": "2.0.0-rc.4",
-        "@angular/core": "2.0.0-rc.4",
-        "@angular/forms": "0.2.0",
-        "@angular/http": "2.0.0-rc.4",
-        "@angular/platform-browser": "2.0.0-rc.4",
-        "@angular/platform-browser-dynamic": "2.0.0-rc.4",
-        "@angular/platform-server": "2.0.0-rc.4",
-        "@angular/router-deprecated": "2.0.0-rc.2",
-        "@angular/router": "3.0.0-beta.2",
-        "@ngrx/core": "^1.0.0",
-        "@ngrx/store": "^2.0.0",
-        "angulartics2": "^1.1.1",
-        "es6-promise": "^3.0.2",
-        "es6-shim": "^0.35.0",
-        "lodash": "^4.13.1",
-        "nativescript-angular": "next",
-        "nativescript-ng2-translate": "^1.1.1",
-        "ng2-translate": "2.2.2",
-        "parse5": "1.4.2",
-        "punycode": "1.3.2",
-        "querystring": "0.2.0",
-        "reflect-metadata": "^0.1.3",
-        "rxjs": "5.0.0-beta.6",
-        "tns-core-modules": "next",
-        "url": "0.10.3",
-        "zone.js": "^0.6.12"
-    },
-    "devDependencies": {
-        "babel-traverse": "6.9.0",
-        "babel-types": "6.9.0",
-        "babylon": "6.8.0",
-        "filewalker": "0.1.2",
-        "lazy": "1.0.11",
-        "nativescript-dev-typescript": "^0.3.2",
-        "shelljs": "^0.5.3",
-        "typescript": "1.8.10"
+    "tns-android": {
+      "version": "2.2.0"
     }
+  },
+  "scripts": {
+    "clean": "rm -rf platforms node_modules"
+  },
+  "dependencies": {
+    "@angular/core": "2.0.0-rc.5",
+    "@angular/common": "2.0.0-rc.5",
+    "@angular/compiler": "2.0.0-rc.5",
+    "@angular/http": "2.0.0-rc.5",
+    "@angular/platform-browser": "2.0.0-rc.5",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.5",
+    "@angular/platform-server": "2.0.0-rc.5",
+    "@angular/forms": "0.3.0",
+    "@angular/router": "3.0.0-rc.1",
+    "@ngrx/core": "^1.0.2",
+    "@ngrx/store": "^2.1.2",
+    "angulartics2": "^1.1.1",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.35.0",
+    "lodash": "^4.13.1",
+    "nativescript-angular": "0.4.0-beta1",
+    "nativescript-ng2-translate": "^1.1.1",
+    "ng2-translate": "2.2.2",
+    "parse5": "1.4.2",
+    "punycode": "1.3.2",
+    "querystring": "0.2.0",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.6",
+    "tns-core-modules": "next",
+    "url": "0.10.3",
+    "zone.js": "^0.6.12"
+  },
+  "devDependencies": {
+    "babel-traverse": "6.9.0",
+    "babel-types": "6.9.0",
+    "babylon": "6.8.0",
+    "filewalker": "0.1.2",
+    "lazy": "1.0.11",
+    "nativescript-dev-typescript": "^0.3.2",
+    "shelljs": "^0.5.3",
+    "typescript": "1.8.10"
+  }
 }

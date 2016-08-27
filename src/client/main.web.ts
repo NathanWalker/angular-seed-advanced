@@ -4,26 +4,15 @@ import {enableProdMode} from '@angular/core';
 // The browser platform with a compiler
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
-// config
-import {Config} from './app/frameworks/core/index';
-Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
-Config.DEBUG.LEVEL_4 = true;
-
-// app
-import {MultilingualService} from './app/frameworks/i18n/index';
-import {AppConfigService} from './app/frameworks/app/index';
-
-// The app module
-import {AppModule} from './app/components/app/app.module';
-// custom i18n language support
-MultilingualService.SUPPORTED_LANGUAGES = AppConfigService.SUPPORTED_LANGUAGES;
+// platfrom module
+import {WebModule} from './web.module';
 
 // example of how to use build variables to determine environment
 if ('<%= ENV %>' === 'prod' || '<%= TARGET_DESKTOP_BUILD %>' === 'true') {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic().bootstrapModule(WebModule)
 .catch((err:any) => console.error(err));
 
 // In order to start the Service Worker located at "./worker.js"

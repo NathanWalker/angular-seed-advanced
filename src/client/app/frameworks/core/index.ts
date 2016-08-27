@@ -1,16 +1,3 @@
-// angular
-import {HTTP_PROVIDERS} from '@angular/http';
-
-// app
-import {LogService} from './services/log.service';
-import {RouterExtensions} from './services/router-extensions';
-
-export const CORE_PROVIDERS: any[] = [
-  HTTP_PROVIDERS,
-  LogService,
-  RouterExtensions,
-];
-
 // utilities
 // generally static helpers (non-injectables)
 export * from './utils/config';

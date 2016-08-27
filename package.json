@@ -15,6 +15,8 @@
     "build.e2e": "gulp build.e2e --color",
     "build.prod": "gulp build.prod --color --config-env prod",
     "build.test": "gulp build.test --color",
+    "clean": "npm run clean.js && rm -rf node_modules typings && npm i",
+    "clean.js": "gulp clean.all.src.js",
     "test.watch": "gulp test.watch --color",
     "generate.manifest": "gulp generate.manifest --color",
     "e2e": "protractor",

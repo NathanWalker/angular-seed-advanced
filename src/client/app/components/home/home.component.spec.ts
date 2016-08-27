@@ -1,25 +1,31 @@
 import {TestComponentBuilder, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
-import {disableDeprecatedForms, provideForms, FormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 
 // libs
 import {provideStore} from '@ngrx/store';
+import {TranslateModule} from 'ng2-translate/ng2-translate';
 
 import {t} from '../../frameworks/test/index';
 import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from '../../frameworks/core/testing/index';
-import {NameListService, nameListReducer} from '../../frameworks/app/index';
+import {NameListService, nameListReducer} from '../../frameworks/sample/index';
 import {TEST_MULTILINGUAL_PROVIDERS} from '../../frameworks/i18n/testing/index';
 import {HomeComponent} from './home.component';
+
+// test module configuration for each test
+const testModuleConfig = () => {
+  TestBed.configureTestingModule({
+    imports: [FormsModule, RouterModule, TranslateModule.forRoot()]
+  });
+};
 
 export function main() {
   t.describe('@Component: HomeComponent', () => {
 
-    t.be(() => {
-      TestBed.configureTestingModule({ imports: [FormsModule, RouterModule] });
-    });
-    
+    t.be(testModuleConfig);
+
     t.it('should work',
       t.async(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         tcb.createAsync(TestComponent)
@@ -47,14 +53,12 @@ export function main() {
 
 @Component({
   providers: [
-    disableDeprecatedForms(),
-    provideForms(),
     TEST_CORE_PROVIDERS(),
     TEST_HTTP_PROVIDERS(),
     TEST_ROUTER_PROVIDERS(),
-    TEST_MULTILINGUAL_PROVIDERS(),
     provideStore({ names: nameListReducer }),
-    NameListService
+    NameListService,
+    TEST_MULTILINGUAL_PROVIDERS()
   ],
   selector: 'test-cmp',
   directives: [HomeComponent],

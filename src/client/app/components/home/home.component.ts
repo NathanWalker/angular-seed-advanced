@@ -1,12 +1,11 @@
 // libs
-import {Store} from '@ngrx/store';
+import { Store } from '@ngrx/store';
 
 // app
-import {RouterExtensions} from '../../frameworks/core/index';
-import {NameListService} from '../../frameworks/app/index';
-import {Component} from '@angular/core';
+import { BaseComponent, RouterExtensions } from '../../frameworks/core/index';
+import { NameListService } from '../../frameworks/sample/index';
 
-@Component({
+@BaseComponent({
   moduleId: module.id,
   selector: 'sd-home',
   templateUrl: 'home.component.html',
@@ -29,6 +28,7 @@ export class HomeComponent {
   }
 
   readAbout() {
+    // {N} has animation options using this
     this.routerext.navigate(['/about'], {
       transition: {
         duration: 1000,

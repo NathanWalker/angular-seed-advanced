@@ -1,23 +1,33 @@
-import {TestComponentBuilder} from '@angular/core/testing';
+import {TestComponentBuilder, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {disableDeprecatedForms, provideForms} from '@angular/forms';
-import {RouterConfig} from '@angular/router';
+import {disableDeprecatedForms, provideForms, FormsModule} from '@angular/forms';
+import {RouterConfig, RouterModule} from '@angular/router';
 
-import {t} from '../../frameworks/test/index';
-import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from '../../frameworks/core/testing/index';
-import {NameListService} from '../../frameworks/app/index';
-import {TEST_MULTILINGUAL_PROVIDERS} from '../../frameworks/i18n/testing/index';
+import {t} from '../frameworks/test/index';
+import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from '../frameworks/core/testing/index';
+import {NameListService} from '../frameworks/sample/index';
+import {TEST_MULTILINGUAL_PROVIDERS} from '../frameworks/i18n/testing/index';
+import {TranslateModule} from 'ng2-translate/ng2-translate';
 import {AppComponent} from './app.component';
-import {HomeComponent} from '../home/home.component';
-import {AboutComponent} from '../about/about.component';
+import {HomeComponent} from './home/home.component';
+import {AboutComponent} from './+about/about.component';
 
 const config:RouterConfig = [
   {path: '', component: HomeComponent},
   {path: 'about', component: AboutComponent}
 ];
 
+// test module configuration for each test
+const testModuleConfig = () => {
+  TestBed.configureTestingModule({
+    imports: [FormsModule, RouterModule, TranslateModule.forRoot()]
+  });
+};
+
 export function main() {
   t.describe('@Component: AppComponent', () => {
+
+    t.be(testModuleConfig);
 
     t.it('should build without a problem',
       t.async(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {

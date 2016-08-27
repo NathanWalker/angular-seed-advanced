@@ -1,5 +1,6 @@
 import {TestComponentBuilder, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
 // libs
@@ -19,18 +20,24 @@ const SUPPORTED_LANGUAGES: Array<ILang> = [
   { code: 'bg', title: 'Bulgarian' }
 ];
 
+// test module configuration for each test
+const testModuleConfig = () => {
+  TestBed.configureTestingModule({
+    imports: [FormsModule],
+    providers: [
+      TEST_CORE_PROVIDERS(),
+      TEST_HTTP_PROVIDERS(),
+      TEST_ROUTER_PROVIDERS(),
+      TEST_MULTILINGUAL_PROVIDERS(),
+      provideStore({ i18n: multilingualReducer })
+    ]
+  });
+};
+
 export function main() {
   t.describe('i18n:', () => {
     t.describe('@Component: LangSwitcherComponent', () => {
-      TestBed.configureTestingModule({
-        providers: [
-          TEST_CORE_PROVIDERS(),
-          TEST_HTTP_PROVIDERS(),
-          TEST_ROUTER_PROVIDERS(),
-          TEST_MULTILINGUAL_PROVIDERS(),
-          provideStore({ i18n: multilingualReducer })
-        ]
-      });
+      t.be(testModuleConfig);
 
       t.it('should work',
         t.async(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
@@ -45,15 +52,9 @@ export function main() {
     });
 
     t.describe('@Component: LangSwitcherComponent with multiple languages', () => {
-      t.be(() => MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES);
-      TestBed.configureTestingModule({
-        providers: [
-          TEST_CORE_PROVIDERS(),
-          TEST_HTTP_PROVIDERS(),
-          TEST_ROUTER_PROVIDERS(),
-          TEST_MULTILINGUAL_PROVIDERS(),
-          provideStore({ i18n: multilingualReducer })
-        ]
+      t.be(() => {
+        MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES;
+        testModuleConfig();
       });
 
       // ensure statics are reset when the test had modified statics in a beforeEach (be) or beforeEachProvider (bep)
