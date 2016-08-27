@@ -1,5 +1,5 @@
 // angular
-import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, Http } from '@angular/http';

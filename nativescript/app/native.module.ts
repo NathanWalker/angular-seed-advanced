@@ -51,7 +51,10 @@ MultilingualService.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;
     }),
     SampleModule.forRoot()
   ],
-  declarations: [NSAppComponent],
+  declarations: [
+    AboutComponent,
+    HomeComponent
+  ],
   entryComponents: [
     AboutComponent,
     HomeComponent
