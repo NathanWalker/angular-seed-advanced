@@ -1,52 +1,18 @@
 // angular
-import {provide, enableProdMode} from '@angular/core';
-import {disableDeprecatedForms, provideForms} from '@angular/forms';
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
+import {enableProdMode} from '@angular/core';
 
-// config
-import {Config} from './app/frameworks/core/index';
-Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
-Config.DEBUG.LEVEL_4 = true;
+// The browser platform with a compiler
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
-// app
-import {WindowService, ConsoleService, CORE_PROVIDERS} from './app/frameworks/core/index';
-import {ANALYTICS_PROVIDERS} from './app/frameworks/analytics/index';
-import {MultilingualService} from './app/frameworks/i18n/index';
-import {APP_PROVIDERS, AppConfigService} from './app/frameworks/app/index';
-import {APP_ROUTER_PROVIDERS} from './app/components/app/app.routes';
-import {AppComponent} from './app/components/app/app.component';
-// custom i18n language support
-MultilingualService.SUPPORTED_LANGUAGES = AppConfigService.SUPPORTED_LANGUAGES;
-
-// depending on environments, you could push in different providers as needed
-const ENV_PROVIDERS: Array<any> = [];
+// platfrom module
+import {WebModule} from './web.module';
 
 // example of how to use build variables to determine environment
 if ('<%= ENV %>' === 'prod' || '<%= TARGET_DESKTOP_BUILD %>' === 'true') {
   enableProdMode();
-} 
+}
 
-let BOOTSTRAP_PROVIDERS: any[] = [
-  disableDeprecatedForms(),
-  provideForms(),
-  ENV_PROVIDERS,
-  provide(APP_BASE_HREF, { useValue: '<%= APP_BASE %>' }),
-  provide(WindowService, { useValue: window }),
-  provide(ConsoleService, { useValue: console }),
-  CORE_PROVIDERS,
-  ANALYTICS_PROVIDERS,
-  APP_PROVIDERS,
-  APP_ROUTER_PROVIDERS
-];
-
-if ('<%= TARGET_DESKTOP %>' === 'true') {
-  Config.PLATFORM_TARGET = Config.PLATFORMS.DESKTOP;
-  // desktop (electron) must use hash
-  BOOTSTRAP_PROVIDERS.push(provide(LocationStrategy, {useClass: HashLocationStrategy}));
-}  
-
-bootstrap(AppComponent, BOOTSTRAP_PROVIDERS)
+platformBrowserDynamic().bootstrapModule(WebModule)
 .catch((err:any) => console.error(err));
 
 // In order to start the Service Worker located at "./worker.js"

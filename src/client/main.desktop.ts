@@ -13,7 +13,7 @@ let template: any;
 let menu: any;
 
 // app
-import {AppConfigService} from './app/frameworks/app/services/app-config.service';
+import {AppConfig} from './app/frameworks/sample/services/app-config';
 
 // Sample
 // You would need a valid `submitURL` to use
@@ -49,15 +49,15 @@ app.on('ready', () => {
 
   mainWindow.webContents.on('did-navigate-in-page', (e: any, url: string) => {
     console.log(`Page navigated: ${url}`);
-  });  
+  });
 
-  let appTitle: string = `Angular 2 Seed Advanced`;  
+  let appTitle: string = `Angular 2 Seed Advanced`;
 
   let langMenu: any = {
     label: 'Language',
     submenu: []
   };
-  for (var lang of AppConfigService.SUPPORTED_LANGUAGES) {
+  for (var lang of AppConfig.SUPPORTED_LANGUAGES) {
     let code = lang.code;
     let langOption = {
       label: lang.title,
@@ -107,7 +107,7 @@ app.on('ready', () => {
           shell.openExternal('http://codeology.braintreepayments.com/nathanwalker/angular2-seed-advanced');
         }
       }]
-  };  
+  };
 
   if (process.platform === 'darwin') {
     template = [{

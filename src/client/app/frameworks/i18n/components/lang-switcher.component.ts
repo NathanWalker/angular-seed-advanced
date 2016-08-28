@@ -3,11 +3,11 @@ import {Store} from '@ngrx/store';
 import 'rxjs/add/operator/take';
 
 // app
-import {FormComponent, Config, LogService, ILang} from '../../core/index';
+import {BaseComponent, Config, LogService, ILang} from '../../core/index';
 import {ElectronEventService} from '../../electron/index';
 import {MultilingualService} from '../index';
 
-@FormComponent({
+@BaseComponent({
   moduleId: module.id,
   selector: 'lang-switcher',
   templateUrl: 'lang-switcher.component.html'
@@ -27,11 +27,11 @@ export class LangSwitcherComponent {
       ElectronEventService.on('changeLang').subscribe((e: any) => {
         this.changeLang({ target: { value: e.detail.value } });
       });
-    }    
+    }
   }
   changeLang(e: any) {
     let lang = this.supportedLanguages[0].code; // fallback to default 'en'
-    
+
     if (Config.IS_MOBILE_NATIVE()) {
       if (e) {
         lang = this.supportedLanguages[e.newIndex].code;

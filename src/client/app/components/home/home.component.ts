@@ -1,11 +1,11 @@
 // libs
-import {Store} from '@ngrx/store';
+import { Store } from '@ngrx/store';
 
 // app
-import {FormComponent, RouterExtensions} from '../../frameworks/core/index';
-import {NameListService} from '../../frameworks/app/index';
+import { BaseComponent, RouterExtensions } from '../../frameworks/core/index';
+import { NameListService } from '../../frameworks/sample/index';
 
-@FormComponent({
+@BaseComponent({
   moduleId: module.id,
   selector: 'sd-home',
   templateUrl: 'home.component.html',
@@ -28,6 +28,8 @@ export class HomeComponent {
   }
 
   readAbout() {
+    // Try this in the {N} app
+    // {N} can use these animation options
     this.routerext.navigate(['/about'], {
       transition: {
         duration: 1000,

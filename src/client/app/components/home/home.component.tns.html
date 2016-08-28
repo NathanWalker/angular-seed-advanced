@@ -1,5 +1,3 @@
-<ActionBar title="Angular 2 Seed Advanced"> 
-</ActionBar>
 <StackLayout class="container-content">
   <Label [text]="'LOVE_TECH' | translate" textWrap="true" class="love-tech"></Label>
   <Label [text]="'SUCCESS_MSG' | translate" textWrap="true"></Label>
@@ -7,7 +5,7 @@
 
   <TextField [(ngModel)]="newName" [hint]="'INPUT_HINT' | translate" autocorrect="false" autocapitalizationType="none"></TextField>
   <Button [text]="'ADD_BTN_TEXT' | translate" (tap)="addName()"></Button>
-  
+
   <ListView [items]="nameListService.names | async" row="1" colSpan="2" height="300">
     <template let-name="item" let-odd="odd" let-even="even">
       <StackLayout [class.odd]="odd" [class.even]="even" class="list-item">
