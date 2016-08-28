@@ -44,13 +44,11 @@ interface ICoreModuleOptions {
   ]
 })
 export class CoreModule {
-  static forRoot(options: ICoreModuleOptions): ModuleWithProviders {
+  // providers are required to configure WindowService and ConsoleService per platform
+  static forRoot(providers: Array<any>): ModuleWithProviders {
     return {
       ngModule: CoreModule,
-      providers: [
-        {provide: WindowService, useValue: options.window },
-        {provide: ConsoleService, useValue: options.console }
-      ]
+      providers: providers
     };
   }
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

@@ -15,7 +15,7 @@ import { MultilingualModule } from './app/frameworks/i18n/multilingual.module';
 import { SampleModule } from './app/frameworks/sample/sample.module';
 
 // config
-import { Config } from './app/frameworks/core/index';
+import { Config, WindowService, ConsoleService } from './app/frameworks/core/index';
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 Config.DEBUG.LEVEL_4 = true;
 
@@ -36,7 +36,10 @@ if ('<%= TARGET_DESKTOP %>' === 'true') {
 @NgModule({
   imports: [
     BrowserModule,
-    CoreModule.forRoot({ window, console }),
+    CoreModule.forRoot([
+      { provide: WindowService, useValue: window },
+      { provide: ConsoleService, useValue: console }
+    ]),
     routerModule,
     AnalyticsModule,
     MultilingualModule,

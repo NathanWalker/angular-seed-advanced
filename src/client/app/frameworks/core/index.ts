@@ -5,7 +5,6 @@ export * from './utils/view-broker';
 
 // decorators
 export * from './decorators/base.component';
-export * from './decorators/route.component';
 
 // interfaces
 export * from './interfaces/iconsole';

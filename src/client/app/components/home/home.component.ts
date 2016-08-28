@@ -28,7 +28,8 @@ export class HomeComponent {
   }
 
   readAbout() {
-    // {N} has animation options using this
+    // Try this in the {N} app
+    // {N} can use these animation options
     this.routerext.navigate(['/about'], {
       transition: {
         duration: 1000,

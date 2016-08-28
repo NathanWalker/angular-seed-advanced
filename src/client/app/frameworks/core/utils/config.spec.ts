@@ -19,9 +19,6 @@ export function main() {
       t.e(Config.IS_MOBILE_HYBRID).toBeDefined();
       t.e(Config.IS_DESKTOP).toBeDefined();
     });
-    t.it('ROUTER_DIRECTIVES', () => {
-      t.e(Config.ROUTER_DIRECTIVES).toBeDefined();
-    });
     t.it('DEBUG', () => {
       t.e(Config.DEBUG.LEVEL_1).toBe(false);
       t.e(Config.DEBUG.LEVEL_2).toBe(false);

@@ -1,13 +1,14 @@
-import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 // libs
-import {Store, ActionReducer, Action} from '@ngrx/store';
+import { Store, ActionReducer, Action } from '@ngrx/store';
 
 // app
-import {Analytics, AnalyticsService} from '../../analytics/index';
+import { Config } from '../../core/index';
+import { Analytics, AnalyticsService } from '../../analytics/index';
 
 // analytics
 const CATEGORY: string = 'NameList';
@@ -48,7 +49,9 @@ export class NameListService extends Analytics {
   }
 
   init() {
-    this.http.get(`/assets/data.json`).map(res => res.json())
+    // {N} needs absolute path
+    // web and desktop are best to use relative
+    this.http.get(`${Config.IS_MOBILE_NATIVE() ? '/' : ''}assets/data.json`).map(res => res.json())
       .subscribe((results: any) => {
         this.store.dispatch({ type: NAME_LIST_ACTIONS.INIT, payload: results });
       });

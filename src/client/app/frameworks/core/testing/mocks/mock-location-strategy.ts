@@ -30,7 +30,7 @@ export class MockLocationStrategy extends LocationStrategy {
   path(includeHash: boolean = false): string { return this.internalPath; }
 
   prepareExternalUrl(internal: string): string {
-    if (internal.startsWith('/') && this.internalBaseHref.endsWith('/')) {
+    if ((<any>internal).startsWith('/') && (<any>this.internalBaseHref).endsWith('/')) {
       return this.internalBaseHref + internal.substring(1);
     }
     return this.internalBaseHref + internal;

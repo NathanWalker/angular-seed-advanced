@@ -9,7 +9,6 @@ const _reflect: any = Reflect;
 
 export class DecoratorUtils {
   public static getMetadata(metadata: any = {}, customDecoratorMetadata?: any) {
-
     /**
      * The following allows default component metadata to be configured
      * For instance, here we make `TranslatePipe` available for all our components
