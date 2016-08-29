@@ -31,8 +31,6 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
 
 @NgModule({
   imports: [
-    NativeScriptModule,
-    NativeScriptFormsModule,
     CoreModule.forRoot([
       { provide: WindowService, useClass: WindowNative },
       { provide: ConsoleService, useValue: console }
@@ -43,14 +41,16 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
       provide: TranslateLoader,
       useFactory: () => new TNSTranslateLoader('assets/i18n')
     }),
-    SampleModule.forRoot(),
+    SampleModule,
+    NativeScriptModule,
+    NativeScriptFormsModule,
     NativeScriptRouterModule.forRoot(routes)
   ],
   declarations: [
-    NS_ROUTER_DIRECTIVES,
     NSAppComponent,
-    AboutComponent,
-    HomeComponent
+    // AboutComponent,
+    // HomeComponent,
+    NS_ROUTER_DIRECTIVES
   ],
   providers: [
     NS_ROUTER_PROVIDERS, // required atm (may be able to remove in future)

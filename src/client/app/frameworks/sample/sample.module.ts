@@ -1,5 +1,5 @@
 // angular
-import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -27,8 +27,8 @@ export interface AppStoreI {
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
     FormsModule,
+    RouterModule,
     MultilingualModule,
     StoreModule.provideStore({
       i18n: multilingualReducer,
@@ -48,12 +48,7 @@ export interface AppStoreI {
   ]
 })
 export class SampleModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SampleModule,
-      providers: [NameListService]
-    };
-  }
+
   constructor(@Optional() @SkipSelf() parentModule: SampleModule) {
     if (parentModule) {
       throw new Error('SampleModule already loaded; Import in root module only.');

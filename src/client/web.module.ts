@@ -43,11 +43,14 @@ if ('<%= TARGET_DESKTOP %>' === 'true') {
     routerModule,
     AnalyticsModule,
     MultilingualModule,
-    SampleModule.forRoot()
+    SampleModule
   ],
   declarations: [AppComponent],
   providers: [
-    { provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>' }
+    {
+      provide: APP_BASE_HREF,
+      useValue: '<%= APP_BASE %>'
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,1 +1,3 @@
-<SegmentedBar [items]="supportedLanguages" (selectedIndexChanged)="changeLang($event)"></SegmentedBar>
+<StackLayout class="lang-switcher">
+  <SegmentedBar class="segmented-bar" [items]="supportedLanguages" (selectedIndexChanged)="changeLang($event)" selectedBackgroundColor="#fff"></SegmentedBar>
+</StackLayout>

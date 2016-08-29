@@ -1,11 +1,11 @@
-ActionBar {
-  background-color: #106CC8;
+.action-bar {
+  background-color: #3280CF;
   color:white;
 }
 
-SegmentedBar {
-  color: #106CC8;
-  margin: 0 10 0 10;
+.action-btn {
+  color:white;
+  font-size:15;
 }
 
 .drawer-content {
@@ -37,6 +37,7 @@ TextField {
 
 .container {
   padding:0;
+  margin:0;
 }
 
 .container-content {

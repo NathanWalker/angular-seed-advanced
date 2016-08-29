@@ -10,7 +10,8 @@ import {MultilingualService} from '../index';
 @BaseComponent({
   moduleId: module.id,
   selector: 'lang-switcher',
-  templateUrl: 'lang-switcher.component.html'
+  templateUrl: 'lang-switcher.component.html',
+  styleUrls: ['lang-switcher.component.css']
 })
 export class LangSwitcherComponent {
   public lang: string;
