@@ -6,6 +6,9 @@ export function main() {
   t.describe('core: Config', () => {
     t.be(() => Config.RESET());
 
+    t.it('ENVIRONMENT', () => {
+      t.e(Config.ENVIRONMENT).toBeDefined();
+    });
     t.it('PLATFORMS', () => {
       t.e(_.keys(Config.PLATFORMS).length).toBe(4);
       t.e(Config.PLATFORM_TARGET).toBeDefined();

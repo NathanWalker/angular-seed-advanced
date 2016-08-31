@@ -35,7 +35,7 @@
     "serve.docs": "npm run gulp -- build.docs --color && npm run gulp -- serve.docs --color",
     "serve.e2e": "gulp serve.e2e --color",
     "serve.prod": "gulp serve.prod --color --config-env prod",
-    "start": "gulp serve.dev --color --config-env dev",
+    "start": "gulp serve.dev --color",
     "start.desktop": "gulp desktop && NODE_ENV=development electron ./dist/dev",
     "start.livesync.desktop": "gulp desktop && NODE_ENV=development gulp desktop.watch",
     "start.livesync.desktop.windows": "gulp desktop && SET NODE_ENV=development && gulp desktop.watch",

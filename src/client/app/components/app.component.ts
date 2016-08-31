@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
 
 // app
 import { AnalyticsService } from '../frameworks/analytics/index';
-import { BaseComponent, LogService } from '../frameworks/core/index';
+import { BaseComponent, Config, LogService } from '../frameworks/core/index';
 
 /**
  * This class represents the main application component.
@@ -16,6 +16,6 @@ import { BaseComponent, LogService } from '../frameworks/core/index';
 })
 export class AppComponent {
   constructor(public analytics: AnalyticsService, public logger: LogService) {
-    logger.debug(`AppComponent constructor`);
+    logger.debug(`Config env: ${Config.ENVIRONMENT().ENV}`);
   }
 }
