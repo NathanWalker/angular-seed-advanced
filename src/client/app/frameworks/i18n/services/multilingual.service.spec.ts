@@ -1,4 +1,6 @@
 import {TestBed} from '@angular/core/testing';
+import {FormsModule} from '@angular/forms';
+import {RouterTestingModule} from '@angular/router/testing';
 // libs
 import {provideStore, Store} from '@ngrx/store';
 import {t} from '../../test/index';
@@ -12,6 +14,7 @@ import {MultilingualService, MultilingualStateI, multilingualReducer} from '../i
 // test module configuration for each test
 const testModuleConfig = (options?: any) => {
   TestBed.configureTestingModule({
+    imports: [FormsModule, RouterTestingModule],
     providers: [
       TEST_CORE_PROVIDERS(options),
       TEST_HTTP_PROVIDERS(),

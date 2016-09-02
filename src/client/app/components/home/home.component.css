@@ -12,7 +12,7 @@ ul {
   padding: 0 0 0 8px;
 }
 
-smile {
+.smile {
   background: url("./assets/svg/smile.svg");
   height: 48px;
   width: 48px;

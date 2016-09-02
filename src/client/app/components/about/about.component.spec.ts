@@ -1,28 +1,38 @@
-import {TestComponentBuilder} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
 import {t} from '../../frameworks/test/index';
 import {AboutComponent} from './about.component';
 
+// test module configuration for each test
+const testModuleConfig = () => {
+  TestBed.configureTestingModule({
+    declarations: [AboutComponent, TestComponent]
+  });
+};
+
 export function main() {
   t.describe('@Component: AboutComponent', () => {
 
+    t.be(testModuleConfig);
+    
     t.it('should work',
-      t.async(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        tcb.createAsync(TestComponent)
-          .then((rootTC:any) => {
-            let aboutDOMEl = rootTC.debugElement.children[0].nativeElement;
+      t.async(() => {
+        TestBed.compileComponents()
+          .then(() => {
+            let fixture = TestBed.createComponent(TestComponent);
+            fixture.detectChanges();
+            let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
 
 	          t.e(getDOM().querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
           });
-      })));
+      }));
   });
 }
 
 @Component({
   selector: 'test-cmp',
-  directives: [AboutComponent],
   template: '<sd-about></sd-about>'
 })
 class TestComponent { }

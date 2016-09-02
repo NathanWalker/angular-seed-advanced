@@ -8,7 +8,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {WebModule} from './web.module';
 
 // example of how to use build variables to determine environment
-if ('<%= ENV %>' === 'prod' || '<%= TARGET_DESKTOP_BUILD %>' === 'true') {
+if (String('<%= ENV %>') === 'prod' || String('<%= TARGET_DESKTOP_BUILD %>') === 'true') {
   enableProdMode();
 }
 

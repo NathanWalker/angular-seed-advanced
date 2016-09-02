@@ -1,4 +1,4 @@
-import {TestComponentBuilder, TestBed} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
@@ -24,6 +24,7 @@ const SUPPORTED_LANGUAGES: Array<ILang> = [
 const testModuleConfig = () => {
   TestBed.configureTestingModule({
     imports: [FormsModule],
+    declarations: [LangSwitcherComponent, TestComponent],
     providers: [
       TEST_CORE_PROVIDERS(),
       TEST_HTTP_PROVIDERS(),
@@ -40,15 +41,16 @@ export function main() {
       t.be(testModuleConfig);
 
       t.it('should work',
-        t.async(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-          return tcb.createAsync(TestComponent)
-            .then(rootTC => {
-              rootTC.detectChanges();
-              let appDOMEl = rootTC.debugElement.children[0].nativeElement;
+        t.async(() => {
+          TestBed.compileComponents()
+            .then(() => {
+              let fixture = TestBed.createComponent(TestComponent);
+              fixture.detectChanges();
+              let appDOMEl = fixture.debugElement.children[0].nativeElement;
               t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option').length).toBe(1);
               t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[0].value).toBe('en');
             });
-        })));
+        }));
     });
 
     t.describe('@Component: LangSwitcherComponent with multiple languages', () => {
@@ -61,11 +63,12 @@ export function main() {
       t.ae(() => TEST_MULTILINGUAL_RESET());
 
       t.it('should work',
-        t.async(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-          return tcb.createAsync(TestComponent)
-            .then(rootTC => {
-              rootTC.detectChanges();
-              let appDOMEl = rootTC.debugElement.children[0].nativeElement;
+        t.async(() => {
+          TestBed.compileComponents()
+            .then(() => {
+              let fixture = TestBed.createComponent(TestComponent);
+              fixture.detectChanges();
+              let appDOMEl = fixture.debugElement.children[0].nativeElement;
               t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option').length).toBe(5);
               t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[0].value).toBe('en');
               t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[1].value).toBe('es');
@@ -73,14 +76,13 @@ export function main() {
               t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[3].value).toBe('ru');
               t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[4].value).toBe('bg');
             });
-        })));
+        }));
     });
   });
 }
 
 @Component({
   selector: 'test-cmp',
-  template: '<div><lang-switcher></lang-switcher></div>',
-  directives: [LangSwitcherComponent]
+  template: '<div><lang-switcher></lang-switcher></div>'
 })
 class TestComponent {}

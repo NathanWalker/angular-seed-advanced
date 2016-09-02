@@ -1,4 +1,7 @@
-import {Response, ResponseOptions} from '@angular/http';
+import {TestBed} from '@angular/core/testing';
+import {FormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {HttpModule, Response, ResponseOptions} from '@angular/http';
 import {MockBackend} from '@angular/http/testing';
 
 // libs
@@ -10,19 +13,28 @@ import {t} from '../../test/index';
 import {TEST_CORE_PROVIDERS, GET_HTTP_PROVIDERS_INJECTOR, TEST_ROUTER_PROVIDERS} from '../../core/testing/index';
 import {NameListService, nameListReducer} from './name-list.service';
 
+// test module configuration for each test
+const testModuleConfig = () => {
+  TestBed.configureTestingModule({
+    imports: [FormsModule, RouterModule, HttpModule]
+  });
+};
+
 export function main() {
   t.describe('app: NameListService', () => {
     let nameList: NameListService;
-    
+
     t.be(() => {
+      testModuleConfig();
+
       let injector = GET_HTTP_PROVIDERS_INJECTOR([
         TEST_CORE_PROVIDERS(),
         TEST_ROUTER_PROVIDERS(),
         provideStore({ names: nameListReducer }),
         NameListService
       ]);
-      
-      let backend = injector.get(MockBackend);  
+
+      let backend = injector.get(MockBackend);
       let connection: any;
       backend.connections.subscribe((c: any) => connection = c);
       nameList = injector.get(NameListService);
@@ -42,6 +54,6 @@ export function main() {
       nameList.names.subscribe((names: Array<string>) => {
         t.e(names).toEqual(['Dijkstra', 'Hopper', 'test']);
       });
-    });  
+    });
   });
 }

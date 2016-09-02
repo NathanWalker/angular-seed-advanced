@@ -1,5 +1,6 @@
-
+import {TestBed} from '@angular/core/testing';
 import {ReflectiveInjector} from '@angular/core';
+import {RouterTestingModule} from '@angular/router/testing';
 
 // libs
 import {Angulartics2} from 'angulartics2';
@@ -9,9 +10,17 @@ import {t} from '../../test/index';
 import {TEST_ROUTER_PROVIDERS} from '../../core/testing/index';
 import {AnalyticsService, Analytics} from '../index';
 
+const testModuleConfig = () => {
+  TestBed.configureTestingModule({
+    imports: [RouterTestingModule]
+  });
+};
+
 export function main() {
   t.describe('analytics:', () => {
-    
+
+    t.be(testModuleConfig);
+
     t.describe('AnalyticsService', () => {
       let analyticsService: AnalyticsService;
       let segment: Angulartics2Segment;
@@ -27,12 +36,12 @@ export function main() {
       });
 
       t.describe('api works', () => {
-        t.it('track', () => {   
+        t.it('track', () => {
           t.spyOn(segment, 'eventTrack');
           analyticsService.track('click', { category: 'TEST', label: 'Testing' });
           t.e(segment.eventTrack).toHaveBeenCalledWith('click', { category: 'TEST', label: 'Testing' });
         });
-        t.it('track devMode: ON', () => {   
+        t.it('track devMode: ON', () => {
           t.spyOn(segment, 'eventTrack');
 
           // dev mode: shouldn't track anything
@@ -43,7 +52,7 @@ export function main() {
         t.it('pageTrack', () => {
           t.spyOn(segment, 'pageTrack');
           analyticsService.pageTrack('/testing', { });
-          t.e(segment.pageTrack).toHaveBeenCalledWith('/testing', {});       
+          t.e(segment.pageTrack).toHaveBeenCalledWith('/testing', {});
         });
         t.it('pageTrack devMode: ON', () => {
           t.spyOn(segment, 'pageTrack');
@@ -51,12 +60,12 @@ export function main() {
           // dev mode: shouldn't track anything
           analyticsService.devMode(true);
           analyticsService.pageTrack('/testing', { });
-          t.e(segment.pageTrack).not.toHaveBeenCalled();        
+          t.e(segment.pageTrack).not.toHaveBeenCalled();
         });
         t.it('identify', () => {
           t.spyOn(segment, 'setUserProperties');
           analyticsService.identify({ userId: 1, name: 'Test', email: 'name@domain.com' });
-          t.e(segment.setUserProperties).toHaveBeenCalledWith({ userId: 1, name: 'Test', email: 'name@domain.com' });     
+          t.e(segment.setUserProperties).toHaveBeenCalledWith({ userId: 1, name: 'Test', email: 'name@domain.com' });
         });
         t.it('identify devMode: ON', () => {
           t.spyOn(segment, 'setUserProperties');
@@ -64,7 +73,7 @@ export function main() {
           // dev mode: shouldn't track anything
           analyticsService.devMode(true);
           analyticsService.identify({ userId: 1, name: 'Test', email: 'name@domain.com' });
-          t.e(segment.setUserProperties).not.toHaveBeenCalled();         
+          t.e(segment.setUserProperties).not.toHaveBeenCalled();
         });
       });
     });
@@ -84,14 +93,14 @@ export function main() {
       });
 
       t.describe('should allow descendants to track actions', () => {
-        t.it('track', () => {   
+        t.it('track', () => {
           t.spyOn(analyticsService, 'track');
           analytics.track('action', { category: analytics.category, label: 'Testing' });
           t.e(analyticsService.track).toHaveBeenCalledWith('action', { category: analytics.category, label: 'Testing' });
         });
       });
-    }); 
-  }); 
+    });
+  });
 }
 
 class TestAnalytics extends Analytics { }

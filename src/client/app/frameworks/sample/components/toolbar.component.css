@@ -16,7 +16,7 @@ h1 {
 }
 
 :host lang-switcher,
-:host more {
+:host .more {
   position: absolute;
 }
 
@@ -25,7 +25,7 @@ h1 {
   right: 52px;
 }
 
-:host more {
+.more {
   background: url("./assets/svg/more.svg");
   top: 12px;
   right: 10px;
@@ -35,6 +35,6 @@ h1 {
   opacity: 0.7;
 }
 
-:host more:hover {
+.more:hover {
   opacity: 1;
 }
