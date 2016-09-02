@@ -5,10 +5,9 @@ import {Route} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 
 import {t} from '../frameworks/test/index';
-import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from '../frameworks/core/testing/index';
+import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS} from '../frameworks/core/testing/index';
 import {NameListService, NavbarComponent, ToolbarComponent} from '../frameworks/sample/index';
 import {MultilingualModule} from '../frameworks/i18n/multilingual.module';
-import {TEST_MULTILINGUAL_PROVIDERS} from '../frameworks/i18n/testing/index';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
@@ -30,9 +29,7 @@ const testModuleConfig = () => {
     providers: [
       TEST_CORE_PROVIDERS(),
       TEST_HTTP_PROVIDERS(),
-      NameListService,
-      TEST_ROUTER_PROVIDERS({ config, component: TestComponent }),
-      TEST_MULTILINGUAL_PROVIDERS()
+      NameListService
     ]
   });
 };

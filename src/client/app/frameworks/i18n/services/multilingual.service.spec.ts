@@ -1,24 +1,26 @@
 import {TestBed} from '@angular/core/testing';
-import {FormsModule} from '@angular/forms';
 import {RouterTestingModule} from '@angular/router/testing';
 // libs
 import {provideStore, Store} from '@ngrx/store';
 import {t} from '../../test/index';
-// import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS, WindowMockFrench} from '../../core/testing/index';
-import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS, WindowMockFrench} from '../../core/testing/index';
-// import {TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET} from '../testing/index';
+import {CoreModule} from '../../core/core.module';
+import {ILang, WindowService, ConsoleService} from '../../core/index';
+import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, WindowMockFrench} from '../../core/testing/index';
 import {TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET} from '../testing/index';
-import {ILang, WindowService} from '../../core/index';
 import {MultilingualService, MultilingualStateI, multilingualReducer} from '../index';
 
 // test module configuration for each test
 const testModuleConfig = (options?: any) => {
   TestBed.configureTestingModule({
-    imports: [FormsModule, RouterTestingModule],
+    imports: [
+      CoreModule.forRoot([
+        { provide: WindowService, useValue: window },
+        { provide: ConsoleService, useValue: console }
+      ]),
+      RouterTestingModule],
     providers: [
       TEST_CORE_PROVIDERS(options),
       TEST_HTTP_PROVIDERS(),
-      TEST_ROUTER_PROVIDERS(),
       TEST_MULTILINGUAL_PROVIDERS(),
       provideStore({ i18n: multilingualReducer })
     ]
