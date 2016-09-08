@@ -34,7 +34,8 @@ interface ICoreModuleOptions {
     CommonModule,
     FormsModule,
     RouterModule,
-    HttpModule
+    HttpModule,
+    PlatformDirective
   ],
   providers: [
     ConsoleService,

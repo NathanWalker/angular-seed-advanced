@@ -1,7 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {RouterTestingModule} from '@angular/router/testing';
-import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
 // libs
 import {StoreModule} from '@ngrx/store';
@@ -47,8 +46,8 @@ export function main() {
               let fixture = TestBed.createComponent(TestComponent);
               fixture.detectChanges();
               let appDOMEl = fixture.debugElement.children[0].nativeElement;
-              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option').length).toBe(1);
-              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[0].value).toBe('en');
+              t.e(appDOMEl.querySelectorAll('form > select option').length).toBe(1);
+              t.e(appDOMEl.querySelectorAll('form > select option')[0].value).toBe('en');
             });
         }));
     });
@@ -69,12 +68,12 @@ export function main() {
               let fixture = TestBed.createComponent(TestComponent);
               fixture.detectChanges();
               let appDOMEl = fixture.debugElement.children[0].nativeElement;
-              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option').length).toBe(5);
-              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[0].value).toBe('en');
-              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[1].value).toBe('es');
-              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[2].value).toBe('fr');
-              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[3].value).toBe('ru');
-              t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[4].value).toBe('bg');
+              t.e(appDOMEl.querySelectorAll('form > select option').length).toBe(5);
+              t.e(appDOMEl.querySelectorAll('form > select option')[0].value).toBe('en');
+              t.e(appDOMEl.querySelectorAll('form > select option')[1].value).toBe('es');
+              t.e(appDOMEl.querySelectorAll('form > select option')[2].value).toBe('fr');
+              t.e(appDOMEl.querySelectorAll('form > select option')[3].value).toBe('ru');
+              t.e(appDOMEl.querySelectorAll('form > select option')[4].value).toBe('bg');
             });
         }));
     });

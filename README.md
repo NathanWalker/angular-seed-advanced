@@ -111,6 +111,8 @@ npm run serve.docs
 npm run build.dev
 # prod build
 npm run build.prod
+# prod build with AoT compilation
+npm run build.prod.exp
 ```
 
 ## NativeScript App
@@ -171,9 +173,15 @@ Linux:    npm run build.desktop.linux
 ```bash
 npm test
 
-# Debug - In two different shell windows
-npm run build.test.watch      # 1st window
-npm run karma.start           # 2nd window
+# Development. Your app will be watched by karma
+# on each change all your specs will be executed.
+npm run test.watch
+# NB: The command above might fail with a "EMFILE: too many open files" error.
+# Some OS have a small limit of opened file descriptors (256) by default
+# and will result in the EMFILE error.
+# You can raise the maximum of file descriptors by running the command below:
+ulimit -n 10480
+
 
 # code coverage (istanbul)
 # auto-generated at the end of `npm test`
@@ -183,6 +191,7 @@ npm run serve.coverage
 # e2e (aka. end-to-end, integration) - In three different shell windows
 # Make sure you don't have a global instance of Protractor
 
+# npm install webdriver-manager <- Install this first for e2e testing
 # npm run webdriver-update <- You will need to run this the first time
 npm run webdriver-start
 npm run serve.e2e

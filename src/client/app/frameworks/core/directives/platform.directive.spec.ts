@@ -1,6 +1,5 @@
 import {TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
 import {PlatformDirective} from './platform.directive';
 import {t} from '../../test/index';
@@ -34,7 +33,7 @@ export function main() {
             let fixture = TestBed.createComponent(TestComponent);
             fixture.detectChanges();
             let compDOMEl = fixture.debugElement.children[0].nativeElement;
-            t.e(getDOM().classList(compDOMEl)).toEqual(['web']);
+            t.e(compDOMEl.getAttribute('class')).toBe('web');
           });
       }));
   });

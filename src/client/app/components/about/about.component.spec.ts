@@ -1,7 +1,8 @@
-import {TestBed} from '@angular/core/testing';
-import {Component} from '@angular/core';
-import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
+// angular
+import { Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 
+// app
 import {t} from '../../frameworks/test/index';
 import {AboutComponent} from './about.component';
 
@@ -16,7 +17,7 @@ export function main() {
   t.describe('@Component: AboutComponent', () => {
 
     t.be(testModuleConfig);
-    
+
     t.it('should work',
       t.async(() => {
         TestBed.compileComponents()
@@ -25,7 +26,7 @@ export function main() {
             fixture.detectChanges();
             let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
 
-	          t.e(getDOM().querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
+	          t.e(aboutDOMEl.querySelectorAll('h2')[0].textContent).toEqual('Features');
           });
       }));
   });

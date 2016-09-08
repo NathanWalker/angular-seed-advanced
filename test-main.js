@@ -18,95 +18,6 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
 // we will call `__karma__.start()` later, once all the specs are loaded.
 __karma__.loaded = function () { };
 
-// Load our SystemJS configuration.
-System.config({
-  baseURL: '/base/'
-});
-
-System.config({
-  defaultJSExtensions: true,
-  paths: {
-    'lodash': 'node_modules/lodash/index.js',
-    'ng2-translate/*': 'node_modules/ng2-translate/*.js',
-    'angulartics2': 'node_modules/angulartics2/index.js',
-    'angulartics2/*': 'node_modules/angulartics2/*.js'
-  },
-  map: {
-    'rxjs': 'node_modules/rxjs',
-    '@angular': 'node_modules/@angular',
-    '@ngrx': 'node_modules/@ngrx'
-  },
-  packages: {
-    '@angular/common': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/common/testing': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/compiler': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/compiler/testing': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/core': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/core/testing': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/forms': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/http': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/http/testing': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/platform-browser': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/platform-browser/testing': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/platform-browser-dynamic/testing': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/platform-browser-dynamic': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/router': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/router/testing': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@ngrx/store': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    'rxjs': {
-      defaultExtension: 'js'
-    }
-  }
-});
-
 Promise.all([
   System.import('@angular/core/testing'),
   System.import('@angular/platform-browser-dynamic/testing')
@@ -118,8 +29,6 @@ Promise.all([
     testingBrowser.BrowserDynamicTestingModule,
     testingBrowser.platformBrowserDynamicTesting()
   );
-
-
 }).then(function () {
   return Promise.all(
     Object.keys(window.__karma__.files) // All files served by Karma.
@@ -156,3 +65,4 @@ function file2moduleName(filePath) {
     .replace(/^\/base\//, '')
     .replace(/\.js$/, '');
 }
+
