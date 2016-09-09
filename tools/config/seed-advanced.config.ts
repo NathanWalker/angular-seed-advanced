@@ -27,6 +27,7 @@ export class SeedAdvancedConfig extends SeedConfig {
     // Override seed defaults
     this.BOOTSTRAP_DIR = argv['app'] ? (argv['app'] + '/') : '';
     this.BOOTSTRAP_MODULE = `${this.BOOTSTRAP_DIR}` + (this.ENABLE_HOT_LOADING ? 'hot_loader_main' : bootstrap);
+    this.NG_FACTORY_FILE = `${bootstrap}.prod`;
     this.BOOTSTRAP_PROD_MODULE = `${this.BOOTSTRAP_DIR}${bootstrap}`;
     this.BOOTSTRAP_FACTORY_PROD_MODULE = `${this.BOOTSTRAP_DIR}${bootstrap}.prod`;
 
