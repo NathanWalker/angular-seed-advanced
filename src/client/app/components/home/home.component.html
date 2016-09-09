@@ -1,5 +1,5 @@
 <h2>
-  {{ 'LOVE_TECH' | translate }} <smile></smile>
+  {{ 'LOVE_TECH' | translate }} <div class="smile"></div>
 </h2>
 
 <p>
@@ -15,7 +15,7 @@
 </form>
 
 <ul>
-  <li *ngFor="let name of nameListService.names | async">{{name}}</li>
+  <li *ngFor="let name of (nameListService.names | async)">{{name}}</li>
 </ul>
 
 <p>

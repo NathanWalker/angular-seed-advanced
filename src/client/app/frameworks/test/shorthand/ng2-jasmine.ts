@@ -1,5 +1,4 @@
 import {
-  addProviders,
   async,
   fakeAsync,
   inject
@@ -16,7 +15,6 @@ export interface TestApi {
   fakeAsync(fn: Function): Function;
   be(fn: Function): void;
   beforeEach(fn: Function): void;
-  addProviders(fn: any): void;
   e(actual: any): jasmine.Matchers;
   expect(actual: any): jasmine.Matchers;
   fail(e?: any): void;
@@ -39,7 +37,6 @@ export const Ng2Jasmine: TestApi = {
   fakeAsync: fakeAsync,
   be: beforeEach,  // shorthand beforeEach
   beforeEach: beforeEach,
-  addProviders: addProviders,
   e: expect, // shorthand expect
   expect: expect,
   fail: fail,

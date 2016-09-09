@@ -4,7 +4,7 @@
 
 var argv = require('yargs').argv;
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -21,30 +21,35 @@ module.exports = function(config) {
       // Polyfills.
       'node_modules/core-js/client/shim.min.js',
 
+      'node_modules/traceur/bin/traceur.js',
+
       // System.js for module loading
       'node_modules/systemjs/dist/system.src.js',
 
       // Zone.js dependencies
       'node_modules/zone.js/dist/zone.js',
-      'node_modules/zone.js/dist/jasmine-patch.js',
+      'node_modules/zone.js/dist/long-stack-trace-zone.js',
       'node_modules/zone.js/dist/async-test.js',
       'node_modules/zone.js/dist/fake-async-test.js',
+      'node_modules/zone.js/dist/sync-test.js',
+      'node_modules/zone.js/dist/proxy.js',
+      'node_modules/zone.js/dist/jasmine-patch.js',
 
       // RxJs.
       { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },
-      { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
 
       // paths loaded via module imports
       // Angular itself
       { pattern: 'node_modules/@angular/**/*.js', included: false, watched: true },
+      { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
 
       // Advanced seed
       { pattern: 'node_modules/lodash/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/ng2-translate/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/@ngrx/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/angulartics2/**/*.js', included: false, watched: false },
-      
+
       { pattern: 'dist/dev/**/*.js', included: false, watched: true },
       { pattern: 'dist/dev/**/*.html', included: false, watched: true, served: true },
       { pattern: 'dist/dev/**/*.css', included: false, watched: true, served: true },
@@ -53,13 +58,15 @@ module.exports = function(config) {
       // suppress annoying 404 warnings for resources, images, etc.
       { pattern: 'dist/dev/assets/**/*', watched: false, included: false, served: true },
 
+      'test-config.js',
+      'dist/dev/system-config.js',
       'test-main.js'
     ],
 
     // must go along with above, suppress annoying 404 warnings.
     proxies: {
       '/assets/': '/base/dist/dev/assets/'
-    },  
+    },
 
     // list of files to exclude
     exclude: [
@@ -126,5 +133,6 @@ module.exports = function(config) {
   if (process.env.TRAVIS || process.env.CIRCLECI) {
     config.browsers = ['Chrome_travis_ci'];
     config.singleRun = true;
+    config.browserNoActivityTimeout = 90000;
   }
 };

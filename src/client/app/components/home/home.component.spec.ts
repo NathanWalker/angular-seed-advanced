@@ -1,23 +1,41 @@
-import {TestComponentBuilder, TestBed} from '@angular/core/testing';
-import {Component} from '@angular/core';
-import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
-import {FormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
+// angular
+import { Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import {
+  BaseRequestOptions,
+  ConnectionBackend,
+  Http
+} from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
 // libs
-import {provideStore} from '@ngrx/store';
-import {TranslateModule} from 'ng2-translate/ng2-translate';
+import { StoreModule } from '@ngrx/store';
 
-import {t} from '../../frameworks/test/index';
-import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from '../../frameworks/core/testing/index';
-import {NameListService, nameListReducer} from '../../frameworks/sample/index';
-import {TEST_MULTILINGUAL_PROVIDERS} from '../../frameworks/i18n/testing/index';
-import {HomeComponent} from './home.component';
+import { t } from '../../frameworks/test/index';
+import { NameListService, nameListReducer } from '../../frameworks/sample/index';
+import { CoreModule } from '../../frameworks/core/core.module';
+import { AnalyticsModule } from '../../frameworks/analytics/analytics.module';
+import { MultilingualModule } from '../../frameworks/i18n/multilingual.module';
+import { HomeComponent } from './home.component';
 
 // test module configuration for each test
 const testModuleConfig = () => {
   TestBed.configureTestingModule({
-    imports: [FormsModule, RouterModule, TranslateModule.forRoot()]
+    imports: [CoreModule, RouterTestingModule, AnalyticsModule,
+      MultilingualModule, StoreModule.provideStore({ names: nameListReducer })],
+    declarations: [HomeComponent, TestComponent],
+    providers: [
+      NameListService,
+      BaseRequestOptions,
+      MockBackend,
+      {
+        provide: Http, useFactory: function (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
+          return new Http(backend, defaultOptions);
+        },
+        deps: [MockBackend, BaseRequestOptions]
+      }
+    ]
   });
 };
 
@@ -27,41 +45,32 @@ export function main() {
     t.be(testModuleConfig);
 
     t.it('should work',
-      t.async(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        tcb.createAsync(TestComponent)
-          .then((rootTC: any) => {
+      t.async(() => {
+        TestBed.compileComponents()
+          .then(() => {
+            let fixture = TestBed.createComponent(TestComponent);
+            fixture.detectChanges();
 
-            rootTC.detectChanges();
+            let homeInstance = fixture.debugElement.children[0].componentInstance;
+            let homeDOMEl = fixture.debugElement.children[0].nativeElement;
 
-            let homeInstance = rootTC.debugElement.children[0].componentInstance;
-            let homeDOMEl = rootTC.debugElement.children[0].nativeElement;
-
-            expect(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
-            expect(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(0);
+            t.e(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
+            t.e(homeDOMEl.querySelectorAll('li').length).toEqual(0);
 
             homeInstance.newName = 'Minko';
             homeInstance.addName();
 
-            rootTC.detectChanges();
+            fixture.detectChanges();
 
-            expect(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(1);
-            expect(getDOM().querySelectorAll(homeDOMEl, 'li')[0].textContent).toEqual('Minko');
+            t.e(homeDOMEl.querySelectorAll('li').length).toEqual(1);
+            t.e(homeDOMEl.querySelectorAll('li')[0].textContent).toEqual('Minko');
           });
-      })));
+      }));
   });
 }
 
 @Component({
-  providers: [
-    TEST_CORE_PROVIDERS(),
-    TEST_HTTP_PROVIDERS(),
-    TEST_ROUTER_PROVIDERS(),
-    provideStore({ names: nameListReducer }),
-    NameListService,
-    TEST_MULTILINGUAL_PROVIDERS()
-  ],
   selector: 'test-cmp',
-  directives: [HomeComponent],
   template: '<sd-home></sd-home>'
 })
 class TestComponent {

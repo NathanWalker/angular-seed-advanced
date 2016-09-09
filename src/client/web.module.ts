@@ -29,7 +29,7 @@ MultilingualService.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;
 
 let routerModule = RouterModule.forRoot(routes);
 
-if ('<%= TARGET_DESKTOP %>' === 'true') {
+if (String('<%= TARGET_DESKTOP %>') === 'true') {
   Config.PLATFORM_TARGET = Config.PLATFORMS.DESKTOP;
   // desktop (electron) must use hash
   routerModule = RouterModule.forRoot(routes, {useHash: true});

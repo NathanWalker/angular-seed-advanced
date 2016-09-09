@@ -1,6 +1,7 @@
 // angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 // app
@@ -13,6 +14,7 @@ import { ANALYTICS_PROVIDERS } from './index';
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     HttpModule
   ],
   providers: ANALYTICS_PROVIDERS
