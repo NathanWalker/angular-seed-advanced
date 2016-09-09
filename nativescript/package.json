@@ -50,6 +50,6 @@
     "lazy": "1.0.11",
     "nativescript-dev-typescript": "^0.3.2",
     "shelljs": "^0.5.3",
-    "typescript": "1.8.10"
+    "typescript": "^1.8.10"
   }
 }
