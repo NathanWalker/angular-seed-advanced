@@ -2,8 +2,12 @@
  * Bootstraps the application and makes the ROUTER_PROVIDERS and the APP_BASE_HREF available to it.
  * @see https://angular.io/docs/ts/latest/api/platform-browser-dynamic/index/bootstrap-function.html
  */
-import { WebModuleNgFactory } from './web.module.ngfactory';
+import { enableProdMode } from '@angular/core';
 import { platformBrowser } from '@angular/platform-browser';
+
+import { WebModuleNgFactory } from './web.module.ngfactory';
+
+enableProdMode();
 
 platformBrowser().bootstrapModuleFactory(WebModuleNgFactory);
 
