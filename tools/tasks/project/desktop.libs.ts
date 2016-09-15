@@ -1,6 +1,6 @@
 import * as gulp from 'gulp';
 import {join} from 'path';
-import {APP_DEST} from '../../config';
+import Config from '../../config';
 
 export = () => {
   let src = [
@@ -15,5 +15,5 @@ export = () => {
     'node_modules/zone.js/**/*'
   ];
   return gulp.src(src, { base: 'node_modules' })
-    .pipe(gulp.dest(join(APP_DEST + '/node_modules')));
+    .pipe(gulp.dest(join(Config.APP_DEST + '/node_modules')));
 };

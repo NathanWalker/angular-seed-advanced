@@ -2,7 +2,7 @@ import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { join } from 'path';
 
-import { APP_SRC, APP_TITLE, DOCS_DEST } from '../../config';
+import Config from '../../config';
 
 const plugins = <any>gulpLoadPlugins();
 
@@ -14,9 +14,9 @@ export = () => {
 
   let src = [
     'typings/index.d.ts',
-    join(APP_SRC, '**/*.ts'),
-    '!' + join(APP_SRC, '**/*.spec.ts'),
-    '!' + join(APP_SRC, '**/*.e2e-spec.ts')
+    join(Config.APP_SRC, '**/*.ts'),
+    '!' + join(Config.APP_SRC, '**/*.spec.ts'),
+    '!' + join(Config.APP_SRC, '**/*.e2e-spec.ts')
   ];
 
   return gulp.src(src)
@@ -27,9 +27,9 @@ export = () => {
       excludeExternals: true,
       includeDeclarations: true,
       // Output options (see typedoc docs)
-      out: DOCS_DEST,
-      json: join(DOCS_DEST, 'data/docs.json'),
-      name: APP_TITLE,
+      out: Config.DOCS_DEST,
+      json: join(Config.DOCS_DEST, 'data/docs.json'),
+      name: Config.APP_TITLE,
       ignoreCompilerErrors: false,
       experimentalDecorators: true,
       version: true
