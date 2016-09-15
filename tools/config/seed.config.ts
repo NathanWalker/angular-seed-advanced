@@ -490,10 +490,26 @@ export class SeedConfig {
      */
     'browser-sync': {
       middleware: [require('connect-history-api-fallback')({
-        index: `${this.APP_BASE}index.html`
-        // parent angular2-seed uses the following however they don't work here
-        // rewrites: this.DEV_REWRITE_RULES,
-        // disableDotRule: true
+        index: `${this.APP_BASE}index.html`,
+//        rewrites: [
+//          {
+//            from: /^\/node_modules\/.*$/,
+//            to: (context:any) => context.parsedUrl.pathname
+//          },
+//          {
+//            from: new RegExp(`^${this.APP_BASE}${this.APP_SRC}$`),
+//            to: (context:any) => context.parsedUrl.pathname
+//          },
+//          {
+//            from: /^\/assets\/.*$/,
+//            to: (context:any) => context.parsedUrl.pathname
+//          },
+//          {
+//            from: /^\/css\/.*$/,
+//            to: (context:any) => context.parsedUrl.pathname
+//          }
+//        ],
+//        disableDotRule: true
       })],
       port: this.PORT,
       startPath: this.APP_BASE,
