@@ -145,6 +145,10 @@ Android (livesync device):    npm run start.livesync.android.device
 
 * Requires an image setup via AVD Manager. [Learn more here](http://developer.android.com/intl/zh-tw/tools/devices/managing-avds.html) and [here](https://github.com/NativeScript/nativescript-cli#the-commands).
 
+OR...
+
+* [GenyMotion Android Emulator](https://www.genymotion.com/)
+
 ## Electron App
 
 #### Develop
