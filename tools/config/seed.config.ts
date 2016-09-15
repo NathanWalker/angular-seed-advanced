@@ -298,7 +298,7 @@ export class SeedConfig {
     { src: 'zone.js/dist/zone.js', inject: 'libs' },
     { src: 'core-js/client/shim.min.js', inject: 'shims' },
     { src: 'systemjs/dist/system.src.js', inject: 'shims', env: ENVIRONMENTS.DEVELOPMENT },
-    { src: 'rxjs/bundles/Rx.umd.min.js', inject: 'libs', env: ENVIRONMENTS.DEVELOPMENT },
+    { src: 'rxjs/bundles/Rx.min.js', inject: 'libs', env: ENVIRONMENTS.DEVELOPMENT },
   ];
 
   /**
@@ -331,7 +331,7 @@ export class SeedConfig {
    * The configuration of SystemJS for the `dev` environment.
    * @type {any}
    */
-  protected SYSTEM_CONFIG_DEV: any = {
+  SYSTEM_CONFIG_DEV: any = {
     defaultJSExtensions: true,
     packageConfigPaths: [
       `/node_modules/*/package.json`,
@@ -457,6 +457,25 @@ export class SeedConfig {
   COLOR_GUARD_WHITE_LIST: [string, string][] = [
   ];
 
+  protected DEV_REWRITE_RULES = [
+    {
+      from: /^\/node_modules\/.*$/,
+      to: (context:any) => context.parsedUrl.pathname
+    },
+    {
+      from: /^\/app\/.*$/,
+      to: (context:any) => context.parsedUrl.pathname
+    },
+    {
+      from: /^\/assets\/.*$/,
+      to: (context:any) => context.parsedUrl.pathname
+    },
+    {
+      from: /^\/css\/.*$/,
+      to: (context:any) => context.parsedUrl.pathname
+    }
+  ];
+
   /**
    * Configurations for NPM module configurations. Add to or override in project.config.ts.
    * If you like, use the mergeObject() method to assist with this.
@@ -470,7 +489,12 @@ export class SeedConfig {
      * @type {any}
      */
     'browser-sync': {
-      middleware: [require('connect-history-api-fallback')({ index: `${this.APP_BASE}index.html` })],
+      middleware: [require('connect-history-api-fallback')({
+        index: `${this.APP_BASE}index.html`
+        // parent angular2-seed uses the following however they don't work here
+        // rewrites: this.DEV_REWRITE_RULES,
+        // disableDotRule: true
+      })],
       port: this.PORT,
       startPath: this.APP_BASE,
       open: argv['b'] ? false : true,

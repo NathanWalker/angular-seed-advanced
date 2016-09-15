@@ -4,12 +4,9 @@ import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { RouterExtensions as TNSRouterExtensions } from 'nativescript-angular/router/router-extensions';
-import { NativescriptPlatformLocation } from 'nativescript-angular/router/ns-platform-location';
-import { NSLocationStrategy } from 'nativescript-angular/router/ns-location-strategy';
 
 // angular
 import { NgModule } from '@angular/core';
-import { LocationStrategy, PlatformLocation } from '@angular/common';
 
 // libs
 import { TranslateModule, TranslateLoader } from 'ng2-translate/ng2-translate';
