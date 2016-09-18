@@ -62,6 +62,9 @@ function mapPath(dep: any) {
  */
 function transformPath() {
   return function (filepath: string) {
+    if (filepath.startsWith(`/${Config.APP_DEST}`)) {
+      filepath = filepath.replace(`/${Config.APP_DEST}`, '');
+    }
     if (Config.TARGET_DESKTOP) {
       let path = join(Config.APP_BASE, filepath);
       if (path.indexOf('dist/dev') > -1 || path.indexOf('dist\\dev') > -1) {
