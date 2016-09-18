@@ -41,13 +41,14 @@ export class SeedAdvancedConfig extends SeedConfig {
       `${this.APP_BASE}node_modules/*/package.json`,
       `${this.APP_BASE}node_modules/@ngrx/*/package.json`
     ];
+
     if (!this.SYSTEM_CONFIG['packages']) this.SYSTEM_CONFIG['packages'] = {};
     this.SYSTEM_CONFIG['packages']['@ngrx/core'] = {
-      main: 'index.js',
+      main: 'bundles/core.umd.js',
       defaultExtension: 'js'
     };
     this.SYSTEM_CONFIG['packages']['@ngrx/store'] = {
-      main: 'index.js',
+      main: 'bundles/store.umd.js',
       defaultExtension: 'js'
     };
 
