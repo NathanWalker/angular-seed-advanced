@@ -32,7 +32,7 @@ export const MULTILINGUAL_ACTIONS: any = {
 export const multilingualReducer: ActionReducer<MultilingualStateI> = (state: MultilingualStateI = initialState, action: Action) => {
   switch (action.type) {
     case MULTILINGUAL_ACTIONS.LANG_CHANGE:
-      return Object.assign({}, state, action.payload);
+      return (<any>Object).assign({}, state, action.payload);
     default:
       return state;
   }
