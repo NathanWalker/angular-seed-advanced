@@ -299,6 +299,7 @@ Several branches exist with certain features integrated:
 4. `npm run git.prepare` - This will prepare git to handle the merge
 5. `npm run git.merge` - This will fetch upstream and run the first merge (*Important)
   * IMPORTANT: You will see a wall of Conflicts after doing above (a Conflict for every single file). This is normal. There actually will not be any problematic conflicts as it's just reporting every single file which both sides (`upstream` and your first commit) added.
+  * IMPORTANT: If you see 'unknown option --allow-unrelated-histories' either upgrade git to 2.9+ or use `npm run git.merge.legacy`
 6. `git add .; git commit -m'ready'`. **Yes**, you will be committing all those conflicts, which actually are not a problem in this 1 time case.
 7. Now you have `git` setup and ready to develop your application as well as merge in upstream changes in the future.
 8. `npm install` (and all other usage docs in this `README` apply)
@@ -308,7 +309,9 @@ Several branches exist with certain features integrated:
 #### Merging latest upstream changes
 
 1. `npm run git.merge.preview` - This will fetch `upstream` and show you how the merge would look
+  * If you see 'unknown option --allow-unrelated-histories' either upgrade git to 2.9+ or use `npm run git.merge.legacy.preview`
 2. `npm run git.merge` - This will actually do the merge
+  * If you see 'unknown option --allow-unrelated-histories' either upgrade git to 2.9+ or use `npm run git.merge.legacy`
 3. Handle any conflicts to get latest upstream into your application.
 4. Continue building your app.
 
