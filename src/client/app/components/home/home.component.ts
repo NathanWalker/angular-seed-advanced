@@ -2,10 +2,10 @@
 import { Store } from '@ngrx/store';
 
 // app
-import { BaseComponent, RouterExtensions } from '../../frameworks/core/index';
+import { PageComponent, RouterExtensions } from '../../frameworks/core/index';
 import { NameListService } from '../../frameworks/sample/index';
 
-@BaseComponent({
+@PageComponent({
   moduleId: module.id,
   selector: 'sd-home',
   templateUrl: 'home.component.html',

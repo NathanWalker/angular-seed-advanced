@@ -6,6 +6,8 @@ import { NativeScriptModule, platformNativeScriptDynamic, onAfterLivesync, onBef
  * Seed provided configuration options
  */
 import { Config } from './app/frameworks/core/index';
+import { TNSPageWrapService } from './shared/core/services/ns-pagewrap.service';
+Config.PageWrapService = <any>TNSPageWrapService;
 
 // (required) platform target (allows component decorators to use the right view template)
 Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
