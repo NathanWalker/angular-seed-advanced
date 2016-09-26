@@ -12,7 +12,11 @@ interface IPlatforms {
   DESKTOP: string;
 }
 
+import { PageWrapService } from '../services/pagewrap.service';
+
 export class Config {
+
+  public static PageWrapService = PageWrapService;
 
   public static DEBUG: any = {
     LEVEL_1: false, // .info only
