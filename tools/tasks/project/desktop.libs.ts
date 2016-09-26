@@ -12,7 +12,7 @@ export = () => {
     'node_modules/@ngrx/**/*'
   ];
 
-  src.push(...Config.DEPENDENCIES.map(x => relative(Config.PROJECT_ROOT, x.src)));
+  src.push(...Config.NPM_DEPENDENCIES.map(x => relative(Config.PROJECT_ROOT, x.src)));
 
   return gulp.src(src, { base: 'node_modules' })
     .pipe(gulp.dest(join(Config.APP_DEST + '/node_modules')));
