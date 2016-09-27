@@ -45,6 +45,7 @@ src/**/*.js
 src/**/*.js.map
 !src/sw.js
 !src/client/app/frameworks/test
+nativescript/app/css
 nativescript/hooks
 nativescript/node_modules
 nativescript/platforms
