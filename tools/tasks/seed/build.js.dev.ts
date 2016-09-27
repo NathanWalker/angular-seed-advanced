@@ -20,7 +20,6 @@ let typedBuildCounter = Config.TYPED_COMPILE_INTERVAL; // Always start with the 
 export = () => {
   let tsProject: any;
   let typings = gulp.src([
-    'typings/index.d.ts',
     Config.TOOLS_DIR + '/manual_typings/**/*.d.ts'
   ]);
   let src = [
@@ -48,7 +47,7 @@ export = () => {
   result = projectFiles
     .pipe(plugins.plumber())
     .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.typescript(tsProject))
+    .pipe(tsProject())
     .on('error', () => {
       typedBuildCounter = Config.TYPED_COMPILE_INTERVAL;
     });

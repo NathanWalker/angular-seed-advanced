@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {UrlTree} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { UrlTree } from '@angular/router';
 
-import {IRouterExtensions, ExtendedNavigationExtras} from '../../index';
+import { IRouterExtensions, ExtendedNavigationExtras } from '../../index';
 
 @Injectable()
 export class RouterExtensionsMock implements IRouterExtensions {

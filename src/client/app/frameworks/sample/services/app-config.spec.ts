@@ -1,5 +1,5 @@
-import {t} from '../../test/index';
-import {AppConfig} from './app-config';
+import { t } from '../../test/index';
+import { AppConfig } from './app-config';
 
 export function main() {
   t.describe('app: AppConfig', () => {

@@ -1,5 +1,5 @@
-import {t} from '../../test/index';
-import {Config} from './config';
+import { t } from '../../test/index';
+import { Config } from './config';
 import * as _ from 'lodash';
 
 export function main() {

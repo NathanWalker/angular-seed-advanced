@@ -1,10 +1,10 @@
 // angular
-import {Injectable, Inject} from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 
 // libs
 import * as _ from 'lodash';
-import {Angulartics2} from 'angulartics2';
-import {Angulartics2Segment} from 'angulartics2/src/providers/angulartics2-segment';
+import { Angulartics2 } from 'angulartics2';
+import { Angulartics2Segment } from 'angulartics2/src/providers/angulartics2-segment';
 
 export interface IAnalyticsProperties {
   category?: string;

@@ -1,17 +1,17 @@
-import {TestBed} from '@angular/core/testing';
-import {Component} from '@angular/core';
-import {RouterTestingModule} from '@angular/router/testing';
+import { TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 // libs
-import {StoreModule} from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 
-import {t} from '../../test/index';
-import {ILang, WindowService, ConsoleService} from '../../core/index';
-import {CoreModule} from '../../core/core.module';
-import {AnalyticsModule} from '../../analytics/analytics.module';
-import {MultilingualModule} from '../multilingual.module';
-import {MultilingualService, multilingualReducer} from '../index';
-import {TEST_MULTILINGUAL_RESET} from '../testing/index';
+import { t } from '../../test/index';
+import { ILang, WindowService, ConsoleService } from '../../core/index';
+import { CoreModule } from '../../core/core.module';
+import { AnalyticsModule } from '../../analytics/analytics.module';
+import { MultilingualModule } from '../multilingual.module';
+import { MultilingualService, multilingualReducer } from '../index';
+import { TEST_MULTILINGUAL_RESET } from '../testing/index';
 
 const SUPPORTED_LANGUAGES: Array<ILang> = [
   { code: 'en', title: 'English' },

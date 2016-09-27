@@ -1,5 +1,5 @@
 import * as gulp from 'gulp';
-import {relative, join} from 'path';
+import { relative, join } from 'path';
 import Config from '../../config';
 
 export = () => {

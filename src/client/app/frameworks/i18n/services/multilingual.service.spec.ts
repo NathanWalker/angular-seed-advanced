@@ -1,13 +1,13 @@
-import {TestBed} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 // libs
-import {provideStore, Store} from '@ngrx/store';
-import {t} from '../../test/index';
-import {CoreModule} from '../../core/core.module';
-import {ILang, WindowService, ConsoleService} from '../../core/index';
-import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, WindowMockFrench} from '../../core/testing/index';
-import {TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET} from '../testing/index';
-import {MultilingualService, MultilingualStateI, multilingualReducer} from '../index';
+import { provideStore, Store } from '@ngrx/store';
+import { t } from '../../test/index';
+import { CoreModule } from '../../core/core.module';
+import { ILang, WindowService, ConsoleService } from '../../core/index';
+import { TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, WindowMockFrench } from '../../core/testing/index';
+import { TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET } from '../testing/index';
+import { MultilingualService, MultilingualStateI, multilingualReducer } from '../index';
 
 // test module configuration for each test
 const testModuleConfig = (options?: any) => {

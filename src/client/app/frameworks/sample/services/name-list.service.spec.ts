@@ -1,19 +1,19 @@
-import {TestBed} from '@angular/core/testing';
-import {FormsModule} from '@angular/forms';
-import {RouterTestingModule} from '@angular/router/testing';
+import { TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 // import {HttpModule, Response, ResponseOptions} from '@angular/http';
-import {HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
 // import {MockBackend} from '@angular/http/testing';
 
 // libs
-import {StoreModule} from '@ngrx/store';
-import {Observable} from 'rxjs/Rx';
+import { StoreModule } from '@ngrx/store';
+import { Observable } from 'rxjs/Rx';
 
 // app
-import {t} from '../../test/index';
+import { t } from '../../test/index';
 // import {TEST_CORE_PROVIDERS, GET_HTTP_PROVIDERS_INJECTOR, TEST_LOCATION_PROVIDERS} from '../../core/testing/index';
-import {AnalyticsModule} from '../../analytics/analytics.module';
-import {NameListService, nameListReducer} from './name-list.service';
+import { AnalyticsModule } from '../../analytics/analytics.module';
+import { NameListService, nameListReducer } from './name-list.service';
 
 // test module configuration for each test
 const testModuleConfig = () => {

@@ -1,5 +1,5 @@
 // app
-import {BaseComponent} from '../../core/index';
+import { BaseComponent } from '../../core/index';
 
 @BaseComponent({
   moduleId: module.id,

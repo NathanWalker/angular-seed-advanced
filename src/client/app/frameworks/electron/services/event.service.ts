@@ -1,4 +1,4 @@
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
 declare var window: any;

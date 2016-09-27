@@ -1,11 +1,11 @@
 // libs
-import {Store} from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/take';
 
 // app
-import {BaseComponent, Config, LogService, ILang} from '../../core/index';
-import {ElectronEventService} from '../../electron/index';
-import {MultilingualService} from '../index';
+import { BaseComponent, Config, LogService, ILang } from '../../core/index';
+import { ElectronEventService } from '../../electron/index';
+import { MultilingualService } from '../index';
 
 @BaseComponent({
   moduleId: module.id,

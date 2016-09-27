@@ -1,5 +1,5 @@
-import {EventEmitter} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 export class TranslateMock {

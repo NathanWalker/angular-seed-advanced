@@ -14,13 +14,12 @@ const plugins = <any>gulpLoadPlugins();
 export = () => {
   let tsProject = makeTsProject();
   let src = [
-    'typings/index.d.ts',
     Config.TOOLS_DIR + '/manual_typings/**/*.d.ts',
     join(Config.TMP_DIR, '**/*.ts')
   ];
   let result = gulp.src(src)
     .pipe(plugins.plumber())
-    .pipe(plugins.typescript(tsProject))
+    .pipe(tsProject())
     .once('error', function(e: any) {
       this.once('finish', () => process.exit(1));
     });

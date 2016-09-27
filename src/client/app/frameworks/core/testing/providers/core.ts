@@ -1,14 +1,14 @@
 // libs
-import {Store} from '@ngrx/store';
+import { Store } from '@ngrx/store';
 
 // app
-import {WindowService, ConsoleService, LogService, RouterExtensions} from '../../index';
-import {ANALYTICS_PROVIDERS} from '../../../analytics/index';
+import { WindowService, ConsoleService, LogService, RouterExtensions } from '../../index';
+import { ANALYTICS_PROVIDERS } from '../../../analytics/index';
 
 // mocks
-import {StoreMock} from '../mocks/store.mock';
-import {WindowMock} from '../mocks/window.mock';
-import {RouterExtensionsMock} from '../mocks/router-extensions.mock';
+import { StoreMock } from '../mocks/store.mock';
+import { WindowMock } from '../mocks/window.mock';
+import { RouterExtensionsMock } from '../mocks/router-extensions.mock';
 
 export function TEST_CORE_PROVIDERS(options?: any): any[] {
   // options:
