@@ -1,5 +1,7 @@
 // angular
 import { ChangeDetectionStrategy } from '@angular/core';
+// any operators needed throughout your application
+import './operators';
 
 // app
 import { AnalyticsService } from '../frameworks/analytics/index';

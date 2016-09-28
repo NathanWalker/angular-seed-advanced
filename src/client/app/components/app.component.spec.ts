@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Route } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { StoreModule } from '@ngrx/store';
 
 import { t } from '../frameworks/test/index';
 import { TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS } from '../frameworks/core/testing/index';
@@ -20,7 +21,12 @@ const config:Route[] = [
 // test module configuration for each test
 const testModuleConfig = () => {
   TestBed.configureTestingModule({
-    imports: [FormsModule, MultilingualModule, RouterTestingModule.withRoutes(config)],
+    imports: [
+      FormsModule,
+      MultilingualModule,
+      StoreModule.provideStore({}),
+      RouterTestingModule.withRoutes(config)
+    ],
     declarations: [
       TestComponent, AppComponent,
       HomeComponent, AboutComponent,
