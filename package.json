@@ -117,6 +117,7 @@
     "gulp-inject": "^4.1.0",
     "gulp-inline-ng2-template": "^3.0.1",
     "gulp-load-plugins": "^1.2.4",
+    "gulp-newer": "^1.2.0",
     "gulp-plumber": "~1.1.0",
     "gulp-postcss": "^6.1.1",
     "gulp-progeny": "^0.3.1",

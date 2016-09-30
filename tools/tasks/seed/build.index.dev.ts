@@ -5,6 +5,7 @@ import * as slash from 'slash';
 
 import Config from '../../config';
 import { templateLocals } from '../../utils';
+var newer = require('gulp-newer');
 
 const plugins = <any>gulpLoadPlugins();
 
@@ -18,6 +19,7 @@ export = () => {
     .pipe(inject('libs'))
     .pipe(inject())
     .pipe(plugins.template(templateLocals()))
+    // .pipe(newer(Config.APP_DEST))
     .pipe(gulp.dest(Config.APP_DEST));
 };
 
