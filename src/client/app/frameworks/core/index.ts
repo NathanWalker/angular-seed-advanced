@@ -5,6 +5,7 @@ export * from './utils/view-broker';
 
 // decorators
 export * from './decorators/base.component';
+export * from './decorators/page.component';
 
 // interfaces
 export * from './interfaces/iconsole';
@@ -19,3 +20,6 @@ export * from './services/router-extensions';
 
 // directives
 export * from './directives/platform.directive';
+
+// Tokens
+export * from './tokens';

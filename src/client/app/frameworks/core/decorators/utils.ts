@@ -11,15 +11,14 @@ export class DecoratorUtils {
   public static getMetadata(metadata: any = {}, customDecoratorMetadata?: any) {
     /**
      * The following allows default component metadata to be configured
-     * For instance, here we make `TranslatePipe` available for all our components
      */
     // default directives
-    let DIRECTIVES: any[] = [];
+    let PROVIDERS: any[] = [];
 
     // custom decorator options
     if (customDecoratorMetadata) {
-      if (customDecoratorMetadata.directives) {
-        DIRECTIVES.push(...customDecoratorMetadata.directives);
+      if (customDecoratorMetadata.providers) {
+        PROVIDERS.push(...customDecoratorMetadata.providers);
       }
     }
 
@@ -33,7 +32,7 @@ export class DecoratorUtils {
       metadata.styleUrls = ViewBroker.STYLE_URLS(metadata.styleUrls);
     }
 
-    metadata.directives = metadata.directives ? metadata.directives.concat(DIRECTIVES) : DIRECTIVES;
+    metadata.providers = metadata.providers ? metadata.providers.concat(PROVIDERS) : PROVIDERS;
 
     if (metadata.changeDetection) {
       metadata.changeDetection = metadata.changeDetection;
