@@ -1,16 +1,27 @@
-import { Inject } from '@angular/core';
-import { PageComponent, PAGE } from '../../frameworks/core/index';
+import { Injector } from '@angular/core';
+import { BaseComponent, Config } from '../../frameworks/core/index';
 
-@PageComponent({
+@BaseComponent({
   moduleId: module.id,
   selector: 'sd-about',
   templateUrl: 'about.component.html',
   styleUrls: ['about.component.css']
 })
-export class AboutComponent  {
-  constructor(@Inject(PAGE) public page: any) {
-    if (page) {
-      page.actionBarHidden = true;
+export class AboutComponent {
+  private _page: any;
+  private get page() {
+    if (Config.PageClass) {
+      if (!this._page) {
+        this._page = this.injector.get(Config.PageClass);
+      }
+
+      return this._page;
+    }
+  }
+
+  constructor(private injector: Injector) {
+    if (this.page) {
+      this.page.actionBarHidden = true;
     }
   }
 }
