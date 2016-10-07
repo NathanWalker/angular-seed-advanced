@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 // app
-import {t} from '../../frameworks/test/index';
-import {AboutComponent} from './about.component';
+import { t } from '../../frameworks/test/index';
+import { AboutComponent } from './about.component';
 
 // test module configuration for each test
 const testModuleConfig = () => {

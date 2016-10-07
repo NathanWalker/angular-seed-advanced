@@ -1,5 +1,5 @@
-import {argv} from 'yargs';
-import {SeedConfig} from './seed.config';
+import { argv } from 'yargs';
+import { SeedConfig } from './seed.config';
 
 export class SeedAdvancedConfig extends SeedConfig {
 

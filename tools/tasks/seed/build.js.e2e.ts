@@ -15,7 +15,6 @@ const jsonSystemConfig = JSON.stringify(Config.SYSTEM_CONFIG_DEV);
 export = () => {
   let tsProject = makeTsProject();
   let src = [
-    'typings/index.d.ts',
     Config.TOOLS_DIR + '/manual_typings/**/*.d.ts',
     join(Config.APP_SRC, '**/*.ts'),
     '!' + join(Config.APP_SRC, '**/*.spec.ts'),
@@ -24,7 +23,7 @@ export = () => {
   let result = gulp.src(src)
     .pipe(plugins.plumber())
     .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.typescript(tsProject));
+    .pipe(tsProject());
 
   return result.js
     .pipe(plugins.sourcemaps.write())

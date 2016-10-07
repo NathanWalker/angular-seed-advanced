@@ -2,7 +2,7 @@
 import * as dialogs from 'ui/dialogs';
 
 // app
-import {IWindow} from '../../../app/frameworks/core/interfaces/iwindow';
+import { IWindow } from '../../../app/frameworks/core/interfaces/iwindow';
 
 export class WindowNative implements IWindow {
   public get navigator(): any {

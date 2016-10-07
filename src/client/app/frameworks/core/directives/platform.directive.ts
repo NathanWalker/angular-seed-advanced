@@ -1,8 +1,8 @@
 // angular
-import {Directive, ElementRef, Renderer} from '@angular/core';
+import { Directive, ElementRef, Renderer } from '@angular/core';
 
 // app
-import {WindowService} from '../services/window.service';
+import { WindowService } from '../services/window.service';
 
 @Directive({
   selector: '[platform]'

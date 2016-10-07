@@ -4,10 +4,10 @@
  */
 import { enableProdMode } from '@angular/core';
 // The browser platform with a compiler
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 // platfrom module
-import {WebModule} from './web.module';
+import { WebModule } from './web.module';
 
 // example of how to use build variables to determine environment
 if (String('<%= ENV %>') === 'prod' || String('<%= TARGET_DESKTOP_BUILD %>') === 'true') {

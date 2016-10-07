@@ -1,7 +1,7 @@
 // angular
-import {ReflectiveInjector} from '@angular/core';
-import {BaseRequestOptions, ConnectionBackend, Http} from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
+import { ReflectiveInjector } from '@angular/core';
+import { BaseRequestOptions, ConnectionBackend, Http } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
 let providers: any[] = [
   BaseRequestOptions,
@@ -19,12 +19,12 @@ let providers: any[] = [
 * @returns `ReflectiveInjector`
 */
 export function GET_HTTP_PROVIDERS_INJECTOR(additionalProviders?: any[]): ReflectiveInjector {
-  
+
   if (additionalProviders) {
     providers = providers.concat(additionalProviders);
-  }  
+  }
 
-  return ReflectiveInjector.resolveAndCreate(providers);  
+  return ReflectiveInjector.resolveAndCreate(providers);
 }
 
 /*
@@ -32,8 +32,8 @@ export function GET_HTTP_PROVIDERS_INJECTOR(additionalProviders?: any[]): Reflec
 * @returns `any[]`
 */
 export function TEST_HTTP_PROVIDERS(): any[] {
-  return providers; 
+  return providers;
 }
 
 
-      
+

@@ -1,4 +1,4 @@
-import {BaseComponent} from '../../frameworks/core/index';
+import { BaseComponent } from '../../frameworks/core/index';
 
 @BaseComponent({
   moduleId: module.id,

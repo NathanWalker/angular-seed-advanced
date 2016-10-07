@@ -1,4 +1,4 @@
-import {DecoratorUtils} from './utils';
+import { DecoratorUtils } from './utils';
 
 export function BaseComponent(metadata: any = {}) {
   return function(cls: any) {

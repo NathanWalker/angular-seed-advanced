@@ -1,5 +1,5 @@
-import {topmost} from 'ui/frame';
-import {ActionItem, ActionItems} from 'ui/action-bar';
+import { topmost } from 'ui/frame';
+import { ActionItem, ActionItems } from 'ui/action-bar';
 
 declare var UIBarStyle: any;
 

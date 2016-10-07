@@ -1,8 +1,8 @@
 // angular
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 // app
-import {ViewBroker} from '../index';
+import { ViewBroker } from '../index';
 
 declare var Reflect: any;
 const _reflect: any = Reflect;

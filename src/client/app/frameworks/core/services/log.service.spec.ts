@@ -1,7 +1,7 @@
-import {TestBed} from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-import {t} from '../../test/index';
-import {Config, ConsoleService, LogService} from '../index';
+import { t } from '../../test/index';
+import { Config, ConsoleService, LogService } from '../index';
 
 const providers: any[] = [
   { provide: ConsoleService, useValue: console },

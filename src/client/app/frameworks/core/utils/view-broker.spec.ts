@@ -1,6 +1,6 @@
-import {t} from '../../test/index';
-import {Config} from './config';
-import {ViewBroker} from './view-broker';
+import { t } from '../../test/index';
+import { Config } from './config';
+import { ViewBroker } from './view-broker';
 
 export function main() {
   t.describe('utilities: ViewBroker', () => {
