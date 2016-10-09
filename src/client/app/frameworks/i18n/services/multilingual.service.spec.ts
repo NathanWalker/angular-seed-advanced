@@ -1,13 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 // libs
-import { provideStore, Store } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { t } from '../../test/index';
 import { CoreModule } from '../../core/core.module';
 import { ILang, WindowService, ConsoleService } from '../../core/index';
-import { TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, WindowMockFrench } from '../../core/testing/index';
+import { TEST_CORE_PROVIDERS, WindowMockFrench } from '../../core/testing/index';
 import { TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET } from '../testing/index';
-import { MultilingualService, MultilingualStateI, multilingualReducer } from '../index';
+import { MultilingualService, IMultilingualState, multilingualReducer, MULTILINGUAL_ACTIONS, MultilingualEffects } from '../index';
 
 // test module configuration for each test
 const testModuleConfig = (options?: any) => {
@@ -17,12 +18,13 @@ const testModuleConfig = (options?: any) => {
         { provide: WindowService, useValue: window },
         { provide: ConsoleService, useValue: console }
       ]),
-      RouterTestingModule],
+      StoreModule.provideStore({ i18n: multilingualReducer }),
+      EffectsModule.run(MultilingualEffects),
+      RouterTestingModule
+    ],
     providers: [
       TEST_CORE_PROVIDERS(options),
-      TEST_HTTP_PROVIDERS(),
-      TEST_MULTILINGUAL_PROVIDERS(),
-      provideStore({ i18n: multilingualReducer })
+      TEST_MULTILINGUAL_PROVIDERS()
     ]
   });
 };
@@ -41,9 +43,9 @@ export function main() {
       });
 
       t.it('changeLang - should not switch unless supported', t.inject([MultilingualService, Store], (multilang: MultilingualService, store: Store<any>) => {
-        multilang.changeLang('fr');
+        store.dispatch({ type: MULTILINGUAL_ACTIONS.CHANGE, payload: 'fr' });
         // only 'en' supported by default so changing to 'fr' should not change state
-        store.select('i18n').subscribe((i18n: MultilingualStateI) => {
+        store.select('i18n').subscribe((i18n: IMultilingualState) => {
           t.e(i18n.lang).toBe('en');
         });
       }));
@@ -70,12 +72,10 @@ export function main() {
         t.e(MultilingualService.SUPPORTED_LANGUAGES[1].code).toBe('fr');
         t.e(win.navigator.language).toBe('fr-US');
 
-        store.select('i18n').subscribe((i18n: MultilingualStateI) => {
+        store.select('i18n').subscribe((i18n: IMultilingualState) => {
           t.e(i18n.lang).toBe('fr');
         });
       }));
-
     });
   });
-
 }

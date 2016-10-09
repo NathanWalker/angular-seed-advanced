@@ -11,9 +11,10 @@ import { MockBackend } from '@angular/http/testing';
 
 // libs
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { t } from '../../frameworks/test/index';
-import { NameListService, nameListReducer } from '../../frameworks/sample/index';
+import { NameListService, nameListReducer, NameListEffects } from '../../frameworks/sample/index';
 import { CoreModule } from '../../frameworks/core/core.module';
 import { AnalyticsModule } from '../../frameworks/analytics/analytics.module';
 import { MultilingualModule } from '../../frameworks/i18n/multilingual.module';
@@ -22,8 +23,12 @@ import { HomeComponent } from './home.component';
 // test module configuration for each test
 const testModuleConfig = () => {
   TestBed.configureTestingModule({
-    imports: [CoreModule, RouterTestingModule, AnalyticsModule,
-      MultilingualModule, StoreModule.provideStore({ names: nameListReducer })],
+    imports: [
+      CoreModule, RouterTestingModule, AnalyticsModule,
+      MultilingualModule,
+      StoreModule.provideStore({ names: nameListReducer }),
+      EffectsModule.run(NameListEffects)
+    ],
     declarations: [HomeComponent, TestComponent],
     providers: [
       NameListService,
@@ -54,7 +59,6 @@ export function main() {
             let homeInstance = fixture.debugElement.children[0].componentInstance;
             let homeDOMEl = fixture.debugElement.children[0].nativeElement;
 
-            t.e(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
             t.e(homeDOMEl.querySelectorAll('li').length).toEqual(0);
 
             homeInstance.newName = 'Minko';

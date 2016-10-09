@@ -19,7 +19,10 @@ import { SampleModule } from './app/frameworks/sample/sample.module';
 // config
 import { Config, WindowService, ConsoleService } from './app/frameworks/core/index';
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
-Config.DEBUG.LEVEL_4 = true;
+if (String('<%= ENV %>') === 'dev') {
+  // only output console logging in dev mode
+  Config.DEBUG.LEVEL_4 = true;
+}
 
 // sample config (extra)
 import { AppConfig } from './app/frameworks/sample/services/app-config';

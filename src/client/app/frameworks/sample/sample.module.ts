@@ -6,17 +6,18 @@ import { RouterModule } from '@angular/router';
 
 // libs
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 // app
 import { ToolbarComponent } from './components/toolbar.component';
 import { NavbarComponent } from './components/navbar.component';
-import { nameListReducer, NameListService } from './services/name-list.service';
+import { nameListReducer, NameListService, NameListEffects } from './services/name-list.service';
 import { MultilingualModule } from '../i18n/multilingual.module';
-import { multilingualReducer, MultilingualStateI } from '../i18n/services/multilingual.service';
+import { multilingualReducer, IMultilingualState, MultilingualEffects } from '../i18n/services/multilingual.service';
 
 // state
 export interface AppStoreI {
-  i18n: MultilingualStateI;
+  i18n: IMultilingualState;
   names: Array<string>;
 };
 
@@ -33,7 +34,9 @@ export interface AppStoreI {
     StoreModule.provideStore({
       i18n: multilingualReducer,
       names: nameListReducer
-    })
+    }),
+    EffectsModule.run(MultilingualEffects),
+    EffectsModule.run(NameListEffects)
   ],
   declarations: [
     ToolbarComponent,

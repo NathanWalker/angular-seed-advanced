@@ -5,6 +5,7 @@ import * as gulpLoadPlugins from 'gulp-load-plugins';
 import * as merge from 'merge-stream';
 import * as util from 'gulp-util';
 import { join } from 'path';
+var newer = require('gulp-newer');
 
 import Config from '../../config';
 
@@ -38,6 +39,7 @@ if (isProd) {
  */
 function prepareTemplates() {
   return gulp.src(join(Config.APP_SRC, '**', '*.html'))
+    .pipe(newer({ dest: Config.TMP_DIR }))
     .pipe(gulp.dest(Config.TMP_DIR));
 }
 
@@ -60,6 +62,10 @@ function processComponentScss() {
     .pipe(plugins.postcss(processors))
     .on('error', reportPostCssError)
     .pipe(plugins.sourcemaps.write(isProd ? '.' : ''))
+    .pipe(newer({
+      dest: isProd ? Config.TMP_DIR : Config.APP_DEST, 
+      map: function(path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+    }))
     .pipe(gulp.dest(isProd ? Config.TMP_DIR : Config.APP_DEST));
 }
 
@@ -75,6 +81,10 @@ function processComponentCss() {
     .pipe(isProd ? plugins.cached('process-component-css') : plugins.util.noop())
     .pipe(plugins.postcss(processors))
     .on('error', reportPostCssError)
+    .pipe(newer({
+      dest: isProd ? Config.TMP_DIR : Config.APP_DEST, 
+      map: function(path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+    }))
     .pipe(gulp.dest(isProd ? Config.TMP_DIR : Config.APP_DEST));
 }
 
@@ -95,6 +105,10 @@ function processAllExternalStylesheets() {
     .pipe(plugins.postcss(processors))
     .on('error', reportPostCssError)
     .pipe(isProd ? cleanCss() : plugins.util.noop())
+    .pipe(newer({
+      dest: Config.CSS_DEST, 
+      map: function(path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+    }))
     .pipe(gulp.dest(Config.CSS_DEST));
 }
 
@@ -141,6 +155,10 @@ function processExternalCss() {
     .pipe(isProd ? plugins.concatCss(gulpConcatCssConfig.targetFile, gulpConcatCssConfig.options) : plugins.util.noop())
     .on('error', reportPostCssError)
     .pipe(isProd ? cleanCss() : plugins.util.noop())
+     .pipe(newer({
+       dest: Config.CSS_DEST, 
+       map: function(path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+     }))
     .pipe(gulp.dest(Config.CSS_DEST));
 }
 

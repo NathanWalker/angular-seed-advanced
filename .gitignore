@@ -64,8 +64,3 @@ ChromeDebugger-UserData
 
 # OS X trash files
 .DS_Store
-<<<<<<< HEAD
-=======
-src/client/app/shared/config/env.config.js
-src/client/app/shared/config/env.config.js.map
->>>>>>> upstream/master

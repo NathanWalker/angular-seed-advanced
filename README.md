@@ -14,6 +14,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 
 #### Integration with:
 - [ngrx/store](https://github.com/ngrx/store) RxJS powered state management, inspired by **Redux**
+- [ngrx/effects](https://github.com/ngrx/effects) Side effect model for @ngrx/store
 - [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n 
   - Usage is optional but on by default
   - Up to you and your team how you want to utilize it. It can be easily removed if not needed. 
@@ -61,6 +62,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
     - Only reports data in **production** build
   - `i18n`: internationalization features
   - `electron`: [Electron](http://electron.atom.io/) specific code
+  - `sample`: Just a sample module providing some components and services
   - `test`: test specific code providing conveniences to make testing your code easier and faster 
 
 #### Enhanced testing support options
@@ -81,6 +83,8 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
   - see [example here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/client/app/frameworks/test/shorthand/ng2-jasmine.ts)
   
 **Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
+
+Additionally, this seed is intended to push a couple boundaries so if you see dependencies that are *bleeding edge*, this is intentional.
 
 ### Prerequisites
 
@@ -127,7 +131,7 @@ npm install -g nativescript
 
 You can make changes to files in `src/client` or `nativescript` folders. A symbolic link exists between the web `src/client` and the `nativescript` folder so changes in either location are mirrored because they are the same directory inside.
 
-Create `.tns.html` and `.tns.css` NativeScript view files for every web component view file you have. You will see an example of the `app.component.html` as a [NativeScript view file here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/client/app/components/app/app.component.tns.html).
+Create `.tns.html` and `.tns.css` NativeScript view files for every web component view file you have. You will see an example of the `app.component.html` as a [NativeScript view file here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/client/app/components/app.component.tns.html).
 
 #### Run
 

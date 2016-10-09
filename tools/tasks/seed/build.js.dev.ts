@@ -3,6 +3,7 @@ import * as gulpLoadPlugins from 'gulp-load-plugins';
 import * as merge from 'merge-stream';
 import * as util from 'gulp-util';
 import { join/*, sep, relative*/ } from 'path';
+var newer = require('gulp-newer');
 
 import Config from '../../config';
 import { makeTsProject, templateLocals } from '../../utils';
@@ -29,7 +30,11 @@ export = () => {
     '!' + join(Config.APP_SRC, `**/${Config.BOOTSTRAP_FACTORY_PROD_MODULE}.ts`)
   ];
 
-  let projectFiles = gulp.src(src);
+  let projectFiles = gulp.src(src)
+    .pipe(newer({
+      dest: Config.APP_DEST, 
+      map: function(path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+    }));
   let result: any;
   let isFullCompile = true;
 
