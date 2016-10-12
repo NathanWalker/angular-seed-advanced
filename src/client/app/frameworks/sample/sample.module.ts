@@ -2,6 +2,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 // libs
@@ -29,14 +30,10 @@ export interface AppStoreI {
   imports: [
     CommonModule,
     FormsModule,
+    HttpModule,
     RouterModule,
     MultilingualModule,
-    StoreModule.provideStore({
-      i18n: multilingualReducer,
-      names: nameListReducer
-    }),
-    EffectsModule.run(MultilingualEffects),
-    EffectsModule.run(NameListEffects)
+    StoreModule
   ],
   declarations: [
     ToolbarComponent,
@@ -47,7 +44,8 @@ export interface AppStoreI {
   ],
   exports: [
     ToolbarComponent,
-    NavbarComponent
+    NavbarComponent,
+    MultilingualModule
   ]
 })
 export class SampleModule {
