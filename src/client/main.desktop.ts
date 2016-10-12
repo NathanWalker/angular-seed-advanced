@@ -18,9 +18,9 @@ import { AppConfig } from './app/frameworks/sample/services/app-config';
 // Sample
 // You would need a valid `submitURL` to use
 // crashReporter.start({
-//   productName: 'Angular2SeedAdvanced',
+//   productName: 'AngularSeedAdvanced',
 //   companyName: 'NathanWalker',
-//   submitURL: 'https://github.com/NathanWalker/angular2-seed-advanced',
+//   submitURL: 'https://github.com/NathanWalker/angular-seed-advanced',
 //   autoSubmit: true
 // });
 
@@ -74,17 +74,17 @@ app.on('ready', () => {
     submenu: [{
       label: 'Learn More',
       click:() => {
-        shell.openExternal('https://github.com/NathanWalker/angular2-seed-advanced');
+        shell.openExternal('https://github.com/NathanWalker/angular-seed-advanced');
       }
     }, {
         label: 'Issues',
         click:() => {
-          shell.openExternal('https://github.com/NathanWalker/angular2-seed-advanced/issues');
+          shell.openExternal('https://github.com/NathanWalker/angular-seed-advanced/issues');
         }
       }, {
         label: `My Amazing Parent: Minko Gechev's Angular 2 Seed`,
         click:() => {
-          shell.openExternal('https://github.com/mgechev/angular2-seed');
+          shell.openExternal('https://github.com/mgechev/angular-seed');
         }
       }, {
         label: 'Angular 2',
@@ -104,7 +104,7 @@ app.on('ready', () => {
       }, {
         label: 'Codeology Visualization',
         click:() => {
-          shell.openExternal('http://codeology.braintreepayments.com/nathanwalker/angular2-seed-advanced');
+          shell.openExternal('http://codeology.braintreepayments.com/nathanwalker/angular-seed-advanced');
         }
       }]
   };

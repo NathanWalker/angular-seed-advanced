@@ -7,7 +7,7 @@
 * Please ensure that the test suite passes **and** that code is lint free before submitting a PR by running:
  * ```npm test```
 * If you've added new functionality, **please** include tests which validate its behaviour
-* Make reference to possible [issues](https://github.com/NathanWalker/angular2-seed-advanced/issues) on PR comment
+* Make reference to possible [issues](https://github.com/NathanWalker/angular-seed-advanced/issues) on PR comment
 
 ## Submitting bug reports
 

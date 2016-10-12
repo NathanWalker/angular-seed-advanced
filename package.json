@@ -1,9 +1,9 @@
 {
-  "name": "angular2-seed-advanced",
+  "name": "angular-seed-advanced",
   "version": "0.0.0",
   "description": "High-quality, modular starter (advanced seed) project for Angular 2 apps with statically typed build and AoT + NativeScript + Electron",
   "repository": {
-    "url": "https://github.com/NathanWalker/angular2-seed-advanced"
+    "url": "https://github.com/NathanWalker/angular-seed-advanced"
   },
   "scripts": {
     "build.desktop.mac": "rimraf desktop/mac/* && gulp desktop.mac",
@@ -27,7 +27,7 @@
     "git.merge.preview": "git fetch upstream && git merge --no-commit upstream/master",
     "git.merge.preview.legacy": "git fetch upstream && git merge --no-commit upstream/master --allow-unrelated-histories",
     "git.prepare": "git add . && git add -f tools/install.js && git commit -m'setup'",
-    "git.setup": "git init && git remote add upstream https://github.com/NathanWalker/angular2-seed-advanced.git",
+    "git.setup": "git init && git remote add upstream https://github.com/NathanWalker/angular-seed-advanced.git",
     "gulp": "gulp",
     "i18n": "ng-xi18n && gulp clean.i18n",
     "lint": "gulp tslint",
