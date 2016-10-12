@@ -9,6 +9,8 @@ import { RouterExtensions as TNSRouterExtensions } from 'nativescript-angular/ro
 import { NgModule } from '@angular/core';
 
 // libs
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule, TranslateLoader } from 'ng2-translate/ng2-translate';
 import { TNSTranslateLoader } from 'nativescript-ng2-translate/nativescript-ng2-translate';
 
@@ -23,7 +25,9 @@ import { routes } from './app/components/app.routes';
 import { CoreModule } from './app/frameworks/core/core.module';
 import { AnalyticsModule } from './app/frameworks/analytics/analytics.module';
 import { MultilingualModule } from './app/frameworks/i18n/multilingual.module';
+import { multilingualReducer, MultilingualEffects } from './app/frameworks/i18n/index';
 import { SampleModule } from './app/frameworks/sample/sample.module';
+import { nameListReducer, NameListEffects } from './app/frameworks/sample/index';
 
 // {N} custom app specific
 import { WindowNative } from './shared/core/index';
@@ -38,8 +42,11 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
     NativeScriptFormsModule,
     NativeScriptHttpModule,
     NativeScriptRouterModule,
-    MultilingualModule,
-    TranslateModule
+    MultilingualModule.forRoot([{
+      provide: TranslateLoader,
+      useFactory: () => new TNSTranslateLoader('assets/i18n')
+    }]),
+    SampleModule
   ],
   declarations: [
     HomeComponent,
@@ -50,10 +57,11 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
     NativeScriptFormsModule,
     NativeScriptHttpModule,
     NativeScriptRouterModule,
-    MultilingualModule
+    MultilingualModule,
+    SampleModule
   ]
 })
-class ComponentModule { }
+class ComponentsModule { }
 
 @NgModule({
   imports: [
@@ -62,13 +70,14 @@ class ComponentModule { }
       { provide: ConsoleService, useValue: console }
     ]),
     AnalyticsModule,
-    TranslateModule.forRoot({
-      provide: TranslateLoader,
-      useFactory: () => new TNSTranslateLoader('assets/i18n')
+    ComponentsModule,
+    NativeScriptRouterModule.forRoot(<any>routes),
+    StoreModule.provideStore({
+      i18n: multilingualReducer,
+      names: nameListReducer
     }),
-    SampleModule,
-    ComponentModule,
-    NativeScriptRouterModule.forRoot(routes)
+    EffectsModule.run(MultilingualEffects),
+    EffectsModule.run(NameListEffects)
   ],
   declarations: [
     NSAppComponent
