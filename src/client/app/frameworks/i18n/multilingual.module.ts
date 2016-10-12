@@ -3,10 +3,10 @@ import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpModule, Http } from '@angular/http';
+import { HttpModule } from '@angular/http';
 
 // libs
-import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
+import { TranslateModule } from 'ng2-translate/ng2-translate';
 
 // app
 import { LangSwitcherComponent } from './components/lang-switcher.component';

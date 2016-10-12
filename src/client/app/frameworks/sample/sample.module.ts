@@ -7,14 +7,13 @@ import { RouterModule } from '@angular/router';
 
 // libs
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 
 // app
 import { ToolbarComponent } from './components/toolbar.component';
 import { NavbarComponent } from './components/navbar.component';
-import { nameListReducer, NameListService, NameListEffects } from './services/name-list.service';
+import { NameListService } from './services/name-list.service';
 import { MultilingualModule } from '../i18n/multilingual.module';
-import { multilingualReducer, IMultilingualState, MultilingualEffects } from '../i18n/services/multilingual.service';
+import { IMultilingualState } from '../i18n/services/multilingual.service';
 
 // state
 export interface AppStoreI {
