@@ -179,6 +179,13 @@ gulp.task('clean.i18n', (done: any) =>
               done));
 
 // --------------
+// Clean directories after i18n
+// TODO: find a better way to do it
+gulp.task('clean.i18n', (done: any) =>
+  runSequence('clear.files',
+              done));
+
+// --------------
 // Clean dev/coverage that will only run once
 // this prevents karma watchers from being broken when directories are deleted
 let firstRun = true;

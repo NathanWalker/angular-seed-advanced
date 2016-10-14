@@ -1,8 +1,25 @@
+import { readdirSync, lstatSync } from 'fs';
 import { join } from 'path';
 import * as slash from 'slash';
 import { argv } from 'yargs';
 
-import { Environments, InjectableDependency } from './seed.config.interfaces';
+import { Environments, ExtendPackages, InjectableDependency } from './seed.config.interfaces';
+
+/************************* DO NOT CHANGE ************************
+ *
+ * DO NOT make any changes in this file because it will
+ * make your migration to newer versions of the seed harder.
+ *
+ * Your application-specific configurations should be
+ * in project.config.ts. If you need to change any tasks
+ * from "./tasks" overwrite them by creating a task with the
+ * same name in "./projects". For further information take a
+ * look at the documentation:
+ *
+ * 1) https://github.com/mgechev/angular2-seed/tree/master/tools
+ * 2) https://github.com/mgechev/angular2-seed/wiki
+ *
+ *****************************************************************/
 
 /************************* DO NOT CHANGE ************************
  *
@@ -99,7 +116,7 @@ export class SeedConfig {
     coverageReporter: {
       dir: this.COVERAGE_DIR + '/',
       reporters: [
-        {type: 'json', subdir: '.', file: 'coverage-final.json'}
+        { type: 'json', subdir: '.', file: 'coverage-final.json' }
       ]
     }
   };
@@ -383,9 +400,9 @@ export class SeedConfig {
       '@angular/core/testing': 'node_modules/@angular/core/bundles/core-testing.umd.js',
       '@angular/http/testing': 'node_modules/@angular/http/bundles/http-testing.umd.js',
       '@angular/platform-browser/testing':
-        'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
+      'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
       '@angular/platform-browser-dynamic/testing':
-        'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
+      'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
 
       'app/*': '/app/*',
@@ -408,7 +425,7 @@ export class SeedConfig {
    * The system builder configuration of the application.
    * @type {any}
    */
-  SYSTEM_BUILDER_CONFIG: any = {
+  SYSTEM_BUILDER_CONFIG: any = prepareBuilderConfig({
     defaultJSExtensions: true,
     base: this.PROJECT_ROOT,
     packageConfigPaths: [
@@ -462,7 +479,7 @@ export class SeedConfig {
         defaultExtension: 'js'
       }
     }
-  };
+  }, join(this.PROJECT_ROOT, this.APP_SRC), this.TMP_DIR);
 
   /**
    * The Autoprefixer configuration for the application.
@@ -490,19 +507,19 @@ export class SeedConfig {
   protected DEV_REWRITE_RULES = [
     {
       from: /^\/node_modules\/.*$/,
-      to: (context:any) => context.parsedUrl.pathname
+      to: (context: any) => context.parsedUrl.pathname
     },
     {
       from: /^\/app\/.*$/,
-      to: (context:any) => context.parsedUrl.pathname
+      to: (context: any) => context.parsedUrl.pathname
     },
     {
       from: /^\/assets\/.*$/,
-      to: (context:any) => context.parsedUrl.pathname
+      to: (context: any) => context.parsedUrl.pathname
     },
     {
       from: /^\/css\/.*$/,
-      to: (context:any) => context.parsedUrl.pathname
+      to: (context: any) => context.parsedUrl.pathname
     }
   ];
 
@@ -587,6 +604,29 @@ export class SeedConfig {
     return this.ENV === ENVIRONMENTS.PRODUCTION && this.ENABLE_SCSS ? 'scss' : 'css';
   }
 
+  addPackageBundles(pack: ExtendPackages) {
+
+    if (pack.path) {
+      this.SYSTEM_CONFIG_DEV.paths[pack.name] = pack.path;
+    }
+
+    if (pack.packageMeta) {
+      this.SYSTEM_BUILDER_CONFIG.packages[pack.name] = pack.packageMeta;
+    }
+  }
+
+}
+
+/**
+ * Used only when developing multiple applications with shared codebase.
+ * We need to specify the paths for each individual application otherwise
+ * SystemJS Builder cannot bundle the target app on Windows.
+ */
+function prepareBuilderConfig(config: any, srcPath: string, tmpPath: string) {
+  readdirSync(srcPath).filter(f =>
+    lstatSync(join(srcPath, f)).isDirectory()).forEach(f =>
+      config.paths[join(tmpPath, f, '*')] = `${tmpPath}/${f}/*`);
+  return config;
 }
 
 /**

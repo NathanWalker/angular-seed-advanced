@@ -9,19 +9,19 @@ import { CodeGenerator } from '@angular/compiler-cli';
 import Config from '../../config';
 
 function codegen(
-    ngOptions: tsc.AngularCompilerOptions, cliOptions: tsc.NgcCliOptions, program: ts.Program,
-    host: ts.CompilerHost) {
+  ngOptions: tsc.AngularCompilerOptions, cliOptions: tsc.NgcCliOptions, program: ts.Program,
+  host: ts.CompilerHost) {
   return CodeGenerator.create(ngOptions, cliOptions, program, host).codegen();
 }
 
-const copyFile = (name: string, from: string, to: string, mod: any = (f: string) => f) => {
-  const file = readFileSync(join(from, name));
-  writeFileSync(join(to, name), mod(file.toString()));
+const modifyFile = (path: string, mod: any = (f: string) => f) => {
+  const file = readFileSync(path);
+  writeFileSync(path, mod(file.toString()));
 };
 
 export = (done: any) => {
   // Note: dirty hack until we're able to set config easier
-  copyFile('tsconfig.json', Config.TMP_DIR, join(Config.TMP_DIR, Config.BOOTSTRAP_DIR), (content: string) => {
+  modifyFile(join(Config.TMP_DIR, 'tsconfig.json'), (content: string) => {
     const parsed = JSON.parse(content);
     parsed.files = parsed.files || [];
     parsed.files.push('main.web.ts');
@@ -30,14 +30,14 @@ export = (done: any) => {
   const args = argv;
 
   // If a translation, tell the compiler
-  if(args.lang) {
+  if (args.lang) {
     args['i18nFile'] = `./src/client/assets/locale/messages.${args.lang}.xlf`;
     args['locale'] = args.lang;
     args['i18nFormat'] = 'xlf';
   }
 
   const cliOptions = new tsc.NgcCliOptions(args);
-  tsc.main(join(Config.TMP_DIR, Config.BOOTSTRAP_DIR), cliOptions, codegen)
+  tsc.main(Config.TMP_DIR, cliOptions, codegen)
     .then(done)
     .catch(e => {
       console.error(e.stack);

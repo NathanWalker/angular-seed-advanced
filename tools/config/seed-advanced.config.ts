@@ -36,6 +36,11 @@ export class SeedAdvancedConfig extends SeedConfig {
 
     /** Development **/
 
+    this.NPM_DEPENDENCIES = [
+      ...this.NPM_DEPENDENCIES,
+      {src: 'ts-helpers/index.js', inject: 'libs'}
+    ];
+
     // Fix up package configuration for libs and @ngrx
     this.SYSTEM_CONFIG['packageConfigPaths'] = [
       `${this.APP_BASE}node_modules/*/package.json`,

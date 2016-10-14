@@ -11,6 +11,7 @@
     "pretty": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
+    "noEmitHelpers": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
@@ -29,6 +30,8 @@
     ]
   },
   "exclude": [
+    "desktop",
+    "nativescript",
     "node_modules",
     "dist",
     "src"
