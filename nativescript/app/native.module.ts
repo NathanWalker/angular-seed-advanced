@@ -4,6 +4,7 @@ import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { RouterExtensions as TNSRouterExtensions } from 'nativescript-angular/router/router-extensions';
+import { Http } from '@angular/http';
 
 // angular
 import { NgModule } from '@angular/core';
@@ -11,8 +12,7 @@ import { NgModule } from '@angular/core';
 // libs
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { TranslateModule, TranslateLoader } from 'ng2-translate/ng2-translate';
-import { TNSTranslateLoader } from 'nativescript-ng2-translate/nativescript-ng2-translate';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
 // app
 import { WindowService, ConsoleService, RouterExtensions } from './app/frameworks/core/index';
@@ -44,7 +44,8 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
     NativeScriptRouterModule,
     MultilingualModule.forRoot([{
       provide: TranslateLoader,
-      useFactory: () => new TNSTranslateLoader('assets/i18n')
+      deps: [Http],
+      useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json')
     }]),
     SampleModule
   ],
