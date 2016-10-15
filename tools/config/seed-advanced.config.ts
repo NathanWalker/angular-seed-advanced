@@ -37,8 +37,7 @@ export class SeedAdvancedConfig extends SeedConfig {
     /** Development **/
 
     this.NPM_DEPENDENCIES = [
-      ...this.NPM_DEPENDENCIES,
-      { src: 'ts-helpers/index.js', inject: 'libs' }
+      ...this.NPM_DEPENDENCIES
       // { src: 'ng2-translate/bundles/ng2-translate.js', inject: 'libs' }
     ];
 

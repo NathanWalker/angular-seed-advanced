@@ -16,7 +16,6 @@
     "pretty": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-    "noEmitHelpers": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,

@@ -23,8 +23,6 @@ module.exports = function (config) {
 
       'node_modules/traceur/bin/traceur.js',
 
-      'node_modules/ts-helpers/index.js',
-
       // System.js for module loading
       'node_modules/systemjs/dist/system.src.js',
 
