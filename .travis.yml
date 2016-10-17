@@ -1,9 +1,11 @@
 language: node_js
 node_js:
-- 5
-- 6
+  - stable
 
 sudo: false
+
+addons:
+  firefox: "39.0"
 
 os:
   - linux
@@ -28,7 +30,7 @@ before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then nohup bash -c "webdriver-manager start 2>&1 &"; fi  # Protractor CI
 
 after_failure:
-  - cat /home/travis/build/NathanWalker/angular2-seed-advanced/npm-debug.log
+  - cat /home/travis/build/NathanWalker/angular-seed-advanced/npm-debug.log
 
 branches:
   only: master
@@ -40,11 +42,8 @@ notifications:
     on_failure: always  # options: [always|never|change] default: always
     on_start: never     # options: [always|never|change] default: always
 
-env:
-  global:
-    # https://github.com/DefinitelyTyped/tsd#tsdrc
-    # Token has no scope (read-only access to public information)
-    - TSD_GITHUB_TOKEN=51b0c1347cfd8c2c90ba0f60db7898171cbb17c8
-
 cache:
   directories: node_modules
+
+script:
+  - npm run tests.all && npm run build.prod.exp

@@ -4,13 +4,15 @@ import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { RouterExtensions as TNSRouterExtensions } from 'nativescript-angular/router/router-extensions';
+import { Http } from '@angular/http';
 
 // angular
 import { NgModule } from '@angular/core';
 
 // libs
-import { TranslateModule, TranslateLoader } from 'ng2-translate/ng2-translate';
-import { TNSTranslateLoader } from 'nativescript-ng2-translate/nativescript-ng2-translate';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
 // app
 import { WindowService, ConsoleService, RouterExtensions } from './app/frameworks/core/index';
@@ -23,7 +25,9 @@ import { routes } from './app/components/app.routes';
 import { CoreModule } from './app/frameworks/core/core.module';
 import { AnalyticsModule } from './app/frameworks/analytics/analytics.module';
 import { MultilingualModule } from './app/frameworks/i18n/multilingual.module';
+import { multilingualReducer, MultilingualEffects } from './app/frameworks/i18n/index';
 import { SampleModule } from './app/frameworks/sample/sample.module';
+import { nameListReducer, NameListEffects } from './app/frameworks/sample/index';
 
 // {N} custom app specific
 import { WindowNative } from './shared/core/index';
@@ -38,8 +42,12 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
     NativeScriptFormsModule,
     NativeScriptHttpModule,
     NativeScriptRouterModule,
-    MultilingualModule,
-    TranslateModule
+    MultilingualModule.forRoot([{
+      provide: TranslateLoader,
+      deps: [Http],
+      useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json')
+    }]),
+    SampleModule
   ],
   declarations: [
     HomeComponent,
@@ -50,10 +58,11 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
     NativeScriptFormsModule,
     NativeScriptHttpModule,
     NativeScriptRouterModule,
-    MultilingualModule
+    MultilingualModule,
+    SampleModule
   ]
 })
-class ComponentModule { }
+class ComponentsModule { }
 
 @NgModule({
   imports: [
@@ -62,13 +71,14 @@ class ComponentModule { }
       { provide: ConsoleService, useValue: console }
     ]),
     AnalyticsModule,
-    TranslateModule.forRoot({
-      provide: TranslateLoader,
-      useFactory: () => new TNSTranslateLoader('assets/i18n')
+    ComponentsModule,
+    NativeScriptRouterModule.forRoot(<any>routes),
+    StoreModule.provideStore({
+      i18n: multilingualReducer,
+      names: nameListReducer
     }),
-    SampleModule,
-    ComponentModule,
-    NativeScriptRouterModule.forRoot(routes)
+    EffectsModule.run(MultilingualEffects),
+    EffectsModule.run(NameListEffects)
   ],
   declarations: [
     NSAppComponent
