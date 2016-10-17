@@ -46,6 +46,11 @@ if (String('<%= TARGET_DESKTOP %>') === 'true') {
   routerModule = RouterModule.forRoot(routes, {useHash: true});
 }
 
+// for AoT compilation
+function translateFactory(http: Http) {
+  return new TranslateStaticLoader(http, 'assets/i18n', '.json');
+};
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -58,7 +63,7 @@ if (String('<%= TARGET_DESKTOP %>') === 'true') {
     MultilingualModule.forRoot([{
       provide: TranslateLoader,
       deps: [Http],
-      useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json')
+      useFactory: translateFactory
     }]),
     SampleModule,
     StoreModule.provideStore({
