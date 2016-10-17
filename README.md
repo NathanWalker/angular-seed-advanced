@@ -130,6 +130,32 @@ npm run build.prod.exp
 npm install -g nativescript 
 ```
 
+#### Dev Workflow
+
+You can make changes to files in `src/client` or `nativescript` folders. A symbolic link exists between the web `src/client` and the `nativescript` folder so changes in either location are mirrored because they are the same directory inside.
+
+Create `.tns.html` and `.tns.css` NativeScript view files for every web component view file you have. You will see an example of the `app.component.html` as a [NativeScript view file here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/components/app.component.tns.html).
+
+#### Run
+
+```
+iOS:                      npm run start.ios
+iOS (livesync emulator):  npm run start.livesync.ios
+iOS (livesync device):    npm run start.livesync.ios.device
+
+// or...
+
+Android:                      npm run start.android
+Android (livesync emulator):  npm run start.livesync.android
+Android (livesync device):    npm run start.livesync.android.device
+```
+
+* Requires an image setup via AVD Manager. [Learn more here](http://developer.android.com/intl/zh-tw/tools/devices/managing-avds.html) and [here](https://github.com/NativeScript/nativescript-cli#the-commands).
+
+OR...
+
+* [GenyMotion Android Emulator](https://www.genymotion.com/)
+
 ##### Building with Webpack for release builds
 
 You can greatly reduce the final size of your NativeScript app by the following:
@@ -169,32 +195,6 @@ Ensure you are in the `nativescript` directory when running these commands.
 * Android: `WEBPACK_OPTS="--display-error-details" tns build android --bundle`
 
 Notice your final build will be drastically smaller. In some cases 120 MB -> ~28 MB. 👍 
-
-#### Dev Workflow
-
-You can make changes to files in `src/client` or `nativescript` folders. A symbolic link exists between the web `src/client` and the `nativescript` folder so changes in either location are mirrored because they are the same directory inside.
-
-Create `.tns.html` and `.tns.css` NativeScript view files for every web component view file you have. You will see an example of the `app.component.html` as a [NativeScript view file here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/components/app.component.tns.html).
-
-#### Run
-
-```
-iOS:                      npm run start.ios
-iOS (livesync emulator):  npm run start.livesync.ios
-iOS (livesync device):    npm run start.livesync.ios.device
-
-// or...
-
-Android:                      npm run start.android
-Android (livesync emulator):  npm run start.livesync.android
-Android (livesync device):    npm run start.livesync.android.device
-```
-
-* Requires an image setup via AVD Manager. [Learn more here](http://developer.android.com/intl/zh-tw/tools/devices/managing-avds.html) and [here](https://github.com/NativeScript/nativescript-cli#the-commands).
-
-OR...
-
-* [GenyMotion Android Emulator](https://www.genymotion.com/)
 
 ## Electron App
 
