@@ -20,7 +20,7 @@ import { routes } from './app/components/app.routes';
 import { CoreModule } from './app/frameworks/core/core.module';
 import { AnalyticsModule } from './app/frameworks/analytics/analytics.module';
 import { multilingualReducer, MultilingualEffects } from './app/frameworks/i18n/index';
-import { MultilingualModule } from './app/frameworks/i18n/multilingual.module';
+import { MultilingualModule, translateFactory } from './app/frameworks/i18n/multilingual.module';
 import { SampleModule } from './app/frameworks/sample/sample.module';
 import { nameListReducer, NameListEffects } from './app/frameworks/sample/index';
 
@@ -46,11 +46,6 @@ if (String('<%= TARGET_DESKTOP %>') === 'true') {
   routerModule = RouterModule.forRoot(routes, {useHash: true});
 }
 
-// for AoT compilation
-function translateFactory(http: Http) {
-  return new TranslateStaticLoader(http, 'assets/i18n', '.json');
-};
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -63,7 +58,7 @@ function translateFactory(http: Http) {
     MultilingualModule.forRoot([{
       provide: TranslateLoader,
       deps: [Http],
-      useFactory: translateFactory
+      useFactory: (translateFactory)
     }]),
     SampleModule,
     StoreModule.provideStore({

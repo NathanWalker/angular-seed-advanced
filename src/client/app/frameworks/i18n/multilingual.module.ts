@@ -3,14 +3,19 @@ import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 
 // libs
-import { TranslateModule } from 'ng2-translate/ng2-translate';
+import { TranslateModule, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
 // app
 import { LangSwitcherComponent } from './components/lang-switcher.component';
 import { MultilingualService } from './services/multilingual.service';
+
+// for AoT compilation
+export function translateFactory(http: Http) {
+  return new TranslateStaticLoader(http, 'assets/i18n', '.json');
+};
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.

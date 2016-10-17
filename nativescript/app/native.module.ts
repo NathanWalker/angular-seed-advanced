@@ -24,7 +24,7 @@ import { routes } from './app/components/app.routes';
 // feature modules
 import { CoreModule } from './app/frameworks/core/core.module';
 import { AnalyticsModule } from './app/frameworks/analytics/analytics.module';
-import { MultilingualModule } from './app/frameworks/i18n/multilingual.module';
+import { MultilingualModule, translateFactory } from './app/frameworks/i18n/multilingual.module';
 import { multilingualReducer, MultilingualEffects } from './app/frameworks/i18n/index';
 import { SampleModule } from './app/frameworks/sample/sample.module';
 import { nameListReducer, NameListEffects } from './app/frameworks/sample/index';
@@ -45,7 +45,7 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
     MultilingualModule.forRoot([{
       provide: TranslateLoader,
       deps: [Http],
-      useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json')
+      useFactory: (translateFactory)
     }]),
     SampleModule
   ],
