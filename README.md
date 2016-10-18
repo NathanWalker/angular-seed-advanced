@@ -40,6 +40,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - [Enhanced testing support options](#enhanced-testing-support-options)
 - [Prerequisites](#prerequisites)
 - [Usage](#usage)
+- [Special note about AoT]()
 - [NativeScript App](#nativescript-app)
 - [Electron App](#electron-app)
 - [Testing](#testing)
@@ -121,6 +122,25 @@ npm run build.prod
 # prod build with AoT compilation
 npm run build.prod.exp
 ```
+
+## Special Note About AoT
+
+When using `npm run build.prod.exp` for AoT builds, please consider the following:
+
+`ng2-translate` > 3 is needed. Right now, the seed uses 2.5.0 due to a couple issues that will be resolved soon.
+
+Currently you cannot use custom component decorators with AoT compilation. Therefore usage of `BaseComponent` throughout this seed will not work. However this may change in the future but for now you can use this pattern for when you need to create AoT builds for the web:
+
+```
+import { Component } from '@angular/core';
+import { BaseComponent } from '../frameworks/core/index';
+
+// @BaseComponent({   // just comment this out and use Component from 'angular/core'
+@Component({
+  // etc.
+```
+
+`BaseComponent` custom component decorator does the auto `templateUrl` switching to use {N} views when running in the {N} app therefore you don't need it when creating AoT builds for the web. However just note that when going back to run your {N} app, you should comment back in the `BaseComponent`. Again this temporary inconvenience may be unnecessary in the future.
 
 ## NativeScript App
 

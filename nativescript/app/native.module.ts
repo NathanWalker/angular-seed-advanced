@@ -64,11 +64,16 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
 })
 class ComponentsModule { }
 
+// For AoT compilation to work:
+export function cons() {
+  return console;
+}
+
 @NgModule({
   imports: [
     CoreModule.forRoot([
       { provide: WindowService, useClass: WindowNative },
-      { provide: ConsoleService, useValue: console }
+      { provide: ConsoleService, useFactory: (cons) }
     ]),
     AnalyticsModule,
     ComponentsModule,
