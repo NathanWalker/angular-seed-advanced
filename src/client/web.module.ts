@@ -46,6 +46,8 @@ if (String('<%= TARGET_DESKTOP %>') === 'true') {
   routerModule = RouterModule.forRoot(routes, {useHash: true});
 }
 
+declare var window, console;
+
 // For AoT compilation to work:
 export function win() {
   return window;
@@ -58,8 +60,8 @@ export function cons() {
   imports: [
     BrowserModule,
     CoreModule.forRoot([
-      { provide: WindowService, useValue: (win) },
-      { provide: ConsoleService, useValue: (cons) }
+      { provide: WindowService, useFactory: (win) },
+      { provide: ConsoleService, useFactory: (cons) }
     ]),
     routerModule,
     AnalyticsModule,
