@@ -40,7 +40,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - [Enhanced testing support options](#enhanced-testing-support-options)
 - [Prerequisites](#prerequisites)
 - [Usage](#usage)
-- [Special note about AoT]()
+- [Special note about AoT](https://github.com/NathanWalker/angular-seed-advanced#special-note-about-aot)
 - [NativeScript App](#nativescript-app)
 - [Electron App](#electron-app)
 - [Testing](#testing)
