@@ -126,9 +126,7 @@ npm run build.prod.exp
 
 When using `npm run build.prod.exp` for AoT builds, please consider the following:
 
-`ng2-translate` > 3 is needed. Right now, the seed uses 2.5.0 due to a couple issues that will be resolved soon.
-
-Currently you cannot use custom component decorators with AoT compilation. Therefore usage of `BaseComponent` throughout this seed will not work. However this may change in the future but for now you can use this pattern for when you need to create AoT builds for the web:
+Currently you cannot use custom component decorators with AoT compilation. This may change in the future but for now you can use this pattern for when you need to create AoT builds for the web:
 
 ```
 import { Component } from '@angular/core';
@@ -138,6 +136,8 @@ import { BaseComponent } from '../frameworks/core/index';
 @Component({
   // etc.
 ```
+
+After doing the above, running AoT build via `npm run build.prod.exp` will succeed. :)
 
 `BaseComponent` custom component decorator does the auto `templateUrl` switching to use {N} views when running in the {N} app therefore you don't need it when creating AoT builds for the web. However just note that when going back to run your {N} app, you should comment back in the `BaseComponent`. Again this temporary inconvenience may be unnecessary in the future.
 

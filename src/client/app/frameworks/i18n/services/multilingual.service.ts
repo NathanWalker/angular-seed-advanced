@@ -37,7 +37,7 @@ export const MULTILINGUAL_ACTIONS: IMultilingualActions = {
   LANG_UNSUPPORTED: `${CATEGORY}_LANG_UNSUPPORTED`
 };
 
-export const multilingualReducer: ActionReducer<IMultilingualState> = (state: IMultilingualState = initialState, action: Action) => {
+export function multilingualReducerFn(state: IMultilingualState = initialState, action: Action) {
   switch (action.type) {
     case MULTILINGUAL_ACTIONS.LANG_CHANGED:
       return (<any>Object).assign({}, state, { lang: action.payload });
@@ -45,6 +45,8 @@ export const multilingualReducer: ActionReducer<IMultilingualState> = (state: IM
       return state;
   }
 };
+
+export const multilingualReducer: ActionReducer<IMultilingualState> = multilingualReducerFn;
 /**
  * ngrx end --
  */
