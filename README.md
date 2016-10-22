@@ -57,7 +57,6 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 #### Enhanced development workflow
 - Decorators for components which reduce boilerplate for common component setups
 - Shared code can be found in `frameworks`:
-  - `app`: your shared application architecture code
   - `core`: foundation layer (decorators and low-level services)
   - `analytics`: analytics provided by [Segment](https://segment.com/)
     - Only reports data in **production** build
