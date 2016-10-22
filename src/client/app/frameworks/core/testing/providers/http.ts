@@ -3,7 +3,7 @@ import { ReflectiveInjector } from '@angular/core';
 import { BaseRequestOptions, ConnectionBackend, Http } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
-let providers: any[] = [
+let providers: Array<any> = [
   BaseRequestOptions,
   MockBackend,
   { provide: Http,
@@ -18,7 +18,7 @@ let providers: any[] = [
 * For instances where you need the injector
 * @returns `ReflectiveInjector`
 */
-export function GET_HTTP_PROVIDERS_INJECTOR(additionalProviders?: any[]): ReflectiveInjector {
+export function GET_HTTP_PROVIDERS_INJECTOR(additionalProviders?: Array<any>): ReflectiveInjector {
 
   if (additionalProviders) {
     providers = providers.concat(additionalProviders);
@@ -29,9 +29,9 @@ export function GET_HTTP_PROVIDERS_INJECTOR(additionalProviders?: any[]): Reflec
 
 /*
 * For testing http services
-* @returns `any[]`
+* @returns `Array<any>`
 */
-export function TEST_HTTP_PROVIDERS(): any[] {
+export function TEST_HTTP_PROVIDERS(): Array<any> {
   return providers;
 }
 

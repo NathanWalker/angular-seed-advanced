@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 // libs
 import { Store, ActionReducer, Action } from '@ngrx/store';
 import { Effect, Actions } from '@ngrx/effects';
-import { TranslateService } from 'ng2-translate/ng2-translate';
+import { TranslateService } from 'ng2-translate';
 import { includes, map } from 'lodash';
 
 // app

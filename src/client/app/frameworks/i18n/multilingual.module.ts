@@ -6,15 +6,16 @@ import { RouterModule } from '@angular/router';
 import { HttpModule, Http } from '@angular/http';
 
 // libs
-import { TranslateModule, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
+import { TranslateModule, TranslateStaticLoader } from 'ng2-translate';
 
 // app
+import { Config } from '../core/index';
 import { LangSwitcherComponent } from './components/lang-switcher.component';
 import { MultilingualService } from './services/multilingual.service';
 
 // for AoT compilation
 export function translateFactory(http: Http) {
-  return new TranslateStaticLoader(http, 'assets/i18n', '.json');
+  return new TranslateStaticLoader(http, `${Config.IS_MOBILE_NATIVE() ? '/' : ''}assets/i18n`, '.json');
 };
 
 /**

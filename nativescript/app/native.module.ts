@@ -12,7 +12,7 @@ import { NgModule } from '@angular/core';
 // libs
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 
 // app
 import { WindowService, ConsoleService, RouterExtensions } from './app/frameworks/core/index';

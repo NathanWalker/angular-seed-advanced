@@ -8,7 +8,7 @@ import { Http } from '@angular/http';
 // libs
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { TranslateLoader } from 'ng2-translate/ng2-translate';
+import { TranslateLoader } from 'ng2-translate';
 
 // app
 import { AppComponent } from './app/components/app.component';
