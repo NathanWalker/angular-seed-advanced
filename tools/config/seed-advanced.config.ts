@@ -36,6 +36,10 @@ export class SeedAdvancedConfig extends SeedConfig {
 
     /** Development **/
 
+    this.NPM_DEPENDENCIES = [
+      ...this.NPM_DEPENDENCIES
+    ];
+
     // Fix up package configuration for libs and @ngrx
     this.SYSTEM_CONFIG['packageConfigPaths'] = [
       `${this.APP_BASE}node_modules/*/package.json`,
@@ -55,12 +59,15 @@ export class SeedAdvancedConfig extends SeedConfig {
       main: 'bundles/effects.umd.js',
       defaultExtension: 'js'
     };
+    this.SYSTEM_CONFIG['packages']['ng2-translate'] = {
+      main: 'bundles/index.js',
+      defaultExtension: 'js'
+    };
 
     // Fix up paths for libs
     this.SYSTEM_CONFIG.paths[this.BOOTSTRAP_MODULE] = `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`;
     this.SYSTEM_CONFIG.paths['angulartics2'] = `${this.APP_BASE}node_modules/angulartics2/index`;
     this.SYSTEM_CONFIG.paths['angulartics2/*'] = `${this.APP_BASE}node_modules/angulartics2/*`;
-    this.SYSTEM_CONFIG.paths['ng2-translate/*'] = `${this.APP_BASE}node_modules/ng2-translate/bundles/ng2-translate`;
     this.SYSTEM_CONFIG.paths['lodash'] = `${this.APP_BASE}node_modules/lodash/index`;
 
     // testing support for @ngrx/effects
@@ -81,9 +88,12 @@ export class SeedAdvancedConfig extends SeedConfig {
       main: 'index.js',
       defaultExtension: 'js'
     };
+    this.SYSTEM_BUILDER_CONFIG['packages']['ng2-translate'] = {
+      main: 'bundles/index.js',
+      defaultExtension: 'js'
+    };
     this.SYSTEM_BUILDER_CONFIG.paths['angulartics2'] = `node_modules/angulartics2/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['lodash'] = `node_modules/lodash/index.js`;
-    this.SYSTEM_BUILDER_CONFIG.paths['ng2-translate/*'] = `node_modules/ng2-translate/bundles/ng2-translate.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/core'] = `node_modules/@ngrx/core/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/store'] = `node_modules/@ngrx/store/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/effects'] = `node_modules/@ngrx/effects/index.js`;

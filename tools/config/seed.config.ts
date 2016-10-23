@@ -2,7 +2,23 @@ import { join } from 'path';
 import * as slash from 'slash';
 import { argv } from 'yargs';
 
-import { Environments, InjectableDependency } from './seed.config.interfaces';
+import { Environments, ExtendPackages, InjectableDependency } from './seed.config.interfaces';
+
+/************************* DO NOT CHANGE ************************
+ *
+ * DO NOT make any changes in this file because it will
+ * make your migration to newer versions of the seed harder.
+ *
+ * Your application-specific configurations should be
+ * in project.config.ts. If you need to change any tasks
+ * from "./tasks" overwrite them by creating a task with the
+ * same name in "./projects". For further information take a
+ * look at the documentation:
+ *
+ * 1) https://github.com/mgechev/angular2-seed/tree/master/tools
+ * 2) https://github.com/mgechev/angular2-seed/wiki
+ *
+ *****************************************************************/
 
 /************************* DO NOT CHANGE ************************
  *
@@ -99,7 +115,7 @@ export class SeedConfig {
     coverageReporter: {
       dir: this.COVERAGE_DIR + '/',
       reporters: [
-        {type: 'json', subdir: '.', file: 'coverage-final.json'}
+        { type: 'json', subdir: '.', file: 'coverage-final.json' }
       ]
     }
   };
@@ -362,11 +378,6 @@ export class SeedConfig {
    */
   SYSTEM_CONFIG_DEV: any = {
     defaultJSExtensions: true,
-    packageConfigPaths: [
-      `/node_modules/*/package.json`,
-      `/node_modules/**/package.json`,
-      `/node_modules/@angular/*/package.json`
-    ],
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
       '@angular/common': 'node_modules/@angular/common/bundles/common.umd.js',
@@ -383,9 +394,9 @@ export class SeedConfig {
       '@angular/core/testing': 'node_modules/@angular/core/bundles/core-testing.umd.js',
       '@angular/http/testing': 'node_modules/@angular/http/bundles/http-testing.umd.js',
       '@angular/platform-browser/testing':
-        'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
+      'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
       '@angular/platform-browser-dynamic/testing':
-        'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
+      'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
 
       'app/*': '/app/*',
@@ -416,7 +427,10 @@ export class SeedConfig {
       join('node_modules', '@angular', '*', 'package.json')
     ],
     paths: {
-      [`${this.TMP_DIR}/*`]: `${this.TMP_DIR}/*`,
+      // Note that for multiple apps this configuration need to be updated
+      // You will have to include entries for each individual application in
+      // `src/client`.
+      [join(this.TMP_DIR, '*')]: `${this.TMP_DIR}/*`,
       'node_modules/*': 'node_modules/*',
       '*': 'node_modules/*'
     },
@@ -490,19 +504,19 @@ export class SeedConfig {
   protected DEV_REWRITE_RULES = [
     {
       from: /^\/node_modules\/.*$/,
-      to: (context:any) => context.parsedUrl.pathname
+      to: (context: any) => context.parsedUrl.pathname
     },
     {
       from: /^\/app\/.*$/,
-      to: (context:any) => context.parsedUrl.pathname
+      to: (context: any) => context.parsedUrl.pathname
     },
     {
       from: /^\/assets\/.*$/,
-      to: (context:any) => context.parsedUrl.pathname
+      to: (context: any) => context.parsedUrl.pathname
     },
     {
       from: /^\/css\/.*$/,
-      to: (context:any) => context.parsedUrl.pathname
+      to: (context: any) => context.parsedUrl.pathname
     }
   ];
 
@@ -585,6 +599,17 @@ export class SeedConfig {
 
   getInjectableStyleExtension() {
     return this.ENV === ENVIRONMENTS.PRODUCTION && this.ENABLE_SCSS ? 'scss' : 'css';
+  }
+
+  addPackageBundles(pack: ExtendPackages) {
+
+    if (pack.path) {
+      this.SYSTEM_CONFIG_DEV.paths[pack.name] = pack.path;
+    }
+
+    if (pack.packageMeta) {
+      this.SYSTEM_BUILDER_CONFIG.packages[pack.name] = pack.packageMeta;
+    }
   }
 
 }

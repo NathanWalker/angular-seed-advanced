@@ -14,7 +14,7 @@ export class DecoratorUtils {
      * For instance, here we make `TranslatePipe` available for all our components
      */
     // default directives
-    let DIRECTIVES: any[] = [];
+    let DIRECTIVES: Array<any> = [];
 
     // custom decorator options
     if (customDecoratorMetadata) {

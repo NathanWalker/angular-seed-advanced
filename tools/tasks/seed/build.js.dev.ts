@@ -4,7 +4,6 @@ import * as gulpLoadPlugins from 'gulp-load-plugins';
 import * as merge from 'merge-stream';
 import * as util from 'gulp-util';
 import { join/*, sep, relative*/ } from 'path';
-var newer = require('gulp-newer');
 
 import Config from '../../config';
 import { makeTsProject, templateLocals } from '../../utils';
@@ -34,18 +33,14 @@ export =
         '!' + join(Config.APP_SRC, `**/${Config.NG_FACTORY_FILE}.ts`)
       ];
 
-      let projectFiles = gulp.src(src)
-        .pipe(newer({
-          dest: Config.APP_DEST,
-          map: function(path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
-        }));
+      let projectFiles = gulp.src(src);
       let result: any;
       let isFullCompile = true;
 
       // Only do a typed build every X builds, otherwise do a typeless build to speed things up
       if (typedBuildCounter < Config.TYPED_COMPILE_INTERVAL) {
         isFullCompile = false;
-        tsProject = makeTsProject({isolatedModules: true});
+        tsProject = makeTsProject({ isolatedModules: true });
         projectFiles = projectFiles.pipe(plugins.cached());
         util.log('Performing typeless TypeScript compile.');
       } else {
@@ -80,8 +75,8 @@ export =
           templateLocals(), {
             SYSTEM_CONFIG_DEV: jsonSystemConfig
           }
-         )))
+        )))
         .pipe(gulp.dest(Config.APP_DEST));
-      }
+    }
   };
 

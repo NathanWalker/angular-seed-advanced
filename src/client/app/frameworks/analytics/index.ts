@@ -5,7 +5,7 @@ import { Angulartics2Segment } from 'angulartics2/src/providers/angulartics2-seg
 // app
 import { AnalyticsService } from './services/analytics.service';
 
-export const ANALYTICS_PROVIDERS: any[] = [
+export const ANALYTICS_PROVIDERS: Array<any> = [
   Angulartics2,
   Angulartics2Segment,
   AnalyticsService

@@ -5,7 +5,7 @@
   "nativescript": {
     "id": "com.yourdomain.appname",
     "tns-ios": {
-      "version": "2.3.0"
+      "version": "2.4.0-2016-9-28-1"
     },
     "tns-android": {
       "version": "2.3.0"
@@ -15,25 +15,24 @@
     "clean": "rm -rf platforms node_modules lib hooks"
   },
   "dependencies": {
-    "@angular/common": "^2.1.0",
-    "@angular/compiler": "^2.1.0",
-    "@angular/core": "^2.1.0",
-    "@angular/forms": "^2.1.0",
-    "@angular/http": "^2.1.0",
-    "@angular/platform-browser": "^2.1.0",
-    "@angular/platform-browser-dynamic": "^2.1.0",
-    "@angular/router": "^3.1.0",
+    "@angular/common": "^2.1.1",
+    "@angular/compiler": "^2.1.1",
+    "@angular/core": "^2.1.1",
+    "@angular/forms": "^2.1.1",
+    "@angular/http": "^2.1.1",
+    "@angular/platform-browser": "^2.1.1",
+    "@angular/platform-browser-dynamic": "^2.1.1",
+    "@angular/router": "^3.1.1",
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^2.0.0",
     "@ngrx/store": "^2.2.1",
-    "angulartics2": "^1.1.9",
+    "angulartics2": "^1.1.11",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.35.0",
-    "lodash": "^4.15.0",
+    "lodash": "^4.16.4",
     "nativescript-angular": "next",
-    "nativescript-ng2-translate": "^1.2.0",
     "nativescript-theme-core": "0.1.2",
-    "ng2-translate": "^3.1.0",
+    "ng2-translate": "^3.1.3",
     "parse5": "1.3.2",
     "punycode": "1.3.2",
     "querystring": "0.2.0",
@@ -43,7 +42,7 @@
     "url": "0.10.3"
   },
   "devDependencies": {
-    "zone.js": "^0.6.21",
+    "@types/jasmine": "^2.5.35",
     "babel-traverse": "6.12.0",
     "babel-types": "6.11.1",
     "babylon": "6.8.4",
@@ -51,6 +50,7 @@
     "lazy": "1.0.11",
     "nativescript-dev-typescript": "^0.3.2",
     "shelljs": "^0.7.0",
-    "typescript": "^1.8.10"
+    "typescript": "^2.0.2",
+    "zone.js": "^0.6.21"
   }
 }
