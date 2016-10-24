@@ -29,7 +29,7 @@ export class DecoratorUtils {
     }
 
     if (metadata.styleUrls) {
-      // correct view for platform target
+      // correct style for platform target
       metadata.styleUrls = ViewBroker.STYLE_URLS(metadata.styleUrls);
     }
 
