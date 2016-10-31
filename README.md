@@ -1,4 +1,4 @@
-![Angular 2 Seed Advanced](https://d2wp4shknjcfjl.cloudfront.net/api/file/olEzxJQ2KcXrZHzbt9UA)![Angular 2 Seed Advanced Integrations](https://d2wp4shknjcfjl.cloudfront.net/api/file/SPLl77rSTuGZ7APrXizi)
+![Angular Seed Advanced](https://d2wp4shknjcfjl.cloudfront.net/api/file/olEzxJQ2KcXrZHzbt9UA)![Angular Seed Advanced Integrations](https://d2wp4shknjcfjl.cloudfront.net/api/file/SPLl77rSTuGZ7APrXizi)
 
 [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://github.com/mgechev/angular2-style-guide)
 [![Build Status](https://travis-ci.org/NathanWalker/angular-seed-advanced.svg?branch=master)](https://travis-ci.org/NathanWalker/angular-seed-advanced)
@@ -26,7 +26,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#nativescript-app).
 - [Electron](http://electron.atom.io/) cross platform desktop apps (Mac, Windows and Linux). [Setup instructions here](#electron-app).
 
-| ![Multiple Platforms](https://d2wp4shknjcfjl.cloudfront.net/api/file/ihp3WyiqS1WdRYaBEYKn) |
+| ![Multiple Platforms](https://cdn.filestackcontent.com/zZlQKKKjQUaBr9pLkEVK) |
 | :---: |
 | *The zen of multiple platforms.* Chrome, Android and iPhone all running the same code. |
 
@@ -105,19 +105,22 @@ git clone --depth 1 https://github.com/NathanWalker/angular-seed-advanced.git
 cd angular-seed-advanced
 
 # install the project's dependencies
-npm install
+$ npm install
+# fast install (via Yarn, https://yarnpkg.com)
+$ yarn install  # or yarn
+
 # watches your files and uses livereload by default
-npm start
+$ npm start
 # api document for the app
 npm run serve.docs
 
 # to start deving with livereload site and coverage as well as continuous testing
-npm run start.deving
+$ npm run start.deving
 
 # dev build
-npm run build.dev
+$ npm run build.dev
 # prod build
-npm run build.prod
+$ npm run build.prod
 # prod build with AoT compilation
 npm run build.prod.exp
 ```
@@ -241,35 +244,35 @@ Linux:    npm run build.desktop.linux
 ## Testing
 
 ```bash
-npm test
+$ npm test
 
 # Development. Your app will be watched by karma
 # on each change all your specs will be executed.
-npm run test.watch
+$ npm run test.watch
 # NB: The command above might fail with a "EMFILE: too many open files" error.
 # Some OS have a small limit of opened file descriptors (256) by default
 # and will result in the EMFILE error.
 # You can raise the maximum of file descriptors by running the command below:
-ulimit -n 10480
+$ ulimit -n 10480
 
 
 # code coverage (istanbul)
 # auto-generated at the end of `npm test`
 # view coverage report:
-npm run serve.coverage
+$ npm run serve.coverage
 
 # e2e (aka. end-to-end, integration) - In three different shell windows
 # Make sure you don't have a global instance of Protractor
 
 # npm install webdriver-manager <- Install this first for e2e testing
 # npm run webdriver-update <- You will need to run this the first time
-npm run webdriver-start
-npm run serve.e2e
-npm run e2e
+$ npm run webdriver-start
+$ npm run serve.e2e
+$ npm run e2e
 
 # e2e live mode - Protractor interactive mode
 # Instead of last command above, you can use:
-npm run e2e.live
+$ npm run e2e.live
 ```
 You can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
 
@@ -289,6 +292,22 @@ Configure at runtime
 ```bash
 npm start -- --port 8080 --reload-port 4000 --base /my-app/
 ```
+
+## Environment configuration
+
+If you have different environments and you need to configure them to use different end points, settings, etc. you can use the files `dev.ts` or `prod.ts` in`./tools/env/`. The name of the file is environment you want to use.
+
+The environment can be specified by using:
+
+```bash
+$ npm start -- --config-env ENV_NAME
+```
+
+Currently the `ENV_NAME`s are `dev`, `prod`, `staging`, but you can simply add a different file `"ENV_NAME.ts".` file in order to alter extra such environments.
+
+# Tools documentation
+
+A documentation of the provided tools can be found in [tools/README.md](tools/README.md).
 
 ## Framework How-Tos
 

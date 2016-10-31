@@ -31,7 +31,7 @@ export class SeedAdvancedConfig extends SeedConfig {
     this.BOOTSTRAP_PROD_MODULE = `${this.BOOTSTRAP_DIR}${bootstrap}`;
     this.BOOTSTRAP_FACTORY_PROD_MODULE = `${this.BOOTSTRAP_DIR}${bootstrap}.prod`;
 
-    this.APP_TITLE = 'Angular 2 Seed Advanced';
+    this.APP_TITLE = 'Angular Seed Advanced';
     this.APP_BASE = ''; // paths must remain relative
 
     /** Development **/
