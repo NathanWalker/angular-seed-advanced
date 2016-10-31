@@ -1,6 +1,5 @@
 import { join } from 'path';
 import * as slash from 'slash';
-import * as util from 'gulp-util';
 import { argv } from 'yargs';
 
 import { BuildType, ExtendPackages, InjectableDependency } from './seed.config.interfaces';

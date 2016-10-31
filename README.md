@@ -300,7 +300,7 @@ If you have different environments and you need to configure them to use differe
 The environment can be specified by using:
 
 ```bash
-$ npm start -- --config-env ENV_NAME
+$ npm start -- --env-config ENV_NAME
 ```
 
 Currently the `ENV_NAME`s are `dev`, `prod`, `staging`, but you can simply add a different file `"ENV_NAME.ts".` file in order to alter extra such environments.
