@@ -231,7 +231,18 @@ export class SeedConfig {
    * @type {string}
    */
   ASSETS_SRC = `${this.APP_SRC}/assets`;
+  /**
+   * The folder that contains your mvc views you want to generate.
+   * @type {string}
+   */
 
+  /**
+   * The root of your aspnet core mvc application 
+   * Since this seed is decoupled from the mvc application 
+   * you must override this in the project.config
+   * @type {string}
+   */
+  APP_MVC_DEST = ``
   /**
    * The folder of the applications css files.
    * @type {string}
