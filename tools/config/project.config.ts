@@ -12,7 +12,6 @@ export class ProjectConfig extends SeedAdvancedConfig {
   constructor() {
     super();
     // this.APP_TITLE = 'Put name of your app here';
-    this.APP_MVC = true;
     // this.APP_MVC_SRC = 'path to mvc src directory';
     this.APP_MVC_DEST = `../aspnetcore-angular-seed-advanced/`
     /**

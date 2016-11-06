@@ -237,17 +237,9 @@ export class SeedConfig {
    */
 
   /**
-   * Enables MVC build mode.
-   * Override in project
-   * @type {boolean} 
-   */
-  APP_MVC = false;
-
-  APP_MVC_SRC = `${this.APP_CLIENT}/mvc`
-  /**
    * The views folder of your mvc application 
    * Since this seed is decoupled from the mvc application 
-   * you must override this in the project.
+   * you must override this in the project.config
    * @type {string}
    */
   APP_MVC_DEST = ``
