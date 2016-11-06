@@ -16,6 +16,9 @@ export =
         '!' + join(Config.APP_SRC, '**', '*.ts'),
         '!' + join(Config.APP_SRC, '**', '*.scss'),
         '!' + join(Config.APP_SRC, '**', '*.sass'),
+        '!' + join(Config.APP_SRC, '**', 'tsconfig.json'),
+        '!' + join(Config.APP_SRC, '**', '_Layout.cshtml'),
+        '!' + join(Config.APP_SRC, '**', 'index.html'),
         '!' + join(Config.APP_MVC_SRC, '**'),
         '!' + join(Config.APP_MVC_SRC)
             ].concat(Config.TEMP_FILES.map((p) => { return '!' + p; }));
