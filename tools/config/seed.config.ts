@@ -237,7 +237,7 @@ export class SeedConfig {
    */
 
   /**
-   * The views folder of your mvc application 
+   * The root of your mvc application 
    * Since this seed is decoupled from the mvc application 
    * you must override this in the project.config
    * @type {string}

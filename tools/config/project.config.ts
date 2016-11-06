@@ -12,8 +12,7 @@ export class ProjectConfig extends SeedAdvancedConfig {
   constructor() {
     super();
     // this.APP_TITLE = 'Put name of your app here';
-    // this.APP_MVC_SRC = 'path to mvc src directory';
-    this.APP_MVC_DEST = `../aspnetcore-angular-seed-advanced/`
+
     /**
      * Default Analytics provider is Segment
      * refer the to the integrations with: section in the readme for others. 
@@ -22,6 +21,9 @@ export class ProjectConfig extends SeedAdvancedConfig {
     
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;
+
+    // The path to the root of your mvc application.
+    this.APP_MVC_DEST = `../aspnetcore-angular-seed-advanced/`
 
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [
