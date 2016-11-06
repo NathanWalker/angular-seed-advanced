@@ -76,7 +76,7 @@ function processComponentScss() {
   if (!isProd) {
     stream = stream.pipe(newer({
       dest: isProd ? Config.TMP_DIR : Config.APP_DEST,
-      map: function (path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+      map: function (path: String) { return path.replace('.ts', '.js').replace('.scss', '.css'); }
     }));
   }
 
@@ -99,7 +99,7 @@ function processComponentCss() {
   if (!isProd) {
     stream = stream.pipe(newer({
       dest: isProd ? Config.TMP_DIR : Config.APP_DEST,
-      map: function (path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+      map: function (path: String) { return path.replace('.ts', '.js').replace('.scss', '.css'); }
     }));
   }
 
@@ -126,7 +126,7 @@ function processAllExternalStylesheets() {
   if (!isProd) {
     stream = stream.pipe(newer({
       dest: Config.CSS_DEST,
-      map: function (path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+      map: function (path: String) { return path.replace('.ts', '.js').replace('.scss', '.css'); }
     }));
   }
 
@@ -179,7 +179,7 @@ function processExternalCss() {
   if (!isProd) {
     stream = stream.pipe(newer({
       dest: Config.CSS_DEST,
-      map: function (path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+      map: function (path: String) { return path.replace('.ts', '.js').replace('.scss', '.css'); }
     }));
   }
 
