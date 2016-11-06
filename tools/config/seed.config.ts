@@ -245,11 +245,6 @@ export class SeedConfig {
   TOOLS_DIR = 'tools';
 
   /**
-   * The Angulartics2 analytics provider.
-   */
-  APP_ANALYTICS = 'segment';
-
-  /**
    * The directory of the tasks provided by the seed.
    */
   SEED_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'seed');

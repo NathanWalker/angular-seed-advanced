@@ -72,22 +72,10 @@ export class MultilingualService extends Analytics {
     let userLang = win.navigator.language.split('-')[0];
 
     // subscribe to changes
-    // store.select('i18n').subscribe((state: IMultilingualState) => {
-    //   // update ng2-translate which will cause translations to occur wherever the TranslatePipe is used in the view
-
-    //   this.translate.use(state.lang);
-    // });
-
-    // This version gets around an issue with ng2-translate right now and OnPush
     store.select('i18n').subscribe((state: IMultilingualState) => {
       // update ng2-translate which will cause translations to occur wherever the TranslatePipe is used in the view
-      if (this.translate.getLangs() && (this.translate.getLangs().indexOf(state.lang) > -1)) {
-        this.translate.use(state.lang);
-      } else {
-        this.translate.reloadLang(state.lang).take(1).subscribe(() => {
-          setTimeout(() => this.translate.use(state.lang), 0);
-        });
-      }
+
+      this.translate.use(state.lang);
     });
 
     // init the lang

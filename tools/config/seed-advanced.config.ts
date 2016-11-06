@@ -63,15 +63,17 @@ export class SeedAdvancedConfig extends SeedConfig {
       main: 'bundles/index.js',
       defaultExtension: 'js'
     };
-    this.SYSTEM_CONFIG['packages']['angulartics2/providers'] = {
+    this.SYSTEM_CONFIG['packages']['angulartics2'] = {
+      main: 'dist/index.js',
+      defaultExtension: 'js'
+    };
+    this.SYSTEM_CONFIG['packages']['angulartics2/dist/providers'] = {
       main: 'index.js',
       defaultExtension: 'js'
     };
 
     // Fix up paths for libs
     this.SYSTEM_CONFIG.paths[this.BOOTSTRAP_MODULE] = `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`;
-    this.SYSTEM_CONFIG.paths['angulartics2'] = `${this.APP_BASE}node_modules/angulartics2/dist/index`;
-    this.SYSTEM_CONFIG.paths['angulartics2/*'] = `${this.APP_BASE}node_modules/angulartics2/dist/*`;
     this.SYSTEM_CONFIG.paths['lodash'] = `${this.APP_BASE}node_modules/lodash/index`;
 
     // testing support for @ngrx/effects
@@ -96,13 +98,15 @@ export class SeedAdvancedConfig extends SeedConfig {
       main: 'bundles/index.js',
       defaultExtension: 'js'
     };
-    this.SYSTEM_CONFIG['packages']['angulartics2/providers'] = {
+    this.SYSTEM_BUILDER_CONFIG['packages']['angulartics2'] = {
+      main: 'dist/index.js',
+      defaultExtension: 'js'
+    };
+    this.SYSTEM_BUILDER_CONFIG['packages']['angulartics2/dist/providers'] = {
       main: 'index.js',
       defaultExtension: 'js'
     };
-    
-    this.SYSTEM_BUILDER_CONFIG.paths['angulartics2'] = `node_modules/angulartics2/dist/index.js`;
-    this.SYSTEM_BUILDER_CONFIG.paths['angulartics2/*'] = `node_modules/angulartics2/dist/providers/${this.APP_ANALYTICS}/angulartics2-${this.APP_ANALYTICS}.js`;
+
     this.SYSTEM_BUILDER_CONFIG.paths['lodash'] = `node_modules/lodash/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/core'] = `node_modules/@ngrx/core/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/store'] = `node_modules/@ngrx/store/index.js`;

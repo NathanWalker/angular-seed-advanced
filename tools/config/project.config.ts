@@ -12,13 +12,7 @@ export class ProjectConfig extends SeedAdvancedConfig {
   constructor() {
     super();
     // this.APP_TITLE = 'Put name of your app here';
-    
-    /**
-     * Default Analytics provider is Segment
-     * refer the to the integrations with: section in the readme for others. 
-     */
-    //this.APP_ANALYTICS = 'put the name of the analytics provider'
-    
+
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;
 
