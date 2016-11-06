@@ -93,9 +93,10 @@ gulp.task('build.prod.exp', (done: any) =>
 // Build mvc prod.
 gulp.task('build.mvc.prod', (done: any) =>
   runSequence('check.tools',
+              'clean.mvc',
               'clean.prod',
               'tslint',
-              'build.assets.prod',
+              'build.mvc.assets.prod',
               'build.html_css',
               'copy.prod',
               'build.js.prod',
