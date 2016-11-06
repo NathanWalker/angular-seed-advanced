@@ -237,7 +237,7 @@ export class SeedConfig {
    */
 
   /**
-   * The root of your mvc application 
+   * The root of your aspnet core mvc application 
    * Since this seed is decoupled from the mvc application 
    * you must override this in the project.config
    * @type {string}
