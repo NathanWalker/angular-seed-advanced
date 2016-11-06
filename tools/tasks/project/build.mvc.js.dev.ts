@@ -76,7 +76,7 @@ export =
             SYSTEM_CONFIG_DEV: jsonSystemConfig
           }
         )))
-        .pipe(gulp.dest(join(Config.APP_MVC_DEST, 'wwwroot')));
+        .pipe(gulp.dest(Config.APP_DEST));
     }
   };
 

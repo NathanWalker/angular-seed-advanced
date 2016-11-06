@@ -1,0 +1,26 @@
+import * as gulp from 'gulp';
+import { join } from 'path';
+
+import { AssetsTask } from '../assets_task';
+import Config from '../../config';
+
+/**
+ * Executes the build process, copying the assets located in `src/client` over to the appropriate
+ * `dist/dev` directory.
+ */
+export =
+  class BuildAssetsTask extends AssetsTask {
+    run() {
+      let paths: string[] = [
+        join(Config.PROD_DEST, '**'),
+        '!' + join(Config.APP_SRC, '**', 'tsconfig.json'),
+        '!' + join(Config.APP_SRC, '**', '*.ts'),
+        '!' + join(Config.APP_SRC, '**', '*.scss'),
+        '!' + join(Config.APP_SRC, '**', '*.sass')
+            ].concat(Config.TEMP_FILES.map((p) => { return '!' + p; }));
+
+      return gulp.src(paths)
+        .pipe(gulp.dest(join(Config.APP_MVC_DEST, 'wwwroot')));
+    }
+  };
+

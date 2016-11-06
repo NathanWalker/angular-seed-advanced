@@ -22,7 +22,7 @@ export =
             ].concat(Config.TEMP_FILES.map((p) => { return '!' + p; }));
 
       return gulp.src(paths)
-        .pipe(gulp.dest(join(Config.APP_MVC_DEST, 'wwwroot')));
+        .pipe(gulp.dest(Config.DEV_DEST));
     }
   };
 

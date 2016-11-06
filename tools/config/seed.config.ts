@@ -237,13 +237,6 @@ export class SeedConfig {
    */
 
   /**
-   * The root of your aspnet core mvc application 
-   * Since this seed is decoupled from the mvc application 
-   * you must override this in the project.config
-   * @type {string}
-   */
-  APP_MVC_DEST = ``
-  /**
    * The folder of the applications css files.
    * @type {string}
    */

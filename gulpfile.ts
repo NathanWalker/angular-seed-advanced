@@ -34,8 +34,9 @@ gulp.task('build.mvc.dev', (done: any) =>
   runSequence('clean.mvc',
               'build.mvc.assets.dev',
               'build.html_css',
-              'build.mvc.js.dev',
+              'build.js.dev',
               'build.mvc.layout.dev',
+              'copy.mvc.dev',
               done));
               
 // --------------
@@ -86,6 +87,23 @@ gulp.task('build.prod.exp', (done: any) =>
               'build.bundles.app.exp',
               'minify.bundles',
               'build.index.prod',
+              done));
+
+// --------------
+// Build mvc prod.
+gulp.task('build.mvc.prod', (done: any) =>
+  runSequence('check.tools',
+              'clean.prod',
+              'tslint',
+              'build.assets.prod',
+              'build.html_css',
+              'copy.prod',
+              'build.js.prod',
+              'build.bundles',
+              'build.bundles.app',
+              'minify.bundles',
+              'build.mvc.layout.prod',
+              'copy.mvc.prod',
               done));
 
 // --------------
