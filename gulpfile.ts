@@ -29,6 +29,23 @@ gulp.task('build.dev.watch', (done: any) =>
               done));
 
 // --------------
+// Build mvc dev.
+gulp.task('build.mvc.dev', (done: any) => 
+  runSequence('clean.mvc',
+              'build.mvc.assets.dev',
+              'build.html_css',
+              'build.mvc.js.dev',
+              'build.mvc.layout.dev',
+              done));
+              
+// --------------
+// Build mvc dev watch.
+gulp.task('build.mvc.dev.watch', (done: any) =>
+  runSequence('build.mvc.dev',
+              'watch.mvc.dev',
+              done));
+
+// --------------
 // Build e2e.
 gulp.task('build.e2e', (done: any) =>
   runSequence('clean.dev',
