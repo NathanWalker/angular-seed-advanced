@@ -231,6 +231,10 @@ export class SeedConfig {
    * @type {string}
    */
   ASSETS_SRC = `${this.APP_SRC}/assets`;
+  /**
+   * The folder that contains your mvc views you want to generate.
+   * @type {string}
+   */
 
   /**
    * The folder of the applications css files.

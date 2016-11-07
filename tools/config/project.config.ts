@@ -9,12 +9,16 @@ export class ProjectConfig extends SeedAdvancedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
 
+    // The path to the root of your aspnet core mvc application.
+    APP_MVC_DEST = `../aspnetcore-angular-seed-advanced/`;
+
   constructor() {
     super();
     // this.APP_TITLE = 'Put name of your app here';
 
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;
+
 
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [

@@ -12,4 +12,6 @@
     "nativescript/app/**/*.js": true,
     "ChromeDebugger-UserData/**/*": true
   }
+,
+"typescript.tsdk": "./node_modules/typescript/lib"
 }

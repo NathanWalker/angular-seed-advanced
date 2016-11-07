@@ -29,6 +29,24 @@ gulp.task('build.dev.watch', (done: any) =>
               done));
 
 // --------------
+// Build mvc dev.
+gulp.task('build.mvc.dev', (done: any) => 
+  runSequence('clean.mvc',
+              'build.mvc.assets.dev',
+              'build.html_css',
+              'build.js.dev',
+              'build.mvc.layout.dev',
+              'copy.mvc.dev',
+              done));
+              
+// --------------
+// Build mvc dev watch.
+gulp.task('build.mvc.dev.watch', (done: any) =>
+  runSequence('build.mvc.dev',
+              'watch.mvc.dev',
+              done));
+
+// --------------
 // Build e2e.
 gulp.task('build.e2e', (done: any) =>
   runSequence('clean.dev',
@@ -69,6 +87,24 @@ gulp.task('build.prod.exp', (done: any) =>
               'build.bundles.app.exp',
               'minify.bundles',
               'build.index.prod',
+              done));
+
+// --------------
+// Build mvc prod.
+gulp.task('build.mvc.prod', (done: any) =>
+  runSequence('check.tools',
+              'clean.mvc',
+              'clean.prod',
+              'tslint',
+              'build.mvc.assets.prod',
+              'build.html_css',
+              'copy.prod',
+              'build.js.prod',
+              'build.bundles',
+              'build.bundles.app',
+              'minify.bundles',
+              'build.mvc.layout.prod',
+              'copy.mvc.prod',
               done));
 
 // --------------
