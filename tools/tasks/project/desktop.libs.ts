@@ -17,8 +17,8 @@ export = () => {
 
   return gulp.src(src, { base: 'node_modules' })
     .pipe(newer({
-      dest: join(Config.APP_DEST + '/node_modules'), 
-      map: function(path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+      dest: join(Config.APP_DEST + '/node_modules'),
+      map: function(path: String) { return path.replace('.ts', '.js').replace('.scss', '.css'); }
     }))
     .pipe(gulp.dest(join(Config.APP_DEST + '/node_modules')));
 };

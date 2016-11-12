@@ -15,7 +15,6 @@ loadTasks(Config.PROJECT_TASKS_DIR);
 gulp.task('build.dev', (done: any) =>
   runSequence(//'clean.dev',
 //              'tslint',
-//              'css-lint',
               'build.assets.dev',
               'build.html_css',
               'build.js.dev',
@@ -42,9 +41,9 @@ gulp.task('build.e2e', (done: any) =>
 // --------------
 // Build prod.
 gulp.task('build.prod', (done: any) =>
-  runSequence('clean.prod',
+  runSequence('check.tools',
+              'clean.prod',
               'tslint',
-              'css-lint',
               'build.assets.prod',
               'build.html_css',
               'copy.prod',
@@ -58,9 +57,9 @@ gulp.task('build.prod', (done: any) =>
 // --------------
 // Build prod.
 gulp.task('build.prod.exp', (done: any) =>
-  runSequence('clean.prod',
+  runSequence('check.tools',
+              'clean.prod',
               'tslint',
-              'css-lint',
               'build.assets.prod',
               'build.html_css',
               'copy.prod',
@@ -92,12 +91,6 @@ gulp.task('test.watch', (done: any) =>
               'karma.watch',
               done));
 
-// --------------
-// Build tools.
-gulp.task('build.tools', (done: any) =>
-  runSequence('clean.tools',
-              'build.js.tools',
-              done));
 
 // --------------
 // Docs
@@ -130,6 +123,13 @@ gulp.task('serve.prod', (done: any) =>
               'server.prod',
               done));
 
+
+// --------------
+// Serve prod exp
+gulp.task('serve.prod.exp', (done: any) =>
+  runSequence('build.prod.exp',
+              'server.prod',
+              done));
 
 // --------------
 // Test.
@@ -179,15 +179,23 @@ gulp.task('clean.i18n', (done: any) =>
               done));
 
 // --------------
+// Clean directories after i18n
+// TODO: find a better way to do it
+gulp.task('clean.i18n', (done: any) =>
+  runSequence('clear.files',
+              done));
+
+// --------------
 // Clean dev/coverage that will only run once
 // this prevents karma watchers from being broken when directories are deleted
 let firstRun = true;
 gulp.task('clean.once', (done: any) => {
   if (firstRun) {
     firstRun = false;
-    runSequence('clean.dev', 'clean.coverage', done);
+    runSequence('check.tools', 'clean.dev', 'clean.coverage', done);
   } else {
     util.log('Skipping clean on rebuild');
     done();
   }
 });
+

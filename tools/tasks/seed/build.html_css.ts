@@ -11,7 +11,6 @@ import Config from '../../config';
 import { CssTask } from '../css_task';
 
 const plugins = <any>gulpLoadPlugins();
-const cleanCss = require('gulp-clean-css');
 const gulpConcatCssConfig = Config.getPluginConfig('gulp-concat-css');
 
 const processors = [
@@ -22,7 +21,7 @@ const processors = [
 
 const reportPostCssError = (e: any) => util.log(util.colors.red(e.message));
 
-const isProd = Config.ENV === 'prod';
+const isProd = Config.BUILD_TYPE === 'prod';
 
 if (isProd) {
   processors.push(
@@ -48,7 +47,12 @@ function prepareTemplates() {
  * Execute the appropriate component-stylesheet processing method based on user stylesheet preference.
  */
 function processComponentStylesheets() {
-  return Config.ENABLE_SCSS ? processComponentScss() : processComponentCss();
+  return Config.ENABLE_SCSS ?
+    merge(
+      processComponentScss(),
+      processComponentCss())
+    :
+    processComponentCss();
 }
 
 /**
@@ -62,12 +66,17 @@ function processComponentScss() {
     .pipe(plugins.sass(Config.getPluginConfig('gulp-sass')).on('error', plugins.sass.logError))
     .pipe(plugins.postcss(processors))
     .on('error', reportPostCssError)
-    .pipe(plugins.sourcemaps.write(isProd ? '.' : ''));
+    .pipe(plugins.sourcemaps.write(isProd ? '.' : '', {
+      sourceMappingURL: (file: any) => {
+        // write absolute urls to the map files
+        return `${Config.APP_BASE}${file.relative}.map`;
+      }
+    }));
 
   if (!isProd) {
     stream = stream.pipe(newer({
       dest: isProd ? Config.TMP_DIR : Config.APP_DEST,
-      map: function (path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+      map: function (path: String) { return path.replace('.ts', '.js').replace('.scss', '.css'); }
     }));
   }
 
@@ -90,7 +99,7 @@ function processComponentCss() {
   if (!isProd) {
     stream = stream.pipe(newer({
       dest: isProd ? Config.TMP_DIR : Config.APP_DEST,
-      map: function (path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+      map: function (path: String) { return path.replace('.ts', '.js').replace('.scss', '.css'); }
     }));
   }
 
@@ -112,13 +121,12 @@ function processAllExternalStylesheets() {
   let stream = merge(getExternalCssStream(), getExternalScssStream())
     .pipe(isProd ? plugins.concatCss(gulpConcatCssConfig.targetFile, gulpConcatCssConfig.options) : plugins.util.noop())
     .pipe(plugins.postcss(processors))
-    .on('error', reportPostCssError)
-    .pipe(isProd ? cleanCss() : plugins.util.noop());
+    .on('error', reportPostCssError);
 
   if (!isProd) {
     stream = stream.pipe(newer({
       dest: Config.CSS_DEST,
-      map: function (path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+      map: function (path: String) { return path.replace('.ts', '.js').replace('.scss', '.css'); }
     }));
   }
 
@@ -166,13 +174,12 @@ function processExternalCss() {
   let stream = getExternalCssStream()
     .pipe(plugins.postcss(processors))
     .pipe(isProd ? plugins.concatCss(gulpConcatCssConfig.targetFile, gulpConcatCssConfig.options) : plugins.util.noop())
-    .on('error', reportPostCssError)
-    .pipe(isProd ? cleanCss() : plugins.util.noop());
+    .on('error', reportPostCssError);
 
   if (!isProd) {
     stream = stream.pipe(newer({
       dest: Config.CSS_DEST,
-      map: function (path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+      map: function (path: String) { return path.replace('.ts', '.js').replace('.scss', '.css'); }
     }));
   }
 

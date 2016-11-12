@@ -18,7 +18,7 @@ export interface TestApi {
   e(actual: any): jasmine.Matchers;
   expect(actual: any): jasmine.Matchers;
   fail(e?: any): void;
-  inject(tokens: any[], fn: Function): Function;
+  inject(tokens: Array<any>, fn: Function): Function;
   it(name: string, fn: Function, timeOut?: number): void;
   fit(name: string, fn: Function, timeOut?: number): void;
   xit(name: string, fn: Function, timeOut?: number): void;

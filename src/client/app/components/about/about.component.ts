@@ -8,6 +8,9 @@ import { BaseComponent, Config } from '../../frameworks/core/index';
   styleUrls: ['about.component.css']
 })
 export class AboutComponent {
+
+  // Just one way you could handle the {N} `ui/page` Page class
+  // in a shared component...
   private _page: any;
   private get page() {
     if (Config.PageClass) {
@@ -20,8 +23,9 @@ export class AboutComponent {
   }
 
   constructor(private injector: Injector) {
-    if (this.page) {
-      this.page.actionBarHidden = true;
-    }
+    // This is here as an example
+    // if (this.page) {
+    //   this.page.actionBarHidden = true;
+    // }
   }
 }

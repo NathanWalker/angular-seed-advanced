@@ -1,7 +1,5 @@
 language: node_js
-node_js:
-- 5
-- 6
+node_js: stable
 
 sudo: false
 
@@ -11,13 +9,6 @@ addons:
 os:
   - linux
   - osx
-
-matrix:
-  exclude:
-    - os: osx
-      node_js: 4
-    - os: osx
-      node_js: 5
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
@@ -43,11 +34,8 @@ notifications:
     on_failure: always  # options: [always|never|change] default: always
     on_start: never     # options: [always|never|change] default: always
 
-env:
-  global:
-    # https://github.com/DefinitelyTyped/tsd#tsdrc
-    # Token has no scope (read-only access to public information)
-    - TSD_GITHUB_TOKEN=51b0c1347cfd8c2c90ba0f60db7898171cbb17c8
-
 cache:
   directories: node_modules
+
+script:
+  - npm run test

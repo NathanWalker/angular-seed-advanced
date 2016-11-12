@@ -32,7 +32,7 @@ export const NAME_LIST_ACTIONS: INameListActions = {
   NAME_ADDED: `${CATEGORY}_NAME_ADDED`
 };
 
-export const nameListReducer: ActionReducer<any> = (state: any = [], action: Action) => {
+export function nameListReducerFn(state: any = [], action: Action) {
   switch (action.type) {
     case NAME_LIST_ACTIONS.INITIALIZED:
       return [...action.payload];
@@ -42,6 +42,8 @@ export const nameListReducer: ActionReducer<any> = (state: any = [], action: Act
       return state;
   }
 };
+
+export const nameListReducer: ActionReducer<any> = nameListReducerFn;
 /**
  * ngrx end --
  */

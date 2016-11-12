@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 // libs
 import { Store, ActionReducer, Action } from '@ngrx/store';
 import { Effect, Actions } from '@ngrx/effects';
-import { TranslateService } from 'ng2-translate/ng2-translate';
+import { TranslateService } from 'ng2-translate';
 import { includes, map } from 'lodash';
 
 // app
@@ -37,7 +37,7 @@ export const MULTILINGUAL_ACTIONS: IMultilingualActions = {
   LANG_UNSUPPORTED: `${CATEGORY}_LANG_UNSUPPORTED`
 };
 
-export const multilingualReducer: ActionReducer<IMultilingualState> = (state: IMultilingualState = initialState, action: Action) => {
+export function multilingualReducerFn(state: IMultilingualState = initialState, action: Action) {
   switch (action.type) {
     case MULTILINGUAL_ACTIONS.LANG_CHANGED:
       return (<any>Object).assign({}, state, { lang: action.payload });
@@ -45,6 +45,8 @@ export const multilingualReducer: ActionReducer<IMultilingualState> = (state: IM
       return state;
   }
 };
+
+export const multilingualReducer: ActionReducer<IMultilingualState> = multilingualReducerFn;
 /**
  * ngrx end --
  */
@@ -70,22 +72,10 @@ export class MultilingualService extends Analytics {
     let userLang = win.navigator.language.split('-')[0];
 
     // subscribe to changes
-    // store.select('i18n').subscribe((state: IMultilingualState) => {
-    //   // update ng2-translate which will cause translations to occur wherever the TranslatePipe is used in the view
-
-    //   this.translate.use(state.lang);
-    // });
-
-    // This version gets around an issue with ng2-translate right now and OnPush
     store.select('i18n').subscribe((state: IMultilingualState) => {
       // update ng2-translate which will cause translations to occur wherever the TranslatePipe is used in the view
-      if (this.translate.getLangs() && (this.translate.getLangs().indexOf(state.lang) > -1)) {
-        this.translate.use(state.lang);
-      } else {
-        this.translate.reloadLang(state.lang).take(1).subscribe(() => {
-          setTimeout(() => this.translate.use(state.lang), 0);
-        });
-      }
+
+      this.translate.use(state.lang);
     });
 
     // init the lang
