@@ -1,32 +1,55 @@
 {
 	"version": "0.2.0",
 	"configurations": [
-	{
-		"name": "Launch localhost with sourcemaps",
-		"type": "chrome",
-		"request": "launch",
-		"url": "http://localhost:5555/",
-		"sourceMaps": true,
-		"webRoot": "${workspaceRoot}/dist/dev",
-		"runtimeArgs": [
-			"--remote-debugging-port=9222", //Open in port 9222 (standard chrome debug port)
-			"--user-data-dir=${workspaceRoot}\\ChromeDebugger-UserData\\", //Can be any directory. Makes chrome load in a different directory so that it opens in a new instance.
-			//"--user-data-dir=${env.LOCALAPPDATA}\\Google\\Chrome\\User Data\\", //CHROME DEFAULT
-			"--new-window" //Open in new window
-		]
-	},
-        {
-            "name": "Launch Electron App",
-            "type": "node",
-            "program": "${workspaceRoot}/dist/dev/main.desktop.js", // important
-            "stopOnEntry": false,
-            "args": [],
-            "cwd": "${workspaceRoot}/dist/dev/",
-            // next line is very important
-            "runtimeExecutable": "${env.APPDATA}/npm/node_modules/electron-prebuilt/dist/electron.exe",
-            "runtimeArgs": [],
-            "env": { }, 
-            "sourceMaps": true
-        }
-	]
+    {
+      "name": "Launch localhost with sourcemaps",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5555/",
+      "sourceMaps": true,
+      "webRoot": "${workspaceRoot}/dist/dev",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222", //Open in port 9222 (standard chrome debug port)
+        "--user-data-dir=${workspaceRoot}\\ChromeDebugger-UserData\\", //Can be any directory. Makes chrome load in a different directory so that it opens in a new instance.
+        //"--user-data-dir=${env.LOCALAPPDATA}\\Google\\Chrome\\User Data\\", //CHROME DEFAULT
+        "--new-window" //Open in new window
+      ]
+    },
+    {
+      "name": "Launch Electron App",
+      "type": "node",
+      "program": "${workspaceRoot}/dist/dev/main.desktop.js", // important
+      "stopOnEntry": false,
+      "args": [],
+      "cwd": "${workspaceRoot}/dist/dev/",
+      // next line is very important
+      "runtimeExecutable": "${env.APPDATA}/npm/node_modules/electron-prebuilt/dist/electron.exe",
+      "runtimeArgs": [],
+      "env": { },
+      "sourceMaps": true
+    },
+    {
+      "name": "Launch Chrome against localhost, with sourcemaps",
+      "type": "chrome",
+      "preLaunchTask": "start",
+      "request": "launch",
+      "url": "http://localhost:5555",
+      "sourceMaps": true,
+      "webRoot": "${workspaceRoot}/src/client",
+      "sourceMapPathOverrides": {
+        "app/*": "${webRoot}/app/*"
+      }
+    },
+    {
+      "name": "Attach to Chrome, with sourcemaps",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "sourceMaps": true,
+      "webRoot": "${workspaceRoot}/src/client",
+      "sourceMapPathOverrides": {
+        "app/*": "${webRoot}/app/*"
+      }
+    }
+  ]
 }
