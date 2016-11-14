@@ -8,7 +8,7 @@ import { Http } from '@angular/http';
 // libs
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
+import { TranslateLoader } from 'ng2-translate';
 
 // app
 import { AppComponent } from './app/components/app.component';
@@ -20,14 +20,14 @@ import { routes } from './app/components/app.routes';
 import { CoreModule } from './app/frameworks/core/core.module';
 import { AnalyticsModule } from './app/frameworks/analytics/analytics.module';
 import { multilingualReducer, MultilingualEffects } from './app/frameworks/i18n/index';
-import { MultilingualModule } from './app/frameworks/i18n/multilingual.module';
+import { MultilingualModule, translateFactory } from './app/frameworks/i18n/multilingual.module';
 import { SampleModule } from './app/frameworks/sample/sample.module';
 import { nameListReducer, NameListEffects } from './app/frameworks/sample/index';
 
 // config
 import { Config, WindowService, ConsoleService } from './app/frameworks/core/index';
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
-if (String('<%= ENV %>') === 'dev') {
+if (String('<%= BUILD_TYPE %>') === 'dev') {
   // only output console logging in dev mode
   Config.DEBUG.LEVEL_4 = true;
 }
@@ -46,19 +46,29 @@ if (String('<%= TARGET_DESKTOP %>') === 'true') {
   routerModule = RouterModule.forRoot(routes, {useHash: true});
 }
 
+declare var window, console;
+
+// For AoT compilation to work:
+export function win() {
+  return window;
+}
+export function cons() {
+  return console;
+}
+
 @NgModule({
   imports: [
     BrowserModule,
     CoreModule.forRoot([
-      { provide: WindowService, useValue: window },
-      { provide: ConsoleService, useValue: console }
+      { provide: WindowService, useFactory: (win) },
+      { provide: ConsoleService, useFactory: (cons) }
     ]),
     routerModule,
     AnalyticsModule,
     MultilingualModule.forRoot([{
       provide: TranslateLoader,
       deps: [Http],
-      useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json')
+      useFactory: (translateFactory)
     }]),
     SampleModule,
     StoreModule.provideStore({

@@ -1,13 +1,12 @@
-@import '~/css/core.light.css'; 
+@import '~/css/core.light.css';
 
 .action-bar {
   background-color: #3280CF;
   color:white;
 }
 
-.action-btn {
-  color:white;
-  font-size:15;
+.action-item {
+  border-width:0;
 }
 
 .drawer-content {
@@ -21,10 +20,8 @@
   font-size: 20;
   margin: 10 0 15 25;
 }
-button {
-  font-size: 18;
-  horizontal-align: center;
-  color: #106CC8;
+.btn-primary {
+  background-color: #106CC8;
 }
 TextField {
   margin: 15 15 0 15;
@@ -35,11 +32,6 @@ TextField {
 }
 .pink {
   color: #FF45F9;
-}
-
-.container {
-  padding:0;
-  margin:0;
 }
 
 .drawerMenuContent {

@@ -7,9 +7,7 @@ import { platformBrowser } from '@angular/platform-browser';
 
 import { WebModuleNgFactory } from './web.module.ngfactory';
 
-if (String('<%= ENV %>') === 'prod' || String('<%= TARGET_DESKTOP_BUILD %>') === 'true') {
-  enableProdMode();
-}
+enableProdMode();
 
 platformBrowser().bootstrapModuleFactory(WebModuleNgFactory);
 

@@ -1,9 +1,8 @@
-import { readdirSync, lstatSync } from 'fs';
 import { join } from 'path';
 import * as slash from 'slash';
 import { argv } from 'yargs';
 
-import { Environments, ExtendPackages, InjectableDependency } from './seed.config.interfaces';
+import { BuildType, ExtendPackages, InjectableDependency } from './seed.config.interfaces';
 
 /************************* DO NOT CHANGE ************************
  *
@@ -41,7 +40,7 @@ import { Environments, ExtendPackages, InjectableDependency } from './seed.confi
  * The enumeration of available environments.
  * @type {Environments}
  */
-export const ENVIRONMENTS: Environments = {
+export const BUILD_TYPES: BuildType = {
   DEVELOPMENT: 'dev',
   PRODUCTION: 'prod'
 };
@@ -73,10 +72,15 @@ export class SeedConfig {
   PROJECT_ROOT = join(__dirname, '../..');
 
   /**
-   * The current environment.
-   * The default environment is `dev`, which can be overriden by the `--config-env ENV_NAME` flag when running `npm start`.
+   * The current build type.
+   * The default build type is `dev`, which can be overriden by the `--build-type dev|prod` flag when running `npm start`.
    */
-  ENV = getEnvironment();
+  BUILD_TYPE = getBuildType();
+
+  get ENV() {
+    // util.log(util.colors.yellow('Warning: the "ENV" property is deprecated. Use "BUILD_TYPE" instead.'));
+    return this.BUILD_TYPE;
+  }
 
   /**
    * The flag for the debug option of the application.
@@ -279,7 +283,7 @@ export class SeedConfig {
    * The folder for the built files, corresponding to the current environment.
    * @type {string}
    */
-  APP_DEST = this.ENV === ENVIRONMENTS.DEVELOPMENT ? this.DEV_DEST : this.PROD_DEST;
+  APP_DEST = this.BUILD_TYPE === BUILD_TYPES.DEVELOPMENT ? this.DEV_DEST : this.PROD_DEST;
 
   /**
    * The folder for the built CSS files.
@@ -342,9 +346,10 @@ export class SeedConfig {
   NPM_DEPENDENCIES: InjectableDependency[] = [
     { src: 'zone.js/dist/zone.js', inject: 'libs' },
     { src: 'core-js/client/shim.min.js', inject: 'shims' },
-    { src: 'systemjs/dist/system.src.js', inject: 'shims', env: ENVIRONMENTS.DEVELOPMENT },
+    { src: 'intl/dist/Intl.min.js', inject: 'shims' },
+    { src: 'systemjs/dist/system.src.js', inject: 'shims', buildType: BUILD_TYPES.DEVELOPMENT },
     // Temporary fix. See https://github.com/angular/angular/issues/9359
-    { src: '.tmp/Rx.min.js', inject: 'libs', env: ENVIRONMENTS.DEVELOPMENT },
+    { src: '.tmp/Rx.min.js', inject: 'libs', buildType: BUILD_TYPES.DEVELOPMENT },
   ];
 
   /**
@@ -369,8 +374,8 @@ export class SeedConfig {
    * @return {InjectableDependency[]} The array of npm dependencies and assets.
    */
   get DEPENDENCIES(): InjectableDependency[] {
-    return normalizeDependencies(this.NPM_DEPENDENCIES.filter(filterDependency.bind(null, this.ENV)))
-      .concat(this.APP_ASSETS.filter(filterDependency.bind(null, this.ENV)));
+    return normalizeDependencies(this.NPM_DEPENDENCIES.filter(filterDependency.bind(null, this.BUILD_TYPE)))
+      .concat(this.APP_ASSETS.filter(filterDependency.bind(null, this.BUILD_TYPE)));
   }
 
   /**
@@ -379,11 +384,6 @@ export class SeedConfig {
    */
   SYSTEM_CONFIG_DEV: any = {
     defaultJSExtensions: true,
-    packageConfigPaths: [
-      `/node_modules/*/package.json`,
-      `/node_modules/**/package.json`,
-      `/node_modules/@angular/*/package.json`
-    ],
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
       '@angular/common': 'node_modules/@angular/common/bundles/common.umd.js',
@@ -425,7 +425,7 @@ export class SeedConfig {
    * The system builder configuration of the application.
    * @type {any}
    */
-  SYSTEM_BUILDER_CONFIG: any = prepareBuilderConfig({
+  SYSTEM_BUILDER_CONFIG: any = {
     defaultJSExtensions: true,
     base: this.PROJECT_ROOT,
     packageConfigPaths: [
@@ -433,7 +433,11 @@ export class SeedConfig {
       join('node_modules', '@angular', '*', 'package.json')
     ],
     paths: {
+      // Note that for multiple apps this configuration need to be updated
+      // You will have to include entries for each individual application in
+      // `src/client`.
       [join(this.TMP_DIR, '*')]: `${this.TMP_DIR}/*`,
+      'dist/tmp/node_modules/*': 'dist/tmp/node_modules/*',
       'node_modules/*': 'node_modules/*',
       '*': 'node_modules/*'
     },
@@ -479,7 +483,7 @@ export class SeedConfig {
         defaultExtension: 'js'
       }
     }
-  }, join(this.PROJECT_ROOT, this.APP_SRC), this.TMP_DIR);
+  };
 
   /**
    * The Autoprefixer configuration for the application.
@@ -601,7 +605,7 @@ export class SeedConfig {
   }
 
   getInjectableStyleExtension() {
-    return this.ENV === ENVIRONMENTS.PRODUCTION && this.ENABLE_SCSS ? 'scss' : 'css';
+    return this.BUILD_TYPE === BUILD_TYPES.PRODUCTION && this.ENABLE_SCSS ? 'scss' : 'css';
   }
 
   addPackageBundles(pack: ExtendPackages) {
@@ -615,18 +619,6 @@ export class SeedConfig {
     }
   }
 
-}
-
-/**
- * Used only when developing multiple applications with shared codebase.
- * We need to specify the paths for each individual application otherwise
- * SystemJS Builder cannot bundle the target app on Windows.
- */
-function prepareBuilderConfig(config: any, srcPath: string, tmpPath: string) {
-  readdirSync(srcPath).filter(f =>
-    lstatSync(join(srcPath, f)).isDirectory()).forEach(f =>
-      config.paths[join(tmpPath, f, '*')] = `${tmpPath}/${f}/*`);
-  return config;
 }
 
 /**
@@ -646,14 +638,16 @@ export function normalizeDependencies(deps: InjectableDependency[]) {
  * @param  {InjectableDependency} d   - The dependency to check.
  * @return {boolean}                    `true` if the dependency is used in this environment, `false` otherwise.
  */
-function filterDependency(env: string, d: InjectableDependency): boolean {
-  if (!d.env) {
-    d.env = Object.keys(ENVIRONMENTS).map(k => ENVIRONMENTS[k]);
+function filterDependency(type: string, d: InjectableDependency): boolean {
+  const t = d.buildType || d.env;
+  d.buildType = t;
+  if (!t) {
+    d.buildType = Object.keys(BUILD_TYPES).map(k => BUILD_TYPES[k]);
   }
-  if (!(d.env instanceof Array)) {
-    (<any>d).env = [d.env];
+  if (!(d.buildType instanceof Array)) {
+    (<any>d).env = [d.buildType];
   }
-  return d.env.indexOf(env) >= 0;
+  return d.buildType.indexOf(type) >= 0;
 }
 
 /**
@@ -666,15 +660,16 @@ function appVersion(): number | string {
 }
 
 /**
- * Returns the environment of the application.
+ * Returns the application build type.
  */
-function getEnvironment() {
+function getBuildType() {
+  let type = (argv['build-type'] || argv['env'] || '').toLowerCase();
   let base: string[] = argv['_'];
-  let prodKeyword = !!base.filter(o => o.indexOf(ENVIRONMENTS.PRODUCTION) >= 0).pop();
-  let env = (argv['env'] || '').toLowerCase();
-  if ((base && prodKeyword) || env === ENVIRONMENTS.PRODUCTION) {
-    return ENVIRONMENTS.PRODUCTION;
+  let prodKeyword = !!base.filter(o => o.indexOf(BUILD_TYPES.PRODUCTION) >= 0).pop();
+  if ((base && prodKeyword) || type === BUILD_TYPES.PRODUCTION) {
+    return BUILD_TYPES.PRODUCTION;
   } else {
-    return ENVIRONMENTS.DEVELOPMENT;
+    return BUILD_TYPES.DEVELOPMENT;
   }
 }
+

@@ -17,7 +17,7 @@ export interface ExtendedNavigationExtras extends NavigationExtras {
 }
 
 export interface IRouterExtensions {
-  navigate(commands: any[], extras?: ExtendedNavigationExtras): Promise<boolean>;
+  navigate(commands: Array<any>, extras?: ExtendedNavigationExtras): Promise<boolean>;
   navigateByUrl(url: string | UrlTree, options?: ExtendedNavigationExtras): Promise<boolean>;
   back(): void;
 }
@@ -27,7 +27,7 @@ export class RouterExtensions implements IRouterExtensions {
 
   constructor(public router: Router, private locationStrategy: LocationStrategy) { }
 
-  public navigate(commands: any[], extras?: ExtendedNavigationExtras): Promise<boolean> {
+  public navigate(commands: Array<any>, extras?: ExtendedNavigationExtras): Promise<boolean> {
     return this.router.navigate(commands, extras);
   }
 

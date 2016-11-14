@@ -4,7 +4,7 @@
   <Label [text]="'ABOUT_REWARD' | translate" textWrap="true"></Label>
 
   <TextField [(ngModel)]="newName" [hint]="'INPUT_HINT' | translate" autocorrect="false" autocapitalizationType="none"></TextField>
-  <Button [text]="'ADD_BTN_TEXT' | translate" (tap)="addName()"></Button>
+  <Button [text]="'ADD_BTN_TEXT' | translate" (tap)="addName()" class="btn btn-primary"></Button>
 
   <ListView [items]="names$ | async" row="1" colSpan="2" height="300">
     <template let-name="item" let-odd="odd" let-even="even">
@@ -14,5 +14,5 @@
     </template>
   </ListView>
 
-  <Button (tap)="readAbout()" text="Read all about it" class="text-primary"></Button>
+  <Button (tap)="readAbout()" text="Read all about it" class="btn btn-outline"></Button>
 </StackLayout>

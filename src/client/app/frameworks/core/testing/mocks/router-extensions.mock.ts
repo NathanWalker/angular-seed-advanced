@@ -5,7 +5,7 @@ import { IRouterExtensions, ExtendedNavigationExtras } from '../../index';
 
 @Injectable()
 export class RouterExtensionsMock implements IRouterExtensions {
-  navigate(commands: any[], extras?: ExtendedNavigationExtras): Promise<boolean> {
+  navigate(commands: Array<any>, extras?: ExtendedNavigationExtras): Promise<boolean> {
     return Promise.resolve(true);
   }
 
