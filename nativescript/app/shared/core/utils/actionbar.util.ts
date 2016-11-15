@@ -1,5 +1,9 @@
 import { topmost } from 'ui/frame';
 import { ActionItem, ActionItems } from 'ui/action-bar';
+import * as app from 'application';
+import { device, isAndroid } from 'platform';
+import { Color } from 'color';
+declare var android;
 
 declare var UIBarStyle: any;
 
@@ -30,6 +34,23 @@ export class ActionBarUtil {
       // 0: default
       // 1: light
       navigationBar.barStyle = style;
+    } else if (isAndroid) {
+      if (app.android && device.sdkVersion >= '21') {
+        try {
+          let LayoutParams = <any>android.view.WindowManager.LayoutParams;
+          let win: any;
+          if (app.android.foregroundActivity != null) {
+            win = app.android.foregroundActivity.getWindow();
+          } else {
+            win = app.android.startActivity.getWindow();
+          }
+
+          win.addFlags(LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+          win.setStatusBarColor(new Color('#3280CF').android);
+        } catch (err) {
+          console.log(err);
+        }
+      }
     }
   }
 }

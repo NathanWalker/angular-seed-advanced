@@ -1,6 +1,6 @@
 // libs
 import { Angulartics2 } from 'angulartics2';
-import { Angulartics2Segment } from 'angulartics2/src/providers/angulartics2-segment';
+import { Angulartics2Segment } from 'angulartics2/dist/providers';
 
 // app
 import { AnalyticsService } from './services/analytics.service';

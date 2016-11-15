@@ -10,8 +10,8 @@ export = () => {
   ];
   return gulp.src(src)
     .pipe(newer({
-      dest: Config.APP_DEST, 
-      map: function(path: String) { return path.replace('.ts', '.js').replace('.sccs', '.css'); }
+      dest: Config.APP_DEST,
+      map: function(path: String) { return path.replace('.ts', '.js').replace('.scss', '.css'); }
     }))
     .pipe(gulp.dest(Config.APP_DEST));
 };

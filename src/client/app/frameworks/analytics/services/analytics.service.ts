@@ -4,7 +4,7 @@ import { Injectable, Inject } from '@angular/core';
 // libs
 import * as _ from 'lodash';
 import { Angulartics2 } from 'angulartics2';
-import { Angulartics2Segment } from 'angulartics2/src/providers/angulartics2-segment';
+import { Angulartics2Segment } from 'angulartics2/dist/providers';
 
 export interface IAnalyticsProperties {
   category?: string;
@@ -29,7 +29,7 @@ export class AnalyticsService implements IAnalytics {
     // angulartics2.excludeRoutes(routes: Array<string>);
     // angulartics2.firstPageview(value: boolean);
     // angulartics2.withBase(value: string);
- 
+
     this.devMode(false);
   }
 
@@ -39,7 +39,7 @@ export class AnalyticsService implements IAnalytics {
   public track(action: string, properties: IAnalyticsProperties): void {
     if (!this.devMode()) {
       this.segment.eventTrack(action, properties);
-    } 
+    }
   }
 
   /**
@@ -69,9 +69,9 @@ export class AnalyticsService implements IAnalytics {
   public devMode(enable?: boolean): boolean {
     if (typeof enable !== 'undefined') {
       this.angulartics2.developerMode(enable);
-    } 
+    }
     return this.angulartics2.settings.developerMode;
-  }   
+  }
 }
 
 /**
@@ -91,5 +91,5 @@ export class Analytics implements IAnalytics {
    **/
   track(action: string, properties: IAnalyticsProperties): void {
     this.analytics.track(action, _.extend(properties, { category: this.category }));
-  }     
+  }
 }
