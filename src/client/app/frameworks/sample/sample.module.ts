@@ -13,13 +13,6 @@ import { ToolbarComponent } from './components/toolbar.component';
 import { NavbarComponent } from './components/navbar.component';
 import { NameListService } from './services/name-list.service';
 import { MultilingualModule } from '../i18n/multilingual.module';
-import { IMultilingualState } from '../i18n/services/multilingual.service';
-
-// state
-export interface AppStoreI {
-  i18n: IMultilingualState;
-  names: Array<string>;
-};
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.

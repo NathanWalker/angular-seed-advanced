@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule, Http } from '@angular/http';
 
 // libs
+import { StoreModule } from '@ngrx/store';
 import { TranslateModule, TranslateStaticLoader } from 'ng2-translate';
 
 // app
@@ -28,6 +29,7 @@ export function translateFactory(http: Http) {
     RouterModule,
     FormsModule,
     HttpModule,
+    StoreModule,
     TranslateModule.forRoot()
   ],
   declarations: [
