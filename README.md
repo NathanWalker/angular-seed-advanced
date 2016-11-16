@@ -39,11 +39,11 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - [Enhanced development workflow](#enhanced-development-workflow)
 - [Enhanced testing support options](#enhanced-testing-support-options)
 - [Prerequisites](#prerequisites)
-- [Usage](#usage)
-- [Special note about AoT](https://github.com/NathanWalker/angular-seed-advanced#special-note-about-aot)
+- [How to start](#how-to-start)
+- [How to start with AoT compilation](#how-to-start-with-aot-compilation)
 - [NativeScript App](#nativescript-app)
 - [Electron App](#electron-app)
-- [Testing](#testing)
+- [Running tests](#running-tests)
 - [Framework How-Tos](#framework-how-tos)
 - [Web Configuration Options](#web-configuration-options)
 - [Change Detection OnPush Note](#change-detection-onpush-note)
@@ -97,7 +97,7 @@ npm install -g nativescript
 npm install -g typescript
 ```
 
-## Usage
+## How to start
 
 
 ```bash
@@ -112,7 +112,7 @@ $ yarn install  # or yarn
 # watches your files and uses livereload by default
 $ npm start
 # api document for the app
-npm run serve.docs
+# npm run build.docs
 
 # to start deving with livereload site and coverage as well as continuous testing
 $ npm run start.deving
@@ -121,13 +121,20 @@ $ npm run start.deving
 $ npm run build.dev
 # prod build
 $ npm run build.prod
-# prod build with AoT compilation
-npm run build.prod.exp
 ```
 
-## Special Note About AoT
+## How to start with AoT compilation
 
-When using `npm run build.prod.exp` for AoT builds, please consider the following:
+**Note** that AoT compilation requires **node v6.5.0 or higher** and **npm 3.10.3 or higher**.
+
+In order to start the seed with AoT use:
+
+```bash
+# prod build with AoT compilation
+$ npm run build.prod.exp
+```
+
+When using AoT compilation, please consider the following:
 
 Currently you cannot use custom component decorators with AoT compilation. This may change in the future but for now you can use this pattern for when you need to create AoT builds for the web:
 
@@ -241,7 +248,7 @@ Windows:  npm run build.desktop.windows
 Linux:    npm run build.desktop.linux
 ```
 
-## Testing
+## Running tests
 
 ```bash
 $ npm test
