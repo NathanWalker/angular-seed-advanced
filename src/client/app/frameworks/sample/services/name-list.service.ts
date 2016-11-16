@@ -18,7 +18,11 @@ import * as nameList from '../actions/name-list.action';
 @Injectable()
 export class NameListService extends Analytics {
 
-  constructor(public analytics: AnalyticsService, private store: Store<ISampleState>, private http: Http) {
+  constructor(
+    public analytics: AnalyticsService,
+    private store: Store<ISampleState>,
+    private http: Http
+  ) {
     super(analytics);
     this.category = Category.NAMELIST;
 

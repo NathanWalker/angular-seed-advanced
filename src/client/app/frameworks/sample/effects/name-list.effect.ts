@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 
 // libs
-import { Store } from '@ngrx/store';
+import { Store, Action } from '@ngrx/store';
 import { Effect, Actions } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 
@@ -13,11 +13,14 @@ import * as nameList from '../actions/name-list.action';
 @Injectable()
 export class NameListEffects {
 
-  constructor(private store: Store<any>, private actions$: Actions, private nameListService: NameListService) { }
+  constructor(
+    private store: Store<any>,
+    private actions$: Actions,
+    private nameListService: NameListService
+  ) { }
 
-  @Effect() init$ = this.actions$
+  @Effect() init$: Observable<Action> = this.actions$
     .ofType(nameList.ActionTypes.INIT)
-    // .map((action: nameList.InitializedAction) => {
     .switchMap((action: nameList.InitAction) => {
         return this.nameListService.getNames();
     })
@@ -28,7 +31,7 @@ export class NameListEffects {
     // nothing reacting to failure at moment but you could if you want (here for example)
     .catch(() => Observable.of(new nameList.InitFailedAction()));
 
-  @Effect() add$ = this.actions$
+  @Effect() add$: Observable<Action> = this.actions$
     .ofType(nameList.ActionTypes.ADD)
     .map(action => {
       let name = action.payload;

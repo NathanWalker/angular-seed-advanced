@@ -1,8 +1,5 @@
-import '@ngrx/core/add/operator/select';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/let';
 import { Observable } from 'rxjs/Observable';
-import { combineLatest } from 'rxjs/observable/combineLatest';
+// import { combineLatest } from 'rxjs/observable/combineLatest';
 import { ActionReducer } from '@ngrx/store';
 
 /**
@@ -50,8 +47,6 @@ export interface IAppState {
   sample: fromSample.ISampleState;
 };
 
-
-
 /**
  * Because metareducers take a reducer function and return a new reducer,
  * we can use our compose helper to chain them together. Here we are
@@ -76,56 +71,12 @@ export function AppReducer(state: any, action: any) {
   }
 }
 
-
-/**
- * A selector function is a map function factory. We pass it parameters and it
- * returns a function that maps from the larger state tree into a smaller
- * piece of state. This selector simply selects the `books` state.
- *
- * Selectors are used with the `let` operator. They take an input observable
- * and return a new observable. Here's how you would use this selector:
- *
- * ```ts
- * class MyComponent {
- * 	constructor(state$: Observable<State>) {
- * 	  this.booksState$ = state$.let(getBooksState);
- * 	}
- * }
- * ```
- *
- * Note that this is equivalent to:
- * ```ts
- * class MyComponent {
- * 	constructor(state$: Observable<State>) {
- * 	  this.booksState$ = getBooksState(state$);
- * 	}
- * }
- * ```
- *
- */
 export function getMultilingualState(state$: Observable<IAppState>) {
-  state$.select(s => s.i18n);
+  return state$.select(s => s.i18n);
 }
-
-/**
- * Every reducer module exports selector functions, however child reducers
- * have no knowledge of the overall state tree. To make them useable, we
- * need to make new selectors that wrap them.
- *
- * Once again our compose function comes in handy. From right to left, we
- * first select the books state then we pass the state to the book
- * reducer's getBooks selector, finally returning an observable
- * of search results.
- *
- * Share memoizes the selector functions and published the result. This means
- * every time you call the selector, you will get back the same result
- * observable. Each subscription to the resultant observable
- * is shared across all subscribers.
- */
-export const getLang = compose(fromMultilingual.getLang, getMultilingualState);
-
 export function getNameListState(state$: Observable<IAppState>) {
-  state$.select(s => s.sample);
+  return state$.select(s => s.sample);
 }
 
+export const getLang = compose(fromMultilingual.getLang, getMultilingualState);
 export const getNames = compose(fromSample.getNames, getNameListState);

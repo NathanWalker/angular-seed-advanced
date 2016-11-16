@@ -17,8 +17,7 @@ export class HomeComponent {
   public newName: string = '';
 
   constructor(private store: Store<IAppState>, public routerext: RouterExtensions) {
-    this.names$ = store.select<Array<string>>(s => s.sample.names);
-    // this.names$ = store.let(getNames);
+    this.names$ = store.let(getNames);
   }
 
   /*
@@ -27,7 +26,6 @@ export class HomeComponent {
    */
   addName(): boolean {
     this.store.dispatch(new nameList.AddAction(this.newName));
-    // this.store.dispatch({ type: nameList.ActionTypes.ADD, payload: this.newName });
     this.newName = '';
     return false;
   }

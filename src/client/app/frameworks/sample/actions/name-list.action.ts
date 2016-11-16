@@ -35,6 +35,7 @@ export const ActionTypes: INameListActions = {
  */
 export class InitAction implements Action {
   type = ActionTypes.INIT;
+  payload: string = null;
 }
 
 export class InitializedAction implements Action {
@@ -45,6 +46,7 @@ export class InitializedAction implements Action {
 
 export class InitFailedAction implements Action {
   type = ActionTypes.INIT_FAILED;
+  payload: string = null;
 }
 
 export class AddAction implements Action {

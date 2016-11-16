@@ -1,8 +1,9 @@
 // libs
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
 // app
-import { BaseComponent, Config, LogService, ILang } from '../../core/index';
+import { IAppState, BaseComponent, Config, LogService, ILang, getLang } from '../../core/index';
 import { ElectronEventService } from '../../electron/index';
 import * as multilingual from '../index';
 
@@ -13,10 +14,11 @@ import * as multilingual from '../index';
   styleUrls: ['lang-switcher.component.css']
 })
 export class LangSwitcherComponent {
+
   public lang: string;
   public supportedLanguages: Array<ILang> = multilingual.MultilingualService.SUPPORTED_LANGUAGES;
 
-  constructor(private log: LogService, private store: Store<any>) {
+  constructor(private log: LogService, private store: Store<IAppState>) {
     store.take(1).subscribe((s: any) => {
       // s && s.18n - ensures testing works in all cases (since some tests dont use i18n state)
       this.lang = s && s.i18n ? s.i18n.lang : '';
@@ -29,6 +31,7 @@ export class LangSwitcherComponent {
       });
     }
   }
+  
   changeLang(e: any) {
     let lang = this.supportedLanguages[0].code; // fallback to default 'en'
 

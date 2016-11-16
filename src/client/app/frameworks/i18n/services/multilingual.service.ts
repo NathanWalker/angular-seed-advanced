@@ -12,7 +12,8 @@ import { Category } from '../../core/common/category.common';
 
 // module
 import { IMultilingualState } from '../state/multilingual.state';
-import * as multilingual from '../actions/multilingual.action';
+import { ChangeAction } from '../actions/multilingual.action';
+
 
 // service
 @Injectable()
@@ -24,7 +25,12 @@ export class MultilingualService extends Analytics {
     { code: 'en', title: 'English' }
   ];
 
-  constructor(public analytics: AnalyticsService, private translate: TranslateService, private win: WindowService, private store: Store<IMultilingualState>) {
+  constructor(
+    public analytics: AnalyticsService,
+    private translate: TranslateService,
+    private win: WindowService,
+    private store: Store<IMultilingualState>
+  ) {
     super(analytics);
     this.category = Category.MULTILINGUAL;
 
@@ -37,12 +43,10 @@ export class MultilingualService extends Analytics {
     // subscribe to changes
     store.select('i18n').subscribe((state: IMultilingualState) => {
       // update ng2-translate which will cause translations to occur wherever the TranslatePipe is used in the view
-
       this.translate.use(state.lang);
     });
 
     // init the lang
-    this.store.dispatch(new multilingual.ChangeAction(userLang));
-    //this.store.dispatch({ type: multilingual.ActionTypes.CHANGE, payload: userLang });
+    this.store.dispatch(new ChangeAction(userLang));
   }
 }
