@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs/Observable';
 import { ISampleState } from '../state/name-list.state';
 import * as nameList from '../actions/name-list.action';
 

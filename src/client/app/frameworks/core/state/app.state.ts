@@ -65,8 +65,7 @@ const productionReducer: ActionReducer<IAppState> = combineReducers(reducers);
 export function AppReducer(state: any, action: any) {
   if (String('<%= BUILD_TYPE %>') === 'dev') {
     return developmentReducer(state, action);
-  }
-  else {
+  } else {
     return productionReducer(state, action);
   }
 }

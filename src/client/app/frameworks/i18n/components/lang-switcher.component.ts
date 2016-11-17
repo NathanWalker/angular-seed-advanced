@@ -1,9 +1,8 @@
 // libs
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
 
 // app
-import { IAppState, BaseComponent, Config, LogService, ILang, getLang } from '../../core/index';
+import { IAppState, BaseComponent, Config, LogService, ILang } from '../../core/index';
 import { ElectronEventService } from '../../electron/index';
 import * as multilingual from '../index';
 

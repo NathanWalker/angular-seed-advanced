@@ -14,12 +14,6 @@ import * as multilingual from '../actions/multilingual.action';
 @Injectable()
 export class MultilingualEffects {
 
-  constructor(
-    private store: Store<any>,
-    private actions$: Actions,
-    private multilangService: MultilingualService
-  ) { }
-
   @Effect() change$: Observable<Action> = this.actions$
     .ofType(multilingual.ActionTypes.CHANGE)
     .map(action => {
@@ -35,4 +29,10 @@ export class MultilingualEffects {
         return new multilingual.LangUnsupportedAction(lang);
       }
     });
+
+  constructor(
+    private store: Store<any>,
+    private actions$: Actions,
+    private multilangService: MultilingualService
+  ) { }
 }

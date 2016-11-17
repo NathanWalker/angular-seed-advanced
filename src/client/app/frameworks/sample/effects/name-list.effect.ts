@@ -13,12 +13,6 @@ import * as nameList from '../actions/name-list.action';
 @Injectable()
 export class NameListEffects {
 
-  constructor(
-    private store: Store<any>,
-    private actions$: Actions,
-    private nameListService: NameListService
-  ) { }
-
   @Effect() init$: Observable<Action> = this.actions$
     .ofType(nameList.ActionTypes.INIT)
     .switchMap((action: nameList.InitAction) => {
@@ -39,4 +33,10 @@ export class NameListEffects {
       this.nameListService.track(nameList.ActionTypes.NAME_ADDED, { label: name });
       return new nameList.NameAddedAction(name);
     });
+
+  constructor(
+    private store: Store<any>,
+    private actions$: Actions,
+    private nameListService: NameListService
+  ) { }
 }
