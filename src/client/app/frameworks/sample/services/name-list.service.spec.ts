@@ -13,14 +13,14 @@ import { EffectsTestingModule, EffectsRunner } from '@ngrx/effects/testing';
 import { t } from '../../test/index';
 // import {TEST_CORE_PROVIDERS, GET_HTTP_PROVIDERS_INJECTOR, TEST_LOCATION_PROVIDERS} from '../../core/testing/index';
 import { AnalyticsModule } from '../../analytics/analytics.module';
-import { NameListService, nameListReducer, NameListEffects, NAME_LIST_ACTIONS } from './name-list.service';
+import { NameListService, NameListEffects, reducer, InitAction, InitializedAction, AddAction, NameAddedAction } from '../index';
 
 // test module configuration for each test
 const testModuleConfig = () => {
   TestBed.configureTestingModule({
     imports: [
       FormsModule, AnalyticsModule,
-      StoreModule.provideStore({ names: nameListReducer }),
+      StoreModule.provideStore({ sample: reducer }),
       EffectsTestingModule,
       HttpModule, RouterTestingModule
     ],
@@ -60,10 +60,10 @@ export function main() {
     });
 
     t.it('should initialize', () => {
-      runner.queue({ type: NAME_LIST_ACTIONS.INIT });
+      runner.queue(new InitAction());
 
       nameListEffects.init$.subscribe(result => {
-        t.e(result).toEqual({ type: NAME_LIST_ACTIONS.INITIALIZED, payload: [ 'Dijkstra', 'Hopper' ] });
+        t.e(result).toEqual(new InitializedAction([ 'Dijkstra', 'Hopper' ]));
       });
 
       // mock response after the xhr request (which happens in constructor), otherwise it will be undefined
@@ -71,10 +71,10 @@ export function main() {
     });
 
     t.it('add action', () => {
-      runner.queue({ type: NAME_LIST_ACTIONS.ADD, payload: 'Minko' });
+      runner.queue(new AddAction('Minko'));
 
       nameListEffects.add$.subscribe(result => {
-        t.e(result).toEqual({ type: NAME_LIST_ACTIONS.NAME_ADDED, payload: 'Minko' });
+        t.e(result).toEqual(new NameAddedAction('Minko'));
       });
     });
   });
