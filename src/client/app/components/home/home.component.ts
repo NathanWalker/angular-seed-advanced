@@ -3,7 +3,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 // app
-import { IAppState, BaseComponent, RouterExtensions, getNames } from '../../frameworks/core/index';
+import { BaseComponent, RouterExtensions } from '../../frameworks/core/index';
+import { IAppState, getNames } from '../../frameworks/ngrx/index';
 import * as nameList from '../../frameworks/sample/index';
 
 @BaseComponent({

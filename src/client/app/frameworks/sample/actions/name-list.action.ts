@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { type } from '../../core/utils/type';
-import { Category } from '../../core/common/category.common';
+import { CATEGORY } from '../common/category.common';
 
 /**
  * For each action type in an action group, make a simple
@@ -19,11 +19,11 @@ export interface INameListActions {
 }
 
 export const ActionTypes: INameListActions = {
-  INIT:        type(`[${Category.NAMELIST}] Init`),
-  INITIALIZED: type(`[${Category.NAMELIST}] Initialized`),
-  INIT_FAILED: type(`[${Category.NAMELIST}] Init Failed`),
-  ADD:         type(`[${Category.NAMELIST}] Add`),
-  NAME_ADDED:  type(`[${Category.NAMELIST}] Name Added`)
+  INIT:        type(`[${CATEGORY}] Init`),
+  INITIALIZED: type(`[${CATEGORY}] Initialized`),
+  INIT_FAILED: type(`[${CATEGORY}] Init Failed`),
+  ADD:         type(`[${CATEGORY}] Add`),
+  NAME_ADDED:  type(`[${CATEGORY}] Name Added`)
 };
 
 /**

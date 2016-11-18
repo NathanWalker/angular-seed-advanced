@@ -2,7 +2,8 @@
 import { Store } from '@ngrx/store';
 
 // app
-import { IAppState, BaseComponent, Config, LogService, ILang } from '../../core/index';
+import { BaseComponent, Config, LogService, ILang } from '../../core/index';
+import { IAppState } from '../../ngrx/index';
 import { ElectronEventService } from '../../electron/index';
 import * as multilingual from '../index';
 

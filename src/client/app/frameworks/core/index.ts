@@ -19,9 +19,3 @@ export * from './services/router-extensions';
 
 // directives
 export * from './directives/platform.directive';
-
-// common
-export * from './common/category.common';
-
-// state
-export * from './state/app.state';

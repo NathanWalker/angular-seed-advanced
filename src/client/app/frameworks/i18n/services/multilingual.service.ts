@@ -8,12 +8,11 @@ import { TranslateService } from 'ng2-translate';
 // app
 import { Analytics, AnalyticsService } from '../../analytics/index';
 import { WindowService, ILang } from '../../core/index';
-import { Category } from '../../core/common/category.common';
+import { CATEGORY } from '../common/category.common';
 
 // module
 import { IMultilingualState } from '../state/multilingual.state';
 import { ChangeAction } from '../actions/multilingual.action';
-
 
 // service
 @Injectable()
@@ -32,7 +31,7 @@ export class MultilingualService extends Analytics {
     private store: Store<IMultilingualState>
   ) {
     super(analytics);
-    this.category = Category.MULTILINGUAL;
+    this.category = CATEGORY;
 
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('en');

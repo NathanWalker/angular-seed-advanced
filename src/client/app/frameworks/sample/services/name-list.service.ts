@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 // app
 import { Config } from '../../core/index';
 import { Analytics, AnalyticsService } from '../../analytics/index';
-import { Category } from '../../core/common/category.common';
+import { CATEGORY } from '../common/category.common';
 
 // module
 import { ISampleState } from '../state/name-list.state';
@@ -24,7 +24,7 @@ export class NameListService extends Analytics {
     private http: Http
   ) {
     super(analytics);
-    this.category = Category.NAMELIST;
+    this.category = CATEGORY;
 
     this.store.dispatch(new nameList.InitAction());
   }

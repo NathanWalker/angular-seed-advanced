@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { type } from '../../core/utils/type';
-import { Category } from '../../core/common/category.common';
+import { CATEGORY } from '../common/category.common';
 
 /**
  * For each action type in an action group, make a simple
@@ -17,9 +17,9 @@ export interface IMultilingualActions {
 }
 
 export const ActionTypes: IMultilingualActions = {
-  CHANGE:           type(`[${Category.MULTILINGUAL}] Change`),
-  LANG_CHANGED:     type(`[${Category.MULTILINGUAL}] Lang Changed`),
-  LANG_UNSUPPORTED: type(`[${Category.MULTILINGUAL}] Lang Unsupported`)
+  CHANGE:           type(`[${CATEGORY}] Change`),
+  LANG_CHANGED:     type(`[${CATEGORY}] Lang Changed`),
+  LANG_UNSUPPORTED: type(`[${CATEGORY}] Lang Unsupported`)
 };
 
 /**

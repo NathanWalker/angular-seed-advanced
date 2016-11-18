@@ -5,9 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-// libs
-import { StoreModule } from '@ngrx/store';
-
 // app
 import { ToolbarComponent } from './components/toolbar.component';
 import { NavbarComponent } from './components/navbar.component';
@@ -25,7 +22,6 @@ import { MultilingualModule } from '../i18n/multilingual.module';
     HttpModule,
     RouterModule,
     MultilingualModule,
-    StoreModule
   ],
   declarations: [
     ToolbarComponent,

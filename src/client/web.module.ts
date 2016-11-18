@@ -19,7 +19,7 @@ import { routes } from './app/components/app.routes';
 
 // feature modules
 import { CoreModule } from './app/frameworks/core/core.module';
-import { AppReducer } from './app/frameworks/core/index';
+import { AppReducer } from './app/frameworks/ngrx/index';
 import { AnalyticsModule } from './app/frameworks/analytics/analytics.module';
 import { MultilingualModule, translateFactory } from './app/frameworks/i18n/multilingual.module';
 import { MultilingualEffects } from './app/frameworks/i18n/index';
