@@ -38,6 +38,7 @@ ts-node
 #IDE configuration files
 .idea
 *.iml
+.vscode/angulardoc.json
 
 dist
 dev
@@ -50,7 +51,6 @@ src/**/*.js
 src/**/*.js.map
 !src/sw.js
 !src/client/app/frameworks/test
-nativescript/app/css
 nativescript/hooks
 nativescript/node_modules
 nativescript/platforms
