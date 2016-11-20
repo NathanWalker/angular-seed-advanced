@@ -1,9 +1,5 @@
-import { IMultilingualState } from '../state/multilingual.state';
+import { IMultilingualState, initialState } from '../state/multilingual.state';
 import { Actions, ActionTypes } from '../actions/multilingual.action';
-
-const initialState: IMultilingualState = {
-  lang: 'en'
-};
 
 export function reducer(
     state: IMultilingualState = initialState,

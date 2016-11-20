@@ -1,1 +1,1 @@
-export const CATEGORY: string = 'NameList';
+export const CATEGORY: string = 'Sample';

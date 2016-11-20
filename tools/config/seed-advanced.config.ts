@@ -18,15 +18,15 @@ export class SeedAdvancedConfig extends SeedConfig {
       }
     }
     let bootstrap = 'main.web';
-    if (this.ENABLE_HOT_LOADING) {
-      bootstrap   = 'hot_loader_main';
-    } else if (this.TARGET_MOBILE_HYBRID) {
-      bootstrap   = 'main.mobile.hybrid'; // Cordova
+    if (this.TARGET_MOBILE_HYBRID) {
+      // Perhaps Ionic or Cordova
+      // This is not implemented in the seed but here to show you way forward if you wanted to add
+      bootstrap   = 'main.mobile.hybrid';
     }
 
     // Override seed defaults
     this.BOOTSTRAP_DIR = argv['app'] ? (argv['app'] + '/') : '';
-    this.BOOTSTRAP_MODULE = `${this.BOOTSTRAP_DIR}` + (this.ENABLE_HOT_LOADING ? 'hot_loader_main' : bootstrap);
+    this.BOOTSTRAP_MODULE = `${this.BOOTSTRAP_DIR}${bootstrap}`;
     this.NG_FACTORY_FILE = `${bootstrap}.prod`;
     this.BOOTSTRAP_PROD_MODULE = `${this.BOOTSTRAP_DIR}${bootstrap}`;
     this.BOOTSTRAP_FACTORY_PROD_MODULE = `${this.BOOTSTRAP_DIR}${bootstrap}.prod`;

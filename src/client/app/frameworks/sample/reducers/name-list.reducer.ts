@@ -1,9 +1,5 @@
-import { ISampleState } from '../state/name-list.state';
+import { ISampleState, initialState } from '../state/name-list.state';
 import * as nameList from '../actions/name-list.action';
-
-const initialState: ISampleState = {
-  names: <Array<string>>[]
-};
 
 export function reducer(
     state: ISampleState = initialState,
