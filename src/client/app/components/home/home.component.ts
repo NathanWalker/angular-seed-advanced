@@ -1,16 +1,16 @@
 // libs
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 // app
-import { BaseComponent, RouterExtensions } from '../../frameworks/core/index';
+import { RouterExtensions } from '../../frameworks/core/index';
 import { NAME_LIST_ACTIONS } from '../../frameworks/sample/index';
 
-@BaseComponent({
-  moduleId: module.id,
+@Component({
   selector: 'sd-home',
-  templateUrl: 'home.component.html',
-  styleUrls: ['home.component.css']
+  templateUrl: './app/components/home/home.component.html',
+  styleUrls: ['./app/components/home/home.component.css']
 })
 export class HomeComponent {
   public names$: Observable<any>;

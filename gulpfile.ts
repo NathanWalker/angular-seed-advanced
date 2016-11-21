@@ -91,6 +91,22 @@ gulp.task('test.watch', (done: any) =>
               'karma.watch',
               done));
 
+// --------------
+// Build test watch.
+gulp.task('build.tns', (done: any) =>
+  runSequence(//'clean.tns',
+//              'tslint',
+              'build.assets.tns',
+              'build.tns_html_css',
+              'build.js.tns',
+              done));
+
+// --------------
+// Build dev watch.
+gulp.task('build.tns.watch', (done: any) =>
+  runSequence('build.tns',
+              'watch.tns',
+              done));
 
 // --------------
 // Docs

@@ -1,16 +1,16 @@
 // libs
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 // app
-import { BaseComponent, Config, LogService, ILang } from '../../core/index';
+import { Config, LogService, ILang } from '../../core/index';
 import { ElectronEventService } from '../../electron/index';
 import { MULTILINGUAL_ACTIONS, MultilingualService } from '../index';
 
-@BaseComponent({
-  moduleId: module.id,
+@Component({
   selector: 'lang-switcher',
-  templateUrl: 'lang-switcher.component.html',
-  styleUrls: ['lang-switcher.component.css']
+  templateUrl: './app/frameworks/i18n/components/lang-switcher.component.html',
+  styleUrls: ['./app/frameworks/i18n/components/lang-switcher.component.css']
 })
 export class LangSwitcherComponent {
   public lang: string;

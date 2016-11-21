@@ -11,7 +11,7 @@ var path = require('path');
 
 var webAppPath = '../src/client/app';
 var webAssetsPath = '../src/client/assets';
-var nativescriptAppPath = '../nativescript/app/app/';
+var nativescriptAppPath = '../nativescript/src/app/';
 var nativescriptAssetsPath = '../nativescript/app/assets/';
 
 // Root SymLink Code for Windows

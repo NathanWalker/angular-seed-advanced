@@ -2,9 +2,20 @@ import { argv } from 'yargs';
 import { SeedConfig } from './seed.config';
 
 export class SeedAdvancedConfig extends SeedConfig {
+  /**
+   * The base folder of the nativescript applications source files.
+   * @type {string}
+   */
+  TNS_BASE_DIR = 'nativescript';
+
+  TNS_APP_SRC = `${this.TNS_BASE_DIR}/src`;
+
+  TNS_APP_DEST = `${this.TNS_BASE_DIR}/app`;
 
   constructor() {
     super();
+    this.ENABLE_SCSS = true;
+
     let arg: string;
     if (argv && argv._) {
       arg = argv._[0];

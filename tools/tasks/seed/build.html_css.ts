@@ -97,6 +97,7 @@ function getSCSSFiles(cacheName:string, filesToCompile:string[], filesToExclude:
 function processComponentCss() {
   return gulp.src([
     join(Config.APP_SRC, '**', '*.css'),
+    '!' + join(Config.APP_SRC, '**', '*.tns.css'),
     '!' + join(Config.APP_SRC, 'assets', '**', '*.css')
   ])
     .pipe(isProd ? plugins.cached('process-component-css') : plugins.util.noop())

@@ -3,9 +3,6 @@
 export * from './utils/config';
 export * from './utils/view-broker';
 
-// decorators
-export * from './decorators/base.component';
-
 // interfaces
 export * from './interfaces/iconsole';
 export * from './interfaces/iwindow';
