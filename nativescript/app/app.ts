@@ -1,5 +1,5 @@
 // nativescript
-import { NativeScriptModule, platformNativeScriptDynamic, onAfterLivesync, onBeforeLivesync } from 'nativescript-angular/platform';
+import { NativeScriptModule, platformNativeScriptDynamic } from 'nativescript-angular/platform';
 
 /**
  * Config
