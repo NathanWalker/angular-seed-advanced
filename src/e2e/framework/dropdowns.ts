@@ -1,5 +1,3 @@
-declare var browser: any, element: any, by: any;
-
 /**
 * Usage: selectDropdownByNumber ( selector, index)
 * selector : select element
@@ -21,12 +19,9 @@ export function selectDropdownByNumber(selector: string, index: number, millisec
 * selector : select element
 * item : option(s) in the dropdown.
 */
-export function selectDropdownByValue(selector: string, item: string, milliseconds: number) {
+export async function selectDropdownByValue(selector: string, item: string) {
   // var desiredOption: any;
-  element(by.css(selector)).sendKeys(item);
-  if (typeof milliseconds !== 'undefined') {
-    browser.sleep(milliseconds);
-  }
+  return await element(by.css(selector)).sendKeys(item);
 }
 
 /**

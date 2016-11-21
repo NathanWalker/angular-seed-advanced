@@ -1,15 +1,14 @@
-import { t, selectDropdownByValue } from '../../frameworks/test/index';
-
-declare var browser: any, element: any, by: any;
+import { t, selectDropdownByValue } from '../index';
 
 t.describe('Home', function() {
 
-  t.be(function() {
-    browser.get('/');
+  t.be(async function() {
+    return await browser.get('/');
   });
 
-  t.it('should have correct h2', function() {
-      t.e(element(by.css('sd-app sd-home h2')).getText()).toEqual('I love technology!');
+  t.it('should have correct h2', async function() {
+    var text = await element(by.css('sd-app sd-home h2')).getText();
+    t.e(text).toEqual('I love technology!');
   });
 
   t.it('should have an input', function() {
@@ -30,9 +29,9 @@ t.describe('Home', function() {
 
   // this works in development, but travis ci has timing issue with it
   // disabled just so travis doesn't complain
-  t.xit('language switcher should change language', function() {
-    t.e(element(by.css('sd-app sd-home h2')).getText()).toEqual('I love technology!');
-    selectDropdownByValue('sd-app sd-toolbar lang-switcher select', 'fr', 500);
+  t.it('language switcher should change language', async function() {
+    await selectDropdownByValue('sd-app sd-toolbar lang-switcher select', 'fr');
+
     t.e(element(by.css('sd-app sd-home h2')).getText()).toEqual(`J'adore la technologie !`);
     t.e(element(by.css('sd-app sd-home')).all(by.tagName('p')).first().getText())
       .toEqual(`En récompense, voici une liste de géniaux informaticiens :`);
