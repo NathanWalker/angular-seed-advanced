@@ -13,17 +13,14 @@ const plugins = <any>gulpLoadPlugins();
 const reportPostCssError = (e: any) => util.log(util.colors.red(e.message));
 
 function renamer() {
-  const platformRegexp = /(\.ios|android)/;
+  const platformRegexp = /(\.ios|\.android)/;
   return rename((path: any) => {
     path.basename = path.basename.replace(/\.tns/, '');
     const match = path.basename.match(platformRegexp);
     if (match) {
-      console.log(path, match);
-
       const oldExt = path.extname;
       path.extname = match[1];
       path.basename = path.basename.replace(platformRegexp, oldExt);
-      console.log(path, match);
     }
   });
 }
@@ -55,7 +52,6 @@ function processComponentCss() {
   return gulp.src([
     '**/*.css',
     'app/**/*.css',
-    '!**/*.component.css',
     '!app/**/*.component.css',
   ], {
     base: Config.TNS_APP_SRC,
@@ -74,14 +70,13 @@ function processComponentScss() {
   let stream = gulp.src([
     '**/*.scss',
     'app/**/*.scss',
-    '!**/*.component.scss',
     '!app/**/*.component.scss',
   ], {
     base: Config.TNS_APP_SRC,
     cwd: Config.TNS_APP_SRC,
   })
     .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.sass(Config.getPluginConfig('gulp-sass')).on('error', plugins.sass.logError))
+    .pipe(plugins.sass(Config.getPluginConfig('gulp-sass-tns')).on('error', plugins.sass.logError))
     .pipe(plugins.sourcemaps.write('', {
       sourceMappingURL: (file: any) => {
         // write absolute urls to the map files

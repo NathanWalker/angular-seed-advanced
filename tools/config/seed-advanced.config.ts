@@ -1,5 +1,6 @@
 import { argv } from 'yargs';
 import { SeedConfig } from './seed.config';
+import * as path from 'path';
 
 export class SeedAdvancedConfig extends SeedConfig {
   /**
@@ -8,9 +9,12 @@ export class SeedAdvancedConfig extends SeedConfig {
    */
   TNS_BASE_DIR = 'nativescript';
 
-  TNS_APP_SRC = `${this.TNS_BASE_DIR}/src`;
+  private srcSubdir = 'src';
+  private destSubdir = 'app';
 
-  TNS_APP_DEST = `${this.TNS_BASE_DIR}/app`;
+  TNS_APP_SRC = `${this.TNS_BASE_DIR}/${this.srcSubdir}`;
+
+  TNS_APP_DEST = `${this.TNS_BASE_DIR}/${this.destSubdir}`;
 
   constructor() {
     super();
@@ -122,5 +126,14 @@ export class SeedAdvancedConfig extends SeedConfig {
     this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/core'] = `node_modules/@ngrx/core/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/store'] = `node_modules/@ngrx/store/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/effects'] = `node_modules/@ngrx/effects/index.js`;
+
+    // Settings for building sass for tns modules
+    this.PLUGIN_CONFIGS['gulp-sass-tns'] = {
+      includePaths: [
+        this.srcSubdir,
+        './node_modules/',
+        './node_modules/nativescript-theme-core/scss/'
+      ].map((dir) => path.resolve(this.TNS_BASE_DIR, dir)),
+    };
   }
 }

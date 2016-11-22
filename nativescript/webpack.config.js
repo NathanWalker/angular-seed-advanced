@@ -49,5 +49,3 @@ module.exports = bundler.getConfig({
     ]),
   ],
 });
-
-console.log(module.exports);
