@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 // app
 import { BaseComponent, Config, LogService, ILang } from '../../core/index';
 import { ElectronEventService } from '../../electron/index';
-import { MULTILINGUAL_ACTIONS, MultilingualService } from '../index';
+import * as multilingual from '../index';
 
 @BaseComponent({
   moduleId: module.id,
@@ -14,7 +14,7 @@ import { MULTILINGUAL_ACTIONS, MultilingualService } from '../index';
 })
 export class LangSwitcherComponent {
   public lang: string;
-  public supportedLanguages: Array<ILang> = MultilingualService.SUPPORTED_LANGUAGES;
+  public supportedLanguages: Array<ILang> = multilingual.MultilingualService.SUPPORTED_LANGUAGES;
 
   constructor(private log: LogService, private store: Store<any>) {
     store.take(1).subscribe((s: any) => {
@@ -40,6 +40,6 @@ export class LangSwitcherComponent {
       lang = e.target.value;
     }
     this.log.debug(`Language change: ${lang}`);
-    this.store.dispatch({ type: MULTILINGUAL_ACTIONS.CHANGE, payload: lang });
+    this.store.dispatch(new multilingual.ChangeAction(lang));
   }
 }
