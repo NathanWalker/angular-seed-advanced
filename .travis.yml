@@ -3,6 +3,8 @@ node_js: stable
 
 sudo: false
 
+install: true # yarn bug
+
 addons:
   firefox: "39.0"
 
