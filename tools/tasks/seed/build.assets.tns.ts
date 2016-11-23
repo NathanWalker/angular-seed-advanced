@@ -24,16 +24,30 @@ function copyAssets() {
 
 function copyAppResources() {
   const paths: string[] = [
-    join(Config.TNS_APP_SRC, 'App_Resources', '**')
+    join(Config.TNS_APP_SRC, 'App_Resources', '**'),
   ];
 
   return copyFiles(paths, 'App_Resources');
 }
 
+function copyAppFonts() {
+  const paths: string[] = [
+    join(Config.TNS_APP_SRC, 'fonts', '**', '*.otf'),
+    join(Config.TNS_APP_SRC, 'fonts', '**', '*.ttf'),
+  ];
+
+  return copyFiles(paths, 'fonts');
+}
+
 export =
   class BuildTNSAssetsTask extends AssetsTask {
     run() {
-      return merge(copyAssets(), copyAppResources(), copyFiles([join(Config.TNS_APP_SRC, 'package.json')], ''));
+      return merge(
+        copyAssets(),
+        copyAppResources(),
+        copyAppFonts(),
+        copyFiles([join(Config.TNS_APP_SRC, 'package.json')], ''),
+      );
     }
   };
 

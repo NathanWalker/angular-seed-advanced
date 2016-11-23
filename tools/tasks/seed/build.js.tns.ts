@@ -6,7 +6,7 @@ import { join/*, sep, relative*/ } from 'path';
 
 import Config from '../../config';
 import * as ts from 'gulp-typescript';
-import { templateLocals } from '../../utils';
+import { makeTsProject, templateLocals } from '../../utils';
 import { TypeScriptTask } from '../typescript_task';
 
 const plugins = <any>gulpLoadPlugins();
@@ -30,7 +30,7 @@ export =
         `!**/${Config.NG_FACTORY_FILE}.ts`,
       ];
 
-      const tsProject = ts.createProject(`${Config.TNS_APP_SRC}/tsconfig.json`);
+      const tsProject = makeTsProject({}, Config.TNS_APP_SRC);
 
       const projectFiles = gulp.src(src, {
         base: Config.TNS_APP_SRC,

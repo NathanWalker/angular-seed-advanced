@@ -11,17 +11,11 @@ const taskname = 'build.tns';
 
 export = function watch() {
   const paths: string[] = [
-    `${Config.TNS_APP_SRC}/**/*.tns.*`,
-    `${Config.TNS_APP_SRC}/app/**/*.tns.*`,
-    `${Config.TNS_APP_SRC}/**/*.ts`,
-    `${Config.TNS_APP_SRC}/app/**/*.ts`,
-    `${Config.TNS_APP_SRC}/**/*.css`,
-    `${Config.TNS_APP_SRC}/app/**/*.css`,
-    `${Config.TNS_APP_SRC}/**/*.scss`,
-    `${Config.TNS_APP_SRC}/app/**/*.scss`,
-    `!${Config.TNS_APP_SRC}/**/*.component.css`,
-    `!${Config.TNS_APP_SRC}/**/*.component.scss`,
-    `!${Config.TNS_APP_SRC}/**/*.component.html`,
+    `${Config.TNS_APP_SRC}/**/*`,
+    `${Config.TNS_APP_SRC}/app/*`,
+    `!${Config.TNS_APP_SRC}/app/*.component.css`,
+    `!${Config.TNS_APP_SRC}/app/*.component.scss`,
+    `!${Config.TNS_APP_SRC}/app/*.component.html`,
   ];
 
   plugins.watch(paths, (e: any) => {
