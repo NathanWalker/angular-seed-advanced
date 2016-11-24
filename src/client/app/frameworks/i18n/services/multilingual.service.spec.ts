@@ -8,7 +8,7 @@ import { CoreModule } from '../../core/core.module';
 import { ILang, WindowService, ConsoleService } from '../../core/index';
 import { TEST_CORE_PROVIDERS, WindowMockFrench } from '../../core/testing/index';
 import { TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET } from '../testing/index';
-import { MultilingualService, IMultilingualState, multilingualReducer, MULTILINGUAL_ACTIONS, MultilingualEffects } from '../index';
+import { IMultilingualState, MultilingualService, MultilingualEffects, reducer, ChangeAction } from '../index';
 
 // test module configuration for each test
 const testModuleConfig = (options?: any) => {
@@ -18,7 +18,7 @@ const testModuleConfig = (options?: any) => {
         { provide: WindowService, useValue: window },
         { provide: ConsoleService, useValue: console }
       ]),
-      StoreModule.provideStore({ i18n: multilingualReducer }),
+      StoreModule.provideStore({ i18n: reducer }),
       EffectsModule.run(MultilingualEffects),
       RouterTestingModule
     ],
@@ -43,7 +43,7 @@ export function main() {
       });
 
       t.it('changeLang - should not switch unless supported', t.inject([MultilingualService, Store], (multilang: MultilingualService, store: Store<any>) => {
-        store.dispatch({ type: MULTILINGUAL_ACTIONS.CHANGE, payload: 'fr' });
+        store.dispatch(new ChangeAction('fr'));
         // only 'en' supported by default so changing to 'fr' should not change state
         store.select('i18n').subscribe((i18n: IMultilingualState) => {
           t.e(i18n.lang).toBe('en');

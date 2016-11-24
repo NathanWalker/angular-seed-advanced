@@ -71,6 +71,7 @@
   "devDependencies": {
     "@angular/compiler-cli": "~2.2.0",
     "@angular/platform-server": "~2.2.0",
+    "@ngrx/store-devtools": "^3.1.0",
     "@types/async": "^2.0.32",
     "@types/browser-sync": "^0.0.34",
     "@types/core-js": "^0.9.34",
@@ -140,6 +141,7 @@
     "karma-mocha-reporter": "^2.2.0",
     "karma-remap-istanbul": "^0.2.1",
     "merge-stream": "^1.0.0",
+    "ngrx-store-freeze": "^0.1.0",
     "open": "0.0.5",
     "protractor": "^4.0.9",
     "remap-istanbul": "^0.7.0",
