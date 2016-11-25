@@ -106,7 +106,12 @@ export =
   class BuildTNSCSS extends CssTask {
     shallRun(files: String[]) {
       // Only run if tns-resources
-      return files.some((f) => !!f.match(/\.tns\.(s?css|html)$/) || f.indexOf('nativescript/src/shared') !== -1);
+      return files.some((f) =>
+                          // tns.html, tns.scss or tns.css under nativescript/src/app
+                          (f.indexOf('nativescript/src/app') !== -1 && !!f.match(/\.tns\.(s?css|html)$/)) ||
+                          // .html, .scss or .css NOT under nativescript/src/app
+                          (f.indexOf('nativescript/src/app') === -1 && !!f.match(/\.(s?css|html)$/))
+                       );
     }
 
     run() {
