@@ -16,6 +16,10 @@ export class SeedAdvancedConfig extends SeedConfig {
 
   TNS_APP_DEST = `${this.TNS_BASE_DIR}/${this.destSubdir}`;
 
+  TNS_CONFIG = {
+    ANALYTICS_TRACKING_ID: '',
+  };
+
   constructor() {
     super();
     this.ENABLE_SCSS = true;
@@ -37,6 +41,10 @@ export class SeedAdvancedConfig extends SeedConfig {
       // Perhaps Ionic or Cordova
       // This is not implemented in the seed but here to show you way forward if you wanted to add
       bootstrap   = 'main.mobile.hybrid';
+    }
+
+    if (argv['analytics']) {
+      this.TNS_CONFIG.ANALYTICS_TRACKING_ID = argv['analytics'];
     }
 
     // Override seed defaults

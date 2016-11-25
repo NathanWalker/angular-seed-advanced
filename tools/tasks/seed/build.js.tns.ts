@@ -11,7 +11,7 @@ import { TypeScriptTask } from '../typescript_task';
 
 const plugins = <any>gulpLoadPlugins();
 
-const jsonSystemConfig = JSON.stringify(Config.SYSTEM_CONFIG_DEV);
+const jsonSystemConfig = JSON.stringify(Config.TNS_CONFIG);
 
 /**
  * Executes the build process, transpiling the TypeScript files (except the spec and e2e-spec files) for the development
@@ -41,6 +41,12 @@ export =
         .pipe(plugins.sourcemaps.init())
         .pipe(tsProject());
 
+      const template = (<any>Object).assign(
+        templateLocals(), {
+          SYSTEM_CONFIG_TNS: jsonSystemConfig
+        },
+      );
+
       return result.js
         .pipe(plugins.sourcemaps.write())
         // Use for debugging with Webstorm/IntelliJ
@@ -50,11 +56,7 @@ export =
         //      sourceRoot: (file: any) =>
         //        relative(file.path, PROJECT_ROOT + '/' + APP_SRC).replace(sep, '/') + '/' + APP_SRC
         //    }))
-        .pipe(plugins.template((<any>Object).assign(
-          templateLocals(), {
-            SYSTEM_CONFIG_DEV: jsonSystemConfig
-          }
-        )))
+        .pipe(plugins.template(template))
         .pipe(gulp.dest(Config.TNS_APP_DEST));
     }
   };

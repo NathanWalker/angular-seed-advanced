@@ -17,6 +17,7 @@ function copyFiles(paths: string[], subdir: string) {
 function copyAssets() {
   const paths: string[] = [
     join(Config.APP_SRC, 'assets', '**'),
+    '!' + join(Config.APP_SRC, 'assets', 'icons', '**', '*'),
   ].concat(Config.TEMP_FILES.map((p) => { return '!' + p; }));
 
   return copyFiles(paths, 'assets');

@@ -336,6 +336,13 @@ export class SeedConfig {
   TEMP_FILES: string[] = [
     '**/*___jb_tmp___',
     '**/*~',
+
+    // tns-files are ignored aswell
+    '**/*.tns.scss',
+    '**/*.tns.css',
+    '**/*.tns.html',
+    'src/**/*.js',
+    'src/**/*.js.map',
   ];
 
   /**

@@ -3,7 +3,6 @@ import * as gulpLoadPlugins from 'gulp-load-plugins';
 import * as merge from 'merge-stream';
 import * as util from 'gulp-util';
 import * as rename from 'gulp-rename';
-import * as newer from 'gulp-newer';
 import { join } from 'path';
 
 import Config from '../../config';
@@ -13,15 +12,8 @@ const plugins = <any>gulpLoadPlugins();
 const reportPostCssError = (e: any) => util.log(util.colors.red(e.message));
 
 function renamer() {
-  const platformRegexp = /(\.ios|\.android)/;
   return rename((path: any) => {
     path.basename = path.basename.replace(/\.tns/, '');
-    const match = path.basename.match(platformRegexp);
-    if (match) {
-      const oldExt = path.extname;
-      path.extname = match[1];
-      path.basename = path.basename.replace(platformRegexp, oldExt);
-    }
   });
 }
 
@@ -35,7 +27,6 @@ function prepareTemplates() {
     cwd: Config.TNS_APP_SRC,
   })
     .pipe(renamer())
-    .pipe(newer(Config.TNS_APP_DEST))
     .pipe(gulp.dest(Config.TNS_APP_DEST));
 }
 
@@ -57,17 +48,16 @@ function processComponentCss() {
     base: Config.TNS_APP_SRC,
     cwd: Config.TNS_APP_SRC,
   })
-  .pipe(renamer())
-  .on('error', reportPostCssError)
-  .pipe(newer(Config.TNS_APP_DEST))
-  .pipe(gulp.dest(Config.TNS_APP_DEST));
+    .pipe(renamer())
+    .on('error', reportPostCssError)
+    .pipe(gulp.dest(Config.TNS_APP_DEST));
 }
 
 /**
  * Process scss files referenced from Angular component `styleUrls` metadata
  */
 function processComponentScss() {
-  let stream = gulp.src([
+  const stream = gulp.src([
     '**/*.scss',
     'app/**/*.scss',
     '!app/**/*.component.scss',
@@ -77,23 +67,50 @@ function processComponentScss() {
   })
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass(Config.getPluginConfig('gulp-sass-tns')).on('error', plugins.sass.logError))
-    .pipe(plugins.sourcemaps.write('', {
-      sourceMappingURL: (file: any) => {
-        // write absolute urls to the map files
-        return `${Config.TNS_APP_DEST}/${file.relative}.map`;
-      }
-    }));
+    .pipe(plugins.sourcemaps.write());
 
   return stream
     .pipe(renamer())
-    .pipe(newer(Config.TNS_APP_DEST))
     .pipe(gulp.dest(Config.TNS_APP_DEST));
+}
+
+function handlePlatformSpecificFiles() {
+  // Make a copy of platform specific files were ext is swapped with platform-name
+  // This is to support both our webpack --bundle and livesync builds
+  const platformRegexp = /(\.ios|\.android)/;
+
+  return gulp.src([
+    '**/*.ios.css',
+    '**/*.ios.html',
+    '**/*.ios.js',
+
+    '**/*.android.css',
+    '**/*.android.html',
+    '**/*.android.js',
+  ], {
+    base: Config.TNS_APP_DEST,
+    cwd: Config.TNS_APP_DEST,
+  })
+    .pipe(rename((path) => {
+      const match = path.basename.match(platformRegexp);
+      if (match) {
+        const oldExt = path.extname;
+        path.extname = match[1];
+        path.basename = path.basename.replace(platformRegexp, oldExt);
+      }
+    }))
+    .pipe(gulp.dest((Config.TNS_APP_DEST)));
 }
 
 export =
   class BuildTNSCSS extends CssTask {
+    shallRun(files: String[]) {
+      // Only run if tns-resources
+      return files.some((f) => !!f.match(/\.tns\.(s?css|html)$/) || f.indexOf('nativescript/src/shared') !== -1);
+    }
+
     run() {
-      return merge(processComponentStylesheets(), prepareTemplates());
+      return merge(processComponentStylesheets(), prepareTemplates()).on('end', () => handlePlatformSpecificFiles());
     }
   };
 

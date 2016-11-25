@@ -21,6 +21,12 @@ module.exports = bundler.getConfig({
         }
       },
       {
+        from: {
+          glob: 'fonts/**/*',
+          dot: true
+        }
+      },
+      {
         from: 'app.css',
       },
       {
@@ -46,6 +52,13 @@ module.exports = bundler.getConfig({
         },
         to: '[path]/[name]'
       },
+      /** Copying assets from node_modules:
+      {
+        from: path.resolve(__dirname,  'node_modules/MODULE_NAME/SUB/PATH/'),
+        to: 'tns_modules/MODULE_NAME/SUB/PATH/',
+        toType: 'dir',
+      },
+       */
     ]),
   ],
 });
