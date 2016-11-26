@@ -100,6 +100,10 @@ export class SeedAdvancedConfig extends SeedConfig {
       main: 'index.js',
       defaultExtension: 'js'
     };
+    this.SYSTEM_BUILDER_CONFIG['packages']['@ngrx/store-devtools'] = {
+      main: 'bundles/store-devtools.umd.js',
+      defaultExtension: 'js'
+    };
     this.SYSTEM_BUILDER_CONFIG['packages']['ng2-translate'] = {
       main: 'bundles/index.js',
       defaultExtension: 'js'
@@ -117,5 +121,7 @@ export class SeedAdvancedConfig extends SeedConfig {
     this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/core'] = `node_modules/@ngrx/core/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/store'] = `node_modules/@ngrx/store/index.js`;
     this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/effects'] = `node_modules/@ngrx/effects/index.js`;
+    this.SYSTEM_BUILDER_CONFIG.paths['ngrx-store-freeze'] = `node_modules/ngrx-store-freeze/dist/index.js`;
+    this.SYSTEM_BUILDER_CONFIG.paths['deep-freeze'] = `node_modules/deep-freeze/index.js`;
   }
 }
