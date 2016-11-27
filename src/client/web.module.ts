@@ -12,9 +12,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateLoader } from 'ng2-translate';
 
 // app
-import { AppComponent } from './app/components/app.component';
-import { HomeComponent } from './app/components/home/home.component';
-import { AboutComponent } from './app/components/about/about.component';
+import { APP_COMPONENTS, AppComponent } from './app/components/index';
 import { routes } from './app/components/app.routes';
 
 // feature modules
@@ -79,9 +77,7 @@ export function cons() {
     EffectsModule.run(NameListEffects)
   ],
   declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutComponent
+    APP_COMPONENTS
   ],
   providers: [
     {

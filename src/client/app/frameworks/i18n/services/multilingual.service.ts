@@ -11,8 +11,8 @@ import { WindowService, ILang } from '../../core/index';
 import { CATEGORY } from '../common/category.common';
 
 // module
-import { IMultilingualState } from '../state/multilingual.state';
-import { ChangeAction } from '../actions/multilingual.action';
+import { IMultilingualState } from '../states/index';
+import { ChangeAction } from '../actions/index';
 
 // service
 @Injectable()

@@ -6,9 +6,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 // app
-import { ToolbarComponent } from './components/toolbar.component';
-import { NavbarComponent } from './components/navbar.component';
-import { NameListService } from './services/name-list.service';
+import { SAMPLE_COMPONENTS } from './components/index';
+import { SAMPLE_PROVIDERS } from './services/index';
 import { MultilingualModule } from '../i18n/multilingual.module';
 
 /**
@@ -24,15 +23,13 @@ import { MultilingualModule } from '../i18n/multilingual.module';
     MultilingualModule,
   ],
   declarations: [
-    ToolbarComponent,
-    NavbarComponent
+    SAMPLE_COMPONENTS
   ],
   providers: [
-    NameListService
+    SAMPLE_PROVIDERS
   ],
   exports: [
-    ToolbarComponent,
-    NavbarComponent,
+    SAMPLE_COMPONENTS,
     MultilingualModule
   ]
 })

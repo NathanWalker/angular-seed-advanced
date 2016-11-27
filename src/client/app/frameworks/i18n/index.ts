@@ -1,17 +1,17 @@
 // services
-export * from './services/multilingual.service';
+export * from './services/index';
 
 // components
-export * from './components/lang-switcher.component';
+export * from './components/index';
 
 // actions
-export * from './actions/multilingual.action';
+export * from './actions/index';
 
 // effects
-export * from './effects/multilingual.effect';
+export * from './effects/index';
 
 // reducers
-export * from './reducers/multilingual.reducer';
+export * from './reducers/index';
 
 // state
-export * from './state/multilingual.state';
+export * from './states/index';

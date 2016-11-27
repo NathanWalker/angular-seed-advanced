@@ -1,6 +1,7 @@
 import { Injectable, Inject, forwardRef } from '@angular/core';
 
-import { Config, ConsoleService } from '../index';
+import { Config } from '../utils/config';
+import { ConsoleService } from './console.service';
 
 @Injectable()
 export class LogService {
