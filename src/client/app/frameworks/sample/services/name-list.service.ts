@@ -12,8 +12,8 @@ import { Analytics, AnalyticsService } from '../../analytics/index';
 import { CATEGORY } from '../common/category.common';
 
 // module
-import { ISampleState } from '../state/name-list.state';
-import * as nameList from '../actions/name-list.action';
+import { ISampleState } from '../states/index';
+import * as actions from '../actions/name-list.action';
 
 @Injectable()
 export class NameListService extends Analytics {
@@ -26,7 +26,7 @@ export class NameListService extends Analytics {
     super(analytics);
     this.category = CATEGORY;
 
-    this.store.dispatch(new nameList.InitAction());
+    this.store.dispatch(new actions.InitAction());
   }
 
   getNames(): Observable<Array<string>> {
