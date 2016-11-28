@@ -10,6 +10,9 @@ export class ProjectConfig extends SeedAdvancedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
 
+  //The path to the root of your aspnet core MVC application.
+  APP_MVC_DEST : string = `../aspnetcore-angular-seed-advanced/`;
+
   constructor() {
     super();
     // this.APP_TITLE = 'Put name of your app here';
