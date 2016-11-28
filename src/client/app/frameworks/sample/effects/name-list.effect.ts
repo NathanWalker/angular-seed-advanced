@@ -13,11 +13,14 @@ import * as nameList from '../actions/name-list.action';
 @Injectable()
 export class NameListEffects {
 
+  /**
+   * This effect makes use of the `startWith` operator to trigger
+   * the effect immediately on startup.
+   */
   @Effect() init$: Observable<Action> = this.actions$
     .ofType(nameList.ActionTypes.INIT)
-    .switchMap((action: nameList.InitAction) => {
-        return this.nameListService.getNames();
-    })
+    .startWith(new nameList.InitAction)
+    .switchMap(() => this.nameListService.getNames())
     .map(payload => {
       let names = payload;
       return new nameList.InitializedAction(names);
