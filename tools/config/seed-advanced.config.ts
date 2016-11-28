@@ -82,6 +82,10 @@ export class SeedAdvancedConfig extends SeedConfig {
       main: 'bundles/effects.umd.js',
       defaultExtension: 'js'
     };
+    this.SYSTEM_CONFIG['packages']['@ngrx/store-devtools'] = {
+      main: 'bundles/store-devtools.umd.js',
+      defaultExtension: 'js'
+    };
     this.SYSTEM_CONFIG['packages']['ng2-translate'] = {
       main: 'bundles/index.js',
       defaultExtension: 'js'
@@ -98,6 +102,8 @@ export class SeedAdvancedConfig extends SeedConfig {
     // Fix up paths for libs
     this.SYSTEM_CONFIG.paths[this.BOOTSTRAP_MODULE] = `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`;
     this.SYSTEM_CONFIG.paths['lodash'] = `${this.APP_BASE}node_modules/lodash/index`;
+    this.SYSTEM_CONFIG.paths['ngrx-store-freeze'] = `${this.APP_BASE}node_modules/ngrx-store-freeze/dist/index`;
+    this.SYSTEM_CONFIG.paths['deep-freeze'] = `${this.APP_BASE}node_modules/deep-freeze/index`;
 
     // testing support for @ngrx/effects
     this.SYSTEM_CONFIG.paths['@ngrx/effects/testing'] = `node_modules/@ngrx/effects/testing/index`;
@@ -115,6 +121,10 @@ export class SeedAdvancedConfig extends SeedConfig {
     };
     this.SYSTEM_BUILDER_CONFIG['packages']['@ngrx/effects'] = {
       main: 'index.js',
+      defaultExtension: 'js'
+    };
+    this.SYSTEM_BUILDER_CONFIG['packages']['@ngrx/store-devtools'] = {
+      main: 'bundles/store-devtools.umd.js',
       defaultExtension: 'js'
     };
     this.SYSTEM_BUILDER_CONFIG['packages']['ng2-translate'] = {
@@ -143,5 +153,8 @@ export class SeedAdvancedConfig extends SeedConfig {
         './node_modules/nativescript-theme-core/scss/'
       ].map((dir) => path.resolve(this.TNS_BASE_DIR, dir)),
     };
+
+    this.SYSTEM_BUILDER_CONFIG.paths['ngrx-store-freeze'] = `node_modules/ngrx-store-freeze/dist/index.js`;
+    this.SYSTEM_BUILDER_CONFIG.paths['deep-freeze'] = `node_modules/deep-freeze/index.js`;
   }
 }

@@ -6,15 +6,9 @@
     "class-name": true,
     "curly": false,
     "eofline": true,
-    "indent": [
-      "spaces"
-    ],
-    "max-line-length": [
-      true,
-      500
-    ],
-    "member-ordering": [
-      true,
+    "indent": [true, "spaces"],
+    "max-line-length": [true, 500],
+    "member-ordering": [true,
       "public-before-private",
       "static-before-instance",
       "variables-before-functions"

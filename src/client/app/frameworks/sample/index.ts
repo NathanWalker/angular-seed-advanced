@@ -1,7 +1,17 @@
 // components
-export * from './components/navbar.component';
-export * from './components/toolbar.component';
+export * from './components/index';
 
 // services
-export * from './services/app-config';
-export * from './services/name-list.service';
+export * from './services/index';
+
+// actions
+export * from './actions/index';
+
+// effects
+export * from './effects/index';
+
+// reducers
+export * from './reducers/index';
+
+// state
+export * from './states/index';

@@ -10,8 +10,8 @@ import { TranslateModule, TranslateStaticLoader } from 'ng2-translate';
 
 // app
 import { Config } from '../core/index';
-import { LangSwitcherComponent } from './components/lang-switcher.component';
-import { MultilingualService } from './services/multilingual.service';
+import { LangSwitcherComponent } from './components/index';
+import { MultilingualService } from './services/index';
 
 // for AoT compilation
 export function translateFactory(http: Http) {

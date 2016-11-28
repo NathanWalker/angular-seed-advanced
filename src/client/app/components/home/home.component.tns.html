@@ -6,7 +6,7 @@
   <TextField [(ngModel)]="newName" [hint]="'INPUT_HINT' | translate" autocorrect="false" autocapitalizationType="none"></TextField>
   <Button [text]="'ADD_BTN_TEXT' | translate" (tap)="addName()" class="btn btn-primary"></Button>
 
-  <ListView [items]="names$ | async" row="1" colSpan="2" height="300">
+  <ListView [items]="names$ | async" row="1" colSpan="2" height="250">
     <template let-name="item" let-odd="odd" let-even="even">
       <StackLayout [class.odd]="odd" [class.even]="even" class="list-item">
         <Label [text]="name"></Label>
