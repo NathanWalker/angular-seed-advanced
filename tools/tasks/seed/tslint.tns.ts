@@ -6,7 +6,6 @@ ts.version = '2.1.3';
 
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
-import { join } from 'path';
 
 import Config from '../../config';
 

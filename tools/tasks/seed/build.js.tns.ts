@@ -1,11 +1,7 @@
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
-import * as merge from 'merge-stream';
-import * as util from 'gulp-util';
-import { join/*, sep, relative*/ } from 'path';
 
 import Config from '../../config';
-import * as ts from 'gulp-typescript';
 import { makeTsProject, templateLocals } from '../../utils';
 import { TypeScriptTask } from '../typescript_task';
 

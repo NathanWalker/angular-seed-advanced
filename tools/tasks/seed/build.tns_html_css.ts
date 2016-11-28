@@ -3,7 +3,6 @@ import * as gulpLoadPlugins from 'gulp-load-plugins';
 import * as merge from 'merge-stream';
 import * as util from 'gulp-util';
 import * as rename from 'gulp-rename';
-import { join } from 'path';
 
 import Config from '../../config';
 import { CssTask } from '../css_task';

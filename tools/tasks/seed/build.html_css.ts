@@ -42,7 +42,10 @@ const abtractSCSSFiles  = join(Config.SCSS_SRC, '**', '*.scss');
  * Copies all HTML files in `src/client` over to the `dist/tmp` directory.
  */
 function prepareTemplates() {
-  return gulp.src(join(Config.APP_SRC, '**', '*.html'))
+  return gulp.src([
+    join(Config.APP_SRC, '**', '*.html'),
+    '!' + join(Config.APP_SRC, '**', '*.tns.html')
+  ])
     .pipe(gulp.dest(Config.TMP_DIR));
 }
 
