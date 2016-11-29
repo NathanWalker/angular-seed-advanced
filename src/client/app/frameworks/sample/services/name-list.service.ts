@@ -25,8 +25,6 @@ export class NameListService extends Analytics {
   ) {
     super(analytics);
     this.category = CATEGORY;
-
-    this.store.dispatch(new actions.InitAction());
   }
 
   getNames(): Observable<Array<string>> {
