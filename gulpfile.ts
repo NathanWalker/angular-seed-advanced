@@ -90,17 +90,21 @@ gulp.task('test.watch', (done: any) =>
               done));
 
 // --------------
-// Build test watch.
+// Build tns
 gulp.task('build.tns', (done: any) =>
-  runSequence(//'clean.tns',
-//              'tslint',
-              'build.assets.tns',
+  runSequence('build.assets.tns',
               'build.tns_html_css',
               'build.js.tns',
               done));
 
+gulp.task('build.prod.tns', (done: any) =>
+  runSequence('clean.tns',
+              'tslint.tns',
+              'build.tns',
+              done));
+
 // --------------
-// Build dev watch.
+// Build tns watch.
 gulp.task('build.tns.watch', (done: any) =>
   runSequence('build.tns',
               'watch.tns',
