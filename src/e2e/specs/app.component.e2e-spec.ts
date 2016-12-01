@@ -1,11 +1,11 @@
-import { t } from '../frameworks/test/index';
+import { t } from '../index';
 
 declare var browser: any, element: any, by: any;
 
 t.describe('App', function() {
 
-  t.be(function() {
-    browser.get('/');
+  t.be(async function() {
+    return await browser.get('/');
   });
 
   t.it('should have a title', function() {

@@ -3,8 +3,9 @@ import { Store } from '@ngrx/store';
 
 // app
 import { BaseComponent, Config, LogService, ILang } from '../../core/index';
+import { IAppState } from '../../ngrx/index';
 import { ElectronEventService } from '../../electron/index';
-import { MULTILINGUAL_ACTIONS, MultilingualService } from '../index';
+import * as multilingual from '../index';
 
 @BaseComponent({
   moduleId: module.id,
@@ -13,10 +14,11 @@ import { MULTILINGUAL_ACTIONS, MultilingualService } from '../index';
   styleUrls: ['lang-switcher.component.css']
 })
 export class LangSwitcherComponent {
-  public lang: string;
-  public supportedLanguages: Array<ILang> = MultilingualService.SUPPORTED_LANGUAGES;
 
-  constructor(private log: LogService, private store: Store<any>) {
+  public lang: string;
+  public supportedLanguages: Array<ILang> = multilingual.MultilingualService.SUPPORTED_LANGUAGES;
+
+  constructor(private log: LogService, private store: Store<IAppState>) {
     store.take(1).subscribe((s: any) => {
       // s && s.18n - ensures testing works in all cases (since some tests dont use i18n state)
       this.lang = s && s.i18n ? s.i18n.lang : '';
@@ -29,6 +31,7 @@ export class LangSwitcherComponent {
       });
     }
   }
+  
   changeLang(e: any) {
     let lang = this.supportedLanguages[0].code; // fallback to default 'en'
 
@@ -40,6 +43,6 @@ export class LangSwitcherComponent {
       lang = e.target.value;
     }
     this.log.debug(`Language change: ${lang}`);
-    this.store.dispatch({ type: MULTILINGUAL_ACTIONS.CHANGE, payload: lang });
+    this.store.dispatch(new multilingual.ChangeAction(lang));
   }
 }

@@ -23,11 +23,12 @@ import { routes } from './app/components/app.routes';
 
 // feature modules
 import { CoreModule } from './app/frameworks/core/core.module';
+import { AppReducer } from './app/frameworks/ngrx/index';
 import { AnalyticsModule } from './app/frameworks/analytics/analytics.module';
 import { MultilingualModule, translateFactory } from './app/frameworks/i18n/multilingual.module';
-import { multilingualReducer, MultilingualEffects } from './app/frameworks/i18n/index';
+import { MultilingualEffects } from './app/frameworks/i18n/index';
 import { SampleModule } from './app/frameworks/sample/sample.module';
-import { nameListReducer, NameListEffects } from './app/frameworks/sample/index';
+import { NameListEffects } from './app/frameworks/sample/index';
 
 // {N} custom app specific
 import { WindowNative } from './shared/core/index';
@@ -78,10 +79,7 @@ export function cons() {
     AnalyticsModule,
     ComponentsModule,
     NativeScriptRouterModule.forRoot(<any>routes),
-    StoreModule.provideStore({
-      i18n: multilingualReducer,
-      names: nameListReducer
-    }),
+    StoreModule.provideStore(AppReducer),
     EffectsModule.run(MultilingualEffects),
     EffectsModule.run(NameListEffects)
   ],

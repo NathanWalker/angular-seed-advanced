@@ -10,7 +10,7 @@ import { ILang, WindowService, ConsoleService } from '../../core/index';
 import { CoreModule } from '../../core/core.module';
 import { AnalyticsModule } from '../../analytics/analytics.module';
 import { MultilingualModule } from '../multilingual.module';
-import { MultilingualService, multilingualReducer } from '../index';
+import { MultilingualService, reducer } from '../index';
 import { TEST_MULTILINGUAL_RESET } from '../testing/index';
 
 const SUPPORTED_LANGUAGES: Array<ILang> = [
@@ -29,7 +29,11 @@ const testModuleConfig = () => {
         { provide: WindowService, useValue: window },
         { provide: ConsoleService, useValue: console }
       ]),
-      RouterTestingModule, AnalyticsModule, MultilingualModule, StoreModule.provideStore({ i18n: multilingualReducer })],
+      RouterTestingModule,
+      AnalyticsModule,
+      MultilingualModule,
+      StoreModule.provideStore({ i18n: reducer })
+    ],
     declarations: [TestComponent]
   });
 };
