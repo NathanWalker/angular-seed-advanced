@@ -58,12 +58,7 @@ export class SeedAdvancedConfig extends SeedConfig {
     this.APP_TITLE = 'Angular Seed Advanced';
     this.APP_BASE = ''; // paths must remain relative
 
-    /** Development **/
-
-    // this.NPM_DEPENDENCIES = [
-    //   ...this.NPM_DEPENDENCIES
-    // ];
-
+    // Advanced seed packages
     let additionalPackages: ExtendPackages[] = [
       {
         name: 'lodash',
@@ -147,50 +142,8 @@ export class SeedAdvancedConfig extends SeedConfig {
       ].map((dir) => path.resolve(this.TNS_BASE_DIR, dir)),
     };
 
-
-    // this.SYSTEM_CONFIG['packageConfigPaths'] = [
-    //   `${this.APP_BASE}node_modules/*/package.json`,
-    //   `${this.APP_BASE}node_modules/@ngrx/*/package.json`
-    // ];
-
-    // if (!this.SYSTEM_CONFIG['packages']) this.SYSTEM_CONFIG['packages'] = {};
-    // this.SYSTEM_CONFIG['packages']['@ngrx/core'] = {
-    //   main: 'bundles/core.umd.js',
-    //   defaultExtension: 'js'
-    // };
-    // this.SYSTEM_CONFIG['packages']['@ngrx/store'] = {
-    //   main: 'bundles/store.umd.js',
-    //   defaultExtension: 'js'
-    // };
-    // this.SYSTEM_CONFIG['packages']['@ngrx/effects'] = {
-    //   main: 'bundles/effects.umd.js',
-    //   defaultExtension: 'js'
-    // };
-    // this.SYSTEM_CONFIG['packages']['@ngrx/store-devtools'] = {
-    //   main: 'bundles/store-devtools.umd.js',
-    //   defaultExtension: 'js'
-    // };
-    // this.SYSTEM_CONFIG['packages']['ng2-translate'] = {
-    //   main: 'bundles/index.js',
-    //   defaultExtension: 'js'
-    // };
-    // this.SYSTEM_CONFIG['packages']['angulartics2'] = {
-    //   main: 'dist/index.js',
-    //   defaultExtension: 'js'
-    // };
-    // this.SYSTEM_CONFIG['packages']['angulartics2/dist/providers'] = {
-    //   main: 'index.js',
-    //   defaultExtension: 'js'
-    // };
-
-    // Fix up paths for libs
+    // Fix up path to bootstrap module
     this.SYSTEM_CONFIG.paths[this.BOOTSTRAP_MODULE] = `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`;
-    // this.SYSTEM_CONFIG.paths['lodash'] = `${this.APP_BASE}node_modules/lodash/index`;
-    // this.SYSTEM_CONFIG.paths['ngrx-store-freeze'] = `${this.APP_BASE}node_modules/ngrx-store-freeze/dist/index`;
-    // this.SYSTEM_CONFIG.paths['deep-freeze'] = `${this.APP_BASE}node_modules/deep-freeze/index`;
-
-    // // testing support for @ngrx/effects
-    // this.SYSTEM_CONFIG.paths['@ngrx/effects/testing'] = `node_modules/@ngrx/effects/testing/index`;
 
     /** Production **/
 
