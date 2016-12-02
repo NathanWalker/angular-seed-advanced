@@ -96,16 +96,12 @@
     "karma.run"
   ],
 
-  // Advanced seed
-  // Desktop (Electron)
-  // Development
   "desktop": [
     "build.dev",
     "desktop.libs",
     "desktop.build"
   ],
 
-  // Release and Package
   "desktop.mac": [
     "desktop",
     "desktop.package.mac"
