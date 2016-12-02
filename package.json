@@ -31,6 +31,7 @@
     "gulp": "gulp",
     "i18n": "ng-xi18n && gulp clean.i18n",
     "lint": "tslint src/**/*.ts tools/**/*.ts",
+    "lint.tns": "tslint nativescript/src/**/*.ts",
     "karma": "karma",
     "karma.start": "karma start",
     "nativescript-install": "cd nativescript && npm install",

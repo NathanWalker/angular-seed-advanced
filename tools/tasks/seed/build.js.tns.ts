@@ -2,7 +2,7 @@ import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 
 import Config from '../../config';
-import { makeTsProject, templateLocals } from '../../utils';
+import { makeTsProject, TemplateLocalsBuilder } from '../../utils';
 import { TypeScriptTask } from '../typescript_task';
 
 const plugins = <any>gulpLoadPlugins();
@@ -38,7 +38,7 @@ export =
         .pipe(tsProject());
 
       const template = (<any>Object).assign(
-        templateLocals(), {
+        new TemplateLocalsBuilder().withStringifiedSystemConfigDev().build(), {
           SYSTEM_CONFIG_TNS: jsonSystemConfig
         },
       );

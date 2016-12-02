@@ -1,3 +1,6 @@
+// https://github.com/mgechev/angular-seed/pull/1681
+// Unfortunately gulp-tslint doesn't support tslint 4 yet so the change uses a npm script instead.
+
 /** HACK: codelyzer doesn't like typescript 2.2.0-dev* */
 const ts = require('typescript');
 console.warn('UGLY HACK: codelyzer doesn\'t like typescript 2.2.0-dev* so faking the version');
@@ -14,18 +17,19 @@ const plugins = <any>gulpLoadPlugins();
 /**
  * Executes the build process, linting the TypeScript files using `codelyzer`.
  */
-export = () => {
-  let src = [
-    '**/*.ts',
-    'app/**/*.ts',
-  ];
+export = (done: any) => {
+  done();
+  // let src = [
+  //   '**/*.ts',
+  //   'app/**/*.ts',
+  // ];
 
-  return gulp.src(src, {
-    base: Config.TNS_APP_SRC,
-    cwd: Config.TNS_APP_SRC,
-  })
-    .pipe(plugins.tslint())
-    .pipe(plugins.tslint.report({
-      emitError: require('is-ci')
-    }));
+  // return gulp.src(src, {
+  //   base: Config.TNS_APP_SRC,
+  //   cwd: Config.TNS_APP_SRC,
+  // })
+  //   .pipe(plugins.tslint())
+  //   .pipe(plugins.tslint().report({
+  //     emitError: require('is-ci')
+  //   }));
 };
