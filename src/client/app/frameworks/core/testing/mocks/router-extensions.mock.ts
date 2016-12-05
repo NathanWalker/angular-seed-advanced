@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { UrlTree } from '@angular/router';
 
-// app
+// module
 import { IRouterExtensions, ExtendedNavigationExtras } from '../../index';
 
 @Injectable()
