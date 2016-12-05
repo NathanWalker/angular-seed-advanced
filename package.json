@@ -30,7 +30,7 @@
     "git.setup": "git init && git remote add upstream https://github.com/NathanWalker/angular-seed-advanced.git",
     "gulp": "gulp",
     "i18n": "ng-xi18n && gulp clean.i18n",
-    "lint": "tslint src/**/*.ts tools/**/*.ts",
+    "lint": "tslint -e **/*.d.ts src/**/*.ts tools/**/*.ts",
     "karma": "karma",
     "karma.start": "karma start",
     "postinstall": "gulp check.versions && gulp build.bundle.rxjs && npm prune && gulp webdriver && node tools/install.js",
