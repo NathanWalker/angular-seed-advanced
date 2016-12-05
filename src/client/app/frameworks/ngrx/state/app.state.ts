@@ -77,5 +77,5 @@ export function getNameListState(state$: Observable<IAppState>) {
   return state$.select(s => s.sample);
 }
 
-export const getLang = compose(fromMultilingual.getLang, getMultilingualState);
-export const getNames = compose(fromSample.getNames, getNameListState);
+export const getLang: any = compose(fromMultilingual.getLang, getMultilingualState);
+export const getNames: any = compose(fromSample.getNames, getNameListState);
