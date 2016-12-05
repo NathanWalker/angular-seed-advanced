@@ -1,5 +1,5 @@
 // libs
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 // app
 import { t } from '../../test/index';
