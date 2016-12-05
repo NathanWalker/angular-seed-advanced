@@ -1,7 +1,9 @@
+// libs
+import * as _ from 'lodash';
+
 // app
 import { t } from '../../test/index';
 import { Config } from './config';
-import * as _ from 'lodash';
 
 export function main() {
   t.describe('core: Config', () => {
