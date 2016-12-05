@@ -7,6 +7,8 @@ import { Angulartics2, Angulartics2Segment} from 'angulartics2';
 
 // app
 import { t } from '../../test/index';
+
+// module
 import { AnalyticsService, Analytics } from '../index';
 
 const testModuleConfig = () => {
