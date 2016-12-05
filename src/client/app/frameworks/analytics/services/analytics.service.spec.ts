@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 // libs
 import { Angulartics2, Angulartics2Segment} from 'angulartics2';
 
+// app
 import { t } from '../../test/index';
 import { AnalyticsService, Analytics } from '../index';
 
