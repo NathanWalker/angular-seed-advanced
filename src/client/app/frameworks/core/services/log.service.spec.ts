@@ -3,6 +3,8 @@ import { TestBed } from '@angular/core/testing';
 
 // app
 import { t } from '../../test/index';
+
+// module
 import { Config, ConsoleService, LogService } from '../index';
 
 const providers: Array<any> = [
