@@ -1,4 +1,4 @@
-// app
+// module
 import { DecoratorUtils } from './utils';
 
 export function BaseComponent(metadata: any = {}) {
