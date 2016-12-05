@@ -1,3 +1,4 @@
+// app
 import { t } from '../../test/index';
 import { Config } from './config';
 import * as _ from 'lodash';
