@@ -2,7 +2,7 @@
 import { Injectable, Inject } from '@angular/core';
 
 // libs
-import _ from 'lodash';
+import * as _ from 'lodash';
 import { Angulartics2, Angulartics2Segment } from 'angulartics2';
 
 export interface IAnalyticsProperties {
