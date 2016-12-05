@@ -1,4 +1,4 @@
-// app
+// module
 import { Config } from './config';
 
 export class ViewBroker {
