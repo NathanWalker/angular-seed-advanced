@@ -1,4 +1,7 @@
+// app
 import { t } from '../../test/index';
+
+// module
 import { Config } from './config';
 import { ViewBroker } from './view-broker';
 

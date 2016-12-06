@@ -1,5 +1,7 @@
+// angular
 import { Injectable, Inject, forwardRef } from '@angular/core';
 
+// module
 import { Config } from '../utils/config';
 import { ConsoleService } from './console.service';
 

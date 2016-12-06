@@ -10,6 +10,8 @@ import { TranslateModule, TranslateStaticLoader } from 'ng2-translate';
 
 // app
 import { Config } from '../core/index';
+
+// module
 import { LangSwitcherComponent } from './components/index';
 import { MultilingualService } from './services/index';
 
