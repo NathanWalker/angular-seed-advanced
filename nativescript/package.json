@@ -12,6 +12,7 @@
     }
   },
   "scripts": {
+    "preinstall": "mkdir -p app",
     "clean": "rm -rf platforms node_modules lib hooks"
   },
   "dependencies": {
