@@ -1,3 +1,4 @@
+// module
 import { IMultilingualState, initialState } from '../states/multilingual.state';
 import { Actions, ActionTypes } from '../actions/multilingual.action';
 

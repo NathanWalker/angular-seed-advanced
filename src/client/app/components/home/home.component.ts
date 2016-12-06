@@ -1,5 +1,5 @@
 // libs
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
@@ -15,15 +15,14 @@ declare var NSIndexPath, UITableViewScrollPosition;
   templateUrl: './app/components/home/home.component.html',
   styleUrls: ['./app/components/home/home.component.css']
 })
-export class HomeComponent implements AfterViewInit {
-  @ViewChild('listview') listviewEl: ElementRef;
-  public names$: Observable<Array<string>>;
+export class HomeComponent {
+  public names$: Observable<any>;
   public newName: string = '';
   private _cnt: number = 3; // just for example purposes
   private _listview: any;
 
   constructor(private store: Store<IAppState>, public routerext: RouterExtensions) {
-    this.names$ = store.let(<any>getNames);
+    this.names$ = store.let(getNames);
   }
 
   /*
@@ -49,13 +48,6 @@ export class HomeComponent implements AfterViewInit {
         name: 'slideTop',
       }
     });
-  }
-
-  ngAfterViewInit() {
-    if (Config.IS_MOBILE_NATIVE()) {
-      this._listview = this.listviewEl.nativeElement;
-      console.log(this._listview.ios);
-    }
   }
 
   private scrollToItem(index: number) {
