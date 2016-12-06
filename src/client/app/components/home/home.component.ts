@@ -32,10 +32,6 @@ export class HomeComponent {
   addName(): boolean {
     this.store.dispatch(new nameList.AddAction(this.newName));
     this.newName = '';
-    setTimeout(() => {
-      this.scrollToItem(this._cnt);
-      this._cnt++;
-    }, 300);
     return false;
   }
 
@@ -48,21 +44,5 @@ export class HomeComponent {
         name: 'slideTop',
       }
     });
-  }
-
-  private scrollToItem(index: number) {
-    if (Config.IS_MOBILE_NATIVE()) {
-      if (this._listview.ios) {
-        this._listview.ios.scrollToRowAtIndexPathAtScrollPositionAnimated(
-            NSIndexPath.indexPathForItemInSection(index, 0),
-            UITableViewScrollPosition.UITableViewScrollPositionTop,
-            true
-        );
-      } else {
-        this._listview.scrollToIndex(index);
-      }
-    } else {
-      // could scroll on the web if needed
-    }
   }
 }
