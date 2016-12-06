@@ -1,5 +1,10 @@
 // nativescript
 import { NativeScriptModule, platformNativeScriptDynamic } from 'nativescript-angular/platform';
+import { enableProdMode } from '@angular/core';
+
+if (String('<%= BUILD_TYPE %>') === 'prod') {
+  enableProdMode();
+}
 
 /**
  * Config
