@@ -6,6 +6,7 @@ import { Store, Action } from '@ngrx/store';
 import { Effect, Actions } from '@ngrx/effects';
 import { includes, map } from 'lodash';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 // module
 import { MultilingualService } from '../services/multilingual.service';

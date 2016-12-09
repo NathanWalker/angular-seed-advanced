@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
-// app
+// module
 import { ANALYTICS_PROVIDERS } from './index';
 
 /**

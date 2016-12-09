@@ -1,5 +1,7 @@
+// angular
 import { Injectable } from '@angular/core';
 
+// module
 import { IWindow } from '../interfaces/iwindow';
 
 @Injectable()

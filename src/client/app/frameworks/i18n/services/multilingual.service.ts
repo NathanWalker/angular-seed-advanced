@@ -8,9 +8,9 @@ import { TranslateService } from 'ng2-translate';
 // app
 import { Analytics, AnalyticsService } from '../../analytics/index';
 import { WindowService, ILang } from '../../core/index';
-import { CATEGORY } from '../common/category.common';
 
 // module
+import { CATEGORY } from '../common/category.common';
 import { IMultilingualState } from '../states/index';
 import { ChangeAction } from '../actions/index';
 

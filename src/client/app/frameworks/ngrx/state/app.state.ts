@@ -1,6 +1,8 @@
+// libs
 import { Observable } from 'rxjs/Observable';
 // import { combineLatest } from 'rxjs/observable/combineLatest';
 import { ActionReducer } from '@ngrx/store';
+import '@ngrx/core/add/operator/select';
 
 /**
  * The compose function is one of our most handy tools. In basic terms, you give

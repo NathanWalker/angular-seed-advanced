@@ -1,7 +1,7 @@
+// angular
 import { Injectable } from '@angular/core';
 import { LocationStrategy } from '@angular/common';
-import { Router, UrlTree } from '@angular/router';
-import { NavigationExtras } from '@angular/router/src/router';
+import { Router, UrlTree, NavigationExtras } from '@angular/router';
 
 export interface ExtendedNavigationExtras extends NavigationExtras {
   // Options for nativescript
