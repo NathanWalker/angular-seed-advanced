@@ -14,11 +14,11 @@ import * as nameList from '../../frameworks/sample/index';
   styleUrls: ['home.component.css']
 })
 export class HomeComponent {
-  public names$: Observable<Array<string>>;
+  public names$: Observable<any>;
   public newName: string = '';
 
   constructor(private store: Store<IAppState>, public routerext: RouterExtensions) {
-    this.names$ = store.let(<any>getNames);
+    this.names$ = store.let(getNames);
   }
 
   /*

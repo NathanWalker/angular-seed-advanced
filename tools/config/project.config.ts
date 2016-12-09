@@ -31,6 +31,7 @@ export class ProjectConfig extends SeedAdvancedConfig {
     ];
 
     // Add packages (e.g. lodash)
+    // lodash is already added with the advanced seed - here for example only
     // let additionalPackages: ExtendPackages[] = [{
     //   name: 'lodash',
     //   path: `${this.APP_BASE}node_modules/lodash/lodash.js`,

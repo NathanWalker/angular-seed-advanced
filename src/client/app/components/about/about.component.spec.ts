@@ -26,7 +26,7 @@ export function main() {
             fixture.detectChanges();
             let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
 
-	          t.e(aboutDOMEl.querySelectorAll('h2')[0].textContent).toEqual('Features');
+            t.e(aboutDOMEl.querySelectorAll('h2')[0].textContent).toEqual('Features');
           });
       }));
   });
