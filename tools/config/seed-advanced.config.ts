@@ -10,8 +10,8 @@ export class SeedAdvancedConfig extends SeedConfig {
    */
   TNS_BASE_DIR = 'nativescript';
 
-  private srcSubdir = 'src';
-  private destSubdir = 'app';
+  srcSubdir = 'src';
+  destSubdir = 'app';
 
   TNS_APP_SRC = `${this.TNS_BASE_DIR}/${this.srcSubdir}`;
 
