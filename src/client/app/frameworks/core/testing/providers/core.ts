@@ -1,6 +1,8 @@
 // app
-import { WindowService, ConsoleService, LogService, RouterExtensions } from '../../index';
 import { ANALYTICS_PROVIDERS } from '../../../analytics/index';
+
+// module
+import { WindowService, ConsoleService, LogService, RouterExtensions } from '../../index';
 
 // mocks
 import { WindowMock } from '../mocks/window.mock';

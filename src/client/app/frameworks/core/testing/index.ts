@@ -1,3 +1,4 @@
+// mocks
 export * from './mocks/window.mock';
 
 // providers

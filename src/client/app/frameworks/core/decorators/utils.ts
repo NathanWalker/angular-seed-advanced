@@ -1,7 +1,7 @@
 // angular
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-// app
+// module
 import { ViewBroker } from '../index';
 
 declare var Reflect: any;

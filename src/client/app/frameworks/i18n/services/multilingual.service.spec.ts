@@ -1,12 +1,18 @@
+// angular
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+
 // libs
 import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+
+// app
 import { t } from '../../test/index';
 import { CoreModule } from '../../core/core.module';
 import { ILang, WindowService, ConsoleService } from '../../core/index';
 import { TEST_CORE_PROVIDERS, WindowMockFrench } from '../../core/testing/index';
+
+// module
 import { TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET } from '../testing/index';
 import { IMultilingualState, MultilingualService, MultilingualEffects, reducer, ChangeAction } from '../index';
 

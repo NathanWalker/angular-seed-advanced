@@ -1,7 +1,7 @@
 // libs
 import { TranslateService, TranslateLoader } from 'ng2-translate';
 
-// app
+// module
 import { MultilingualService } from '../index';
 
 // mocks
