@@ -12,8 +12,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 
 // app
-import { WindowService, ConsoleService, RouterExtensions } from './app/frameworks/core/index';
-import { NSAppComponent } from './pages/app/app.component';
+import { WindowService, ConsoleService, RouterExtensions, AppService } from './app/frameworks/core/index';
+import { AppComponent } from './app/components/app.component';
 import { AboutComponent } from './app/components/about/about.component';
 import { HomeComponent } from './app/components/home/home.component';
 import { routes } from './app/components/app.routes';
@@ -28,7 +28,7 @@ import { SampleModule } from './app/frameworks/sample/sample.module';
 import { NameListEffects } from './app/frameworks/sample/index';
 
 // {N} custom app specific
-import { WindowNative } from './shared/core/index';
+import { WindowNative, NSAppService } from './shared/core/index';
 import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
 
 // intermediate component module
@@ -60,7 +60,7 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
     SampleModule
   ]
 })
-class ComponentsModule { }
+export class ComponentsModule { }
 
 // For AoT compilation to work:
 export function cons() {
@@ -81,13 +81,14 @@ export function cons() {
     EffectsModule.run(NameListEffects)
   ],
   declarations: [
-    NSAppComponent
+    AppComponent
   ],
   providers: [
     NS_ANALYTICS_PROVIDERS,
-    { provide: RouterExtensions, useClass: TNSRouterExtensions }
+    { provide: RouterExtensions, useClass: TNSRouterExtensions },
+    { provide: AppService, useClass: NSAppService },
   ],
-  bootstrap: [NSAppComponent]
+  bootstrap: [AppComponent]
 })
 
 export class NativeModule { }

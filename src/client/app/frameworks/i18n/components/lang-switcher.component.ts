@@ -9,9 +9,12 @@ import { ElectronEventService } from '../../electron/index';
 import * as multilingual from '../index';
 
 @Component({
+  moduleId: module.id,
   selector: 'lang-switcher',
-  templateUrl: './app/frameworks/i18n/components/lang-switcher.component.html',
-  styleUrls: ['./app/frameworks/i18n/components/lang-switcher.component.css']
+  templateUrl: 'lang-switcher.component.html',
+  styleUrls: [
+    'lang-switcher.component.css',
+  ],
 })
 export class LangSwitcherComponent {
 

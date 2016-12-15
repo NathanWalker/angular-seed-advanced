@@ -11,9 +11,12 @@ import * as nameList from '../../frameworks/sample/index';
 declare var NSIndexPath, UITableViewScrollPosition;
 
 @Component({
+  moduleId: module.id,
   selector: 'sd-home',
-  templateUrl: './app/components/home/home.component.html',
-  styleUrls: ['./app/components/home/home.component.css']
+  templateUrl: 'home.component.html',
+  styleUrls: [
+    'home.component.css',
+  ],
 })
 export class HomeComponent {
   public names$: Observable<any>;

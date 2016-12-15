@@ -52,13 +52,13 @@ module.exports = bundler.getConfig({
         },
         to: '[path]/[name]'
       },
-      /** Copying assets from node_modules:
+      // @nota plugins
       {
-        from: path.resolve(__dirname,  'node_modules/MODULE_NAME/SUB/PATH/'),
-        to: 'tns_modules/MODULE_NAME/SUB/PATH/',
+        from: path.resolve(__dirname,  'node_modules/@nota/nativescript-ng2-content-viewer/www/'),
+        to: 'tns_modules/@nota/nativescript-ng2-content-viewer/www/',
         toType: 'dir',
       },
-       */
+      // END - @nota plugins
     ]),
   ],
 });

@@ -1,5 +1,6 @@
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
+import * as merge from 'merge-stream';
 
 import Config from '../../config';
 import { makeTsProject, TemplateLocalsBuilder } from '../../utils';
@@ -28,12 +29,15 @@ export =
 
       const tsProject = makeTsProject({}, Config.TNS_APP_SRC);
 
-      const projectFiles = gulp.src(src, {
+      const projectFiles = () => gulp.src([
+        ...src,
+        '!**/*.aot.ts',
+      ], {
         base: Config.TNS_APP_SRC,
         cwd: Config.TNS_APP_SRC,
       });
 
-      const result = projectFiles
+      const result = projectFiles()
         .pipe(plugins.sourcemaps.init())
         .pipe(tsProject());
 
@@ -43,7 +47,7 @@ export =
         },
       );
 
-      return result.js
+      const transpiled = result.js
         .pipe(plugins.sourcemaps.write())
         // Use for debugging with Webstorm/IntelliJ
         // https://github.com/mgechev/angular-seed/issues/1220
@@ -54,6 +58,12 @@ export =
         //    }))
         .pipe(plugins.template(template))
         .pipe(gulp.dest(Config.TNS_APP_DEST));
+
+      const copy = projectFiles()
+        //.pipe(plugins.template(template))
+        .pipe(gulp.dest(Config.TNS_APP_DEST));
+
+      return merge(transpiled, copy);
     }
   };
 

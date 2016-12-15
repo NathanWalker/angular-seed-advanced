@@ -4,9 +4,12 @@ import { Component } from '@angular/core';
 import { LogService } from '../../core/index';
 
 @Component({
+  moduleId: module.id,
   selector: 'sd-toolbar',
-  templateUrl: './app/frameworks/sample/components/toolbar.component.html',
-  styleUrls: ['./app/frameworks/sample/components/toolbar.component.css']
+  templateUrl: 'toolbar.component.html',
+  styleUrls: [
+    'toolbar.component.css',
+  ],
 })
 export class ToolbarComponent {
 

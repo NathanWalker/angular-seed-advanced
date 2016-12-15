@@ -10,6 +10,7 @@ const taskname = 'build.tns';
 
 export = function watch() {
   const paths: string[] = [
+    `${Config.ASSETS_SRC}/**/*`,
     `${Config.TNS_APP_SRC}/**/*`,
     `${Config.TNS_APP_SRC}/app/*`,
     `${Config.TNS_APP_SRC}/app/**/*`,

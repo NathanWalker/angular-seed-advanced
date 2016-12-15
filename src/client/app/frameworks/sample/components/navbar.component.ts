@@ -2,9 +2,12 @@
 import { Component } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'sd-navbar',
-  templateUrl: './app/frameworks/sample/components/navbar.component.html',
-  styleUrls: ['./app/frameworks/sample/components/navbar.component.css']
+  templateUrl: 'navbar.component.html',
+  styleUrls: [
+    'navbar.component.css',
+  ],
 })
 export class NavbarComponent {
 }
