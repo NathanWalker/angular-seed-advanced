@@ -141,7 +141,7 @@
     "karma-remap-istanbul": "^0.2.1",
     "merge-stream": "^1.0.0",
     "minimatch": "^3.0.3",
-    "ngrx-store-freeze": "^0.1.0",
+    "ngrx-store-freeze": "0.1.0",
     "open": "0.0.5",
     "protractor": "^4.0.9",
     "remap-istanbul": "^0.7.0",
