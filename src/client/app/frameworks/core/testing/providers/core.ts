@@ -2,7 +2,7 @@
 import { ANALYTICS_PROVIDERS } from '../../../analytics/index';
 
 // module
-import { WindowService, ConsoleService, LogService, RouterExtensions } from '../../index';
+import { WindowService, ConsoleService, LogService, RouterExtensions, AppService } from '../../index';
 
 // mocks
 import { WindowMock } from '../mocks/window.mock';
@@ -18,6 +18,7 @@ export function TEST_CORE_PROVIDERS(options?: any): Array<any> {
     LogService,
     ANALYTICS_PROVIDERS,
     { provide: RouterExtensions, useClass: RouterExtensionsMock },
+    AppService
   ];
 
   return providers;
