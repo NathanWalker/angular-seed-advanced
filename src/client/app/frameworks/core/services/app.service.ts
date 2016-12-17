@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 // app
 import { AnalyticsService } from '../../../frameworks/analytics/index';
-import { Config, LogService } from '../index';
+import { LogService } from './log.service';
+import { Config } from '../utils/config';
 import { MultilingualService } from '../../../frameworks/i18n/index';
 
 @Injectable()

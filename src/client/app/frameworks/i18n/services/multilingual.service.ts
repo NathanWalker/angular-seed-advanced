@@ -7,7 +7,8 @@ import { TranslateService } from 'ng2-translate';
 
 // app
 import { Analytics, AnalyticsService } from '../../analytics/index';
-import { WindowService, ILang } from '../../core/index';
+import { ILang } from '../../core/index';
+import { WindowService } from '../../core/services/window.service';
 
 // module
 import { CATEGORY } from '../common/category.common';
