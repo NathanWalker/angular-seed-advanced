@@ -4,7 +4,7 @@ import { NativeScriptModule, NativeScriptFormsModule, NativeScriptHttpModule, Na
 import { Http } from '@angular/http';
 
 // angular
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 // libs
 import { StoreModule } from '@ngrx/store';
@@ -86,6 +86,9 @@ export function cons() {
   providers: [
     NS_ANALYTICS_PROVIDERS,
     { provide: RouterExtensions, useClass: TNSRouterExtensions }
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA
   ],
   bootstrap: [NSAppComponent]
 })
