@@ -18,7 +18,7 @@ module.exports = function(platform, destinationApp) {
   entry.bundle = './' + nsWebpack.getEntryModule();
   //Vendor entry with third party libraries.
   // TODO: create a vendor bundle
-  // entry.vendor = './vendor';
+  entry.vendor = './vendor';
   //app.css bundle
   entry['app.css'] = './app.' + platform + '.css';
 
@@ -131,9 +131,9 @@ module.exports = function(platform, destinationApp) {
     plugins: [
       new ExtractTextPlugin('app.css'),
       //Vendor libs go to the vendor.js chunk
-      // new webpack.optimize.CommonsChunkPlugin({
-      //   name: ['vendor']
-      // }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: ['vendor']
+      }),
       //Define useful constants like TNS_WEBPACK
       new webpack.DefinePlugin({
         global: 'global',
@@ -157,7 +157,7 @@ module.exports = function(platform, destinationApp) {
       }),
       //Generate a bundle starter script and activate it in package.json
       new nsWebpack.GenerateBundleStarterPlugin([
-        // './vendor',
+        './vendor',
         './bundle',
       ]),
       //Angular AOT compiler
