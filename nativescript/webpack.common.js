@@ -81,13 +81,14 @@ module.exports = function(platform, destinationApp) {
           exclude: /app\.css$/,
           use: [
             'raw-loader',
+            'tns-loader',
           ]
         },
 
         // Compile TypeScript files with ahead-of-time compiler.
         {
           test: /\.ts$/,
-          loaders: [
+          use: [
             '@ngtools/webpack',
             'nativescript-dev-webpack/tns-aot-loader',
             'tns-loader',
@@ -163,7 +164,7 @@ module.exports = function(platform, destinationApp) {
       //Angular AOT compiler
       new AotPlugin({
         tsConfigPath: 'tsconfig.aot.json',
-        entryModule: 'app/native.module#NativeModule',
+        entryModule: 'app/app#NativeModule',
         typeChecking: false
       })
     ],

@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 
 // libs
 // import {Angulartics2} from 'angulartics2';
+import { Angulartics2Segment } from 'angulartics2/dist/providers';
 
 // TODO: This is a wip at the moment
 // Will implement native segment sdk soon
 // https://github.com/NathanWalker/nativescript-segment/issues/1
 
 @Injectable()
-export class NSAngulartics2Segment {
+export class NSAngulartics2Segment extends Angulartics2Segment {
 
   // constructor(private angulartics2: Angulartics2) {
   //   angulartics2.pageTrack.subscribe((x: any) => this.pageTrack(x.path, x.location));

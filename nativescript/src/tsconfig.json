@@ -21,8 +21,6 @@
         "noImplicitReturns": true,
         "noImplicitUseStrict": false,
         "noFallthroughCasesInSwitch": true,
-        "outDir": "../app",
-        "rootDir": ".",
         "typeRoots": [
             "../node_modules/@types",
             "../node_modules"
@@ -33,7 +31,8 @@
     },
     "exclude": [
         "node_modules",
-        "platforms"
+        "platforms",
+        "*.aot.ts"
     ],
     "compileOnSave": false
 }

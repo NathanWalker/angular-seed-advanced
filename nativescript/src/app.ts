@@ -29,5 +29,6 @@ MultilingualService.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;
 
 // app
 import { NativeModule } from './native.module';
+export { NativeModule } from './native.module';
 
 platformNativeScriptDynamic().bootstrapModule(NativeModule);
