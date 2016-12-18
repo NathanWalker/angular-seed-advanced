@@ -17,7 +17,8 @@ module.exports = function(platform, destinationApp) {
   //Discover entry module from package.json
   entry.bundle = './' + nsWebpack.getEntryModule();
   //Vendor entry with third party libraries.
-  entry.vendor = './vendor';
+  // TODO: create a vendor bundle
+  // entry.vendor = './vendor';
   //app.css bundle
   entry['app.css'] = './app.' + platform + '.css';
 
@@ -55,30 +56,34 @@ module.exports = function(platform, destinationApp) {
       'setImmediate': false,
     },
     module: {
-      loaders: [{
+      rules: [
+
+        {
           test: /\.html$/,
-          loader: [
+          use: [
             'tns-loader',
             'raw-loader',
-          ],
+          ]
         },
+
         // Root app.css file gets extracted with bundled dependencies
         {
           test: /app\.css$/,
-          loader: ExtractTextPlugin.extract([
+          use: [
             'resolve-url-loader',
             'css-loader',
             'nativescript-dev-webpack/platform-css-loader',
-          ]),
+          ],
         },
         // Other CSS files get bundled using the raw loader
         {
           test: /\.css$/,
           exclude: /app\.css$/,
-          loaders: [
+          use: [
             'raw-loader',
           ]
         },
+
         // Compile TypeScript files with ahead-of-time compiler.
         {
           test: /\.ts$/,
@@ -88,16 +93,34 @@ module.exports = function(platform, destinationApp) {
             'tns-loader',
           ]
         },
+
+        /*
+         * Json loader support for *.json files.
+         *
+         * See: https://github.com/webpack/json-loader
+         */
+        {
+          test: /\.json$/,
+          use: 'json-loader'
+        },
+
         // SASS support
         {
           test: /\.scss$/,
-          loaders: [
+          use: [
             'raw-loader',
             'resolve-url-loader',
             'sass-loader',
             'tns-loader',
           ]
         },
+
+        /* File loader for supporting images, for example, in CSS files.
+         */
+        {
+          test: /\.(jpg|png|gif)$/,
+          use: 'file-loader'
+        }
       ]
     },
     resolveLoader: {
@@ -108,9 +131,9 @@ module.exports = function(platform, destinationApp) {
     plugins: [
       new ExtractTextPlugin('app.css'),
       //Vendor libs go to the vendor.js chunk
-      new webpack.optimize.CommonsChunkPlugin({
-        name: ['vendor']
-      }),
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   name: ['vendor']
+      // }),
       //Define useful constants like TNS_WEBPACK
       new webpack.DefinePlugin({
         global: 'global',
@@ -134,7 +157,7 @@ module.exports = function(platform, destinationApp) {
       }),
       //Generate a bundle starter script and activate it in package.json
       new nsWebpack.GenerateBundleStarterPlugin([
-        './vendor',
+        // './vendor',
         './bundle',
       ]),
       //Angular AOT compiler

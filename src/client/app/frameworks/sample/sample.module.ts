@@ -1,5 +1,5 @@
 // angular
-import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { NgModule, Optional, SkipSelf, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -27,6 +27,10 @@ import { MultilingualModule } from '../i18n/multilingual.module';
   ],
   providers: [
     SAMPLE_PROVIDERS
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA,
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   exports: [
     SAMPLE_COMPONENTS,
