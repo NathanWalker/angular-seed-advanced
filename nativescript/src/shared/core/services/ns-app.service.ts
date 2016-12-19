@@ -50,13 +50,13 @@ export class NSAppService extends AppService {
 
     store.dispatch(new multilingual.ChangeAction(window.navigator.language.substr(0, 2)));
 
-    translate.onLangChange.skip(1).subscribe((args) => {
-      this.log.info(`NSAppComponent translate.onLangChange(${args.lang})`);
-      // translate.setDefaultLang(args.lang);
-      translate.currentLang = args.lang;
+    // translate.onLangChange.skip(1).subscribe((args) => {
+    //   this.log.info(`NSAppComponent translate.onLangChange(${args.lang})`);
+    //   // translate.setDefaultLang(args.lang);
+    //   translate.currentLang = args.lang;
 
-      window.navigator.language = args.lang;
-    });
+    //   window.navigator.language = args.lang;
+    // });
 
     // Action-bar style on iOS
     // See https://developer.apple.com/reference/uikit/uibarstyle
