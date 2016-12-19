@@ -2,5 +2,8 @@
 import { platformNativeScript } from "nativescript-angular/platform-static";
 
 import { NativeModuleNgFactory } from "./native.module.ngfactory";
+import { enableProdMode } from '@angular/core';
+
+enableProdMode();
 
 platformNativeScript().bootstrapModuleFactory(NativeModuleNgFactory);

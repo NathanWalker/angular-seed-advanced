@@ -30,8 +30,8 @@ export =
       const tsProject = makeTsProject({}, Config.TNS_APP_SRC);
 
       const projectFiles = () => gulp.src([
-        ...src
-        // '!**/*.aot.ts',
+        ...src,
+        '!**/*.aot.ts',
       ], {
         base: Config.TNS_APP_SRC,
         cwd: Config.TNS_APP_SRC,

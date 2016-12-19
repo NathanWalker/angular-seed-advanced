@@ -1,6 +1,6 @@
 {
     "name": "angular-seed-advanced",
-    "main": "app/app.js",
+    "main": "app.js",
     "version": "0.0.0",
     "nativescript": {
         "id": "com.yourdomain.nativescript",

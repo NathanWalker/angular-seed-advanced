@@ -9,14 +9,11 @@
     "removeComments": false,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
-     "types": [
-       "jasmine"
-     ]
+    "types": []
   },
   "exclude": [
       "node_modules",
-      "platforms",
-      "src"
+      "platforms"
   ],
   "angularCompilerOptions": {
     "skipMetadataEmit": true

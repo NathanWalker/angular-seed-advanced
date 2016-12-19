@@ -81,7 +81,6 @@ module.exports = function(platform, destinationApp) {
           exclude: /app\.css$/,
           use: [
             'raw-loader',
-            'tns-loader',
           ]
         },
 
@@ -164,7 +163,7 @@ module.exports = function(platform, destinationApp) {
       //Angular AOT compiler
       new AotPlugin({
         tsConfigPath: 'tsconfig.aot.json',
-        entryModule: 'app/app#NativeModule',
+        entryModule: 'app/native.module#NativeModule',
         typeChecking: false
       })
     ],
