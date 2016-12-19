@@ -32,10 +32,6 @@ const trackingId = '<%= TNS_CONFIG.ANALYTICS_TRACKING_ID %>';
 export class NSAppService extends AppService {
   nsApp = nsApp;
 
-  externalRouteMap = [
-    { externalUrlRegex: /\/book\/([0-9]+)/gi, internalRouteFormat: '/book/$1', transition: 'slideTop' },
-  ];
-
   // Remember to update iOS and android constructors if you change dependencies
   // @Inject decorator is used on injectables here since this component merely extends AppComponent
   // Since @Component decorator is not used here, this ensures metadata will be generated
@@ -64,7 +60,7 @@ export class NSAppService extends AppService {
 
     // Action-bar style on iOS
     // See https://developer.apple.com/reference/uikit/uibarstyle
-    ActionBarUtil.STATUSBAR_STYLE(0);
+    ActionBarUtil.STATUSBAR_STYLE(1);
 
     if (String('<%= BUILD_TYPE %>') !== 'prod') {
       log.debug('NSAppCmp ----');
