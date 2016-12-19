@@ -70,6 +70,7 @@
     "extract-text-webpack-plugin": "~2.0.0-beta.4",
     "filewalker": "0.1.2",
     "lazy": "1.0.11",
+    "nativescript-dev-sass": "^0.4.1",
     "nativescript-dev-webpack": "^0.2.12",
     "node-sass": "^3.11.3",
     "raw-loader": "~0.5.1",

@@ -1,35 +1,31 @@
 // nativescript
-import { NativeScriptModule, NativeScriptFormsModule, NativeScriptHttpModule, NativeScriptRouterModule, RouterExtensions as TNSRouterExtensions } from 'nativescript-angular';
-// import { RouterExtensions as TNSRouterExtensions } from 'nativescript-angular/router';
+import {
+  NativeScriptModule,
+  NativeScriptFormsModule,
+  NativeScriptHttpModule,
+  NativeScriptRouterModule
+} from 'nativescript-angular';
 import { Http } from '@angular/http';
 
 // angular
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 // libs
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
+// import { StoreModule } from '@ngrx/store';
+// import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 
 // app
-import { WindowService, ConsoleService, RouterExtensions, AppService } from './app/frameworks/core/index';
 import { AppComponent } from './app/components/app.component';
 import { AboutComponent } from './app/components/about/about.component';
 import { HomeComponent } from './app/components/home/home.component';
 import { routes } from './app/components/app.routes';
 
 // feature modules
-import { CoreModule } from './app/frameworks/core/core.module';
-import { AppReducer } from './app/frameworks/ngrx/index';
 import { AnalyticsModule } from './app/frameworks/analytics/analytics.module';
+import { CoreModule } from './app/frameworks/core/core.module';
 import { MultilingualModule, translateFactory } from './app/frameworks/i18n/multilingual.module';
-import { MultilingualEffects } from './app/frameworks/i18n/index';
 import { SampleModule } from './app/frameworks/sample/sample.module';
-import { NameListEffects } from './app/frameworks/sample/index';
-
-// {N} custom app specific
-import { WindowNative, NSAppService } from './shared/core/index';
-import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
 
 // intermediate component module
 // helps encapsulate custom native modules in with the components
@@ -40,6 +36,8 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
     NativeScriptFormsModule,
     NativeScriptHttpModule,
     NativeScriptRouterModule,
+    AnalyticsModule,
+    CoreModule,
     MultilingualModule.forRoot([{
       provide: TranslateLoader,
       deps: [Http],
@@ -48,6 +46,7 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
     SampleModule
   ],
   declarations: [
+    AppComponent,
     HomeComponent,
     AboutComponent
   ],
@@ -61,6 +60,9 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
     NativeScriptHttpModule,
     NativeScriptRouterModule,
     MultilingualModule,
+    AppComponent,
+    AnalyticsModule,
+    CoreModule,
     SampleModule
   ]
 })

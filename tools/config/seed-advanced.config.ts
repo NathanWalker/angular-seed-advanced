@@ -23,7 +23,6 @@ export class SeedAdvancedConfig extends SeedConfig {
 
   constructor() {
     super();
-    this.ENABLE_SCSS = true;
 
     let arg: string;
     if (argv && argv._) {
