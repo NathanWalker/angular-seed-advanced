@@ -66,6 +66,8 @@
         "babel-types": "6.11.1",
         "babylon": "6.8.4",
         "copy-webpack-plugin": "^4.0.1",
+        "css-loader": "~0.26.0",
+        "extract-text-webpack-plugin": "~2.0.0-beta.4",
         "filewalker": "0.1.2",
         "lazy": "1.0.11",
         "nativescript-dev-webpack": "^0.2.12",
@@ -76,8 +78,6 @@
         "shelljs": "^0.7.0",
         "typescript": "2.0.10",
         "webpack": "~2.1.0-beta.27",
-        "zone.js": "^0.6.21",
-        "css-loader": "~0.26.0",
-        "extract-text-webpack-plugin": "~2.0.0-beta.4"
+        "zone.js": "^0.6.21"
     }
 }
