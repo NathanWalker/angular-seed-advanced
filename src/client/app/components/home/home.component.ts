@@ -21,8 +21,6 @@ declare var NSIndexPath, UITableViewScrollPosition;
 export class HomeComponent {
   public names$: Observable<any>;
   public newName: string = '';
-  private _cnt: number = 3; // just for example purposes
-  private _listview: any;
 
   constructor(private store: Store<IAppState>, public routerext: RouterExtensions) {
     this.names$ = store.let(getNames);

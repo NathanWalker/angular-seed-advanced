@@ -87,7 +87,7 @@ module.exports = function(platform, destinationApp) {
         // Compile TypeScript files with ahead-of-time compiler.
         {
           test: /\.ts$/,
-          loaders: [
+          use: [
             '@ngtools/webpack',
             'nativescript-dev-webpack/tns-aot-loader',
             'tns-loader',
