@@ -1,12 +1,15 @@
-:host {
-  display: block;
-  padding: 0 16px;
+.feature-list .body {
+  font-size: 16;
+  color: #555;
+  margin: 0 0 5 0;
 }
 
-h2 {
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 0.005em;
-  margin-bottom: 0;
-  margin-top: 0.83em;
+.h1 {
+  color: #106cc8;
+  font-size: 24;
+}
+
+.h4 {
+  color: #999;
+  font-size: 18;
 }

@@ -8,6 +8,8 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "lib": [
+            "es6",
+            "es2015",
             "dom"
         ],
         "sourceMap": true,
@@ -18,9 +20,11 @@
         "noImplicitReturns": true,
         "noImplicitUseStrict": false,
         "noFallthroughCasesInSwitch": true,
+        "outDir": "../app",
+        "rootDir": ".",
         "typeRoots": [
-            "node_modules/@types",
-            "node_modules"
+            "../node_modules/@types",
+            "../node_modules"
         ],
         "types": [
             "jasmine"

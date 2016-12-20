@@ -52,14 +52,7 @@ export class Config {
   }
 
   public static ENVIRONMENT(): EnvConfig {
-    if (Config.IS_MOBILE_NATIVE()) {
-      return {
-        API: 'your api endpoint',
-        ENV: 'nativescript'
-      };
-    } else {
-      return JSON.parse('<%= ENV_CONFIG %>');
-    }
+    return JSON.parse('<%= ENV_CONFIG %>');
   }
 
   public static IS_DEBUG_MODE(): boolean {

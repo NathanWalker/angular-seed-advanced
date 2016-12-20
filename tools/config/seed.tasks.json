@@ -47,6 +47,23 @@
     "build.index.prod"
   ],
 
+  "build.tns": [
+    "build.assets.tns",
+    "build.tns_html_css",
+    "build.js.tns"
+  ],
+
+  "build.prod.tns": [
+    "clean.tns",
+    "tslint.tns",
+    "build.tns"
+  ],
+
+  "build.tns.watch": [
+    "build.tns",
+    "watch.tns"
+  ],
+
   "build.test": [
     "build.assets.dev",
     "build.html_css",

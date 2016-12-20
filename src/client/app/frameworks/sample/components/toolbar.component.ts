@@ -1,11 +1,12 @@
-// app
-import { BaseComponent, LogService } from '../../core/index';
+import { Component } from '@angular/core';
 
-@BaseComponent({
-  moduleId: module.id,
+// app
+import { LogService } from '../../core/index';
+
+@Component({
   selector: 'sd-toolbar',
-  templateUrl: 'toolbar.component.html',
-  styleUrls: ['toolbar.component.css']
+  templateUrl: './app/frameworks/sample/components/toolbar.component.html',
+  styleUrls: ['./app/frameworks/sample/components/toolbar.component.css']
 })
 export class ToolbarComponent {
 

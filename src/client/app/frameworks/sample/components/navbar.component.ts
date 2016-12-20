@@ -1,11 +1,10 @@
 // app
-import { BaseComponent } from '../../core/index';
+import { Component } from '@angular/core';
 
-@BaseComponent({
-  moduleId: module.id,
+@Component({
   selector: 'sd-navbar',
-  templateUrl: 'navbar.component.html',
-  styleUrls: ['navbar.component.css']
+  templateUrl: './app/frameworks/sample/components/navbar.component.html',
+  styleUrls: ['./app/frameworks/sample/components/navbar.component.css']
 })
 export class NavbarComponent {
 }

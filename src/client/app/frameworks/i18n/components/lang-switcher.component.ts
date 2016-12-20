@@ -1,17 +1,17 @@
 // libs
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 // app
-import { BaseComponent, Config, LogService, ILang } from '../../core/index';
+import { Config, LogService, ILang } from '../../core/index';
 import { IAppState } from '../../ngrx/index';
 import { ElectronEventService } from '../../electron/index';
 import * as multilingual from '../index';
 
-@BaseComponent({
-  moduleId: module.id,
+@Component({
   selector: 'lang-switcher',
-  templateUrl: 'lang-switcher.component.html',
-  styleUrls: ['lang-switcher.component.css']
+  templateUrl: './app/frameworks/i18n/components/lang-switcher.component.html',
+  styleUrls: ['./app/frameworks/i18n/components/lang-switcher.component.css']
 })
 export class LangSwitcherComponent {
 
@@ -31,7 +31,7 @@ export class LangSwitcherComponent {
       });
     }
   }
-  
+
   changeLang(e: any) {
     let lang = this.supportedLanguages[0].code; // fallback to default 'en'
 
