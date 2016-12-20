@@ -1,6 +1,6 @@
 // angular
 import { TestBed } from '@angular/core/testing';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 
 // libs
