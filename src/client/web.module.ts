@@ -33,12 +33,6 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
   Config.DEBUG.LEVEL_4 = true;
 }
 
-// sample config (extra)
-import { AppConfig } from './app/frameworks/sample/services/app-config';
-import { MultilingualService } from './app/frameworks/i18n/services/multilingual.service';
-// custom i18n language support
-MultilingualService.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;
-
 let routerModule = RouterModule.forRoot(routes);
 
 if (String('<%= TARGET_DESKTOP %>') === 'true') {
