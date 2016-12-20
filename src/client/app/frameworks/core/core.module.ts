@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
+// libs
+import { ConfigLoader, ConfigStaticLoader, ConfigModule, ConfigService } from 'ng2-config';
+
 // module
 import { CORE_DIRECTIVES } from './directives/index';
 import { CORE_PROVIDERS } from './services/index';
@@ -12,6 +15,11 @@ import { CORE_PROVIDERS } from './services/index';
 interface ICoreModuleOptions {
   window?: any;
   console?: any;
+}
+
+// for AoT compilation
+export function configFactory(): ConfigLoader {
+  return new ConfigStaticLoader('dist/dev/app.config.json');
 }
 
 /**
@@ -22,7 +30,8 @@ interface ICoreModuleOptions {
   imports: [
     CommonModule,
     RouterModule,
-    HttpModule
+    HttpModule,
+    ConfigModule.forRoot(),
   ],
   declarations: [
     CORE_DIRECTIVES

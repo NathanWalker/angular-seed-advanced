@@ -1,17 +1,25 @@
+// angular
 import { TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 
 // libs
 import { StoreModule } from '@ngrx/store';
+import { ConfigService } from 'ng2-config';
 
+// app
 import { t } from '../../test/index';
 import { ILang, WindowService, ConsoleService } from '../../core/index';
 import { CoreModule } from '../../core/core.module';
 import { AnalyticsModule } from '../../analytics/analytics.module';
+
+// module
 import { MultilingualModule } from '../multilingual.module';
 import { MultilingualService, reducer } from '../index';
 import { TEST_MULTILINGUAL_RESET } from '../testing/index';
+
+// mocks
+import { ConfigMock } from '../../core/testing/mocks/ng2-config.mock';
 
 const SUPPORTED_LANGUAGES: Array<ILang> = [
   { code: 'en', title: 'English' },
@@ -27,7 +35,8 @@ const testModuleConfig = () => {
     imports: [
       CoreModule.forRoot([
         { provide: WindowService, useValue: window },
-        { provide: ConsoleService, useValue: console }
+        { provide: ConsoleService, useValue: console },
+        { provide: ConfigService, useClass: ConfigMock },
       ]),
       RouterTestingModule,
       AnalyticsModule,
