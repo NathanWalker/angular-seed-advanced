@@ -5,7 +5,7 @@ export interface EnvConfig {
   ENV?: string;
 }
 
-interface IPlatforms {
+export interface IPlatforms {
   WEB: string;
   MOBILE_NATIVE: string;
   MOBILE_HYBRID: string;

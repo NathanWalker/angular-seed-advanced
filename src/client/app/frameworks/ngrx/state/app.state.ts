@@ -38,7 +38,9 @@ import { combineReducers } from '@ngrx/store';
  * notation packages up all of the exports into a single object.
  */
 import * as fromMultilingual from '../../i18n/index';
+import { IMultilingualState } from '../../i18n/index';
 import * as fromSample from '../../sample/index';
+import { ISampleState } from '../../sample/index';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -72,10 +74,10 @@ export function AppReducer(state: any, action: any) {
   }
 }
 
-export function getMultilingualState(state$: Observable<IAppState>) {
+export function getMultilingualState(state$: Observable<IAppState>): Observable<IMultilingualState> {
   return state$.select(s => s.i18n);
 }
-export function getNameListState(state$: Observable<IAppState>) {
+export function getNameListState(state$: Observable<IAppState>): Observable<ISampleState> {
   return state$.select(s => s.sample);
 }
 

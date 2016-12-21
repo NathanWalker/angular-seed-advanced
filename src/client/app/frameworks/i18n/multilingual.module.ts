@@ -16,7 +16,7 @@ import { LangSwitcherComponent } from './components/index';
 import { MultilingualService } from './services/index';
 
 // for AoT compilation
-export function translateFactory(http: Http) {
+export function translateLoaderFactory(http: Http) {
   return new TranslateStaticLoader(http, `${Config.IS_MOBILE_NATIVE() ? '/' : ''}assets/i18n`, '.json');
 };
 

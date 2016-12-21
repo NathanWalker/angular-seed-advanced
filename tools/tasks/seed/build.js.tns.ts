@@ -24,20 +24,19 @@ export =
         '!app/**/*.spec.ts',
         '!**/*.e2e-spec.ts',
         '!app/**/*.e2e-spec.ts',
+        '!app/frameworks/test/**/*',
         `!**/${Config.NG_FACTORY_FILE}.ts`,
       ];
 
       const tsProject = makeTsProject({}, Config.TNS_APP_SRC);
 
-      const projectFiles = () => gulp.src([
+      const result = gulp.src([
         ...src,
         '!**/*.aot.ts',
       ], {
         base: Config.TNS_APP_SRC,
         cwd: Config.TNS_APP_SRC,
-      });
-
-      const result = projectFiles()
+      })
         .pipe(plugins.sourcemaps.init())
         .pipe(tsProject());
 
@@ -59,7 +58,10 @@ export =
         .pipe(plugins.template(template))
         .pipe(gulp.dest(Config.TNS_APP_DEST));
 
-      const copy = projectFiles()
+      const copy = gulp.src(src, {
+        base: Config.TNS_APP_SRC,
+        cwd: Config.TNS_APP_SRC,
+      })
         //.pipe(plugins.template(template))
         .pipe(gulp.dest(Config.TNS_APP_DEST));
 

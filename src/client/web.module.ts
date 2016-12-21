@@ -19,7 +19,7 @@ import { routes } from './app/components/app.routes';
 import { CoreModule } from './app/frameworks/core/core.module';
 import { AppReducer } from './app/frameworks/ngrx/index';
 import { AnalyticsModule } from './app/frameworks/analytics/analytics.module';
-import { MultilingualModule, translateFactory } from './app/frameworks/i18n/multilingual.module';
+import { MultilingualModule, translateLoaderFactory } from './app/frameworks/i18n/multilingual.module';
 import { MultilingualEffects } from './app/frameworks/i18n/index';
 import { SampleModule } from './app/frameworks/sample/sample.module';
 import { NameListEffects } from './app/frameworks/sample/index';
@@ -68,7 +68,7 @@ export function cons() {
     MultilingualModule.forRoot([{
       provide: TranslateLoader,
       deps: [Http],
-      useFactory: (translateFactory)
+      useFactory: (translateLoaderFactory)
     }]),
     SampleModule,
     StoreModule.provideStore(AppReducer),

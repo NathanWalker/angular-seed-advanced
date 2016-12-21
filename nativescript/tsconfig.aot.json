@@ -13,9 +13,11 @@
   },
   "exclude": [
       "node_modules",
-      "platforms"
+      "platforms",
+      "src"
   ],
   "angularCompilerOptions": {
+    "debug": true,
     "skipMetadataEmit": true
   }
 }

@@ -164,7 +164,9 @@ module.exports = function(platform, destinationApp) {
       new AotPlugin({
         tsConfigPath: 'tsconfig.aot.json',
         entryModule: 'app/native.module#NativeModule',
-        typeChecking: false
+        // @m-abs: this shoule be reverted once build is fixed
+        // typeChecking: false
+        typeChecking: true
       })
     ],
   };

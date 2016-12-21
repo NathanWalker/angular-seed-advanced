@@ -71,7 +71,7 @@
     "raw-loader": "~0.5.1",
     "resolve-url-loader": "~1.6.0",
     "typescript": "~2.0.10",
-    "webpack": "2.1.0-beta.27",
+    "webpack": "~2.1.0-beta.27",
     "zone.js": "~0.6.21"
   }
 }

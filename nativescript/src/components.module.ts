@@ -24,7 +24,7 @@ import { routes } from './app/components/app.routes';
 // feature modules
 import { AnalyticsModule } from './app/frameworks/analytics/analytics.module';
 import { CoreModule } from './app/frameworks/core/core.module';
-import { MultilingualModule, translateFactory } from './app/frameworks/i18n/multilingual.module';
+import { MultilingualModule, translateLoaderFactory } from './app/frameworks/i18n/multilingual.module';
 import { SampleModule } from './app/frameworks/sample/sample.module';
 
 // intermediate component module
@@ -41,7 +41,7 @@ import { SampleModule } from './app/frameworks/sample/sample.module';
     MultilingualModule.forRoot([{
       provide: TranslateLoader,
       deps: [Http],
-      useFactory: (translateFactory)
+      useFactory: (translateLoaderFactory)
     }]),
     SampleModule
   ],
