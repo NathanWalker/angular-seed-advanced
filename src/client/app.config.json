@@ -1,4 +1,16 @@
 {
+  "i18n": {
+    "defaultLanguage": {
+      "code": "en",
+      "title": "English"
+    },
+    "availableLanguages": [
+      {
+        "code": "en",
+        "title": "English"
+      }
+    ]
+  },
   "logging": {
     "DEBUG": {
       "LEVEL_1": false,

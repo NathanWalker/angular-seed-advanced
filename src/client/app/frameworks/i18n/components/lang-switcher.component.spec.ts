@@ -16,10 +16,9 @@ import { AnalyticsModule } from '../../analytics/analytics.module';
 // module
 import { MultilingualModule } from '../multilingual.module';
 import { MultilingualService, reducer } from '../index';
-import { TEST_MULTILINGUAL_RESET } from '../testing/index';
 
 // mocks
-import { ConfigMock } from '../../core/testing/mocks/ng2-config.mock';
+import { ConfigMock, ConfigMockMultilang } from '../../core/testing/mocks/ng2-config.mock';
 
 const SUPPORTED_LANGUAGES: Array<ILang> = [
   { code: 'en', title: 'English' },
@@ -30,13 +29,13 @@ const SUPPORTED_LANGUAGES: Array<ILang> = [
 ];
 
 // test module configuration for each test
-const testModuleConfig = () => {
+const testModuleConfig = (multilang: boolean = false) => {
   TestBed.configureTestingModule({
     imports: [
       CoreModule.forRoot([
         { provide: WindowService, useValue: window },
         { provide: ConsoleService, useValue: console },
-        { provide: ConfigService, useClass: ConfigMock },
+        { provide: ConfigService, useClass: multilang ? ConfigMockMultilang : ConfigMock },
       ]),
       RouterTestingModule,
       AnalyticsModule,
@@ -50,7 +49,9 @@ const testModuleConfig = () => {
 export function main() {
   t.describe('i18n:', () => {
     t.describe('@Component: LangSwitcherComponent', () => {
-      t.be(testModuleConfig);
+      t.be(() => {
+        testModuleConfig();
+      });
 
       t.it('should work',
         t.async(() => {
@@ -67,12 +68,8 @@ export function main() {
 
     t.describe('@Component: LangSwitcherComponent with multiple languages', () => {
       t.be(() => {
-        MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES;
-        testModuleConfig();
+        testModuleConfig(true);
       });
-
-      // ensure statics are reset when the test had modified statics in a beforeEach (be) or beforeEachProvider (bep)
-      t.ae(() => TEST_MULTILINGUAL_RESET());
 
       t.it('should work',
         t.async(() => {
@@ -97,4 +94,9 @@ export function main() {
   selector: 'test-cmp',
   template: '<lang-switcher></lang-switcher>'
 })
-class TestComponent {}
+class TestComponent  {
+  constructor(private multilang: MultilingualService,
+              private config: ConfigService) {
+    this.multilang.init(this.config.getSettings().i18n);
+  }
+}

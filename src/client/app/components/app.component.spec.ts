@@ -1,14 +1,21 @@
+// angular
 import { TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Route } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+
+// libs
 import { StoreModule } from '@ngrx/store';
 
+// app
 import { t } from '../frameworks/test/index';
 import { TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS } from '../frameworks/core/testing/index';
 import { NameListService, NavbarComponent, ToolbarComponent } from '../frameworks/sample/index';
 import { MultilingualModule } from '../frameworks/i18n/multilingual.module';
+import { reducer } from '../frameworks/i18n/index';
+
+// module
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
@@ -24,7 +31,7 @@ const testModuleConfig = () => {
     imports: [
       FormsModule,
       MultilingualModule,
-      StoreModule.provideStore({}),
+      StoreModule.provideStore({ i18n: reducer }),
       RouterTestingModule.withRoutes(config)
     ],
     declarations: [

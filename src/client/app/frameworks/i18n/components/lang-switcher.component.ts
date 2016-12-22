@@ -14,14 +14,16 @@ import * as multilingual from '../index';
   styleUrls: ['lang-switcher.component.css']
 })
 export class LangSwitcherComponent {
-
   public lang: string;
-  public supportedLanguages: Array<ILang> = multilingual.MultilingualService.SUPPORTED_LANGUAGES;
+  public supportedLanguages: Array<ILang>;
 
-  constructor(private log: LogService, private store: Store<IAppState>) {
+  constructor(public multilang: multilingual.MultilingualService,
+              private log: LogService,
+              private store: Store<IAppState>) {
     store.take(1).subscribe((s: any) => {
       // s && s.18n - ensures testing works in all cases (since some tests dont use i18n state)
-      this.lang = s && s.i18n ? s.i18n.lang : '';
+      this.lang = s && s.i18n ? s.i18n.lang : this.multilang.defaultLanguage.code;
+      this.supportedLanguages = this.multilang.availableLanguages;
     });
 
     if (Config.IS_DESKTOP()) {
@@ -33,16 +35,17 @@ export class LangSwitcherComponent {
   }
   
   changeLang(e: any) {
-    let lang = this.supportedLanguages[0].code; // fallback to default 'en'
+    let lang = this.multilang.defaultLanguage.code; // fallback to default
 
     if (Config.IS_MOBILE_NATIVE()) {
       if (e) {
-        lang = this.supportedLanguages[e.newIndex].code;
+        lang = this.multilang.availableLanguages[e.newIndex].code;
       }
     } else if (e && e.target) {
       lang = e.target.value;
     }
+
     this.log.debug(`Language change: ${lang}`);
-    this.store.dispatch(new multilingual.ChangeAction(lang));
+    this.multilang.changeLang(lang);
   }
 }
