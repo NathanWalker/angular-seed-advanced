@@ -2,9 +2,12 @@
 import { TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
+import { BaseRequestOptions, Http, Response, ResponseOptions } from '@angular/http';
+import { MockBackend, MockConnection } from '@angular/http/testing';
 
 // libs
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { ConfigService } from 'ng2-config';
 
 // app
@@ -12,13 +15,16 @@ import { t } from '../../test/index';
 import { ILang, WindowService, ConsoleService } from '../../core/index';
 import { CoreModule } from '../../core/core.module';
 import { AnalyticsModule } from '../../analytics/analytics.module';
+import { TEST_CORE_PROVIDERS } from '../../core/testing/index';
 
 // module
 import { MultilingualModule } from '../multilingual.module';
-import { MultilingualService, reducer } from '../index';
+import { MultilingualService, MultilingualEffects, reducer } from '../index';
+import { TEST_MULTILINGUAL_PROVIDERS } from '../testing/index';
 
 // mocks
-import { ConfigMock, ConfigMockMultilang } from '../../core/testing/mocks/ng2-config.mock';
+import { ConfigMock } from '../../core/testing/mocks/ng2-config.mock';
+import { ConfigMockMultilang } from '../testing/mocks/ng2-config-multilang.mock';
 
 const SUPPORTED_LANGUAGES: Array<ILang> = [
   { code: 'en', title: 'English' },
@@ -40,9 +46,21 @@ const testModuleConfig = (multilang: boolean = false) => {
       RouterTestingModule,
       AnalyticsModule,
       MultilingualModule,
-      StoreModule.provideStore({ i18n: reducer })
+      StoreModule.provideStore({ i18n: reducer }),
+      EffectsModule.run(MultilingualEffects)
     ],
-    declarations: [TestComponent]
+    declarations: [TestComponent],
+    providers: [
+      {
+        provide: Http,
+        useFactory: (mockBackend: MockBackend, options: BaseRequestOptions) => {
+          return new Http(mockBackend, options);
+        },
+        deps: [MockBackend, BaseRequestOptions]
+      },
+      MockBackend,
+      BaseRequestOptions
+    ]
   });
 };
 

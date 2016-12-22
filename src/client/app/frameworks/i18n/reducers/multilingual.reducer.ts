@@ -9,7 +9,7 @@ export function reducer(
   switch (action.type) {
     case ActionTypes.LANG_CHANGED:
       if (state.lang !== action.payload)
-        return Object.assign({}, state, {
+        return (<any>Object).assign({}, state, {
             lang: action.payload
           });
 

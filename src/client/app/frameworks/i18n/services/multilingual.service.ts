@@ -52,7 +52,7 @@ export class MultilingualService extends Analytics {
 
     // this language will be used as a fallback when a translation isn't found in the current language
     this.translate.setDefaultLang(this.defaultLanguage.code);
-    
+
     // use browser/platform lang if available
     let userLang = (this.win.navigator.language && this.win.navigator.language.split('-')[0]) || this.defaultLanguage.code;
 

@@ -22,10 +22,10 @@ import { BaseComponent, Config, LogService } from '../frameworks/core/index';
 })
 export class AppComponent implements OnInit {
   constructor(public analytics: AnalyticsService,
-              public multilang: MultilingualService,
-              public logger: LogService,
-              private config: ConfigService) {
-    logger.debug(`Config env: ${Config.ENVIRONMENT().ENV}`);
+              public log: LogService,
+              public config: ConfigService,
+              public multilang: MultilingualService) {
+    log.debug(`Config env: ${Config.ENVIRONMENT().ENV}`);
   }
 
   ngOnInit(): void {

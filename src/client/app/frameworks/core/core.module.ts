@@ -11,6 +11,7 @@ import { ConfigLoader, ConfigStaticLoader, ConfigModule, ConfigService } from 'n
 // module
 import { CORE_DIRECTIVES } from './directives/index';
 import { CORE_PROVIDERS } from './services/index';
+import { Config } from './utils/index';
 
 interface ICoreModuleOptions {
   window?: any;
@@ -19,7 +20,7 @@ interface ICoreModuleOptions {
 
 // for AoT compilation
 export function configFactory(): ConfigLoader {
-  return new ConfigStaticLoader('dist/dev/app.config.json');
+  return new ConfigStaticLoader(`${Config.IS_MOBILE_NATIVE() ? '/' : ''}assets/app.config.json`);
 }
 
 /**

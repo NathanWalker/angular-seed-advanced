@@ -327,10 +327,8 @@ A documentation of the provided tools can be found in [tools/README.md](tools/RE
 * how to add a language?
   - `src/client/assets/i18n/`
     - add `[language code].json` (copy existing one and adapt the translation strings)
-  - `src/client/app/frameworks/sample/services/app-config.spec.ts`
-    - fix test
-  - `src/client/app/frameworks/sample/services/app-config.ts`
-    - add language to `SUPPORTED_LANGUAGES`
+  - `src/client/app.config.json`
+    - add language to `availableLanguages`
   - `src/client/app/frameworks/i18n/components/lang-switcher.component.spec.ts`
     - fix test
 

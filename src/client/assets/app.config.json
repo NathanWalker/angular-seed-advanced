@@ -8,6 +8,22 @@
       {
         "code": "en",
         "title": "English"
+      },
+      {
+        "code": "fr",
+        "title": "French"
+      },
+      {
+        "code": "es",
+        "title": "Spanish"
+      },
+      {
+        "code": "bg",
+        "title": "Bulgarian"
+      },
+      {
+        "code": "ru",
+        "title": "Russian"
       }
     ]
   },
@@ -16,7 +32,7 @@
       "LEVEL_1": false,
       "LEVEL_2": false,
       "LEVEL_3": false,
-      "LEVEL_4": false
+      "LEVEL_4": true
     }
   }
 }

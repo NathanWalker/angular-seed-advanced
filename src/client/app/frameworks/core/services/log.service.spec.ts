@@ -36,8 +36,6 @@ export function main() {
   t.describe('core: LogService', () => {
 
     t.be(() => {
-      // ensure statics are in default state
-      //Config.RESET();
       // spy
       t.spyOn(console, 'log');
       t.spyOn(console, 'error');

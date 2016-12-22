@@ -28,10 +28,6 @@ import { NameListEffects } from './app/frameworks/sample/index';
 // config
 import { Config, WindowService, ConsoleService } from './app/frameworks/core/index';
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
-if (String('<%= BUILD_TYPE %>') === 'dev') {
-  // only output console logging in dev mode
-  Config.DEBUG.LEVEL_4 = true;
-}
 
 let routerModule = RouterModule.forRoot(routes);
 

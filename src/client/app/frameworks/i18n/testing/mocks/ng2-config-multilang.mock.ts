@@ -1,4 +1,4 @@
-export class ConfigMock {
+export class ConfigMockMultilang {
   init(): any {
     return null;
   }
@@ -11,10 +11,11 @@ export class ConfigMock {
           title: 'English'
         },
         availableLanguages: [
-          {
-            code: 'en',
-            title: 'English'
-          }
+          { code: 'en', title: 'English' },
+          { code: 'es', title: 'Spanish' },
+          { code: 'fr', title: 'French' },
+          { code: 'ru', title: 'Russian' },
+          { code: 'bg', title: 'Bulgarian' }
         ]
       },
       logging: {
