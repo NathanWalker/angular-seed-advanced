@@ -30,7 +30,7 @@ export function translateLoaderFactory(http: Http) {
     RouterModule,
     FormsModule,
     HttpModule,
-    TranslateModule.forRoot()
+    TranslateModule,
   ],
   declarations: [
     LangSwitcherComponent

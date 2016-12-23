@@ -38,7 +38,8 @@ import { SampleModule } from './app/frameworks/sample/sample.module';
     NativeScriptRouterModule,
     AnalyticsModule,
     CoreModule,
-    MultilingualModule.forRoot([{
+    MultilingualModule.forRoot([]),
+    TranslateModule.forRoot([{
       provide: TranslateLoader,
       deps: [Http],
       useFactory: (translateLoaderFactory)

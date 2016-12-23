@@ -52,7 +52,11 @@ export class Config {
   }
 
   public static ENVIRONMENT(): EnvConfig {
-    return JSON.parse('<%= ENV_CONFIG %>');
+    try {
+      return JSON.parse('<%= ENV_CONFIG %>');
+    } catch (exp) {
+      return {};
+    }
   }
 
   public static IS_DEBUG_MODE(): boolean {

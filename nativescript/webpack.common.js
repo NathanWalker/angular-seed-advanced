@@ -49,6 +49,12 @@ module.exports = function(platform, destinationApp) {
         'node_modules'
       ]
     },
+    resolveLoader: {
+      alias: {
+        'raw': path.join(__dirname, 'node_modules/raw-loader'),
+        'tns-loader': path.join(__dirname, 'tools', 'tns-loader.js'),
+      }
+    },
     node: {
       //Disable node shims that conflict with NativeScript
       'http': false,
@@ -56,41 +62,33 @@ module.exports = function(platform, destinationApp) {
       'setImmediate': false,
     },
     module: {
-      rules: [
-
-        {
+      loaders: [{
           test: /\.html$/,
-          use: [
-            'tns-loader',
-            'raw-loader',
-          ]
+          loader: 'raw'
         },
-
         // Root app.css file gets extracted with bundled dependencies
         {
           test: /app\.css$/,
-          use: [
+          loader: ExtractTextPlugin.extract([
             'resolve-url-loader',
             'css-loader',
             'nativescript-dev-webpack/platform-css-loader',
-          ],
+          ]),
         },
         // Other CSS files get bundled using the raw loader
         {
           test: /\.css$/,
           exclude: /app\.css$/,
-          use: [
-            'raw-loader',
+          loaders: [
+            'raw',
           ]
         },
-
         // Compile TypeScript files with ahead-of-time compiler.
         {
           test: /\.ts$/,
-          use: [
+          loaders: [
             '@ngtools/webpack',
-            'nativescript-dev-webpack/tns-aot-loader',
-            'tns-loader',
+            'nativescript-dev-webpack/tns-aot-loader'
           ]
         },
 
@@ -107,11 +105,10 @@ module.exports = function(platform, destinationApp) {
         // SASS support
         {
           test: /\.scss$/,
-          use: [
-            'raw-loader',
+          loaders: [
+            'raw',
             'resolve-url-loader',
-            'sass-loader',
-            'tns-loader',
+            'sass-loader'
           ]
         },
 
@@ -122,11 +119,6 @@ module.exports = function(platform, destinationApp) {
           use: 'file-loader'
         }
       ]
-    },
-    resolveLoader: {
-      alias: {
-        'tns-loader': path.join(__dirname, 'tools', 'tns-loader.js'),
-      }
     },
     plugins: [
       new ExtractTextPlugin('app.css'),
@@ -152,7 +144,11 @@ module.exports = function(platform, destinationApp) {
         from: '**/*.png'
       }, {
         from: '**/*.xml'
-      }, ], {
+      }, {
+        from: 'assets',
+        to: 'assets',
+        type: 'dir',
+      } ], {
         ignore: ['App_Resources/**']
       }),
       //Generate a bundle starter script and activate it in package.json
@@ -164,9 +160,7 @@ module.exports = function(platform, destinationApp) {
       new AotPlugin({
         tsConfigPath: 'tsconfig.aot.json',
         entryModule: 'app/native.module#NativeModule',
-        // @m-abs: this shoule be reverted once build is fixed
-        // typeChecking: false
-        typeChecking: true
+        typeChecking: false
       })
     ],
   };

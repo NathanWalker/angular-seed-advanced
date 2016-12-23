@@ -50,7 +50,7 @@
     "ngrx-store-freeze": "0.1.0",
     "reflect-metadata": "~0.1.8",
     "rxjs": "5.0.0-beta.12",
-    "tns-core-modules": "next"
+    "tns-core-modules": "^2.4.3"
   },
   "devDependencies": {
     "@angular/compiler-cli": "2.2.1",
@@ -66,8 +66,6 @@
     "fs-extra": "^1.0.0",
     "lazy": "1.0.11",
     "nativescript-dev-android-snapshot": "^0.*.*",
-    "nativescript-dev-sass": "^0.4.1",
-    "node-sass": "^3.11.3",
     "raw-loader": "~0.5.1",
     "resolve-url-loader": "~1.6.0",
     "typescript": "~2.0.10",

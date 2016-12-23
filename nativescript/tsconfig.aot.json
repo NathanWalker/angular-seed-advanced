@@ -9,6 +9,7 @@
     "removeComments": false,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
+    "baseUrl": "app",
     "types": []
   },
   "exclude": [
