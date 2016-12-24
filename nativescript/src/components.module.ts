@@ -14,7 +14,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/cor
 // import { StoreModule } from '@ngrx/store';
 // import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
-import { ConfigLoader, ConfigStaticLoader, ConfigModule, ConfigService } from 'ng2-config';
+import { ConfigLoader } from 'ng2-config';
 
 // app
 import { AppComponent } from './app/components/app.component';
@@ -23,8 +23,8 @@ import { HomeComponent } from './app/components/home/home.component';
 import { routes } from './app/components/app.routes';
 
 // feature modules
+import { CoreModule } from './app/frameworks/core/core.module';
 import { AnalyticsModule } from './app/frameworks/analytics/analytics.module';
-import { CoreModule, configLoaderFactory } from './app/frameworks/core/core.module';
 import { MultilingualModule, translateLoaderFactory } from './app/frameworks/i18n/multilingual.module';
 import { SampleModule } from './app/frameworks/sample/sample.module';
 
@@ -39,16 +39,11 @@ import { SampleModule } from './app/frameworks/sample/sample.module';
     NativeScriptRouterModule,
     AnalyticsModule,
     CoreModule,
-    MultilingualModule.forRoot([]),
-    TranslateModule.forRoot([{
+    MultilingualModule.forRoot([{
       provide: TranslateLoader,
       deps: [Http],
       useFactory: (translateLoaderFactory)
     }]),
-    ConfigModule.forRoot({
-      provide: ConfigLoader,
-      useFactory: (configLoaderFactory),
-    }),
     SampleModule
   ],
   declarations: [

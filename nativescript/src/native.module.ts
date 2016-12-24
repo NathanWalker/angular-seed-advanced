@@ -10,6 +10,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/cor
 // libs
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { ConfigLoader } from 'ng2-config';
 
 // app
 import {
@@ -22,7 +23,7 @@ import { AppComponent } from './app/components/app.component';
 import { routes } from './app/components/app.routes';
 
 // feature modules
-import { CoreModule } from './app/frameworks/core/core.module';
+import { CoreModule, configLoaderFactory } from './app/frameworks/core/core.module';
 import { AppReducer } from './app/frameworks/ngrx/index';
 import { MultilingualEffects } from './app/frameworks/i18n/index';
 import { NameListEffects } from './app/frameworks/sample/index';
@@ -47,7 +48,8 @@ Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
   imports: [
     CoreModule.forRoot([
       { provide: WindowService, useClass: WindowNative },
-      { provide: ConsoleService, useFactory: (cons) }
+      { provide: ConsoleService, useFactory: (cons) },
+      { provide: ConfigLoader, useFactory: (configLoaderFactory) },
     ]),
     ComponentsModule,
     NativeScriptRouterModule.forRoot(<any>routes),

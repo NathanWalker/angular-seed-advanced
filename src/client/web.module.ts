@@ -17,7 +17,7 @@ import { APP_COMPONENTS, AppComponent } from './app/components/index';
 import { routes } from './app/components/app.routes';
 
 // feature modules
-import { CoreModule, configFactory } from './app/frameworks/core/core.module';
+import { CoreModule, configLoaderFactory } from './app/frameworks/core/core.module';
 import { AppReducer } from './app/frameworks/ngrx/index';
 import { AnalyticsModule } from './app/frameworks/analytics/analytics.module';
 import { MultilingualModule, translateLoaderFactory } from './app/frameworks/i18n/multilingual.module';
@@ -53,7 +53,7 @@ export function cons() {
     CoreModule.forRoot([
       { provide: WindowService, useFactory: (win) },
       { provide: ConsoleService, useFactory: (cons) },
-      { provide: ConfigLoader, useFactory: (configFactory) }
+      { provide: ConfigLoader, useFactory: (configLoaderFactory) }
     ]),
     routerModule,
     AnalyticsModule,

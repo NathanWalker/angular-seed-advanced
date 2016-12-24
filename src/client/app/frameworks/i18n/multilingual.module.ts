@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule, Http } from '@angular/http';
 
 // libs
-import { TranslateModule, TranslateStaticLoader } from 'ng2-translate';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 
 // app
 import { Config } from '../core/index';
@@ -30,7 +30,11 @@ export function translateLoaderFactory(http: Http) {
     RouterModule,
     FormsModule,
     HttpModule,
-    TranslateModule,
+    TranslateModule.forRoot([{
+      provide: TranslateLoader,
+      deps: [Http],
+      useFactory: (translateLoaderFactory)
+    }]),
   ],
   declarations: [
     LangSwitcherComponent

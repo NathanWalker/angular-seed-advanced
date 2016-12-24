@@ -32,7 +32,10 @@ export function configLoaderFactory(): ConfigLoader {
     CommonModule,
     RouterModule,
     HttpModule,
-    ConfigModule,
+    ConfigModule.forRoot({
+      provide: ConfigLoader,
+      useFactory: (configLoaderFactory),
+    }),
   ],
   declarations: [
     CORE_DIRECTIVES
