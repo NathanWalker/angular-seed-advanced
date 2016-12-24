@@ -98,15 +98,6 @@ export class NSAppService extends AppService {
     this.setupIOS();
   }
 
-  private unsubscribeAll() {
-    nsApp.off(nsApp.launchEvent);
-    nsApp.off(nsApp.suspendEvent);
-    nsApp.off(nsApp.resumeEvent);
-    nsApp.off(nsApp.lowMemoryEvent);
-    nsApp.off(nsApp.exitEvent);
-    nsApp.off(nsApp.uncaughtErrorEvent);
-  }
-
   protected handleUncaughtError(err: any, platform: 'android' | 'ios') {
     this.log.info(`TNS Application - Uncaught Error: ${err.message}`);
 
@@ -123,6 +114,15 @@ export class NSAppService extends AppService {
         console.log(`**** START - errorDescription.${key} - ****\n\n\n${errorDescription[key]}\n\n\n*** END - ${key} - ****`);
       }
     }
+  }
+
+  private unsubscribeAll() {
+    nsApp.off(nsApp.launchEvent);
+    nsApp.off(nsApp.suspendEvent);
+    nsApp.off(nsApp.resumeEvent);
+    nsApp.off(nsApp.lowMemoryEvent);
+    nsApp.off(nsApp.exitEvent);
+    nsApp.off(nsApp.uncaughtErrorEvent);
   }
 
   private setupAndroid() {

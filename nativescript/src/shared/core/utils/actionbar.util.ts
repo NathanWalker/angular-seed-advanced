@@ -39,7 +39,7 @@ export class ActionBarUtil {
         try {
           let LayoutParams = <any>android.view.WindowManager.LayoutParams;
           let win: any;
-          if (app.android.foregroundActivity != null) {
+          if (app.android.foregroundActivity) {
             win = app.android.foregroundActivity.getWindow();
           } else {
             win = app.android.startActivity.getWindow();

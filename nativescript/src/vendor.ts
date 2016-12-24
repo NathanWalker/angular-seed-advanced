@@ -1,4 +1,4 @@
-require("./vendor-platform");
+require('./vendor-platform');
 
 require('reflect-metadata');
 require('@angular/platform-browser');

@@ -17,19 +17,18 @@ const plugins = <any>gulpLoadPlugins();
 /**
  * Executes the build process, linting the TypeScript files using `codelyzer`.
  */
-export = (done: any) => {
-  done();
-  // let src = [
-  //   '**/*.ts',
-  //   'app/**/*.ts',
-  // ];
+export = () => {
+  let src = [
+    '**/*.ts',
+    'app/**/*.ts',
+  ];
 
-  // return gulp.src(src, {
-  //   base: Config.TNS_APP_SRC,
-  //   cwd: Config.TNS_APP_SRC,
-  // })
-  //   .pipe(plugins.tslint())
-  //   .pipe(plugins.tslint().report({
-  //     emitError: require('is-ci')
-  //   }));
+  return gulp.src(src, {
+    base: Config.TNS_APP_SRC,
+    cwd: Config.TNS_APP_SRC,
+  })
+    .pipe(plugins.tslint())
+    .pipe(plugins.tslint.report({
+      emitError: require('is-ci')
+    }));
 };
