@@ -162,7 +162,7 @@
     "ts-node": "^1.4.3",
     "tslint": "^4.0.0",
     "typedoc": "^0.5.1",
-    "typescript": "next",
+    "typescript": "^2.1.4",
     "walk": "^2.3.9",
     "yargs": "^6.0.0"
   },
