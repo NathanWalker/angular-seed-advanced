@@ -3,7 +3,6 @@ var nsWebpack = require('nativescript-dev-webpack');
 var path = require('path');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var path = require('path');
 var AotPlugin = require('@ngtools/webpack').AotPlugin;
 
 var nativescriptTarget = require('nativescript-dev-webpack/nativescript-target');
@@ -13,6 +12,7 @@ module.exports = function(platform, destinationApp) {
     //Default destination inside platforms/<platform>/...
     destinationApp = nsWebpack.getAppPath(platform);
   }
+
   var entry = {};
   //Discover entry module from package.json
   entry.bundle = './' + nsWebpack.getEntryModule();
@@ -52,7 +52,7 @@ module.exports = function(platform, destinationApp) {
     resolveLoader: {
       alias: {
         'raw': path.join(__dirname, 'node_modules/raw-loader'),
-        'tns-loader': path.join(__dirname, 'tools', 'tns-loader.js'),
+        'tns-loader': path.join(__dirname, 'tools', 'webpack', 'tns-loader.js'),
       }
     },
     node: {
@@ -88,7 +88,7 @@ module.exports = function(platform, destinationApp) {
           test: /\.ts$/,
           loaders: [
             '@ngtools/webpack',
-            'nativescript-dev-webpack/tns-aot-loader'
+            'nativescript-dev-webpack/tns-aot-loader',
           ]
         },
 

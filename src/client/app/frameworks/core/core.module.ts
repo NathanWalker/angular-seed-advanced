@@ -19,7 +19,7 @@ interface ICoreModuleOptions {
 }
 
 // for AoT compilation
-export function configFactory(): ConfigLoader {
+export function configLoaderFactory(): ConfigLoader {
   return new ConfigStaticLoader(`${Config.IS_MOBILE_NATIVE() ? '/' : ''}assets/app.config.json`);
 }
 
@@ -32,7 +32,7 @@ export function configFactory(): ConfigLoader {
     CommonModule,
     RouterModule,
     HttpModule,
-    ConfigModule.forRoot(),
+    ConfigModule,
   ],
   declarations: [
     CORE_DIRECTIVES
