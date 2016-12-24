@@ -18,3 +18,10 @@ export class WindowMockFrench extends WindowMock {
     this.navigator.language = 'fr-US';
   }
 }
+
+export class WindowMockNoLanguage extends WindowMock {
+  constructor() {
+    super();
+    this.navigator.language = undefined;
+  }
+}

@@ -9,7 +9,6 @@ import { Config } from './config';
 
 export function main() {
   t.describe('core: Config', () => {
-    t.be(() => Config.RESET());
 
     t.it('ENVIRONMENT', () => {
       t.e(Config.ENVIRONMENT).toBeDefined();
@@ -26,13 +25,6 @@ export function main() {
       t.e(Config.IS_MOBILE_NATIVE).toBeDefined();
       t.e(Config.IS_MOBILE_HYBRID).toBeDefined();
       t.e(Config.IS_DESKTOP).toBeDefined();
-    });
-    t.it('DEBUG', () => {
-      t.e(Config.DEBUG.LEVEL_1).toBe(false);
-      t.e(Config.DEBUG.LEVEL_2).toBe(false);
-      t.e(Config.DEBUG.LEVEL_3).toBe(false);
-      t.e(Config.DEBUG.LEVEL_4).toBe(false);
-      t.e(Config.IS_DEBUG_MODE()).toBe(false);
     });
   });
 }

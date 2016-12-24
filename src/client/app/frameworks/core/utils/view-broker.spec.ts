@@ -7,9 +7,8 @@ import { ViewBroker } from './view-broker';
 
 export function main() {
   t.describe('utilities: ViewBroker', () => {
-    t.be(() => Config.RESET());
-    
-    t.it('TEMPLATE_URL: web', () => {   
+
+    t.it('TEMPLATE_URL: web', () => {
       Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
       t.e(ViewBroker.TEMPLATE_URL('./app/components/home/home.html')).toBe('./app/components/home/home.html');
     });
