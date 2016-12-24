@@ -1,17 +1,30 @@
+// angular
 import { TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
+import { BaseRequestOptions, Http, Response, ResponseOptions } from '@angular/http';
+import { MockBackend, MockConnection } from '@angular/http/testing';
 
 // libs
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { ConfigService } from 'ng2-config';
 
+// app
 import { t } from '../../test/index';
 import { ILang, WindowService, ConsoleService } from '../../core/index';
 import { CoreModule } from '../../core/core.module';
 import { AnalyticsModule } from '../../analytics/analytics.module';
+import { TEST_CORE_PROVIDERS } from '../../core/testing/index';
+
+// module
 import { MultilingualModule } from '../multilingual.module';
-import { MultilingualService, reducer } from '../index';
-import { TEST_MULTILINGUAL_RESET } from '../testing/index';
+import { MultilingualService, MultilingualEffects, reducer } from '../index';
+import { TEST_MULTILINGUAL_PROVIDERS } from '../testing/index';
+
+// mocks
+import { ConfigMock } from '../../core/testing/mocks/ng2-config.mock';
+import { ConfigMockMultilang } from '../testing/mocks/ng2-config-multilang.mock';
 
 const SUPPORTED_LANGUAGES: Array<ILang> = [
   { code: 'en', title: 'English' },
@@ -22,26 +35,41 @@ const SUPPORTED_LANGUAGES: Array<ILang> = [
 ];
 
 // test module configuration for each test
-const testModuleConfig = () => {
+const testModuleConfig = (multilang: boolean = false) => {
   TestBed.configureTestingModule({
     imports: [
       CoreModule.forRoot([
         { provide: WindowService, useValue: window },
-        { provide: ConsoleService, useValue: console }
+        { provide: ConsoleService, useValue: console },
+        { provide: ConfigService, useClass: multilang ? ConfigMockMultilang : ConfigMock },
       ]),
       RouterTestingModule,
       AnalyticsModule,
       MultilingualModule,
-      StoreModule.provideStore({ i18n: reducer })
+      StoreModule.provideStore({ i18n: reducer }),
+      EffectsModule.run(MultilingualEffects)
     ],
-    declarations: [TestComponent]
+    declarations: [TestComponent],
+    providers: [
+      {
+        provide: Http,
+        useFactory: (mockBackend: MockBackend, options: BaseRequestOptions) => {
+          return new Http(mockBackend, options);
+        },
+        deps: [MockBackend, BaseRequestOptions]
+      },
+      MockBackend,
+      BaseRequestOptions
+    ]
   });
 };
 
 export function main() {
   t.describe('i18n:', () => {
     t.describe('@Component: LangSwitcherComponent', () => {
-      t.be(testModuleConfig);
+      t.be(() => {
+        testModuleConfig();
+      });
 
       t.it('should work',
         t.async(() => {
@@ -58,12 +86,8 @@ export function main() {
 
     t.describe('@Component: LangSwitcherComponent with multiple languages', () => {
       t.be(() => {
-        MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES;
-        testModuleConfig();
+        testModuleConfig(true);
       });
-
-      // ensure statics are reset when the test had modified statics in a beforeEach (be) or beforeEachProvider (bep)
-      t.ae(() => TEST_MULTILINGUAL_RESET());
 
       t.it('should work',
         t.async(() => {
@@ -88,4 +112,9 @@ export function main() {
   selector: 'test-cmp',
   template: '<lang-switcher></lang-switcher>'
 })
-class TestComponent {}
+class TestComponent  {
+  constructor(private multilang: MultilingualService,
+              private config: ConfigService) {
+    this.multilang.init(this.config.getSettings().i18n);
+  }
+}

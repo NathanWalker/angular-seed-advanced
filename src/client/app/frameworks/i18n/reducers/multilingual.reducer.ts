@@ -8,10 +8,12 @@ export function reducer(
 ): IMultilingualState {
   switch (action.type) {
     case ActionTypes.LANG_CHANGED:
-      return (<any>Object).assign({}, state, {
-        lang: action.payload
-      });
+      if (state.lang !== action.payload)
+        return (<any>Object).assign({}, state, {
+            lang: action.payload
+          });
 
+      return state;
     default:
       return state;
   }
