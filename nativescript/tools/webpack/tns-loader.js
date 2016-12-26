@@ -1,57 +1,70 @@
 const fs = require('fs-extra');
-const loaderUtils = require("loader-utils");;
+const loaderUtils = require('loader-utils');;
+const _ = require('lodash');
+const template = _.template;
 
 const htmlCssRegexp = /\.component\.(html|css)/;
 const htmlCssReplaceStr = '.component.tns.\$1';
 const componentRegexp = /\.component\.(ts|js)/;
 const componentFactoryRegexp = /\.component\.ngfactory\.(ts|js)/;
 
-const templateUrlRegex = /templateUrl *:(.*)$/gm;
-const stylesRegex = /styleUrls *:(\s*\[[^\]]*?\])/g;
-const stringRegex = /(['"])((?:[^\\]\\\1|.)*?)\1/g;
-const moduleIdRegex = /(moduleId *: *module\.id,)$/gm;
+const ng2TemplateUrlRegex = /templateUrl *:(.*)$/gm;
+const ng2StyleUrlsRegex = /styleUrls *:(\s*\[[^\]]*?\])/g;
+const ng2StringReplaceRegexp = /(['"])((?:[^\\]\\\1|.)*?)\1/g;
+const ng2ModuleIdRegexp = /(moduleId *: *module\.id,)$/gm;
 
 function replaceStringsWithRequires(string) {
-  return string.replace(stringRegex, function (match, quote, url) {
-    if (url.charAt(0) !== ".") {
-      url = "./" + url;
+  return string.replace(ng2StringReplaceRegexp, function (match, quote, url) {
+    if (url.charAt(0) !== '.') {
+      url = './' + url;
     }
 
     const tnsPath = url.replace(htmlCssRegexp, htmlCssReplaceStr);
-    return "require('" + tnsPath + "')";
+    return 'require(\'' + tnsPath + '\')';
   });
+}
+
+function injectTemplateVariables(loaderContext, source) {
+  // Inject template variables via lodash.template
+  // Note: We only support the '<?= varname ?>' syntax (default matches and breaks on es6 string literals).
+  const query = loaderUtils.parseQuery(loaderContext.query);
+
+  const tpl = template(source, {
+    interpolate: /<%=([\s\S]+?)%>/g,
+  });
+
+  return tpl(query.data);
 }
 
 module.exports = function tnsLoader(source) {
   if (this.resourcePath.match(htmlCssRegexp)) {
+    // If a tns-version of the html/css file exists, replace the source with the content of that file.
     const tnsPath = this.resourcePath.replace(htmlCssRegexp, htmlCssReplaceStr);
     if (fs.existsSync(tnsPath)) {
       const tnsSource = fs.readFileSync(tnsPath, 'UTF-8');
       source = 'module.exports = ' + JSON.stringify(tnsSource);
     }
   } else if (this.resourcePath.match(componentRegexp)) {
+    // For ng2 components cnnvert:
+    //  styleUrls = ['file1', ..., fileN] => styles = [require('file1'), ..., require('fileN')]
+    //  templateUrl: 'file' => template: require('file')
+    //
+    // Removes moduleId
     const styleProperty = 'styles';
     const templateProperty = 'template';
 
-    // console.log(source);
-    source = source.replace(templateUrlRegex, function replaceTemplateUrl(match, url) {
-      return templateProperty + ":" + replaceStringsWithRequires(url);
+    source = source.replace(ng2TemplateUrlRegex, function replaceTemplateUrl(match, url) {
+      return templateProperty + ':' + replaceStringsWithRequires(url);
     })
-    .replace(stylesRegex, function replaceStyleUrls(match, urls) {
-      // replace: stylesUrl: ['./foo.css', "./baz.css", "./index.component.css"]
-      // with: styles: [require('./foo.css'), require("./baz.css"), require("./index.component.css")]
-      // or: styleUrls: [require('./foo.css'), require("./baz.css"), require("./index.component.css")]
-      // if `keepUrl` query parameter is set to true.
-      return styleProperty + ":" + replaceStringsWithRequires(urls);
+    .replace(ng2StyleUrlsRegex, function replaceStyleUrls(match, urls) {
+      return styleProperty + ':' + replaceStringsWithRequires(urls);
     })
-    .replace(moduleIdRegex, function moduleId(match, moduleId) {
+    .replace(ng2ModuleIdRegexp, function moduleId(match, moduleId) {
       return '/* ' + moduleId + ' */';
     });
-
-    // console.log(source);
   } else if (this.resourcePath.match(componentFactoryRegexp)) {
-    // console.log(source);
+    // TODO: should/could we do something with the NgFactory files?
   }
 
-  return source;
+  return injectTemplateVariables(this, source);
 };

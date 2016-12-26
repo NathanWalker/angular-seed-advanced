@@ -1,6 +1,8 @@
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import * as merge from 'merge-stream';
+import * as fs from 'fs';
+import * as path from 'path';
 
 import Config from '../../config';
 import { makeTsProject, TemplateLocalsBuilder } from '../../utils';
@@ -62,8 +64,9 @@ export =
         base: Config.TNS_APP_SRC,
         cwd: Config.TNS_APP_SRC,
       })
-        //.pipe(plugins.template(template))
         .pipe(gulp.dest(Config.TNS_APP_DEST));
+
+      fs.writeFileSync(path.join(Config.TNS_APP_DEST, 'build-config.json'), JSON.stringify(template));
 
       return merge(transpiled, copy);
     }
