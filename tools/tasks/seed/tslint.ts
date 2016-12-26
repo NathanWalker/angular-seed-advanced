@@ -1,9 +1,3 @@
-/** HACK: codelyzer doesn't like typescript 2.2.0-dev* */
-const ts = require('typescript');
-console.warn(`UGLY HACK: codelyzer doesn't like typescript 2.2.0-dev* so faking the version`);
-ts.version = '2.1.3';
-/** END - HACK: codelyzer doesn't like typescript 2.2.0-dev* */
-
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { join } from 'path';
