@@ -6,9 +6,9 @@
   <TextField [(ngModel)]="newName" [hint]="'INPUT_HINT' | translate" autocorrect="false" autocapitalizationType="none"></TextField>
   <Button [text]="'ADD_BTN_TEXT' | translate" (tap)="addName()" class="btn btn-primary"></Button>
 
-  <ListView [items]="names$ | async" row="1" colSpan="2" height="250">
+  <ListView [items]="names$ | async" row="1" colSpan="2" height="250" class="list-group">
     <template let-name="item" let-odd="odd" let-even="even">
-      <StackLayout [class.odd]="odd" [class.even]="even" class="list-item">
+      <StackLayout [class.odd]="odd" [class.even]="even" class="list-group-item">
         <Label [text]="name"></Label>
       </StackLayout>
     </template>
