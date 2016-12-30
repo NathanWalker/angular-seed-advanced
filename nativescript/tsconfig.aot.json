@@ -13,9 +13,9 @@
     "types": []
   },
   "exclude": [
-      "node_modules",
-      "platforms",
-      "src"
+    "node_modules",
+    "platforms",
+    "src"
   ],
   "angularCompilerOptions": {
     "debug": true,
