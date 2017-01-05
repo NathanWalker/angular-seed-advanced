@@ -20,7 +20,11 @@ function replaceStringsWithRequires(string) {
     }
 
     const tnsPath = url.replace(htmlCssRegexp, htmlCssReplaceStr);
-    return 'require(\'' + tnsPath + '\')';
+    if (fs.existsSync(tnsPath)) {
+      return 'require(\'' + tnsPath + '\')';
+    }
+
+    return 'require(\'' + url + '\')';
   });
 }
 

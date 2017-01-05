@@ -101,8 +101,8 @@ module.exports = function(platform, destinationApp) {
           test: /\.ts$/,
           use: [
             tnsLoader,
-            '@ngtools/webpack',
             'nativescript-dev-webpack/tns-aot-loader',
+            '@ngtools/webpack',
           ]
         },
 
@@ -173,7 +173,7 @@ module.exports = function(platform, destinationApp) {
       //Angular AOT compiler
       new AotPlugin({
         tsConfigPath: 'tsconfig.aot.json',
-        entryModule: 'app/native.module#NativeModule',
+        entryModule: path.resolve(__dirname, 'app/native.module#NativeModule'),
         typeChecking: false
       })
     ],

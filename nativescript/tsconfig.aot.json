@@ -19,6 +19,7 @@
   ],
   "angularCompilerOptions": {
     "debug": true,
+    "genDir": "./",
     "skipMetadataEmit": true
   }
 }
