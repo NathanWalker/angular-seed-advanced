@@ -13,15 +13,15 @@ t.describe('App', function() {
   });
 
   t.it('should have <nav>', function() {
-      t.e(element(by.css('sd-app sd-navbar nav')).isPresent()).toEqual(true);
+    t.e(element(by.css('sd-app sd-navbar nav')).isPresent()).toEqual(true);
   });
 
   t.it('should have correct nav text for Home', function() {
-      t.e(element(by.css('sd-app sd-navbar nav a:first-child')).getText()).toEqual('Home');
+    t.e(element(by.css('sd-app sd-navbar nav a:first-child')).getText()).toEqual('Home');
   });
 
   t.it('should have correct nav text for About', function() {
-      t.e(element(by.css('sd-app sd-navbar nav a:last-child')).getText()).toEqual('About');
+    t.e(element(by.css('sd-app sd-navbar nav a:last-child')).getText()).toEqual('About');
   });
 
   t.it('should contain a language switcher', function() {

@@ -132,9 +132,8 @@ export class NSAppService extends AppService {
 
     // Android specific code goes here
 
-    // For the child-router in librarytabs capture android's back button and route back manually
     this.nsApp.android.on(this.nsApp.AndroidApplication.activityBackPressedEvent, (args) => {
-      const states = this.locationstrategy._getSatates();
+      const states = this.locationstrategy._getStates();
       this.log.info(`Event: ${args.eventName}\nActivity: ${args.activity}\nstates: ${JSON.stringify(states)}`);
     });
 
