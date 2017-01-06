@@ -8,6 +8,7 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
+    "noEmitHelpers": true,
     "suppressImplicitAnyIndexErrors": true,
     "baseUrl": "app",
     "types": []
@@ -18,6 +19,7 @@
     "src"
   ],
   "angularCompilerOptions": {
+    "genDir": "./",
     "debug": true,
     "skipMetadataEmit": true
   }

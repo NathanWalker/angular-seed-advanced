@@ -30,33 +30,34 @@
         "build-ios-bundle": "tns build ios --bundle --disable-npm-install"
     },
     "dependencies": {
-        "@angular/common": "2.2.1",
-        "@angular/compiler": "2.2.1",
-        "@angular/core": "2.2.1",
-        "@angular/forms": "2.2.1",
-        "@angular/http": "2.2.1",
-        "@angular/platform-browser": "2.2.1",
-        "@angular/platform-browser-dynamic": "2.2.1",
-        "@angular/router": "3.2.1",
+        "@angular/common": "2.3.1",
+        "@angular/compiler": "2.3.1",
+        "@angular/core": "2.3.1",
+        "@angular/forms": "2.3.1",
+        "@angular/http": "2.3.1",
+        "@angular/platform-browser": "2.3.1",
+        "@angular/platform-browser-dynamic": "2.3.1",
+        "@angular/router": "3.3.1",
         "@ngrx/core": "^1.2.0",
         "@ngrx/effects": "^2.0.0",
         "@ngrx/store": "^2.2.1",
         "angulartics2": "^1.6.1",
         "lodash": "^4.16.4",
         "nativescript-angular": "next",
-        "nativescript-dev-webpack": "^0.2.12",
+        "nativescript-dev-webpack": "^0.2.16",
         "nativescript-theme-core": "^1.0.2",
-        "ng2-config": "^1.1.1",
+        "ng2-config": "1.1.1",
         "ng2-translate": "^5.0.0",
         "ngrx-store-freeze": "0.1.0",
         "reflect-metadata": "~0.1.8",
-        "rxjs": "5.0.0-beta.12",
-        "tns-core-modules": "^2.4.3"
+        "rxjs": "5.0.0-rc.4",
+        "tns-core-modules": "^2.4.4",
+        "zone.js": "~0.7.4"
     },
     "devDependencies": {
-        "@angular/compiler-cli": "2.2.1",
+        "@angular/compiler-cli": "2.3.1",
         "@ngrx/store-devtools": "^3.2.2",
-        "@ngtools/webpack": "1.1.6",
+        "@ngtools/webpack": "1.2.1",
         "@types/jasmine": "^2.5.35",
         "babel-traverse": "6.20.0",
         "babel-types": "6.20.0",
@@ -70,7 +71,6 @@
         "raw-loader": "~0.5.1",
         "resolve-url-loader": "~1.6.0",
         "typescript": "~2.0.10",
-        "webpack": "~2.1.0-beta.27",
-        "zone.js": "~0.6.21"
+        "webpack": "~2.1.0-beta.27"
     }
 }
