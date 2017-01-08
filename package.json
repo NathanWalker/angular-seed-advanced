@@ -179,7 +179,6 @@
     "intl": "^1.2.5",
     "lodash": "^4.17.4",
     "minimatch": "^3.0.3",
-    "ng2-config": "^1.1.2",
     "ng2-translate": "^5.0.0",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.2",

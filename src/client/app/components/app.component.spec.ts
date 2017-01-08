@@ -31,7 +31,7 @@ const testModuleConfig = () => {
     imports: [
       FormsModule,
       MultilingualModule,
-      StoreModule.provideStore({ i18n: reducer }),
+      StoreModule.provideStore({ }),
       RouterTestingModule.withRoutes(config)
     ],
     declarations: [

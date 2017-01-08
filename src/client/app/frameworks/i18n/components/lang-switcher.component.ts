@@ -1,9 +1,5 @@
-// angular
-import { OnInit, OnDestroy } from '@angular/core';
-
 // libs
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs/Subscription';
 
 // app
 import { BaseComponent, Config, LogService, ILang } from '../../core/index';
@@ -17,14 +13,16 @@ import * as multilingual from '../index';
   templateUrl: 'lang-switcher.component.html',
   styleUrls: ['lang-switcher.component.css']
 })
-export class LangSwitcherComponent implements OnInit, OnDestroy {
-  public lang: string;
-  public supportedLanguages: Array<ILang>;
-  private _sub: Subscription;
+export class LangSwitcherComponent {
 
-  constructor(public multilang: multilingual.MultilingualService,
-              private log: LogService,
-              private store: Store<IAppState>) {
+  public lang: string;
+  public supportedLanguages: Array<ILang> = multilingual.MultilingualService.SUPPORTED_LANGUAGES;
+
+  constructor(private log: LogService, private store: Store<IAppState>) {
+    store.take(1).subscribe((s: any) => {
+      // s && s.18n - ensures testing works in all cases (since some tests dont use i18n state)
+      this.lang = s && s.i18n ? s.i18n.lang : '';
+    });
 
     if (Config.IS_DESKTOP()) {
       // allow electron menu to talk to component
@@ -35,30 +33,16 @@ export class LangSwitcherComponent implements OnInit, OnDestroy {
   }
 
   changeLang(e: any) {
-    let lang = this.multilang.defaultLanguage.code; // fallback to default
+    let lang = this.supportedLanguages[0].code; // fallback to default 'en'
 
     if (Config.IS_MOBILE_NATIVE()) {
       if (e) {
-        lang = this.multilang.availableLanguages[e.newIndex].code;
+        lang = this.supportedLanguages[e.newIndex].code;
       }
     } else if (e && e.target) {
       lang = e.target.value;
     }
-
     this.log.debug(`Language change: ${lang}`);
-    this.multilang.changeLang(lang);
-  }
-
-  ngOnInit() {
-    this._sub = this.store.select('i18n').subscribe((s: multilingual.IMultilingualState) => {
-      if (s.lang) {
-        this.lang = s.lang;
-        this.supportedLanguages = this.multilang.availableLanguages;
-      }
-    });
-  }
-
-  ngOnDestroy() {
-    if (this._sub) this._sub.unsubscribe();
+    this.store.dispatch(new multilingual.ChangeAction(lang));
   }
 }

@@ -78,13 +78,6 @@ export class SeedAdvancedConfig extends SeedConfig {
         }
       },
       {
-        name: 'ng2-config',
-        packageMeta: {
-          main: 'bundles/ng2-config.umd.min.js',
-          defaultExtension: 'js'
-        }
-      },
-      {
         name: 'ng2-translate',
         packageMeta: {
           main: 'bundles/index.js',
