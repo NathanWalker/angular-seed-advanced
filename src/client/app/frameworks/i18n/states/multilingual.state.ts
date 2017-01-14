@@ -5,7 +5,7 @@ export interface IMultilingualState {
 }
 
 export const initialState: IMultilingualState = {
-  lang: ''
+  lang: 'en'
 };
 
 export function getLang(state$: Observable<IMultilingualState>) {

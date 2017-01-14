@@ -5,9 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
-// libs
-import { ConfigLoader, ConfigStaticLoader, ConfigModule, ConfigService } from 'ng2-config';
-
 // module
 import { CORE_DIRECTIVES } from './directives/index';
 import { CORE_PROVIDERS } from './services/index';
@@ -18,11 +15,6 @@ interface ICoreModuleOptions {
   console?: any;
 }
 
-// for AoT compilation
-export function configLoaderFactory(): ConfigLoader {
-  return new ConfigStaticLoader(`${Config.IS_MOBILE_NATIVE() ? '/' : ''}assets/app.config.json`);
-}
-
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
@@ -31,11 +23,7 @@ export function configLoaderFactory(): ConfigLoader {
   imports: [
     CommonModule,
     RouterModule,
-    HttpModule,
-    ConfigModule.forRoot({
-      provide: ConfigLoader,
-      useFactory: (configLoaderFactory),
-    }),
+    HttpModule
   ],
   declarations: [
     CORE_DIRECTIVES

@@ -15,15 +15,11 @@ import * as multilingual from '../actions/multilingual.action';
 @Injectable()
 export class MultilingualEffects {
 
-  /**
-   * This effect makes use of the `startWith` operator to trigger
-   * the effect immediately on startup.
-   */
   @Effect() change$: Observable<Action> = this.actions$
     .ofType(multilingual.ActionTypes.CHANGE)
     .map(action => {
       let lang = action.payload;
-      if (includes(map(this.multilangService.availableLanguages, 'code'), lang)) {
+      if (includes(map(MultilingualService.SUPPORTED_LANGUAGES, 'code'), lang)) {
         let langChangedAction = new multilingual.LangChangedAction(lang);
         // track analytics
         this.multilangService.track(langChangedAction.type, { label: langChangedAction.payload });
