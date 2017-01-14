@@ -48,6 +48,8 @@ module.exports = function(platform, destinationApp) {
     }, {
       from: 'css/**'
     }, {
+      from: 'fonts/**'
+    }, {
       from: '**/*.jpg'
     }, {
       from: '**/*.png'
@@ -65,22 +67,25 @@ module.exports = function(platform, destinationApp) {
       './vendor',
       './bundle',
     ]),
+
+    // Exclude explicitly required but never declared in XML elements.
+    // Loader nativescript-dev-webpack/tns-xml-loader should be added for *.xml/html files.
+    new nsWebpack.ExcludeUnusedElementsPlugin(),
+
     //Angular AOT compiler
     new AotPlugin({
       tsConfigPath: 'tsconfig.aot.json',
       entryModule: path.resolve(__dirname, 'app/native.module#NativeModule'),
       typeChecking: false
     }),
-    /*
     new nsWebpack.StyleUrlResolvePlugin({
       platform
     }),
-    */
   ];
 
   if (process.env.npm_config_uglify) {
     //Work around an Android issue by setting compress = false
-    var compress = platform !== "android";
+    var compress = platform !== 'android';
     plugins.push(new webpack.optimize.UglifyJsPlugin({
       mangle: {
         except: nsWebpack.uglifyMangleExcludes,
@@ -118,7 +123,6 @@ module.exports = function(platform, destinationApp) {
     },
     resolveLoader: {
       alias: {
-        'raw': path.join(__dirname, 'node_modules/raw-loader'),
         'tns-loader': path.join(__dirname, 'tools', 'webpack', 'tns-loader.js'),
       }
     },
@@ -130,10 +134,11 @@ module.exports = function(platform, destinationApp) {
     },
     module: {
       rules: [{
-          test: /\.html$/,
+          test: /\.html$|\.xml$/,
           use: [
             tnsLoader,
-            'raw',
+            'raw-loader',
+            'nativescript-dev-webpack/tns-xml-loader'
           ]
         },
         // Root app.css file gets extracted with bundled dependencies
@@ -141,7 +146,7 @@ module.exports = function(platform, destinationApp) {
           test: /app\.css$/,
           use: ExtractTextPlugin.extract([
             'resolve-url-loader',
-            'css-loader',
+            'nativescript-css-loader',
             'nativescript-dev-webpack/platform-css-loader',
           ]),
         },
@@ -151,7 +156,7 @@ module.exports = function(platform, destinationApp) {
           exclude: /app\.css$/,
           use: [
             tnsLoader,
-            'raw',
+            'raw-loader',
           ]
         },
         // Compile TypeScript files with ahead-of-time compiler.
@@ -178,7 +183,7 @@ module.exports = function(platform, destinationApp) {
         {
           test: /\.scss$/,
           use: [
-            'raw',
+            'raw-loader',
             'resolve-url-loader',
             'sass-loader'
           ]
@@ -190,7 +195,7 @@ module.exports = function(platform, destinationApp) {
           test: /\.(jpg|png|gif)$/,
           use: 'file-loader'
         }
-      ],
+      ]
     },
     plugins: plugins,
   };

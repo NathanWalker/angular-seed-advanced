@@ -11,10 +11,7 @@ import { Http } from '@angular/http';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 // libs
-// import { StoreModule } from '@ngrx/store';
-// import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
-import { ConfigLoader } from 'ng2-config';
 
 // app
 import { AppComponent } from './app/components/app.component';
