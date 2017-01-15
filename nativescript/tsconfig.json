@@ -10,7 +10,6 @@
         "lib": [
             "dom"
         ],
-        "sourceMap": true,
         "pretty": true,
         "allowUnreachableCode": false,
         "allowUnusedLabels": false,
