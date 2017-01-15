@@ -1,6 +1,5 @@
 import { t } from '../index';
-
-declare var browser: any, element: any, by: any;
+import { browser, element, by } from 'protractor';
 
 t.describe('App', function() {
 
