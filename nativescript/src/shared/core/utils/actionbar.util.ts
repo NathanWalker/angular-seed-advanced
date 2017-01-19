@@ -28,7 +28,7 @@ export class ActionBarUtil {
       actionBar.actionItems.removeItem(item);
     });
   }
-  public static STATUSBAR_STYLE(style: number) {
+  public static STATUSBAR_STYLE(style: number | string) {
     if (topmost().ios) {
       let navigationBar = topmost().ios.controller.navigationBar;
       // 0: default
@@ -46,7 +46,7 @@ export class ActionBarUtil {
           }
 
           win.addFlags(LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-          win.setStatusBarColor(new Color('#3280CF').android);
+          win.setStatusBarColor(new Color(<string>style || '#3280CF').android);
         } catch (err) {
           console.log(err);
         }

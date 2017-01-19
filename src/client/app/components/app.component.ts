@@ -17,8 +17,11 @@ import { Config, LogService, AppService } from '../frameworks/core/index';
   changeDetection: ChangeDetectionStrategy.Default // Everything else uses OnPush
 })
 export class AppComponent {
-  constructor(public analytics: AnalyticsService,
-              public log: LogService) {
+  constructor(
+    public analytics: AnalyticsService,
+    public log: LogService,
+    private appService: AppService
+  ) {
     log.debug(`Config env: ${Config.ENVIRONMENT().ENV}`);
   }
 }

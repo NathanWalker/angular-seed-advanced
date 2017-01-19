@@ -58,9 +58,17 @@ export class NSAppService extends AppService {
     //   window.navigator.language = args.lang;
     // });
 
-    // Action-bar style on iOS
-    // See https://developer.apple.com/reference/uikit/uibarstyle
-    ActionBarUtil.STATUSBAR_STYLE(1);
+    /**
+     *  Top status bar on iOS and/or Android
+     * iOs {number}
+     *   0: default
+     *   1: light
+     * Android {string}
+     *   hex value
+     */
+    ActionBarUtil.STATUSBAR_STYLE(
+      isIOS ? 1 : '#3280CF'
+    );
 
     if (String('<%= BUILD_TYPE %>') !== 'prod') {
       log.debug('NSAppCmp ----');
