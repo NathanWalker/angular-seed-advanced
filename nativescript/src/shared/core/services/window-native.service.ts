@@ -1,5 +1,6 @@
 // nativescript
 import * as dialogs from 'ui/dialogs';
+import { device } from 'platform';
 
 // app
 import { IWindow } from '../../../app/frameworks/core/interfaces/iwindow';
@@ -7,7 +8,7 @@ import { IWindow } from '../../../app/frameworks/core/interfaces/iwindow';
 export class WindowNative implements IWindow {
   public get navigator(): any {
     return {
-      language: 'en-US',
+      language: device.language,
       userAgent: 'nativescript'
     };
   }
