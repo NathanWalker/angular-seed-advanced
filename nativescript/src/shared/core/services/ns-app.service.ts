@@ -22,7 +22,6 @@ import { Config } from '../../../app/frameworks/core/utils';
 import { LogService, WindowService, RouterExtensions } from '../../../app/frameworks/core/index';
 import { AnalyticsService } from '../../../app/frameworks/analytics/index';
 import { ActionBarUtil } from '../utils/actionbar.util';
-import { MultilingualService } from '../../../app/frameworks/i18n/index';
 import * as multilingual from '../../../app/frameworks/i18n/index';
 
 declare var android: any;
@@ -39,12 +38,11 @@ export class NSAppService extends AppService {
               public log: LogService,
               public store: Store<any>,
               public router: Router,
-              public multilang: MultilingualService,
               public locationstrategy: NSLocationStrategy,
               public translate: TranslateService,
               public window: WindowService
   ) {
-    super(analytics, log, multilang);
+    super(analytics, log);
 
     this.log.debug('NSAppService constructor');
 
