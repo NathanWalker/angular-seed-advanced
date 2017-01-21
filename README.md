@@ -35,14 +35,14 @@ This is an **advanced** seed project for Angular apps based on [Minko Gechev's](
 - [Prerequisites](#prerequisites)
 - [How to start](#how-to-start)
 - [How to start with AoT compilation](#how-to-start-with-aot-compilation)
-- [Mobile App](#mobile-app)
-- [Desktop App](#desktop-app)
+- [Mobile app](#mobile-app)
+- [Desktop app](#desktop-app)
 - [Running tests](#running-tests)
-- [Web Configuration Options](#web-configuration-options)
+- [Web configuration options](#web-configuration-options)
 - [Code organization overview](#code-organization-overview)
-- [How-Tos](#how-tos)
-- [General Best Practice Guide to Sharing Code](#general-best-practice-guide-to-sharing-code)
-- [Integration Guides](https://github.com/NathanWalker/angular-seed-advanced/wiki)
+- [How-tos](#how-tos)
+- [General best practice guide to sharing code](#general-best-practice-guide-to-sharing-code)
+- [Integration guides](https://github.com/NathanWalker/angular-seed-advanced/wiki)
 - [How best to use for your project](#how-best-to-use-for-your-project)
 - [Contributing](#contributing)
 - [License](#license)
@@ -101,7 +101,7 @@ In order to start the seed with AoT use:
 $ npm run build.prod.exp
 ```
 
-## Mobile App
+## Mobile app
 
 The mobile app is provided via [NativeScript](https://www.nativescript.org/), an open source framework for building truly native mobile apps.
 
@@ -148,7 +148,7 @@ Android:   npm run build.android
 iOS:       npm run build.ios
 ```
 
-## Desktop App
+## Desktop app
 
 The desktop app is provided via [Electron](http://electron.atom.io/), cross platform desktop apps
 with JavaScript, HTML, and CSS.
@@ -209,7 +209,7 @@ $ npm run e2e.live
 ```
 You can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
 
-## Web Configuration Options
+## Web configuration options
 
 Default application server configuration
 
@@ -274,7 +274,7 @@ A documentation of the provided tools can be found in [tools/README.md](tools/RE
   - [web.module.ts](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/web.module.ts): The root module for the web and desktop app.
 - `src/e2e`: Integration/end-to-end tests for the web app.
 
-## How-Tos
+## How-tos
 
 ### i18n
 
@@ -286,7 +286,7 @@ A documentation of the provided tools can be found in [tools/README.md](tools/RE
   - `src/client/app/shared/i18n/components/lang-switcher.component.spec.ts`
     - fix test
 
-## General Best Practice Guide to Sharing Code 
+## General best practice guide to sharing code
 
 There’s actually only a few things to keep in mind when sharing code between web/mobile. The seed does take care of quite a few of those things but here’s a brief list:
 
