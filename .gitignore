@@ -49,10 +49,9 @@ tmp
 
 src/**/*.js
 src/**/*.js.map
-!src/sw.js
 !src/client/app/frameworks/test
-nativescript/app/css
-nativescript/src/css
+nativescript/app
+nativescript/src/app
 nativescript/hooks
 nativescript/node_modules
 nativescript/platforms
@@ -60,10 +59,7 @@ nativescript/**/*.js
 nativescript/**/*.js.map
 nativescript/*.d.ts
 !nativescript/references.d.ts
-nativescript/app
 !nativescript/app/App_Resources
-nativescript/src/app
-nativescript/app/assets
 desktop
 gulpfile.js
 gulpfile.js.map
