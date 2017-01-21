@@ -13,9 +13,7 @@ import * as multilingual from '../index';
   moduleId: module.id,
   selector: 'lang-switcher',
   templateUrl: 'lang-switcher.component.html',
-  styleUrls: [
-    'lang-switcher.component.css',
-  ],
+  styleUrls: ['lang-switcher.component.css'],
 })
 export class LangSwitcherComponent {
 

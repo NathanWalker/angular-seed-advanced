@@ -4,9 +4,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 // app
-import { RouterExtensions, Config } from '../../frameworks/core/index';
-import { IAppState, getNames } from '../../frameworks/ngrx/index';
-import * as nameList from '../../frameworks/sample/index';
+import { RouterExtensions, Config } from '../../shared/core/index';
+import { IAppState, getNames } from '../../shared/ngrx/index';
+import * as nameList from '../../shared/sample/index';
 
 declare var NSIndexPath, UITableViewScrollPosition;
 
@@ -14,9 +14,7 @@ declare var NSIndexPath, UITableViewScrollPosition;
   moduleId: module.id,
   selector: 'sd-home',
   templateUrl: 'home.component.html',
-  styleUrls: [
-    'home.component.css',
-  ],
+  styleUrls: ['home.component.css']
 })
 export class HomeComponent {
   public names$: Observable<any>;

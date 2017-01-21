@@ -26,7 +26,7 @@ export =
         '!app/**/*.spec.ts',
         '!**/*.e2e-spec.ts',
         '!app/**/*.e2e-spec.ts',
-        '!app/frameworks/test/**/*',
+        '!app/shared/test/**/*',
         `!**/${Config.NG_FACTORY_FILE}.ts`,
       ];
 

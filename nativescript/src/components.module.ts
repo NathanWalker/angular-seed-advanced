@@ -20,10 +20,10 @@ import { HomeComponent } from './app/components/home/home.component';
 import { routes } from './app/components/app.routes';
 
 // feature modules
-import { CoreModule } from './app/frameworks/core/core.module';
-import { AnalyticsModule } from './app/frameworks/analytics/analytics.module';
-import { MultilingualModule, translateLoaderFactory } from './app/frameworks/i18n/multilingual.module';
-import { SampleModule } from './app/frameworks/sample/sample.module';
+import { CoreModule } from './app/shared/core/core.module';
+import { AnalyticsModule } from './app/shared/analytics/analytics.module';
+import { MultilingualModule, translateLoaderFactory } from './app/shared/i18n/multilingual.module';
+import { SampleModule } from './app/shared/sample/sample.module';
 
 // intermediate component module
 // helps encapsulate custom native modules in with the components

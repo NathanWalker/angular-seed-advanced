@@ -17,12 +17,12 @@ import { Store } from '@ngrx/store';
 import { TranslateService } from 'ng2-translate';
 
 // app
-import { AppService } from '../../../app/frameworks/core/services/app.service';
-import { Config } from '../../../app/frameworks/core/utils';
-import { LogService, WindowService, RouterExtensions } from '../../../app/frameworks/core/index';
-import { AnalyticsService } from '../../../app/frameworks/analytics/index';
+import { AppService } from '../../../app/shared/core/services/app.service';
+import { Config } from '../../../app/shared/core/utils';
+import { LogService, WindowService, RouterExtensions } from '../../../app/shared/core/index';
+import { AnalyticsService } from '../../../app/shared/analytics/index';
 import { ActionBarUtil } from '../utils/actionbar.util';
-import * as multilingual from '../../../app/frameworks/i18n/index';
+import * as multilingual from '../../../app/shared/i18n/index';
 
 declare var android: any;
 const trackingId = '<%= TNS_CONFIG.ANALYTICS_TRACKING_ID %>';

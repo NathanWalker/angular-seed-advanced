@@ -17,26 +17,26 @@ import {
   ConsoleService,
   RouterExtensions,
   AppService
-} from './app/frameworks/core/index';
+} from './app/shared/core/index';
 import { AppComponent } from './app/components/app.component';
 import { routes } from './app/components/app.routes';
 
 // feature modules
-import { CoreModule } from './app/frameworks/core/core.module';
-import { AppReducer } from './app/frameworks/ngrx/index';
-import { MultilingualEffects } from './app/frameworks/i18n/index';
-import { NameListEffects } from './app/frameworks/sample/index';
+import { CoreModule } from './app/shared/core/core.module';
+import { AppReducer } from './app/shared/ngrx/index';
+import { MultilingualEffects } from './app/shared/i18n/index';
+import { NameListEffects } from './app/shared/sample/index';
 import { ComponentsModule, cons } from './components.module';
 
 // {N} custom app specific
-import { WindowNative, NSAppService } from './shared/core/index';
-import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
+import { WindowNative, NSAppService } from './mobile/core/index';
+import { NS_ANALYTICS_PROVIDERS } from './mobile/analytics/index';
 
 /**
  * Config
  * Seed provided configuration options
  */
-import { Config } from './app/frameworks/core/index';
+import { Config } from './app/shared/core/index';
 import { Page } from 'ui/page';
 Config.PageClass = Page;
 
@@ -49,8 +49,8 @@ Config.DEBUG.LEVEL_4 = true;
 // (optional) custom i18n language support
 // example of how you can configure your own language sets
 // you can use the AppConfig class or build something similar into your own framework
-import { AppConfig } from './app/frameworks/sample/services/app-config';
-import { MultilingualService } from './app/frameworks/i18n/services/multilingual.service';
+import { AppConfig } from './app/shared/sample/services/app-config';
+import { MultilingualService } from './app/shared/i18n/services/multilingual.service';
 MultilingualService.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;
 
 @NgModule({

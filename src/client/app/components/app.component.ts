@@ -4,8 +4,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import './operators';
 
 // app
-import { AnalyticsService } from '../frameworks/analytics/index';
-import { Config, LogService, AppService } from '../frameworks/core/index';
+import { AnalyticsService } from '../shared/analytics/index';
+import { Config, LogService, AppService } from '../shared/core/index';
 
 /**
  * This class represents the main application component.

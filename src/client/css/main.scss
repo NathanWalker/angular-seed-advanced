@@ -1,3 +1,5 @@
+@import '../scss/variables';
+
 /* Reset */
 html,
 body,
@@ -39,7 +41,7 @@ li {
 }
 
 input {
-  border: 1px solid #106cc8;
+  border: 1px solid $primary;
   font-size: 14px;
   height: 40px;
   outline: none;
@@ -47,7 +49,7 @@ input {
 }
 
 button {
-  background-color: #106cc8;
+  background-color: $primary;
   border-style: none;
   color: rgba(255, 255, 255, 0.87);
   cursor: pointer;
@@ -59,7 +61,7 @@ button {
 }
 
 button:hover {
-  background-color: #28739e;
+  background-color: $secondary;
 }
 
 /* platform specific */
