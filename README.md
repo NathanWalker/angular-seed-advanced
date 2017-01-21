@@ -38,8 +38,9 @@ This is an **advanced** seed project for Angular apps based on [Minko Gechev's](
 - [Mobile App](#mobile-app)
 - [Desktop App](#desktop-app)
 - [Running tests](#running-tests)
-- [How-Tos](#how-tos)
 - [Web Configuration Options](#web-configuration-options)
+- [Code organization overview](#code-organization-overview)
+- [How-Tos](#how-tos)
 - [General Best Practice Guide to Sharing Code](#general-best-practice-guide-to-sharing-code)
 - [Integration Guides](https://github.com/NathanWalker/angular-seed-advanced/wiki)
 - [How best to use for your project](#how-best-to-use-for-your-project)
@@ -240,6 +241,38 @@ Currently the `ENV_NAME`s are `dev`, `prod`, `staging`, but you can simply add a
 # Tools documentation
 
 A documentation of the provided tools can be found in [tools/README.md](tools/README.md).
+
+## Code organization overview
+
+- `nativescript`: Root of this directory is reserved for mobile app. *Generally won't modify anything here*
+  - `src`: Root of this directory is reserved for mobile app setup which includes the root module for the mobile app: `NativeModule` - in [native.module.ts](https://github.com/NathanWalker/angular-seed-advanced/blob/master/nativescript/src/native.module.ts).
+    - `app`: Symbolic link of shared code from web app.
+    - `App_Resources`: iOS and Android platform specific config files and images.
+    - `mobile`: Mobile specific services, etc. Build out mobile specific services here as well as overrides for web services that need to be provided for in the mobile app. **Safe to import {N} modules here.**
+    - [native.module.ts](https://github.com/NathanWalker/angular-seed-advanced/blob/master/nativescript/src/native.module.ts): Root module for the mobile app provided by NativeScript. Override/provide native mobile implementations of services here.
+- `src/client`: Root of this directory is reserved for web and desktop.
+  - `app`: All the code in this directory is shared with the mobile app via a symbolic link.
+    - `components`: Reserved for primary routing components. Since each app usually has it's own set of unique routes, you can provide the app's primary routing components here.
+    - `shared`: Shared code across all platforms. Reusable sub components, services, utilities, etc.
+      - `analytics`: Provides services for analytics. Out of the box, [Segment](https://segment.com/) is configured.
+      - `core`: Low level services. Foundational layer.
+      - `electron`: Services specific to electron integration. Could be refactored out in the future since this is not needed to be shared with the mobile app.
+      - `i18n`: Various localization features.
+      - `ngrx`: Central ngrx coordination. Brings together state from any other feature modules etc. to setup the initial app state.
+      - `sample`: Just a sample module pre-configured with a scalable ngrx setup.
+      - `test`: Testing utilities. This could be refactored into a different location in the future.
+  - `assets`: Various locale files, images and other assets the app needs to load.
+  - `css`: List of the main style files to be created via the SASS compilation (enabled by default).
+  - `scss`: Partial SASS files - reserved for things like `_variables.scss` and other imported partials for styling.
+  - [index.html](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/index.html): The index file for the web and desktop app (which share the same setup).
+  - [main.desktop.ts](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/main.desktop.ts): The  file used by Electron to start the desktop app.
+  - [main.web.prod.ts](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/main.web.prod.ts): Bootstraps the AoT web build. *Generally won't modify anything here*
+  - [main.web.ts](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/main.web.ts): Bootstraps the development web build. *Generally won't modify anything here*
+  - [package.json](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/package.json): Used by Electron to start the desktop app.
+  - [system-config.ts](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/system-config.ts): This loads the SystemJS configuration defined [here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/tools/config/seed.config.ts#L397) and extended in your own app's customized [project.config.ts](https://github.com/NathanWalker/angular-seed-advanced/blob/master/tools/config/project.config.ts).
+  - [tsconfig.json](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/tsconfig.json): Used by [compodoc](https://compodoc.github.io/compodoc/) - The missing documentation tool for your Angular application - to generate api docs for your code.
+  - [web.module.ts](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/web.module.ts): The root module for the web and desktop app.
+- `src/e2e`: Integration/end-to-end tests for the web app.
 
 ## How-Tos
 
