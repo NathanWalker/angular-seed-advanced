@@ -1,11 +1,31 @@
 import { argv } from 'yargs';
 import { SeedConfig } from './seed.config';
+import * as path from 'path';
 import { ExtendPackages } from './seed.config.interfaces';
 
 export class SeedAdvancedConfig extends SeedConfig {
+  /**
+   * The base folder of the nativescript applications source files.
+   * @type {string}
+   */
+  TNS_BASE_DIR = 'nativescript';
+
+  srcSubdir = 'src';
+  destSubdir = 'app';
+
+  TNS_APP_SRC = `${this.TNS_BASE_DIR}/${this.srcSubdir}`;
+
+  TNS_APP_DEST = `${this.TNS_BASE_DIR}/${this.destSubdir}`;
+
+  TNS_CONFIG = {
+    ANALYTICS_TRACKING_ID: '',
+  };
 
   constructor() {
     super();
+
+    this.ENABLE_SCSS = true;
+
     let arg: string;
     if (argv && argv._) {
       arg = argv._[0];
@@ -23,6 +43,10 @@ export class SeedAdvancedConfig extends SeedConfig {
       // Perhaps Ionic or Cordova
       // This is not implemented in the seed but here to show you way forward if you wanted to add
       bootstrap   = 'main.mobile.hybrid';
+    }
+
+    if (argv['analytics']) {
+      this.TNS_CONFIG.ANALYTICS_TRACKING_ID = argv['analytics'];
     }
 
     // Override seed defaults
@@ -109,6 +133,15 @@ export class SeedAdvancedConfig extends SeedConfig {
     ];
 
     this.addPackagesBundles(additionalPackages);
+
+    // Settings for building sass for tns modules
+    this.PLUGIN_CONFIGS['gulp-sass-tns'] = {
+      includePaths: [
+        this.srcSubdir,
+        './node_modules/',
+        './node_modules/nativescript-theme-core/scss/'
+      ].map((dir) => path.resolve(this.TNS_BASE_DIR, dir)),
+    };
 
     // Fix up path to bootstrap module
     this.SYSTEM_CONFIG.paths[this.BOOTSTRAP_MODULE] = `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`;

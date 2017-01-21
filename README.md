@@ -1,16 +1,12 @@
 ![Angular Seed Advanced](https://d2wp4shknjcfjl.cloudfront.net/api/file/olEzxJQ2KcXrZHzbt9UA)![Angular Seed Advanced Integrations](https://d2wp4shknjcfjl.cloudfront.net/api/file/SPLl77rSTuGZ7APrXizi)
 
-[![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://github.com/mgechev/angular2-style-guide)
+[![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 [![Build Status](https://travis-ci.org/NathanWalker/angular-seed-advanced.svg?branch=master)](https://travis-ci.org/NathanWalker/angular-seed-advanced)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![Dependency Status](https://david-dm.org/NathanWalker/angular-seed-advanced.svg)](https://david-dm.org/NathanWalker/angular-seed-advanced)
 [![devDependency Status](https://david-dm.org/NathanWalker/angular-seed-advanced/dev-status.svg)](https://david-dm.org/NathanWalker/angular-seed-advanced#info=devDependencies)
-[![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/NathanWalker/angular-seed-advanced)
-[![Stories in Progress](https://badge.waffle.io/NathanWalker/angular-seed-advanced.png?label=in%20progress&title=Stories%20In%20Progress)](https://waffle.io/NathanWalker/angular-seed-advanced)
 
-#### Considering [Angular 2](https://angular.io/) for a large project? Do you need i18n support? Enhanced testing support? Oh and building for multiple platforms too? Web, *native* Mobile (Android/iOS), and even Desktop (Mac, Windows and Linux)?  
-
-This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's](https://github.com/mgechev) [angular-seed](https://github.com/mgechev/angular-seed) that expands on all of its great features to include core support for:
+This is an **advanced** seed project for Angular apps based on [Minko Gechev's](https://github.com/mgechev)[angular-seed](https://github.com/mgechev/angular-seed) that expands on all of its great features to include core support for:
 
 #### Integration with:
 - [ngrx/store](https://github.com/ngrx/store) RxJS powered state management, inspired by **Redux**
@@ -18,7 +14,7 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 - [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n 
   - Usage is optional but on by default
   - Up to you and your team how you want to utilize it. It can be easily removed if not needed. 
-- [angulartics2](https://github.com/angulartics/angulartics2) Vendor-agnostic analytics for Angular2 applications.
+- [angulartics2](https://github.com/angulartics/angulartics2) Vendor-agnostic analytics for Angular applications.
   - Out of box support for [Segment](https://segment.com/)
     - When using the seed, be sure to change your `write_key` [here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/index.html#L24)
   - Can be changed to any vendor, [learn more here](https://github.com/angulartics/angulartics2#supported-providers)
@@ -36,55 +32,21 @@ This is an **advanced** seed project for Angular 2 apps based on [Minko Gechev's
 
 # Table of Contents
 
-- [Enhanced development workflow](#enhanced-development-workflow)
-- [Enhanced testing support options](#enhanced-testing-support-options)
 - [Prerequisites](#prerequisites)
 - [How to start](#how-to-start)
 - [How to start with AoT compilation](#how-to-start-with-aot-compilation)
-- [NativeScript App](#nativescript-app)
-- [Electron App](#electron-app)
+- [Mobile App](#mobile-app)
+- [Desktop App](#desktop-app)
 - [Running tests](#running-tests)
-- [Framework How-Tos](#framework-how-tos)
+- [How-Tos](#how-tos)
 - [Web Configuration Options](#web-configuration-options)
-- [Change Detection OnPush Note](#change-detection-onpush-note)
 - [General Best Practice Guide to Sharing Code](#general-best-practice-guide-to-sharing-code)
-- [Feature Branches](#feature-branches)
 - [Integration Guides](https://github.com/NathanWalker/angular-seed-advanced/wiki)
 - [How best to use for your project](#how-best-to-use-for-your-project)
 - [Contributing](#contributing)
 - [License](#license)
-
-#### Enhanced development workflow
-- Decorators for components which reduce boilerplate for common component setups
-- Shared code can be found in `frameworks`:
-  - `core`: foundation layer (decorators and low-level services)
-  - `analytics`: analytics provided by [Segment](https://segment.com/)
-    - Only reports data in **production** build
-  - `i18n`: internationalization features
-  - `electron`: [Electron](http://electron.atom.io/) specific code
-  - `sample`: Just a sample module providing some components and services
-  - `test`: test specific code providing conveniences to make testing your code easier and faster 
-
-#### Enhanced testing support options
-- mocks for various services
-- configurable provider blocks for easy test setup of common application providers
-  - tired of setting up similar providers over and over again for different tests?
-  - configure a reusable test provider which can be configured on a case-by-base basis
-  - see [example here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/frameworks/core/testing/providers/core.ts)
-- helpers for end-to-end (e2e, integration) tests
-- convenient shorthand to reduce test setup boilerplate and enhance speed of writing tests
-  - are your test cases buried by multiple import lines requiring you to scroll just to get to the substance of the test?
-  - removes noise allowing you to better focus on the substance of the test
-  - provides full intellisense support
-  - allows your team to add unique shorthands for various testing scenarios specific to your application needs
-  - plays nice with `tslint` options like `"no-unused-variable": true` as the api hangs off a plain `Object` instead of globals 
-    - what's the value of that you ask? have you ever isolated a test with `iit` or `ddescribe` but didn't import those or vice versa, used `iit` leaving an unused `it` now in your tests? yeah, `tslint` will be all over you :/
-    - avoids `unused` variable warnings altogether in tests since you are always using a valid key from the shorthand `Object`
-  - see [example here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/frameworks/test/shorthand/ng2-jasmine.ts)
   
 **Advice**: If your project is intended to target a single platform (i.e, web only), then [angular-seed](https://github.com/mgechev/angular-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
-
-Additionally, this seed is intended to push a couple boundaries so if you see dependencies that are *bleeding edge*, this is intentional.
 
 ### Prerequisites
 
@@ -138,24 +100,9 @@ In order to start the seed with AoT use:
 $ npm run build.prod.exp
 ```
 
-When using AoT compilation, please consider the following:
+## Mobile App
 
-Currently you cannot use custom component decorators with AoT compilation. This may change in the future but for now you can use this pattern for when you need to create AoT builds for the web:
-
-```
-import { Component } from '@angular/core';
-import { BaseComponent } from '../frameworks/core/index';
-
-// @BaseComponent({   // just comment this out and use Component from 'angular/core'
-@Component({
-  // etc.
-```
-
-After doing the above, running AoT build via `npm run build.prod.exp` will succeed. :)
-
-`BaseComponent` custom component decorator does the auto `templateUrl` switching to use {N} views when running in the {N} app therefore you don't need it when creating AoT builds for the web. However just note that when going back to run your {N} app, you should comment back in the `BaseComponent`. Again this temporary inconvenience may be unnecessary in the future.
-
-## NativeScript App
+The mobile app is provided via [NativeScript](https://www.nativescript.org/), an open source framework for building truly native mobile apps.
 
 #### Setup
 
@@ -165,9 +112,11 @@ npm install -g nativescript
 
 #### Dev Workflow
 
-You can make changes to files in `src/client` or `nativescript` folders. A symbolic link exists between the web `src/client` and the `nativescript` folder so changes in either location are mirrored because they are the same directory inside.
+You can make changes to files in `src/client/app` or `nativescript/src/app` folders. A symbolic link exists between the web `src/client/app` and the `nativescript/src/app` folder so changes in either location are mirrored because they are the same directory inside.
 
-Create `.tns.html` and `.tns.css` NativeScript view files for every web component view file you have. You will see an example of the `app.component.html` as a [NativeScript view file here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/components/app.component.tns.html).
+Create `.tns.html` and `.tns.scss` NativeScript view files for every web component view file you have. You will see an example of the `app.component.html` as a [NativeScript view file here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/components/app.component.tns.html).
+
+The root module for the mobile app is `nativescript/src/native.module.ts`: `NativeModule`. 
 
 #### Run
 
@@ -191,45 +140,17 @@ OR...
 
 ##### Building with Webpack for release builds
 
-You can greatly reduce the final size of your NativeScript app by the following:
+Create AoT builds for deployment to App Store and Google Play.
 
 ```
-cd nativescript
-npm i nativescript-dev-webpack --save-dev
-```
-Then you will need to modify your components to *not* use `moduleId: module.id` and change `templateUrl` to true relative app, for example:
-
-before:
-
-```
-@BaseComponent({
-  moduleId: module.id,
-  selector: 'sd-home',
-  templateUrl: 'home.component.html',
-  styleUrls: ['home.component.css']
-})
-```
-after:
-
-```
-@BaseComponent({
-  // moduleId: module.id,
-  selector: 'sd-home',
-  templateUrl: './app/components/home/home.component.html',
-  styleUrls: ['./app/components/home/home.component.css']
-})
+Android:                npm run build.android
+iOS:                    npm run build.ios
 ```
 
-Then to build:
+## Desktop App
 
-Ensure you are in the `nativescript` directory when running these commands.
-
-* iOS: `WEBPACK_OPTS="--display-error-details" tns build ios --bundle`
-* Android: `WEBPACK_OPTS="--display-error-details" tns build android --bundle`
-
-Notice your final build will be drastically smaller. In some cases 120 MB -> ~28 MB. 👍 
-
-## Electron App
+The desktop app is provided via [Electron](http://electron.atom.io/), cross platform desktop apps
+with JavaScript, HTML, and CSS.
 
 #### Develop
 
@@ -320,35 +241,24 @@ Currently the `ENV_NAME`s are `dev`, `prod`, `staging`, but you can simply add a
 
 A documentation of the provided tools can be found in [tools/README.md](tools/README.md).
 
-## Framework How-Tos
+## How-Tos
 
 ### i18n
 
 * how to add a language?
   - `src/client/assets/i18n/`
     - add `[language code].json` (copy existing one and adapt the translation strings)
-  - `src/client/app.config.json`
-    - add language to `availableLanguages`
-  - `src/client/app/frameworks/i18n/components/lang-switcher.component.spec.ts`
+  - Create a file similar to the [sample app-config](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/shared/sample/services/app-config.ts)
+    - Define your app's `SUPPORTED_LANGUAGES`.
+  - `src/client/app/shared/i18n/components/lang-switcher.component.spec.ts`
     - fix test
-
-## Change Detection OnPush Note
-
-*Please Note:* The seed uses Angular's `ChangeDetectionStrategy.OnPush` by default which requires some understanding of immutability and one-way data flows. Please check out the following resources to learn more:
-
-* http://blog.thoughtram.io/angular/2016/02/22/angular-2-change-detection-explained.html
-* http://victorsavkin.com/post/110170125256/change-detection-in-angular-2
-* http://www.syntaxsuccess.com/viewarticle/change-detection-in-angular-2.0
-* http://ngcourse.rangle.io/handout/change-detection/change_detection_strategy_onpush.html
-
-If you experience issues with changes not occuring in your views, you can disable this by commenting out [these lines](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/frameworks/core/decorators/utils.ts#L43-L48). The seed uses `OnPush` by default because it  provides optimal performance and if you decide to turn it off while developing your application, you can always turn it back on when you're ready to refactor your data services to utilize `OnPush` properly.
 
 ## General Best Practice Guide to Sharing Code 
 
 There’s actually only a few things to keep in mind when sharing code between web/mobile. The seed does take care of quite a few of those things but here’s a brief list:
 
 * Don’t import {N} modules into your components/services. {N} modules can only be used inside the {N} app therefore cannot be shared. To get around this, use `OpaqueTokens` which is a fancy name for something quite simple. [Learn more here](http://blog.thoughtram.io/angular/2016/05/23/opaque-tokens-in-angular-2.html). A great example of how to integrate 2 different plugins (1 for web, 1 for {N}) and share all the code exists in [this wiki article: How to integrate Firebase across all platforms](https://github.com/NathanWalker/angular-seed-advanced/wiki/How-to-integrate-Firebase-across-all-platforms-(web-nativescript-desktop)) written by the awesome [Scott Lowe](https://twitter.com/scott_d_lowe).
-* Use the conditional hooks provided by the seed in shared methods where you may need to handle something differently in {N} than you do on the web. For example, see [here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/frameworks/i18n/components/lang-switcher.component.ts#L35-L41).
+* Use the conditional hooks provided by the seed in shared methods where you may need to handle something differently in {N} than you do on the web. For example, see [here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/shared/i18n/components/lang-switcher.component.ts#L35-L41).
 * Don’t use window global. Inject the `WindowService` provided by the seed instead. This includes usage of `alert`, `confirm`, etc. For example:
 
 If you were thinking about doing: `alert('Something happened!');`, *Don't*.
@@ -375,12 +285,6 @@ The advice I like to give is:
 
 There are some cases where you may want to use `useValue` vs. `useClass`, and other times may need to use `useFactory`. Read [the Angular docs here to learn more about which you may need for your use case](https://angular.io/docs/ts/latest/cookbook/dependency-injection.html#!#provide).
 
-## Feature Branches
-
-Several branches exist with certain features integrated:
-
-* [ui-router-ng2](https://github.com/NathanWalker/angular-seed-advanced/tree/ui-router)
-
 ## How best to use for your project
 
 #### Setup
@@ -395,9 +299,9 @@ Several branches exist with certain features integrated:
   * IMPORTANT: You will see a wall of Conflicts after doing above (a Conflict for every single file). This is normal. There actually will not be any problematic conflicts as it's just reporting every single file which both sides (`upstream` and your first commit) added.
   * IMPORTANT: If you see `unknown option --allow-unrelated-histories` either upgrade git to 2.9+ or use `npm run git.merge.legacy`
 6. `git add .; git commit -m'ready'`. **Yes**, you will be committing all those conflicts, which actually are not a problem in this 1 time case.
-7. Now you have `git` setup and ready to develop your application as well as merge in upstream changes in the future.
+7. Now you have `git` setup and ready to develop your app as well as merge in upstream changes in the future.
 8. `npm install` (and all other usage docs in this `README` apply)
-9. Create a new `framework` for your application in `src/client/app/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
+9. Create a new folder (or several sub-folders) for your app in `src/client/app/shared` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
 10. If you don't want an integration that comes out of box with this seed; for example. let's say you don't want to use i18n. Then just delete the `i18n`, remove `ng2-translate` as dependency root `package.json` and `nativescript/package.json`. Then remove any references to `i18n` throughout.
 
 #### Merging latest upstream changes
@@ -406,7 +310,7 @@ Several branches exist with certain features integrated:
   * If you see `unknown option --allow-unrelated-histories` either upgrade git to 2.9+ or use `npm run git.merge.legacy.preview`
 2. `npm run git.merge` - This will actually do the merge
   * If you see `unknown option --allow-unrelated-histories` either upgrade git to 2.9+ or use `npm run git.merge.legacy`
-3. Handle any conflicts to get latest upstream into your application.
+3. Handle any conflicts to get latest upstream into your app.
 4. Continue building your app.
 
 You can read more about [syncing a fork here](https://help.github.com/articles/syncing-a-fork/).

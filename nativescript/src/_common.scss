@@ -1,0 +1,23 @@
+@import 'nativescript-theme-core/scss/light';
+
+$accent: #106CC8;
+
+// ActionBar
+$ab-background: #3280CF;
+$ab-color: $white;
+$btn-color: $accent;
+$btn-color-secondary: darken($accent, 5%);
+
+// Import the theme’s main ruleset.
+@import 'nativescript-theme-core/scss/index';
+
+.link {
+  border-width: 0;
+  background-color: transparent;
+}
+.odd {
+  background-color: #efefef;
+}
+.even {
+  background-color: $white;
+}
