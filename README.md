@@ -38,32 +38,13 @@ This is an **advanced** seed project for Angular apps based on [Minko Gechev's](
 - [Mobile App](#mobile-app)
 - [Desktop App](#desktop-app)
 - [Running tests](#running-tests)
-* [Code organization explained](#code-organization-explained)
 - [How-Tos](#how-tos)
 - [Web Configuration Options](#web-configuration-options)
 - [General Best Practice Guide to Sharing Code](#general-best-practice-guide-to-sharing-code)
-- [Feature Branches](#feature-branches)
 - [Integration Guides](https://github.com/NathanWalker/angular-seed-advanced/wiki)
 - [How best to use for your project](#how-best-to-use-for-your-project)
 - [Contributing](#contributing)
 - [License](#license)
-
-#### Enhanced testing support options
-- mocks for various services
-- configurable provider blocks for easy test setup of common app providers
-  - tired of setting up similar providers over and over again for different tests?
-  - configure a reusable test provider which can be configured on a case-by-base basis
-  - see [example here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/shared/core/testing/providers/core.ts)
-- helpers for end-to-end (e2e, integration) tests
-- convenient shorthand to reduce test setup boilerplate and enhance speed of writing tests
-  - are your test cases buried by multiple import lines requiring you to scroll just to get to the substance of the test?
-  - removes noise allowing you to better focus on the substance of the test
-  - provides full intellisense support
-  - allows your team to add unique shorthands for various testing scenarios specific to your app needs
-  - plays nice with `tslint` options like `"no-unused-variable": true` as the api hangs off a plain `Object` instead of globals 
-    - what's the value of that you ask? have you ever isolated a test with `iit` or `ddescribe` but didn't import those or vice versa, used `iit` leaving an unused `it` now in your tests? yeah, `tslint` will be all over you :/
-    - avoids `unused` variable warnings altogether in tests since you are always using a valid key from the shorthand `Object`
-  - see [example here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/shared/test/shorthand/ng2-jasmine.ts)
   
 **Advice**: If your project is intended to target a single platform (i.e, web only), then [angular-seed](https://github.com/mgechev/angular-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
 
