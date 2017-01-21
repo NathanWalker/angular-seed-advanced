@@ -6,7 +6,7 @@
 [![Dependency Status](https://david-dm.org/NathanWalker/angular-seed-advanced.svg)](https://david-dm.org/NathanWalker/angular-seed-advanced)
 [![devDependency Status](https://david-dm.org/NathanWalker/angular-seed-advanced/dev-status.svg)](https://david-dm.org/NathanWalker/angular-seed-advanced#info=devDependencies)
 
-This is an **advanced** seed project for Angular apps based on [Minko Gechev's](https://github.com/mgechev)[angular-seed](https://github.com/mgechev/angular-seed) that expands on all of its great features to include core support for:
+This is an **advanced** seed project for Angular apps based on [Minko Gechev's](https://github.com/mgechev) [angular-seed](https://github.com/mgechev/angular-seed) that expands on all of its great features to include core support for:
 
 #### Integration with:
 - [ngrx/store](https://github.com/ngrx/store) RxJS powered state management, inspired by **Redux**
