@@ -27,8 +27,6 @@ const config = {
   },
 
   onPrepare: function() {
-    // needed for custom class decorators
-    // require("reflect-metadata");
     require("zone.js/dist/zone-node");
     require("zone.js/dist/long-stack-trace-zone");
     require("zone.js/dist/async-test");
