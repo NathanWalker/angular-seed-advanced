@@ -55,7 +55,7 @@ This is an **advanced** seed project for Angular apps based on [Minko Gechev's](
 
 ### Prerequisites
 
-* node v5.x.x or higher and npm 3 or higher.
+**Note** you should have **node v6.5.0 or higher** and **npm 3.10.3 or higher**.
 
 * To run the NativeScript app:
 
