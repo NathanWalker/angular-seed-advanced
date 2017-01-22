@@ -34,7 +34,7 @@ This is an **advanced** seed project for Angular apps based on [Minko Gechev's](
 
 - [Prerequisites](#prerequisites)
 - [How to start](#how-to-start)
-- [How to start with AoT compilation](#how-to-start-with-aot-compilation)
+- [How to start with AoT](#how-to-start-with-aot)
 - [Mobile app](#mobile-app)
 - [Desktop app](#desktop-app)
 - [Running tests](#running-tests)
@@ -44,6 +44,10 @@ This is an **advanced** seed project for Angular apps based on [Minko Gechev's](
 - [General best practice guide to sharing code](#general-best-practice-guide-to-sharing-code)
 - [Integration guides](https://github.com/NathanWalker/angular-seed-advanced/wiki)
 - [How best to use for your project](#how-best-to-use-for-your-project)
+- [Dockerization](#dockerization)
+  + [How to build and start the dockerized version of the application](#how-to-build-and-start-the-dockerized-version-of-the-application)
+  + [Development build and deployment](#development-build-and-deployment)
+  + [Production build and deployment](#production-build-and-deployment)
 - [Contributing](#contributing)
 - [License](#license)
   
@@ -90,14 +94,15 @@ $ npm run build.dev
 $ npm run build.prod
 ```
 
-## How to start with AoT compilation
+## How to start with AoT
 
 **Note** that AoT compilation requires **node v6.5.0 or higher** and **npm 3.10.3 or higher**.
 
 In order to start the seed with AoT use:
 
 ```bash
-# prod build with AoT compilation
+# prod build with AoT compilation, will output the production application in `dist/prod`
+# the produced code can be deployed (rsynced) to a remote server
 $ npm run build.prod.exp
 ```
 
@@ -349,6 +354,40 @@ There are some cases where you may want to use `useValue` vs. `useClass`, and ot
 You can read more about [syncing a fork here](https://help.github.com/articles/syncing-a-fork/).
 
 If you have any suggestions to this workflow, please post [here](https://github.com/NathanWalker/angular-seed-advanced/issues).
+
+# Dockerization
+
+The application provides full Docker support. You can use it for both development as well as production builds and deployments.
+
+## How to build and start the dockerized version of the application 
+
+The Dockerization infrastructure is described in the `docker-compose.yml` (respectively `docker-compose.production.yml`.
+The application consists of two containers:
+- `angular-seed` - In development mode, this container serves the angular app. In production mode it builds the angular app, with the build artifacts being served by the Nginx container
+- `angular-seed-nginx` - This container is used only production mode. It serves the built angular app with Nginx.
+
+## Development build and deployment
+
+Run the following:
+
+```bash
+$ docker-compose build
+$ docker-compose up -d
+```
+
+Now open your browser at http://localhost:5555
+
+## Production build and deployment
+
+Run the following:
+
+```bash
+$ docker-compose -f docker-compose.production.yml build
+$ docker-compose -f docker-compose.production.yml up angular-seed   # Wait until this container has finished building, as the nginx container is dependent on the production build artifacts
+$ docker-compose -f docker-compose.production.yml up -d angular-seed-nginx  # Start the nginx container in detached mode
+```
+
+Now open your browser at http://localhost:5555
 
 ## Contributing
 
