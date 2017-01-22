@@ -245,7 +245,7 @@ A documentation of the provided tools can be found in [tools/README.md](tools/RE
 ## Code organization overview
 
 - `nativescript`: Root of this directory is reserved for mobile app.
-  - `src`: Root of this directory is reserved for mobile app setup which includes the root module for the mobile app: `NativeModule` - in [native.module.ts](https://github.com/NathanWalker/angular-seed-advanced/blob/master/nativescript/src/native.module.ts).
+  - `src`: mobile app src.
     - `app`: Symbolic link of shared code from web app.
     - `App_Resources`: iOS and Android platform specific config files and images.
     - `mobile`: Mobile specific services, etc. Build out mobile specific services here as well as overrides for web services that need to be provided for in the mobile app. **Safe to import {N} modules here.**
