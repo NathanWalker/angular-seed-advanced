@@ -127,8 +127,8 @@ export class SeedAdvancedConfig extends SeedConfig {
         path: `${this.APP_BASE}node_modules/ngrx-store-freeze/dist/index.js`
       },
       {
-        name: 'deep-freeze',
-        path: `${this.APP_BASE}node_modules/deep-freeze/index.js`
+        name: 'deep-freeze-strict',
+        path: `${this.APP_BASE}node_modules/deep-freeze-strict/index.js`
       }
     ];
 
