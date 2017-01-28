@@ -1,12 +1,15 @@
 // libs
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-
+import {Component, NgZone, Inject} from '@angular/core';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
+import {Subscription} from 'rxjs/Subscription';
 // app
-import { RouterExtensions, Config } from '../../shared/core/index';
-import { IAppState, getNames } from '../../shared/ngrx/index';
+import {RouterExtensions} from '../../shared/core/index';
+import {IAppState, getNames} from '../../shared/ngrx/index';
 import * as nameList from '../../shared/sample/index';
+import {SpeechRecognitionService} from '../../shared/core/services/speech-recognition.service';
+import {MultilingualService} from '../../shared/i18n/services/multilingual.service';
+
 
 declare var NSIndexPath, UITableViewScrollPosition;
 
@@ -19,8 +22,14 @@ declare var NSIndexPath, UITableViewScrollPosition;
 export class HomeComponent {
   public names$: Observable<any>;
   public newName: string = '';
+  private speechSubscription: Subscription;
+  private listening: boolean;
 
-  constructor(private store: Store<IAppState>, public routerext: RouterExtensions) {
+  constructor(private store: Store<IAppState>,
+              private speechService: SpeechRecognitionService,
+              @Inject(NgZone) private ngZone: NgZone,
+              private multiLingualService: MultilingualService,
+              public routerext: RouterExtensions) {
     this.names$ = store.let(getNames);
   }
 
@@ -43,5 +52,21 @@ export class HomeComponent {
         name: 'slideTop',
       }
     });
+  }
+
+  startSpeechRecognition(): void {
+    this.listening = true;
+    this.newName = '';
+    this.speechSubscription = this.speechService.record()
+      .finally(() => {
+        this.listening = false;
+        this.speechService.destroySpeechObject();
+      })
+      .subscribe(speech => {
+        this.ngZone.run(() => {
+          this.newName = speech;
+          this.speechSubscription.unsubscribe();
+        });
+      });
   }
 }

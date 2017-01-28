@@ -10,7 +10,10 @@
 </p>
 
 <form (submit)="addName()">
-  <input [(ngModel)]="newName" name="newName" [placeholder]="'INPUT_HINT' | translate">
+  <div class="inputWrapper">
+    <input [(ngModel)]="newName" name="newName" [placeholder]="(listening ? 'LISTENING' : 'INPUT_HINT') | translate">
+    <div class="microphone" (click)="startSpeechRecognition()"></div>
+  </div>
   <button type="submit">{{'ADD_BTN_TEXT' | translate}}</button>
 </form>
 
