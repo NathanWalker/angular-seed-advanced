@@ -123,15 +123,13 @@ The root module for the mobile app is `nativescript/src/native.module.ts`: `Nati
 #### Run
 
 ```
-iOS:                      npm run start.ios
-iOS (livesync emulator):  npm run start.livesync.ios
-iOS (livesync device):    npm run start.livesync.ios.device
+iOS:                      npm run start.ios   
+iOS (device):             npm run start.ios.device
 
 // or...
 
 Android:                      npm run start.android
-Android (livesync emulator):  npm run start.livesync.android
-Android (livesync device):    npm run start.livesync.android.device
+Android (device):             npm run start.android.device
 ```
 
 * Requires an image setup via AVD Manager. [Learn more here](http://developer.android.com/intl/zh-tw/tools/devices/managing-avds.html) and [here](https://github.com/NativeScript/nativescript-cli#the-commands).
