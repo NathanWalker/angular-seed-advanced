@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 // app
 import { AnalyticsService } from '../../../shared/analytics/index';
-import { LogService } from './log.service';
+import { LogService } from './logging/index';
 import { Config } from '../utils/config';
 
 @Injectable()

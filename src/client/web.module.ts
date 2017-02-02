@@ -25,7 +25,7 @@ import { SampleModule } from './app/shared/sample/sample.module';
 import { NameListEffects } from './app/shared/sample/index';
 
 // config
-import { Config, WindowService, ConsoleService } from './app/shared/core/index';
+import { Config, WindowService, ConsoleService, createConsoleTarget, provideConsoleTarget, LogTarget, LogLevel, ConsoleTarget } from './app/shared/core/index';
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 if (String('<%= BUILD_TYPE %>') === 'dev') {
   // only output console logging in dev mode
@@ -43,7 +43,7 @@ let routerModule = RouterModule.forRoot(routes);
 if (String('<%= TARGET_DESKTOP %>') === 'true') {
   Config.PLATFORM_TARGET = Config.PLATFORMS.DESKTOP;
   // desktop (electron) must use hash
-  routerModule = RouterModule.forRoot(routes, {useHash: true});
+  routerModule = RouterModule.forRoot(routes, { useHash: true });
 }
 
 declare var window, console;
@@ -54,6 +54,9 @@ export function win() {
 }
 export function cons() {
   return console;
+}
+export function consoleLogTarget(consoleService: ConsoleService) {
+  return new ConsoleTarget(consoleService, { minLogLevel: LogLevel.Debug });
 }
 
 let DEV_IMPORTS: any[] = [];
@@ -70,7 +73,8 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
     BrowserModule,
     CoreModule.forRoot([
       { provide: WindowService, useFactory: (win) },
-      { provide: ConsoleService, useFactory: (cons) }
+      { provide: ConsoleService, useFactory: (cons) },
+      { provide: LogTarget, useFactory: (consoleLogTarget), deps: [ConsoleService], multi: true }
     ]),
     routerModule,
     AnalyticsModule,

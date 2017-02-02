@@ -26,7 +26,7 @@ import { CoreModule } from './app/shared/core/core.module';
 import { AppReducer } from './app/shared/ngrx/index';
 import { MultilingualEffects } from './app/shared/i18n/index';
 import { NameListEffects } from './app/shared/sample/index';
-import { ComponentsModule, cons } from './components.module';
+import { ComponentsModule, cons, consoleLogTarget } from './components.module';
 
 // {N} custom app specific
 import { WindowNative, NSAppService } from './mobile/core/index';
@@ -36,7 +36,7 @@ import { NS_ANALYTICS_PROVIDERS } from './mobile/analytics/index';
  * Config
  * Seed provided configuration options
  */
-import { Config } from './app/shared/core/index';
+import { Config, LogTarget } from './app/shared/core/index';
 import { Page } from 'ui/page';
 Config.PageClass = Page;
 
@@ -58,6 +58,7 @@ MultilingualService.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;
     CoreModule.forRoot([
       { provide: WindowService, useClass: WindowNative },
       { provide: ConsoleService, useFactory: (cons) },
+      { provide: LogTarget, multi: true, deps: [ConsoleService], useFactory: (consoleLogTarget) }
     ]),
     ComponentsModule,
     NativeScriptRouterModule.forRoot(<any>routes),

@@ -1,14 +1,26 @@
+import { Provider, FactoryProvider } from '@angular/core';
 // angular
 import { TestBed } from '@angular/core/testing';
 
 // app
-import { t } from '../../test/index';
+import { t } from '../../../test/index';
 
 // module
-import { Config, ConsoleService, LogService } from '../index';
+import { Config, ConsoleService, LogService, LogTarget, ConsoleTarget, LogLevel, provideConsoleTarget, LogTargetBase, LogEvent } from '../../index';
 
-const providers: Array<any> = [
+const secondTarget = new class extends LogTargetBase {
+  constructor() {
+    super({ minLogLevel: LogLevel.Info });
+  }
+  writeToLog(log: LogEvent) {
+    return Promise.resolve();
+  }
+};
+
+const providers: Array<Provider> = [
   { provide: ConsoleService, useValue: console },
+  provideConsoleTarget(LogLevel.Debug),
+  { provide: LogTarget, useValue: secondTarget, multi: true },
   LogService
 ];
 
@@ -118,6 +130,25 @@ export function main() {
         t.e(console.warn).not.toHaveBeenCalledWith('warn');
         log.info('info');
         t.e(console.info).toHaveBeenCalledWith('info');
+      }));
+    });
+
+    t.describe('second target', () => {
+      t.be(() => {
+        t.spyOn(secondTarget, 'writeToLog');
+        Config.RESET();
+      });
+
+      t.it('should log entries higher than debug', t.inject([LogService], (log: LogService) => {
+        Config.DEBUG.LEVEL_4 = true;
+        log.debug('debug');
+        t.e(secondTarget.writeToLog).not.toHaveBeenCalled();
+        log.info('info');
+        t.e(secondTarget.writeToLog).toHaveBeenCalledWith(<LogEvent>{ level: LogLevel.Info, message: 'info' });
+        log.warn('warning');
+        t.e(secondTarget.writeToLog).toHaveBeenCalledWith(<LogEvent>{ level: LogLevel.Warning, message: 'warning' });
+        log.error('error');
+        t.e(secondTarget.writeToLog).toHaveBeenCalledWith(<LogEvent>{ level: LogLevel.Error, message: 'error' });
       }));
     });
   });

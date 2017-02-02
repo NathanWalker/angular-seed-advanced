@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 // app
-import { Config, ILang } from '../../core/index';
-import { LogService } from '../../core/services/log.service';
+import { Config, ILang, LogService } from '../../core/index';
 import { IAppState } from '../../ngrx/index';
 import { ElectronEventService } from '../../electron/index';
 import * as multilingual from '../index';
