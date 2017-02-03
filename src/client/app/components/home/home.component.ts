@@ -8,8 +8,6 @@ import { RouterExtensions, Config } from '../../shared/core/index';
 import { IAppState, getNames } from '../../shared/ngrx/index';
 import * as nameList from '../../shared/sample/index';
 
-declare var NSIndexPath, UITableViewScrollPosition;
-
 @Component({
   moduleId: module.id,
   selector: 'sd-home',

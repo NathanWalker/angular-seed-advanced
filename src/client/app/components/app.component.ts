@@ -1,7 +1,8 @@
-// angular
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 // any operators needed throughout your application
 import './operators';
+
+// libs
+import { Component, OnInit } from '@angular/core';
 
 // app
 import { AnalyticsService } from '../shared/analytics/index';
@@ -13,8 +14,7 @@ import { Config, LogService, AppService } from '../shared/core/index';
 @Component({
   moduleId: module.id,
   selector: 'sd-app',
-  templateUrl: 'app.component.html',
-  changeDetection: ChangeDetectionStrategy.Default // Everything else uses OnPush
+  templateUrl: 'app.component.html'
 })
 export class AppComponent {
   constructor(
