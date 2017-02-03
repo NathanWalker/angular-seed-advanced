@@ -99,7 +99,7 @@ In order to start the seed with AoT use:
 ```bash
 # prod build with AoT compilation, will output the production application in `dist/prod`
 # the produced code can be deployed (rsynced) to a remote server
-$ npm run build.prod.exp
+$ npm run build.prod.aot
 ```
 
 ## Mobile app

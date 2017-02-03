@@ -1,5 +1,10 @@
 {
+  "initialize": [
+    "noop"
+  ],
+
   "build.dev": [
+    "initialize",
     "clean.once",
     "build.assets.dev",
     "build.html_css",
@@ -13,12 +18,14 @@
   ],
 
   "build.e2e": [
+    "initialize",
     "clean.e2e",
     "tslint",
     "build.js.e2e"
   ],
 
   "build.prod": [
+    "initialize",
     "check.tools",
     "clean.prod",
     "tslint",
@@ -32,7 +39,8 @@
     "build.index.prod"
   ],
 
-  "build.prod.exp": [
+  "build.prod.aot": [
+    "initialize",
     "check.tools",
     "clean.prod",
     "tslint",
@@ -40,9 +48,26 @@
     "build.html_css",
     "copy.prod",
     "compile.ahead.prod",
-    "build.js.prod.exp",
+    "build.js.prod.aot",
     "build.bundles",
-    "build.bundles.app.exp",
+    "build.bundles.app.aot",
+    "minify.bundles",
+    "build.index.prod"
+  ],
+
+  "build.prod.rollup.aot": [
+    "initialize",
+    "check.tools",
+    "clean.prod",
+    "tslint",
+    "build.assets.prod",
+    "build.html_css",
+    "copy.prod.rollup.aot",
+    "compile.ahead.prod",
+    "build.js.prod.rollup.aot",
+    "build.bundles",
+    "build.bundles.app.rollup.aot",
+    "transpile.bundles.rollup.aot",
     "minify.bundles",
     "build.index.prod"
   ],
@@ -65,6 +90,8 @@
   ],
 
   "build.test": [
+    "initialize",
+    "clean.dev",
     "build.assets.dev",
     "build.html_css",
     "build.js.dev",
@@ -103,8 +130,13 @@
     "server.prod"
   ],
 
-  "serve.prod.exp": [
-    "build.prod.exp",
+  "serve.prod.aot": [
+    "build.prod.aot",
+    "server.prod"
+  ],
+
+  "serve.prod.rollup.aot": [
+    "build.prod.rollup.aot",
     "server.prod"
   ],
 
