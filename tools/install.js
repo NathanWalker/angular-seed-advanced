@@ -43,7 +43,7 @@ try {
     if (debugging) {
         console.log("Symlink error: ", err);
     }
-    // Failed, which means they weren't running root; so lets try to get root
+    // Failed, and doesnt exist which means they weren't running root; so lets try to get root
     if(err.code !== 'EEXIST'){
         AttemptRootSymlink();
     }
