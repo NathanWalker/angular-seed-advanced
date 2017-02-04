@@ -44,9 +44,7 @@ try {
         console.log("Symlink error: ", err);
     }
     // Failed, and doesnt exist which means they weren't running root; so lets try to get root
-    if(err.code !== 'EEXIST'){
-        AttemptRootSymlink();
-    }
+    err.code === 'EEXIST' ? console.log("A symlink already exists.") : AttemptRootSymlink();
 }
 
 // Might silent fail on OSX, so we have to see if it exists
