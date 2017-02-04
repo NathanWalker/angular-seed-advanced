@@ -2,7 +2,7 @@ const config = {
   baseUrl: 'http://localhost:5555/',
 
   specs: [
-    './dist/dev/**/*.e2e-spec.js'
+    './dist/e2e/**/*.e2e-spec.js'
   ],
 
   exclude: [],
@@ -27,8 +27,6 @@ const config = {
   },
 
   onPrepare: function() {
-    // needed for custom class decorators
-    // require("reflect-metadata");
     require("zone.js/dist/zone-node");
     require("zone.js/dist/long-stack-trace-zone");
     require("zone.js/dist/async-test");

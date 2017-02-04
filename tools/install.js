@@ -11,8 +11,7 @@ var path = require('path');
 
 var webAppPath = '../src/client/app';
 var webAssetsPath = '../src/client/assets';
-var nativescriptAppPath = '../nativescript/app/app/';
-var nativescriptAssetsPath = '../nativescript/app/assets/';
+var nativescriptAppPath = '../nativescript/src/app/';
 
 // Root SymLink Code for Windows
 if (process.argv.length > 2) {
@@ -33,9 +32,6 @@ console.log("Configuring...");
 try {
   if (fs.existsSync(resolve(nativescriptAppPath))) {
     fs.unlinkSync(resolve(nativescriptAppPath));
-  }
-  if (fs.existsSync(resolve(nativescriptAssetsPath))) {
-    fs.unlinkSync(resolve(nativescriptAssetsPath));
   }
 } catch (err) {
 }
@@ -99,13 +95,6 @@ function createRootSymLink() {
         console.log("Path: ", p1, p2);
     }
     fs.symlinkSync(p2, p1, 'junction');
-
-    p1 = resolve(AppPath + "/" + nativescriptAssetsPath);
-    p2 = resolve(AppPath + "/" + webAssetsPath);
-    if (debugging) {
-        console.log("Path: ", p1, p2);
-    }
-    fs.symlinkSync(p2,p1,'junction');
 }
 
 /**
@@ -116,8 +105,6 @@ function createSymLink() {
         console.log("Attempting to Symlink", webAppPath, nativescriptAppPath);
     }
     fs.symlinkSync(resolve(webAppPath), resolve(nativescriptAppPath), 'junction');
-    fs.symlinkSync(resolve(webAssetsPath), resolve(nativescriptAssetsPath), 'junction');
-
 }
 
 /**

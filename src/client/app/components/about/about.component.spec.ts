@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 // app
-import { t } from '../../frameworks/test/index';
+import { t } from '../../shared/test/index';
 import { AboutComponent } from './about.component';
 
 // test module configuration for each test
@@ -26,7 +26,7 @@ export function main() {
             fixture.detectChanges();
             let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
 
-	          t.e(aboutDOMEl.querySelectorAll('h2')[0].textContent).toEqual('Features');
+            t.e(aboutDOMEl.querySelectorAll('h2')[0].textContent).toEqual('Features');
           });
       }));
   });

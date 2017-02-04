@@ -10,10 +10,10 @@
         "lib": [
             "dom"
         ],
-        "sourceMap": true,
         "pretty": true,
         "allowUnreachableCode": false,
         "allowUnusedLabels": false,
+        "noEmitHelpers": true,
         "noImplicitAny": false,
         "noImplicitReturns": true,
         "noImplicitUseStrict": false,
@@ -28,7 +28,9 @@
     },
     "exclude": [
         "node_modules",
-        "platforms"
+        "platforms",
+        "src",
+        "**/*.aot.ts"
     ],
     "compileOnSave": false
 }

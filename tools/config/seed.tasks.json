@@ -1,0 +1,168 @@
+{
+  "initialize": [
+    "noop"
+  ],
+
+  "build.dev": [
+    "initialize",
+    "clean.once",
+    "build.assets.dev",
+    "build.html_css",
+    "build.js.dev",
+    "build.index.dev"
+  ],
+
+  "build.dev.watch": [
+    "build.dev",
+    "watch.dev"
+  ],
+
+  "build.e2e": [
+    "initialize",
+    "clean.e2e",
+    "tslint",
+    "build.js.e2e"
+  ],
+
+  "build.prod": [
+    "initialize",
+    "check.tools",
+    "clean.prod",
+    "tslint",
+    "build.assets.prod",
+    "build.html_css",
+    "copy.prod",
+    "build.js.prod",
+    "build.bundles",
+    "build.bundles.app",
+    "minify.bundles",
+    "build.index.prod"
+  ],
+
+  "build.prod.aot": [
+    "initialize",
+    "check.tools",
+    "clean.prod",
+    "tslint",
+    "build.assets.prod",
+    "build.html_css",
+    "copy.prod",
+    "compile.ahead.prod",
+    "build.js.prod.aot",
+    "build.bundles",
+    "build.bundles.app.aot",
+    "minify.bundles",
+    "build.index.prod"
+  ],
+
+  "build.prod.rollup.aot": [
+    "initialize",
+    "check.tools",
+    "clean.prod",
+    "tslint",
+    "build.assets.prod",
+    "build.html_css",
+    "copy.prod.rollup.aot",
+    "compile.ahead.prod",
+    "build.js.prod.rollup.aot",
+    "build.bundles",
+    "build.bundles.app.rollup.aot",
+    "transpile.bundles.rollup.aot",
+    "minify.bundles",
+    "build.index.prod"
+  ],
+
+  "build.tns": [
+    "build.assets.tns",
+    "build.tns_html_css",
+    "build.js.tns"
+  ],
+
+  "build.prod.tns": [
+    "clean.tns",
+    "tslint.tns",
+    "build.tns"
+  ],
+
+  "build.tns.watch": [
+    "build.tns",
+    "watch.tns"
+  ],
+
+  "build.test": [
+    "initialize",
+    "clean.dev",
+    "build.assets.dev",
+    "build.html_css",
+    "build.js.dev",
+    "build.js.test",
+    "build.index.dev"
+  ],
+
+  "test.watch": [
+    "build.test",
+    "watch.test",
+    "karma.watch"
+  ],
+
+  "docs": [
+    "build.docs",
+    "serve.docs"
+  ],
+
+  "serve.dev": [
+    "build.dev",
+    "server.start",
+    "watch.dev"
+  ],
+
+  "serve.e2e": [
+    "tslint",
+    "build.dev",
+    "build.js.e2e",
+    "server.start",
+    "watch.dev",
+    "watch.e2e"
+  ],
+
+  "serve.prod": [
+    "build.prod",
+    "server.prod"
+  ],
+
+  "serve.prod.aot": [
+    "build.prod.aot",
+    "server.prod"
+  ],
+
+  "serve.prod.rollup.aot": [
+    "build.prod.rollup.aot",
+    "server.prod"
+  ],
+
+  "test": [
+    "build.test",
+    "karma.run"
+  ],
+
+  "desktop": [
+    "build.dev",
+    "desktop.libs",
+    "desktop.build"
+  ],
+
+  "desktop.mac": [
+    "desktop",
+    "desktop.package.mac"
+  ],
+
+  "desktop.windows": [
+    "desktop",
+    "desktop.package.windows"
+  ],
+
+  "desktop.linux": [
+    "desktop",
+    "desktop.package.linux"
+  ]
+}

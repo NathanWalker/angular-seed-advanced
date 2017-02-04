@@ -15,8 +15,8 @@ import { BuildType, ExtendPackages, InjectableDependency } from './seed.config.i
  * same name in "./projects". For further information take a
  * look at the documentation:
  *
- * 1) https://github.com/mgechev/angular2-seed/tree/master/tools
- * 2) https://github.com/mgechev/angular2-seed/wiki
+ * 1) https://github.com/mgechev/angular-seed/tree/master/tools
+ * 2) https://github.com/mgechev/angular-seed/wiki
  *
  *****************************************************************/
 
@@ -77,11 +77,6 @@ export class SeedConfig {
    */
   BUILD_TYPE = getBuildType();
 
-  get ENV() {
-    // util.log(util.colors.yellow('Warning: the "ENV" property is deprecated. Use "BUILD_TYPE" instead.'));
-    return this.BUILD_TYPE;
-  }
-
   /**
    * The flag for the debug option of the application.
    * The default value is `false`, which can be overriden by the `--debug` flag when running `npm start`.
@@ -107,23 +102,8 @@ export class SeedConfig {
   * The path to the coverage output
   * NB: this must match what is configured in ./karma.conf.js
   */
-  COVERAGE_DIR = 'coverage';
-
-  /**
-   * Karma reporter configuration
-   */
-  KARMA_REPORTERS: any = {
-    preprocessors: {
-      'dist/**/!(*spec).js': ['coverage']
-    },
-    reporters: ['mocha', 'coverage'],
-    coverageReporter: {
-      dir: this.COVERAGE_DIR + '/',
-      reporters: [
-        { type: 'json', subdir: '.', file: 'coverage-final.json' }
-      ]
-    }
-  };
+  COVERAGE_DIR = 'coverage_js';
+  COVERAGE_TS_DIR = 'coverage';
 
   /**
    * The path for the base of the application at runtime.
@@ -137,21 +117,7 @@ export class SeedConfig {
    * The base path of node modules.
    * @type {string}
    */
-  NPM_BASE = slash(join(this.APP_BASE, 'node_modules/'));
-
-  /**
-   * The flag for the hot-loader option of the application.
-   * Per default the option is not set, but can be set by the `--hot-loader` flag when running `npm start`.
-   * @type {boolean}
-   */
-  ENABLE_HOT_LOADING = argv['hot-loader'];
-
-  /**
-   * The port where the application will run, if the `hot-loader` option mode is used.
-   * The default hot-loader port is `5578`.
-   * @type {number}
-   */
-  HOT_LOADER_PORT = 5578;
+  NPM_BASE = slash(join('.', this.APP_BASE, 'node_modules/'));
 
   /**
    * The flag for the targeting of mobile hybrid option of the application.
@@ -200,13 +166,10 @@ export class SeedConfig {
   APP_CLIENT = argv['client'] || 'client';
 
   /**
-   * The bootstrap file to be used to boot the application. The file to be used is dependent if the hot-loader option is
-   * used or not.
-   * Per default (non hot-loader mode) the `main.ts` file will be used, with the hot-loader option enabled, the
-   * `hot_loader_main.ts` file will be used.
+   * The bootstrap file to be used to boot the application.
    * @type {string}
    */
-  BOOTSTRAP_MODULE = `${this.BOOTSTRAP_DIR}/` + (this.ENABLE_HOT_LOADING ? 'hot_loader_main' : 'main');
+  BOOTSTRAP_MODULE = `${this.BOOTSTRAP_DIR}/main`;
 
   BOOTSTRAP_PROD_MODULE = `${this.BOOTSTRAP_DIR}/` + 'main';
 
@@ -227,6 +190,12 @@ export class SeedConfig {
   APP_SRC = `src/${this.APP_CLIENT}`;
 
   /**
+   * The name of the TypeScript project file
+   * @type {string}
+   */
+  APP_PROJECTNAME = 'tsconfig.json';
+
+  /**
    * The folder of the applications asset files.
    * @type {string}
    */
@@ -239,6 +208,17 @@ export class SeedConfig {
   CSS_SRC = `${this.APP_SRC}/css`;
 
   /**
+   * The folder of the e2e specs and framework
+   */
+  E2E_SRC = 'src/e2e';
+
+  /**
+   * The folder of the applications scss files.
+   * @type {string}
+   */
+  SCSS_SRC = `${this.APP_SRC}/scss`;
+
+  /**
    * The directory of the applications tools
    * @type {string}
    */
@@ -248,6 +228,18 @@ export class SeedConfig {
    * The directory of the tasks provided by the seed.
    */
   SEED_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'seed');
+
+  /**
+   * Seed tasks which are composition of other tasks.
+   */
+  SEED_COMPOSITE_TASKS = join(process.cwd(), this.TOOLS_DIR, 'config', 'seed.tasks.json');
+
+  /**
+   * Project tasks which are composition of other tasks
+   * and aim to override the tasks defined in
+   * SEED_COMPOSITE_TASKS.
+   */
+  PROJECT_COMPOSITE_TASKS = join(process.cwd(), this.TOOLS_DIR, 'config', 'project.tasks.json');
 
   /**
    * The destination folder for the generated documentation.
@@ -272,6 +264,12 @@ export class SeedConfig {
    * @type {string}
    */
   PROD_DEST = `${this.DIST_DIR}/prod`;
+
+  /**
+   * The folder for the built files of the e2e-specs.
+   * @type {string}
+   */
+  E2E_DEST = `${this.DIST_DIR}/e2e`;
 
   /**
    * The folder for temporary files.
@@ -333,19 +331,32 @@ export class SeedConfig {
   VERSION_NODE = '5.0.0';
 
   /**
-   * The flag to enable handling of SCSS files
-   * The default value is false. Override with the '--scss' flag.
+   * Enable SCSS stylesheet compilation.
+   * Set ENABLE_SCSS environment variable to 'true' or '1'
    * @type {boolean}
    */
-  ENABLE_SCSS = argv['scss'] || false;
+  ENABLE_SCSS = ['true', '1'].indexOf(`${process.env.ENABLE_SCSS}`.toLowerCase()) !== -1 || argv['scss'] || false;
+
+  /**
+   * Enable tslint emit error by setting env variable FORCE_TSLINT_EMIT_ERROR
+   * @type {boolean}
+   */
+  FORCE_TSLINT_EMIT_ERROR = !!process.env.FORCE_TSLINT_EMIT_ERROR;
+
+  /**
+   * Extra paths for the gulp process to watch for to trigger compilation.
+   * @type {string[]}
+   */
+  EXTRA_WATCH_PATHS: string[] = [];
 
   /**
    * The list of NPM dependcies to be injected in the `index.html`.
    * @type {InjectableDependency[]}
    */
   NPM_DEPENDENCIES: InjectableDependency[] = [
-    { src: 'zone.js/dist/zone.js', inject: 'libs' },
     { src: 'core-js/client/shim.min.js', inject: 'shims' },
+    { src: 'zone.js/dist/zone.js', inject: 'libs' },
+    { src: 'zone.js/dist/long-stack-trace-zone.js', inject: 'libs', buildType: BUILD_TYPES.DEVELOPMENT },
     { src: 'intl/dist/Intl.min.js', inject: 'shims' },
     { src: 'systemjs/dist/system.src.js', inject: 'shims', buildType: BUILD_TYPES.DEVELOPMENT },
     // Temporary fix. See https://github.com/angular/angular/issues/9359
@@ -367,6 +378,13 @@ export class SeedConfig {
   TEMP_FILES: string[] = [
     '**/*___jb_tmp___',
     '**/*~',
+
+    // tns-files are ignored aswell
+    '**/*.tns.scss',
+    '**/*.tns.css',
+    '**/*.tns.html',
+    'src/**/*.js',
+    'src/**/*.js.map',
   ];
 
   /**
@@ -583,6 +601,52 @@ export class SeedConfig {
     }
   };
 
+  constructor() {
+    for (let proxy of this.getProxyMiddleware()) {
+      this.PLUGIN_CONFIGS['browser-sync'].middleware.push(proxy);
+    }
+  }
+
+  /**
+   * Get proxy middleware configuration. Add in your project config like:
+   * getProxyMiddleware(): Array<any> {
+   *   const proxyMiddleware = require('http-proxy-middleware');
+   *   return [
+   *     proxyMiddleware('/ws', {
+   *       ws: false,
+   *       target: 'http://localhost:3003'
+   *     })
+   *   ];
+   * }
+   */
+  getProxyMiddleware(): Array<any> {
+    return [];
+  }
+
+  /**
+   * Karma reporter configuration
+   */
+  getKarmaReporters(): any {
+    return {
+      preprocessors: {
+        'dist/**/!(*spec|index|*.module|*.routes).js': ['coverage']
+      },
+      reporters: ['mocha', 'coverage', 'karma-remap-istanbul'],
+      coverageReporter: {
+        dir: this.COVERAGE_DIR + '/',
+        reporters: [
+          { type: 'json', subdir: '.', file: 'coverage-final.json' },
+          { type: 'html', subdir: '.' }
+        ]
+      },
+      remapIstanbulReporter: {
+        reports: {
+          html: this.COVERAGE_TS_DIR
+        }
+      }
+    };
+  };
+
   /**
    * Recursively merge source onto target.
    * @param {any} target The target object (to receive values from source)
@@ -612,11 +676,21 @@ export class SeedConfig {
 
     if (pack.path) {
       this.SYSTEM_CONFIG_DEV.paths[pack.name] = pack.path;
+      this.SYSTEM_BUILDER_CONFIG.paths[pack.name] = pack.path;
     }
 
     if (pack.packageMeta) {
+      this.SYSTEM_CONFIG_DEV.packages[pack.name] = pack.packageMeta;
       this.SYSTEM_BUILDER_CONFIG.packages[pack.name] = pack.packageMeta;
     }
+  }
+
+  addPackagesBundles(packs: ExtendPackages[]) {
+
+    packs.forEach((pack: ExtendPackages) => {
+      this.addPackageBundles(pack);
+    });
+
   }
 
 }
@@ -672,4 +746,3 @@ function getBuildType() {
     return BUILD_TYPES.DEVELOPMENT;
   }
 }
-

@@ -14,6 +14,9 @@ lib-cov
 coverage
 coverage_js
 
+# ignore documentation
+documentation
+
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
@@ -35,6 +38,7 @@ ts-node
 #IDE configuration files
 .idea
 *.iml
+.vscode/angulardoc.json
 
 dist
 dev
@@ -45,9 +49,9 @@ tmp
 
 src/**/*.js
 src/**/*.js.map
-!src/sw.js
-!src/client/app/frameworks/test
-nativescript/app/css
+!src/client/app/shared/test
+nativescript/app
+nativescript/src/app
 nativescript/hooks
 nativescript/node_modules
 nativescript/platforms
@@ -55,8 +59,7 @@ nativescript/**/*.js
 nativescript/**/*.js.map
 nativescript/*.d.ts
 !nativescript/references.d.ts
-nativescript/app/app
-nativescript/app/assets
+!nativescript/app/App_Resources
 desktop
 gulpfile.js
 gulpfile.js.map

@@ -1,10 +1,31 @@
 import { argv } from 'yargs';
 import { SeedConfig } from './seed.config';
+import * as path from 'path';
+import { ExtendPackages } from './seed.config.interfaces';
 
 export class SeedAdvancedConfig extends SeedConfig {
+  /**
+   * The base folder of the nativescript applications source files.
+   * @type {string}
+   */
+  TNS_BASE_DIR = 'nativescript';
+
+  srcSubdir = 'src';
+  destSubdir = 'app';
+
+  TNS_APP_SRC = `${this.TNS_BASE_DIR}/${this.srcSubdir}`;
+
+  TNS_APP_DEST = `${this.TNS_BASE_DIR}/${this.destSubdir}`;
+
+  TNS_CONFIG = {
+    ANALYTICS_TRACKING_ID: '',
+  };
 
   constructor() {
     super();
+
+    this.ENABLE_SCSS = true;
+
     let arg: string;
     if (argv && argv._) {
       arg = argv._[0];
@@ -18,15 +39,19 @@ export class SeedAdvancedConfig extends SeedConfig {
       }
     }
     let bootstrap = 'main.web';
-    if (this.ENABLE_HOT_LOADING) {
-      bootstrap   = 'hot_loader_main';
-    } else if (this.TARGET_MOBILE_HYBRID) {
-      bootstrap   = 'main.mobile.hybrid'; // Cordova
+    if (this.TARGET_MOBILE_HYBRID) {
+      // Perhaps Ionic or Cordova
+      // This is not implemented in the seed but here to show you way forward if you wanted to add
+      bootstrap   = 'main.mobile.hybrid';
+    }
+
+    if (argv['analytics']) {
+      this.TNS_CONFIG.ANALYTICS_TRACKING_ID = argv['analytics'];
     }
 
     // Override seed defaults
     this.BOOTSTRAP_DIR = argv['app'] ? (argv['app'] + '/') : '';
-    this.BOOTSTRAP_MODULE = `${this.BOOTSTRAP_DIR}` + (this.ENABLE_HOT_LOADING ? 'hot_loader_main' : bootstrap);
+    this.BOOTSTRAP_MODULE = `${this.BOOTSTRAP_DIR}${bootstrap}`;
     this.NG_FACTORY_FILE = `${bootstrap}.prod`;
     this.BOOTSTRAP_PROD_MODULE = `${this.BOOTSTRAP_DIR}${bootstrap}`;
     this.BOOTSTRAP_FACTORY_PROD_MODULE = `${this.BOOTSTRAP_DIR}${bootstrap}.prod`;
@@ -34,82 +59,95 @@ export class SeedAdvancedConfig extends SeedConfig {
     this.APP_TITLE = 'Angular Seed Advanced';
     this.APP_BASE = ''; // paths must remain relative
 
-    /** Development **/
-
-    this.NPM_DEPENDENCIES = [
-      ...this.NPM_DEPENDENCIES
+    // Advanced seed packages
+    let additionalPackages: ExtendPackages[] = [
+      {
+        name: 'lodash',
+        path: `${this.APP_BASE}node_modules/lodash/lodash.js`,
+        packageMeta: {
+          main: 'index.js',
+          defaultExtension: 'js'
+        }
+      },
+      {
+        name: '@ngrx/core',
+        packageMeta: {
+          main: 'bundles/core.umd.js',
+          defaultExtension: 'js'
+        }
+      },
+      {
+        name: '@ngrx/store',
+        packageMeta: {
+          main: 'bundles/store.umd.js',
+          defaultExtension: 'js'
+        }
+      },
+      {
+        name: '@ngrx/effects',
+        packageMeta: {
+          main: 'bundles/effects.umd.js',
+          defaultExtension: 'js'
+        }
+      },
+      {
+        name: '@ngrx/effects/testing',
+        path: `${this.APP_BASE}node_modules/@ngrx/effects/testing/index.js`
+      },
+      {
+        name: '@ngrx/store-devtools',
+        packageMeta: {
+          main: 'bundles/store-devtools.umd.js',
+          defaultExtension: 'js'
+        }
+      },
+      {
+        name: 'ng2-translate',
+        packageMeta: {
+          main: 'bundles/index.js',
+          defaultExtension: 'js'
+        }
+      },
+      {
+        name: 'angulartics2',
+        packageMeta: {
+          main: 'dist/index.js',
+          defaultExtension: 'js'
+        }
+      },
+      {
+        name: 'angulartics2/dist/providers',
+        packageMeta: {
+          main: 'index.js',
+          defaultExtension: 'js'
+        }
+      },
+      {
+        name: 'ngrx-store-freeze',
+        path: `${this.APP_BASE}node_modules/ngrx-store-freeze/dist/index.js`
+      },
+      {
+        name: 'deep-freeze-strict',
+        path: `${this.APP_BASE}node_modules/deep-freeze-strict/index.js`
+      }
     ];
 
-    // Fix up package configuration for libs and @ngrx
-    this.SYSTEM_CONFIG['packageConfigPaths'] = [
-      `${this.APP_BASE}node_modules/*/package.json`,
-      `${this.APP_BASE}node_modules/@ngrx/*/package.json`
-    ];
+    this.addPackagesBundles(additionalPackages);
 
-    if (!this.SYSTEM_CONFIG['packages']) this.SYSTEM_CONFIG['packages'] = {};
-    this.SYSTEM_CONFIG['packages']['@ngrx/core'] = {
-      main: 'bundles/core.umd.js',
-      defaultExtension: 'js'
-    };
-    this.SYSTEM_CONFIG['packages']['@ngrx/store'] = {
-      main: 'bundles/store.umd.js',
-      defaultExtension: 'js'
-    };
-    this.SYSTEM_CONFIG['packages']['@ngrx/effects'] = {
-      main: 'bundles/effects.umd.js',
-      defaultExtension: 'js'
-    };
-    this.SYSTEM_CONFIG['packages']['ng2-translate'] = {
-      main: 'bundles/index.js',
-      defaultExtension: 'js'
-    };
-    this.SYSTEM_CONFIG['packages']['angulartics2'] = {
-      main: 'dist/index.js',
-      defaultExtension: 'js'
-    };
-    this.SYSTEM_CONFIG['packages']['angulartics2/dist/providers'] = {
-      main: 'index.js',
-      defaultExtension: 'js'
+    // Settings for building sass for tns modules
+    this.PLUGIN_CONFIGS['gulp-sass-tns'] = {
+      includePaths: [
+        this.srcSubdir,
+        './node_modules/',
+        './node_modules/nativescript-theme-core/scss/'
+      ].map((dir) => path.resolve(this.TNS_BASE_DIR, dir)),
     };
 
-    // Fix up paths for libs
+    // Fix up path to bootstrap module
     this.SYSTEM_CONFIG.paths[this.BOOTSTRAP_MODULE] = `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`;
-    this.SYSTEM_CONFIG.paths['lodash'] = `${this.APP_BASE}node_modules/lodash/index`;
-
-    // testing support for @ngrx/effects
-    this.SYSTEM_CONFIG.paths['@ngrx/effects/testing'] = `node_modules/@ngrx/effects/testing/index`;
 
     /** Production **/
 
     delete this.SYSTEM_BUILDER_CONFIG['packageConfigPaths']; // not all libs are distributed the same
-    this.SYSTEM_BUILDER_CONFIG['packages']['@ngrx/core'] = {
-      main: 'index.js',
-      defaultExtension: 'js'
-    };
-    this.SYSTEM_BUILDER_CONFIG['packages']['@ngrx/store'] = {
-      main: 'index.js',
-      defaultExtension: 'js'
-    };
-    this.SYSTEM_BUILDER_CONFIG['packages']['@ngrx/effects'] = {
-      main: 'index.js',
-      defaultExtension: 'js'
-    };
-    this.SYSTEM_BUILDER_CONFIG['packages']['ng2-translate'] = {
-      main: 'bundles/index.js',
-      defaultExtension: 'js'
-    };
-    this.SYSTEM_BUILDER_CONFIG['packages']['angulartics2'] = {
-      main: 'dist/index.js',
-      defaultExtension: 'js'
-    };
-    this.SYSTEM_BUILDER_CONFIG['packages']['angulartics2/dist/providers'] = {
-      main: 'index.js',
-      defaultExtension: 'js'
-    };
-
-    this.SYSTEM_BUILDER_CONFIG.paths['lodash'] = `node_modules/lodash/index.js`;
-    this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/core'] = `node_modules/@ngrx/core/index.js`;
-    this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/store'] = `node_modules/@ngrx/store/index.js`;
-    this.SYSTEM_BUILDER_CONFIG.paths['@ngrx/effects'] = `node_modules/@ngrx/effects/index.js`;
   }
 }
