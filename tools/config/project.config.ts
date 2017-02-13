@@ -9,7 +9,7 @@ import { SeedAdvancedConfig } from './seed-advanced.config';
 export class ProjectConfig extends SeedAdvancedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
-
+  
   constructor() {
     super();
     // this.APP_TITLE = 'Put name of your app here';
