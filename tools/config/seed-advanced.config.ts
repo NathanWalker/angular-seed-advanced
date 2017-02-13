@@ -21,6 +21,11 @@ export class SeedAdvancedConfig extends SeedConfig {
     ANALYTICS_TRACKING_ID: '',
   };
 
+   /**
+   * Holds added packages for desktop build.
+   */
+  DESKTOP_PACKAGES: ExtendPackages[] = [];
+
   constructor() {
     super();
 
@@ -131,6 +136,15 @@ export class SeedAdvancedConfig extends SeedConfig {
         path: `${this.APP_BASE}node_modules/deep-freeze-strict/index.js`
       }
     ];
+
+    /**
+     * Need to duplicate this in the project.config.ts to
+     * pick up packages there too.
+     */
+     this.DESKTOP_PACKAGES = [
+      ...this.DESKTOP_PACKAGES,
+      ...additionalPackages,
+      ];
 
     this.addPackagesBundles(additionalPackages);
 
