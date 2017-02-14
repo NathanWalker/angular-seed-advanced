@@ -9,7 +9,7 @@ import { Http } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { TranslateLoader } from 'ng2-translate';
+import { TranslateLoader } from '@ngx-translate/core';
 
 // app
 import { APP_COMPONENTS, AppComponent } from './app/components/index';
