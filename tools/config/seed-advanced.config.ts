@@ -107,7 +107,7 @@ export class SeedAdvancedConfig extends SeedConfig {
         }
       },
       {
-        name: 'ng2-translate',
+        name: '@ngx-translate/core',
         packageMeta: {
           main: 'bundles/index.js',
           defaultExtension: 'js'
