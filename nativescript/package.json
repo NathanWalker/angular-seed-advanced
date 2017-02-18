@@ -50,7 +50,7 @@
     "ngrx-store-freeze": "0.1.6",
     "reflect-metadata": "^0.1.8",
     "rxjs": "~5.0.3",
-    "tns-core-modules": "^2.4.4",
+    "tns-core-modules": "^2.5.1",
     "url": "0.10.3",
     "zone.js": "~0.7.4"
   },
