@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 // libs
 import { Store } from '@ngrx/store';
-import { TranslateService } from 'ng2-translate';
+import { TranslateService } from '@ngx-translate/core';
 
 // app
 import { Analytics, AnalyticsService } from '../../analytics/index';

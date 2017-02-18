@@ -1,5 +1,5 @@
 // libs
-import { TranslateService, TranslateLoader } from 'ng2-translate';
+import { TranslateService, TranslateLoader } from '@ngx-translate/core';
 
 // module
 import { MultilingualService } from '../index';

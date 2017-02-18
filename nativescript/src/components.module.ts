@@ -11,7 +11,7 @@ import { Http } from '@angular/http';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 // libs
-import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from '@ngx-translate/core';
 
 // app
 import { AppComponent } from './app/components/app.component';

@@ -49,7 +49,7 @@ module.exports = function (config) {
 
       // Advanced seed
       { pattern: 'node_modules/lodash/**/*.js', included: false, watched: false },
-      { pattern: 'node_modules/ng2-translate/**/*.js', included: false, watched: false },
+      { pattern: 'node_modules/@ngx-translate/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/@ngrx/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/angulartics2/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/ngrx-store-freeze/**/*.js', included: false, watched: false },

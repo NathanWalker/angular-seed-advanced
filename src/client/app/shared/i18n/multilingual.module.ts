@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule, Http } from '@angular/http';
 
 // libs
-import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from '@ngx-translate/core';
 
 // app
 import { Config } from '../core/index';
