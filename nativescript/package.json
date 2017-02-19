@@ -47,6 +47,7 @@
     "nativescript-dev-webpack": "^0.3.1",
     "nativescript-theme-core": "^1.0.2",
     "@ngx-translate/core": "^6.0.0-beta.1",
+    "@ngx-translate/http-loader": "0.0.3",
     "ngrx-store-freeze": "0.1.6",
     "reflect-metadata": "^0.1.8",
     "rxjs": "~5.0.3",

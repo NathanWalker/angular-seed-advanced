@@ -109,7 +109,14 @@ export class SeedAdvancedConfig extends SeedConfig {
       {
         name: '@ngx-translate/core',
         packageMeta: {
-          main: 'bundles/index.js',
+          main: 'bundles/core.umd.js',
+          defaultExtension: 'js'
+        }
+      },
+      {
+        name: '@ngx-translate/http-loader',
+        packageMeta: {
+          main: 'bundles/http-loader.umd.js',
           defaultExtension: 'js'
         }
       },
