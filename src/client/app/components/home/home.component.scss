@@ -3,8 +3,16 @@
   padding: 0 16px;
 }
 
-input {
-  width: 250px;
+$inputWidth: 300px;
+
+.inputWrapper {
+  width: $inputWidth;
+  position: relative;
+  display: inline-flex;
+
+  input {
+    width: $inputWidth;
+  }
 }
 
 ul {
@@ -21,6 +29,19 @@ ul {
   margin-top: -25px;
   position: relative;
   top: 16px;
+}
+
+.microphone {
+  background: url("./assets/svg/mic.svg");
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 1px;
+  top: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 a.link {
