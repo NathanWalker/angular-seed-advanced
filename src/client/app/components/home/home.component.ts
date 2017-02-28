@@ -1,5 +1,5 @@
 // libs
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
@@ -14,12 +14,15 @@ import * as nameList from '../../shared/sample/index';
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   public names$: Observable<any>;
-  public newName: string = '';
+  public newName: string;
 
-  constructor(private store: Store<IAppState>, public routerext: RouterExtensions) {
-    this.names$ = store.let(getNames);
+  constructor(private store: Store<IAppState>, public routerext: RouterExtensions) {}
+
+  ngOnInit() {
+    this.names$ = this.store.let(getNames);
+    this.newName = '';
   }
 
   /*
