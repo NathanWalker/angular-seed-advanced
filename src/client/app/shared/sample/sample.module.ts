@@ -1,7 +1,7 @@
 // angular
 import { NgModule, Optional, SkipSelf, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PlatformModule } from '../../../platform.module';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
@@ -17,7 +17,7 @@ import { MultilingualModule } from '../i18n/multilingual.module';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
+    PlatformModule,
     HttpModule,
     RouterModule,
     MultilingualModule,
