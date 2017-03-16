@@ -112,5 +112,6 @@ export class SeedWebServer {
    * None, by default.
    */
   protected configureMiddleware() {
+    // Add custom request handlers here.
   }
 }
