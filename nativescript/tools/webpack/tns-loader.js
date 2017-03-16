@@ -31,7 +31,7 @@ function replaceStringsWithRequires(string) {
 function injectTemplateVariables(loaderContext, source) {
   // Inject template variables via lodash.template
   // Note: We only support the '<?= varname ?>' syntax (default matches and breaks on es6 string literals).
-  const query = loaderUtils.parseQuery(loaderContext.query);
+  const query = loaderUtils.getOptions(loaderContext);
 
   const tpl = template(source, {
     interpolate: /<%=([\s\S]+?)%>/g,
