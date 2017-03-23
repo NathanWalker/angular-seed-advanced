@@ -301,6 +301,12 @@ export class SeedConfig {
   VERSION = appVersion();
 
   /**
+   * The banner string to print when starting the server.
+   * @type {string}
+   */
+  SERVER_STARTUP_BANNER = 'Starting the server..';
+
+  /**
    * The name of the bundle file to includes all CSS files.
    * @type {string}
    */
