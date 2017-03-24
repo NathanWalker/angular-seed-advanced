@@ -14,20 +14,11 @@
   "scripts": {
     "preinstall": "mkdirp app",
     "clean": "rimraf platforms node_modules lib hooks app && mkdirp app",
-    "clean-android": "tns clean-app android",
-    "clean-ios": "tns clean-app ios",
-    "prewebpack-android": "npm run clean-android",
-    "prewebpack-ios": "npm run clean-ios",
-    "webpack-android": "webpack --config=webpack.android.js --progress",
-    "webpack-ios": "webpack --config=webpack.ios.js --progress",
-    "prestart-android-bundle": "npm run webpack-android",
-    "prestart-ios-bundle": "npm run webpack-ios",
-    "start-android-bundle": "tns run android --bundle --disable-npm-install",
-    "start-ios-bundle": "tns run ios --bundle --disable-npm-install",
-    "prebuild-android-bundle": "npm run webpack-android",
-    "prebuild-ios-bundle": "npm run webpack-ios",
-    "build-android-bundle": "tns build android --bundle --disable-npm-install",
-    "build-ios-bundle": "tns build ios --bundle --disable-npm-install"
+    "ns-bundle": "ns-bundle",
+    "start-android-bundle": "npm run ns-bundle --android --start-app",
+    "start-ios-bundle": "npm run ns-bundle --ios --start-app",
+    "build-android-bundle": "npm run ns-bundle --android --build-app",
+    "build-ios-bundle": "npm run ns-bundle --ios --build-app"
   },
   "dependencies": {
     "@angular/common": "~2.4.3",
