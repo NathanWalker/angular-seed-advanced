@@ -53,6 +53,10 @@ This is an **advanced** seed project for Angular apps based on [Minko Gechev's](
   
 **Advice**: If your project is intended to target a single platform (i.e, web only), then [angular-seed](https://github.com/mgechev/angular-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
 
+**Too Much?!**: Don't worry it's ok, I completely understand. There is a simplified version of this seed which still allows web + mobile + desktop **without** the extra libraries and features like ngrx or analytics. Give this a shot: https://github.com/jlooper/angular-starter
+
+It's built with a lot of the same structure found here so things work the same but is definitely easier to start with if just getting into multi-platform development.
+
 ### Prerequisites
 
 **Note** you should have **node v6.5.0 or higher** and **npm 3.10.3 or higher**.
