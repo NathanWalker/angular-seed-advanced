@@ -5,6 +5,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 // libs
 import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2Segment } from 'angulartics2/dist/providers/segment/angulartics2-segment';
 
 // app
 import { t } from '../../test/index';
@@ -23,6 +25,9 @@ const testModuleConfig = (options?: any) => {
       CoreModule.forRoot([
         { provide: WindowService, useValue: window },
         { provide: ConsoleService, useValue: console }
+      ]),
+      Angulartics2Module.forRoot([
+        Angulartics2Segment
       ]),
       StoreModule.provideStore({ i18n: reducer }),
       EffectsModule.run(MultilingualEffects),

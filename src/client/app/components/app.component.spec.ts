@@ -7,6 +7,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 // libs
 import { StoreModule } from '@ngrx/store';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2Segment } from 'angulartics2/dist/providers/segment/angulartics2-segment';
 
 // app
 import { t } from '../shared/test/index';
@@ -30,6 +32,9 @@ const testModuleConfig = () => {
   TestBed.configureTestingModule({
     imports: [
       FormsModule,
+      Angulartics2Module.forRoot([
+        Angulartics2Segment
+      ]),
       MultilingualModule,
       StoreModule.provideStore({ }),
       RouterTestingModule.withRoutes(config)

@@ -4,6 +4,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
+// lib
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2Segment } from 'angulartics2/dist/providers/segment/angulartics2-segment';
+
 // module
 import { ANALYTICS_PROVIDERS } from './index';
 
@@ -15,7 +19,10 @@ import { ANALYTICS_PROVIDERS } from './index';
   imports: [
     CommonModule,
     RouterModule,
-    HttpModule
+    HttpModule,
+    Angulartics2Module.forRoot([
+      Angulartics2Segment
+    ])
   ],
   providers: ANALYTICS_PROVIDERS
 })

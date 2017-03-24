@@ -181,7 +181,7 @@
     "@ngrx/store": "^2.2.1",
     "@ngx-translate/core": "^6.0.0",
     "@ngx-translate/http-loader": "0.0.3",
-    "angulartics2": "^1.6.3",
+    "angulartics2": "^1.6.4",
     "core-js": "^2.4.1",
     "es-module-loader": "^1.0.0",
     "intl": "^1.2.5",

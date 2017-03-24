@@ -34,7 +34,7 @@
     "@ngrx/store": "^2.2.1",
     "@ngx-translate/core": "^6.0.0",
     "@ngx-translate/http-loader": "0.0.3",
-    "angulartics2": "^1.6.3",
+    "angulartics2": "^1.6.4",
     "lodash": "^4.17.4",
     "nativescript-angular": "next",
     "nativescript-dev-webpack": "^0.3.1",

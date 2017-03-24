@@ -23,10 +23,11 @@ const config = {
       jsnext: true, main: true, module: true
     }),
     commonjs({
-      include: 'node_modules/**',
+      include: ['node_modules/**', 'node_modules/angulartics2/**/*'],
       namedExports: {
         // 'node_modules/immutable/dist/immutable.js': [ 'Map', 'Set', 'List', 'fromJS' ],
         // 'node_modules/ng2-dragula/ng2-dragula.js': [ 'DragulaModule', 'DragulaService' ]
+        'node_modules/angulartics2/dist/index.js': [ 'Angulartics2' ]
       }
     })
   ]
