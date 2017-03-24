@@ -17,8 +17,8 @@ export interface TestApi {
   fakeAsync(fn: Function): Function;
   be(fn: Function): void;
   beforeEach(fn: Function): void;
-  e(actual: any): jasmine.Matchers;
-  expect(actual: any): jasmine.Matchers;
+  e(actual: any): jasmine.Matchers<any>;
+  expect(actual: any): jasmine.Matchers<any>;
   fail(e?: any): void;
   inject(tokens: Array<any>, fn: Function): Function;
   it(name: string, fn: Function, timeOut?: number): void;
