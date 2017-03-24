@@ -177,7 +177,7 @@ app.on('ready', () => {
           label: 'Reload',
           accelerator: 'Command+R',
           click:() => {
-            mainWindow.restart();
+            mainWindow.reload();
           }
         }, {
             label: 'Toggle Full Screen',
@@ -239,7 +239,7 @@ app.on('ready', () => {
           label: '&Reload',
           accelerator: 'Ctrl+R',
           click:() => {
-            mainWindow.restart();
+            mainWindow.reload();
           }
         }, {
             label: 'Toggle &Full Screen',
