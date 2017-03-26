@@ -1,4 +1,6 @@
 import * as express from 'express';
+import { Application, RequestHandler, Request, Response, NextFunction } from 'express';
+import * as http from 'http';
 import * as fallback from 'express-history-api-fallback';
 import * as openResource from 'open';
 import { resolve } from 'path';
@@ -19,15 +21,19 @@ export class SeedWebServer {
   protected baseDirCoverage: string = Config.COVERAGE_TS_DIR;
   protected baseDirProd: string = Config.PROD_DEST;
   protected startupBanner: string = Config.SERVER_STARTUP_BANNER;
+  protected httpServer: http.Server;
 
   /**
    * @param app - express application.
    */
-  constructor(protected app: express.Express) {
-    this.configureMiddleware();
+  constructor(protected app: Application) {
   }
 
-  public showStartupBanner() {
+  /**
+   * This method should be called only once regardless of how the server
+   * is started.
+   */
+  public startServer() {
     console.info(this.startupBanner);
   }
 
@@ -36,8 +42,9 @@ export class SeedWebServer {
    * This is used by the server.start gulp task.
    */
   public serveSPA() {
-    this.showStartupBanner();
+    this.configureMiddleware();
     codeChangeTool.listen();
+    this.startServer();
   }
 
   /**
@@ -47,8 +54,8 @@ export class SeedWebServer {
    * @param {any} e - The file that has changed.
    */
   public notifyLiveReload(e: any) {
+    this.startServer();
     let fileName = e.path;
-    this.showStartupBanner();
     codeChangeTool.changed(fileName);
   }
 
@@ -57,7 +64,7 @@ export class SeedWebServer {
    * This is used by the serve.docs gulp task.
    */
   public serveDocs() {
-    this.showStartupBanner();
+    this.configureMiddleware();
 
     this.app.use(
       this.baseDirApp,
@@ -67,6 +74,8 @@ export class SeedWebServer {
     this.app.listen(this.portDocs, () =>
       openResource('http://localhost:' + this.portDocs + this.baseDirApp)
     );
+
+    this.startServer();
   }
 
   /**
@@ -74,7 +83,7 @@ export class SeedWebServer {
    * This is used by the serve.coverage gulp task.
    */
   public serveCoverage() {
-    this.showStartupBanner();
+    this.configureMiddleware();
 
     this.app.use(
       this.baseDirApp,
@@ -84,6 +93,8 @@ export class SeedWebServer {
     this.app.listen(this.portCoverage, () =>
       openResource('http://localhost:' + this.portCoverage + this.baseDirApp)
     );
+
+    this.startServer();
   }
 
   /**
@@ -91,7 +102,8 @@ export class SeedWebServer {
    * This is used by the serve.prod gulp task.
    */
   public serveProd() {
-    this.showStartupBanner();
+    this.configureMiddleware();
+
     let root = resolve(process.cwd(), this.baseDirProd);
 
     for (let proxy of Config.getProxyMiddleware()) {
@@ -102,9 +114,11 @@ export class SeedWebServer {
 
     this.app.use(fallback('index.html', { root }));
 
-    this.app.listen(this.portMain, () =>
+    this.httpServer = this.app.listen(this.portMain, () =>
       openResource('http://localhost:' + this.portMain + this.baseDirApp)
     );
+
+    this.startServer();
   };
 
   /**
@@ -113,5 +127,22 @@ export class SeedWebServer {
    */
   protected configureMiddleware() {
     // Add custom request handlers here.
+
+    this.configureSessionCookies();
+  }
+
+  /**
+   * Configure the server's session cookie handling.
+   */
+  protected configureSessionCookies() {
+    // Place any session cookie configuration code here.
+  }
+
+  public getApp(): Application {
+    return this.app;
+  }
+
+  public getHttpServer(): http.Server {
+    return this.httpServer;
   }
 }
