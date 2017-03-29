@@ -59,6 +59,14 @@ nativescript/src/**/*.js
 nativescript/src/**/*.js.map
 nativescript/*.d.ts
 !nativescript/src/references.d.ts
+electron/app
+electron/node_modules
+electron/platforms
+electron/src/app
+electron/src/**/*.js
+electron/src/**/*.js.map
+electron/*.d.ts
+!electron/src/references.d.ts
 desktop
 gulpfile.js
 gulpfile.js.map
