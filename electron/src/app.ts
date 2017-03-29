@@ -1,4 +1,6 @@
 //electron
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+// app
+import { ElectronModule } from './electron.module';
 
-//bootstrap entry point...
-
+platformBrowserDynamic().bootstrapModule(ElectronModule);
