@@ -7,7 +7,7 @@ import { AssetsTask } from '../assets_task';
 import Config from '../../config';
 
 function copyFiles(paths: string[], subdir: string) {
-  const dest = join(Config.ELECTRON_APP_DEST, subdir);
+  const dest = join(Config.ELECTRON_APP_SRC, subdir);
 
   return gulp.src(paths)
     .pipe(newer(dest))
@@ -21,14 +21,6 @@ function copyAssets() {
   ].concat(Config.TEMP_FILES.map((p) => { return '!' + p; }));
 
   return copyFiles(paths, 'assets');
-}
-
-function copyAppResources() {
-  const paths: string[] = [
-    join(Config.ELECTRON_APP_SRC, 'App_Resources', '**'),
-  ];
-
-  return copyFiles(paths, 'App_Resources');
 }
 
 function copyAppFonts() {
@@ -45,7 +37,6 @@ export =
     run() {
       return merge(
         copyAssets(),
-        copyAppResources(),
         copyAppFonts(),
         copyFiles([join(Config.ELECTRON_APP_SRC, 'package.json')], ''),
       );
