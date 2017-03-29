@@ -1,0 +1,13 @@
+<ActionBar title="Angular Seed Advanced" class="action-bar">
+  <ActionItem nsRouterLink="/about" ios.position="right" android.position="popup">
+    <Button [text]="'ABOUT' | translate" class="action-item"></Button>
+  </ActionItem>
+</ActionBar>
+<StackLayout class="p-0 m-0">
+  <lang-switcher></lang-switcher>
+  <ScrollView>
+    <GridLayout>
+      <page-router-outlet></page-router-outlet>
+    </GridLayout>
+  </ScrollView>
+</StackLayout>

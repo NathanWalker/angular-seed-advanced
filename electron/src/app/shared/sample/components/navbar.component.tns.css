@@ -1,0 +1,12 @@
+.nav {
+  padding: 10;
+}
+
+.nav button {
+  margin: 0 20 0 0;
+  color: #777;
+}
+
+.nav button.active {
+  color: #106cc8;
+}

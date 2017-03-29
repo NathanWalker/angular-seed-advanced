@@ -1,0 +1,5 @@
+<form>
+  Change Language: <select [(ngModel)]="lang" (change)="changeLang($event)" name="lang">
+    <option *ngFor="let l of supportedLanguages" [value]="l.code">{{l.title}}</option>
+  </select>
+</form>
