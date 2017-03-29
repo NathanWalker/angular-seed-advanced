@@ -2,7 +2,7 @@
  * Helper: root(), and rootDir() are defined at the bottom
  */
 const webpack = require('webpack');
-const helpers = require('./helpers');
+const helpers = require('./tools/webpack/helpers');
 const path = require('path');
 
 var CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -20,7 +20,7 @@ var config = {
   entry: {
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
-    'app': './src/app/app',
+    'app': './src/main.desktop.ts',
   },
 
   // Config for our build files

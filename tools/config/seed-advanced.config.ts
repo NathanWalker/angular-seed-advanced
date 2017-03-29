@@ -21,6 +21,16 @@ export class SeedAdvancedConfig extends SeedConfig {
     ANALYTICS_TRACKING_ID: '',
   };
 
+  /**
+   * The base folder of the electron application source files.
+   * @type {string}
+   */
+   ELECTRON_BASE_DIR = 'electron';
+
+   ELECTRON_APP_SRC = `${this.ELECTRON_BASE_DIR}/${this.srcSubdir}`;
+
+   ELECTRON_APP_DEST = `${this.ELECTRON_BASE_DIR}/${this.destSubdir}`;
+
    /**
    * Holds added packages for desktop build.
    */

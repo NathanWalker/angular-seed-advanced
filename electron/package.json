@@ -1,5 +1,5 @@
 {
-  "name": "angular2-electron",
+  "name": "angular-seed-advanced",
   "version": "0.0.0",
   "description": "Angular 2 with Electron and Webpack",
   "main": "main.desktop.js",
@@ -36,7 +36,7 @@
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
-    "@types/electron": "^1.4.33",
+    "@types/electron": "^1.4.35",
     "@types/hammerjs": "^2.0.33",
     "@types/jasmine": "^2.2.34",
     "@types/moment-timezone": "^0.2.32",
@@ -87,9 +87,5 @@
     "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-dev-server": "^2.4.1"
-  },
-  "engines": {
-    "node": ">= 4.2.1 <= 6",
-    "npm": ">= 3"
   }
 }
