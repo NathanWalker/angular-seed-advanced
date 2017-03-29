@@ -44,7 +44,7 @@ export =
 
       const template = (<any>Object).assign(
         new TemplateLocalsBuilder().withStringifiedSystemConfigDev().build(), {
-          SYSTEM_CONFIG_ELECTRON: jsonSystemConfig
+          SYSTEM_CONFIG_TNS: jsonSystemConfig
         },
       );
 
