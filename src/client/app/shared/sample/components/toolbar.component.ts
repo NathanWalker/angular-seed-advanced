@@ -8,7 +8,7 @@ import { LogService } from '../../core/index';
   selector: 'sd-toolbar',
   templateUrl: 'toolbar.component.html',
   styleUrls: [
-    'toolbar.component.css',
+    'toolbar.component.scss',
   ],
 })
 export class ToolbarComponent {

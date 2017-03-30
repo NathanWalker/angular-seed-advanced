@@ -51,7 +51,7 @@ function processComponentCss() {
             cwd: Config.ELECTRON_APP_SRC,
         })
         .pipe(renamer())
-        .on('error', reportPostCssError)
+        //.on('error', reportPostCssError)
         .pipe(gulp.dest(Config.ELECTRON_APP_DEST));
 }
 

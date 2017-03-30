@@ -48,7 +48,7 @@ function processComponentCss() {
     cwd: Config.TNS_APP_SRC,
   })
     .pipe(renamer())
-    .on('error', reportPostCssError)
+    //.on('error', reportPostCssError) // Causes Property 'pipe' does not exist on type 'EventEmitter'.
     .pipe(gulp.dest(Config.TNS_APP_DEST));
 }
 

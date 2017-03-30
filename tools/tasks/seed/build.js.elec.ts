@@ -12,12 +12,14 @@ const plugins = <any>gulpLoadPlugins();
 
 const jsonSystemConfig = JSON.stringify(Config.ELECTRON_CONFIG);
 
+//needs function for handling electron specific components/services.
+
 /**
  * Executes the build process, transpiling the TypeScript files (except the spec and e2e-spec files) for the development
  * environment.
  */
 export =
-  class BuildJsDev extends TypeScriptTask {
+  class BuildJsElec extends TypeScriptTask {
     run() {
       const src = [
         '**/*.ts',
@@ -36,9 +38,9 @@ export =
         ...src,
         '!**/*.aot.ts',
       ], {
-        base: Config.ELECTRON_APP_SRC,
-        cwd: Config.ELECTRON_APP_SRC,
-      })
+          base: Config.ELECTRON_APP_SRC,
+          cwd: Config.ELECTRON_APP_SRC,
+        })
         .pipe(plugins.sourcemaps.init())
         .pipe(tsProject());
 
@@ -67,7 +69,6 @@ export =
         .pipe(gulp.dest(Config.ELECTRON_APP_DEST));
 
       fs.writeFileSync(path.join(Config.ELECTRON_APP_DEST, 'build-config.json'), JSON.stringify(template));
-
       return merge(transpiled, copy);
     }
   };

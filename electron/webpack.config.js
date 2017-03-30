@@ -25,7 +25,7 @@ var config = {
 
   // Config for our build files
   output: {
-    path: helpers.root('src/app/dist'),
+    path: helpers.root('./dist'),
     filename: '[name].js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
@@ -131,9 +131,10 @@ var config = {
       from: 'src/assets/*/**',
       to: 'assets'
     },{
-      from: 'fonts/*/**',
-      to: 'fonts'
-    }]),
+      from: 'src/package.json',
+      to: '.'
+    }
+    ]),
     /**
      * Plugin LoaderOptionsPlugin (experimental)
      *
