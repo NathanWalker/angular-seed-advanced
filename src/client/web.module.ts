@@ -81,7 +81,7 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
     }]),
     SampleModule,
     StoreModule.provideStore(AppReducer),
-DEV_IMPORTS,
+    DEV_IMPORTS,
     EffectsModule.run(MultilingualEffects),
     EffectsModule.run(NameListEffects)
   ],

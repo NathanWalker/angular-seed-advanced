@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { Application, RequestHandler, Request, Response, NextFunction } from 'express';
+import { Application } from 'express';
 import * as http from 'http';
 import * as fallback from 'express-history-api-fallback';
 import * as openResource from 'open';
@@ -106,7 +106,7 @@ export class SeedWebServer {
 
     let root = resolve(process.cwd(), this.baseDirProd);
 
-    for (let proxy of Config.getProxyMiddleware()) {
+    for (let proxy of Config.PROXY_MIDDLEWARE) {
       this.app.use(proxy);
     }
 

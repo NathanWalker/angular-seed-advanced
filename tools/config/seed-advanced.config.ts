@@ -1,5 +1,5 @@
 import { argv } from 'yargs';
-import { SeedConfig } from './seed.config';
+import { SeedConfig, BUILD_TYPES } from './seed.config';
 import * as path from 'path';
 import { ExtendPackages } from './seed.config.interfaces';
 
@@ -31,9 +31,14 @@ export class SeedAdvancedConfig extends SeedConfig {
 
     this.ENABLE_SCSS = true;
 
+    let isTest = false;
+
     let arg: string;
     if (argv && argv._) {
       arg = argv._[0];
+
+      isTest = arg === 'test';
+
       if (arg.indexOf('desktop') > -1) {
         this.TARGET_DESKTOP = true;
         if (arg.indexOf('.mac') > -1 || arg.indexOf('.windows') > -1 || arg.indexOf('.linux') > -1) {
@@ -62,7 +67,10 @@ export class SeedAdvancedConfig extends SeedConfig {
     this.BOOTSTRAP_FACTORY_PROD_MODULE = `${this.BOOTSTRAP_DIR}${bootstrap}.prod`;
 
     this.APP_TITLE = 'Angular Seed Advanced';
-    this.APP_BASE = ''; // paths must remain relative
+
+    // paths must remain relative for any mode other than dev web
+    this.APP_BASE = (!isTest && !this.TARGET_DESKTOP && this.BUILD_TYPE === BUILD_TYPES.DEVELOPMENT) ? '/'
+        : '';
 
     // Advanced seed packages
     let additionalPackages: ExtendPackages[] = [

@@ -13,11 +13,11 @@
   <Button [text]="'ADD_BTN_TEXT' | translate" (tap)="addName()" class="btn btn-primary"></Button>
 
   <ListView [items]="names$ | async" row="1" colSpan="2" height="250" class="list-group">
-    <template let-name="item" let-odd="odd" let-even="even">
+    <ng-template let-name="item" let-odd="odd" let-even="even">
       <StackLayout [class.odd]="odd" [class.even]="even" class="list-group-item">
         <Label [text]="name"></Label>
       </StackLayout>
-    </template>
+    </ng-template>
   </ListView>
 
   <Button (tap)="readAbout()" text="Read all about it" class="btn btn-outline"></Button>
