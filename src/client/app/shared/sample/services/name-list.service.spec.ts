@@ -49,7 +49,7 @@ export function main() {
     t.be(() => {
       testModuleConfig();
       injector = getTestBed();
-      backend = injector.get(XHRBackend);
+      backend = <any>injector.get(XHRBackend);
       store = injector.get(Store);
       runner = injector.get(EffectsRunner);
       nameListEffects = injector.get(NameListEffects);

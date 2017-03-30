@@ -1,10 +1,8 @@
 // nativescript
-import {
-  NativeScriptModule,
-  NativeScriptFormsModule,
-  NativeScriptHttpModule,
-  NativeScriptRouterModule
-} from 'nativescript-angular';
+import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
+import { NativeScriptFormsModule } from 'nativescript-angular/forms';
+import { NativeScriptHttpModule } from 'nativescript-angular/http';
+import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { Http } from '@angular/http';
 
 // angular

@@ -106,7 +106,7 @@ export class SeedWebServer {
 
     let root = resolve(process.cwd(), this.baseDirProd);
 
-    for (let proxy of Config.getProxyMiddleware()) {
+    for (let proxy of Config.PROXY_MIDDLEWARE) {
       this.app.use(proxy);
     }
 
