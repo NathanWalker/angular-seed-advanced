@@ -1,6 +1,5 @@
 import * as express from 'express';
 import { Application } from 'express';
-import * as http from 'http';
 import { SeedWebServer } from '../seed/server';
 
 
@@ -19,7 +18,7 @@ export class ProjectWebServer extends SeedWebServer {
 }
 
 let app: Application = express();
-let webServer: ProjectWebServer = new ProjectWebServer(app);
+let webServer = new ProjectWebServer(app);
 export default webServer;
 export function serveSPA() { webServer.serveSPA(); }
 export function notifyLiveReload(e: any) { webServer.notifyLiveReload(e); }
