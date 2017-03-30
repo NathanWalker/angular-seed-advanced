@@ -1,5 +1,5 @@
 import { argv } from 'yargs';
-import { SeedConfig, BUILD_TYPES } from './seed.config';
+import { SeedConfig } from './seed.config';
 import * as path from 'path';
 import { ExtendPackages } from './seed.config.interfaces';
 
@@ -31,14 +31,9 @@ export class SeedAdvancedConfig extends SeedConfig {
 
     this.ENABLE_SCSS = true;
 
-    let isTest = false;
-
     let arg: string;
     if (argv && argv._) {
       arg = argv._[0];
-
-      isTest = arg === 'test';
-
       if (arg.indexOf('desktop') > -1) {
         this.TARGET_DESKTOP = true;
         if (arg.indexOf('.mac') > -1 || arg.indexOf('.windows') > -1 || arg.indexOf('.linux') > -1) {
@@ -67,16 +62,14 @@ export class SeedAdvancedConfig extends SeedConfig {
     this.BOOTSTRAP_FACTORY_PROD_MODULE = `${this.BOOTSTRAP_DIR}${bootstrap}.prod`;
 
     this.APP_TITLE = 'Angular Seed Advanced';
-
-    // paths must remain relative for any mode other than dev web
-    this.APP_BASE = (!isTest && !this.TARGET_DESKTOP && this.BUILD_TYPE === BUILD_TYPES.DEVELOPMENT) ? '/'
-        : '';
+    this.APP_BASE = this.TARGET_DESKTOP ? '' // paths must remain relative for desktop build
+      : '/';
 
     // Advanced seed packages
     let additionalPackages: ExtendPackages[] = [
       {
         name: 'lodash',
-        path: `${this.APP_BASE}node_modules/lodash/lodash.js`,
+        path: 'node_modules/lodash/lodash.js',
         packageMeta: {
           main: 'index.js',
           defaultExtension: 'js'
@@ -105,7 +98,7 @@ export class SeedAdvancedConfig extends SeedConfig {
       },
       {
         name: '@ngrx/effects/testing',
-        path: `${this.APP_BASE}node_modules/@ngrx/effects/testing/index.js`
+        path: 'node_modules/@ngrx/effects/testing/index.js'
       },
       {
         name: '@ngrx/store-devtools',
@@ -144,11 +137,11 @@ export class SeedAdvancedConfig extends SeedConfig {
       },
       {
         name: 'ngrx-store-freeze',
-        path: `${this.APP_BASE}node_modules/ngrx-store-freeze/dist/index.js`
+        path: 'node_modules/ngrx-store-freeze/dist/index.js'
       },
       {
         name: 'deep-freeze-strict',
-        path: `${this.APP_BASE}node_modules/deep-freeze-strict/index.js`
+        path: 'node_modules/deep-freeze-strict/index.js'
       }
     ];
 
