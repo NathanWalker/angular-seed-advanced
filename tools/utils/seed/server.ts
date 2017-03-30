@@ -42,7 +42,9 @@ export class SeedWebServer {
    * This is used by the server.start gulp task.
    */
   public serveSPA() {
+    this.configureMiddleware();
     codeChangeTool.listen();
+    this.startServer();
   }
 
   /**
@@ -52,6 +54,7 @@ export class SeedWebServer {
    * @param {any} e - The file that has changed.
    */
   public notifyLiveReload(e: any) {
+    this.startServer();
     let fileName = e.path;
     codeChangeTool.changed(fileName);
   }
