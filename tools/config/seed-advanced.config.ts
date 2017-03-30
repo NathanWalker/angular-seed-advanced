@@ -62,7 +62,9 @@ export class SeedAdvancedConfig extends SeedConfig {
     this.BOOTSTRAP_FACTORY_PROD_MODULE = `${this.BOOTSTRAP_DIR}${bootstrap}.prod`;
 
     this.APP_TITLE = 'Angular Seed Advanced';
-    this.APP_BASE = ''; // paths must remain relative
+    if (this.TARGET_DESKTOP) {
+      this.APP_BASE = ''; // paths must remain relative
+    }
 
     // Advanced seed packages
     let additionalPackages: ExtendPackages[] = [
@@ -154,7 +156,7 @@ export class SeedAdvancedConfig extends SeedConfig {
       ];
 
     this.addPackagesBundles(additionalPackages);
- 
+
     // Settings for building sass (include ./srs/client/scss in includes)
     // Needed because for components you cannot use ../../../ syntax
     this.PLUGIN_CONFIGS['gulp-sass'] = {
