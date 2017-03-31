@@ -60,6 +60,7 @@ nativescript/src/**/*.js.map
 nativescript/*.d.ts
 !nativescript/src/references.d.ts
 electron/app
+electron/config
 electron/node_modules
 electron/platforms
 electron/src/app

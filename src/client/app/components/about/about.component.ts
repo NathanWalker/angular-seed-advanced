@@ -6,7 +6,7 @@ import { Config } from '../../shared/core/index';
   selector: 'sd-about',
   templateUrl: 'about.component.html',
   styleUrls: [
-    'about.component.scss',
+    'about.component.css',
   ],
 })
 export class AboutComponent {
