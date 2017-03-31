@@ -66,6 +66,6 @@ export =
         //        relative(file.path, Config.PROJECT_ROOT + '/' + Config.APP_SRC).replace(sep, '/') + '/' + Config.APP_SRC
         //    }))
         .pipe(plugins.template(new TemplateLocalsBuilder().withStringifiedSystemConfigDev().build()))
-        .pipe(gulp.dest(Config.ELECTRON_BASE_DIR));
+        .pipe(gulp.dest(join(Config.ELECTRON_BASE_DIR,'config')));
     }
   };

@@ -19,7 +19,6 @@
     ]
   },
   "exclude": [
-    "release",
     "node_modules",
     "dist"
   ],

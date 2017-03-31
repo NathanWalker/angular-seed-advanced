@@ -9,7 +9,7 @@ const appName = argv.name || pkg.productName;
 const shouldUseAsar = argv.asar || false;
 const shouldBuildAll = argv.all || false;
 const arch = argv.arch || 'all';
-const platform = argv.platform || 'win32';
+const platform = argv.platform || 'darwin';
 
 const DEFAULT_OPTS = {
     dir: './src/app',
@@ -30,7 +30,7 @@ pack(platform, arch, function done(err, appPath) {
 });
 
 function pack(plat, arch, cb) {
-    // darwin ia32 electron doesn't exist.
+    // there is no darwin ia32 electron
     if (plat === 'darwin' && arch === 'ia32') return;
 
     const iconObj = {
