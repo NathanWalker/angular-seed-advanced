@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   selector: 'sd-navbar',
   templateUrl: 'navbar.component.html',
   styleUrls: [
-    'navbar.component.scss',
+    'navbar.component.css',
   ],
 })
 export class NavbarComponent {
