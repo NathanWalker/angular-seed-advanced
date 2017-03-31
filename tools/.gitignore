@@ -1,4 +1,4 @@
 *.js
 *.js.map
 !install.js
-
+env/env-config.interface.metadata.json
