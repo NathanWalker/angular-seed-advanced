@@ -22,7 +22,7 @@ var config = {
     entry: {
         'polyfills': './src/polyfills.ts',
         'vendor': './src/vendor.ts',
-        'app': './src/app/app',
+        'app': './src/app.ts',
     },
 
     // Config for our build files
