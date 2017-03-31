@@ -192,6 +192,7 @@
     "reflect-metadata": "^0.1.8",
     "rxjs": "~5.2.0",
     "systemjs": "0.19.41",
+    "webpack-target-electron-renderer": "^0.4.0",
     "zone.js": "^0.8.4"
   }
 }
