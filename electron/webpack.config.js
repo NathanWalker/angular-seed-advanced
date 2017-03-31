@@ -23,9 +23,9 @@ module.exports = function(platform, destinationApp) {
 
   var entry = {};
   //Discover entry module from package.json
-  entry.bundle = './app.ts'
+  entry.bundle = './app'
   //Vendor entry with third party libraries.
-  entry.vendor = './vendor.ts';
+  entry.vendor = './vendor';
   //app.css bundle
   entry['app.css'] = './app.css';
 
@@ -43,9 +43,6 @@ module.exports = function(platform, destinationApp) {
     // }),
     //Copy assets to out dir. Add your own globs as needed.
     new CopyWebpackPlugin([{
-      from: 'app.css',
-      to: 'app.css'
-    }, {
       from: 'css/**'
     }, {
       from: 'fonts/**'

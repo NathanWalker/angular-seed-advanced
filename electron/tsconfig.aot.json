@@ -1,0 +1,35 @@
+{
+  "extend": "./tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "ui/*": ["node_modules/tns-core-modules/ui/*"],
+      "platform": ["node_modules/tns-core-modules/platform"],
+      "image-source": ["node_modules/tns-core-modules/image-source"],
+      "xml": ["node_modules/tns-core-modules/xml"],
+      "xhr": ["node_modules/tns-core-modules/xhr"],
+      "text": ["node_modules/tns-core-modules/text"],
+      "data": ["node_modules/tns-core-modules/data"],
+      "fetch": ["node_modules/tns-core-modules/fetch"],
+      "trace": ["node_modules/tns-core-modules/trace"],
+      "fps-meter": ["node_modules/tns-core-modules/fps-meter"],
+      "color": ["node_modules/tns-core-modules/color"],
+      "application-settings": ["node_modules/tns-core-modules/application-settings"],
+      "http": ["node_modules/tns-core-modules/http"],
+      "camera": ["node_modules/tns-core-modules/camera"],
+      "console": ["node_modules/tns-core-modules/console"],
+      "timer": ["node_modules/tns-core-modules/timer"],
+      "utils": ["node_modules/tns-core-modules/utils"],
+      "location": ["node_modules/tns-core-modules/location"],
+      "file-system": ["node_modules/tns-core-modules/file-system"],
+      "application": ["node_modules/tns-core-modules/application"],
+      "image-asset": ["node_modules/tns-core-modules/image-asset"],
+      "connectivity": ["node_modules/tns-core-modules/connectivity"],
+      "globals": ["node_modules/tns-core-modules/globals"]
+    }
+  },
+  "angularCompilerOptions": {
+    "skipMetadataEmit": true,
+    "genDir": "./"
+  }
+}
