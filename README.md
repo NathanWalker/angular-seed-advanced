@@ -292,8 +292,8 @@ A documentation of the provided tools can be found in [tools/README.md](tools/RE
 ### Logging
 
 * what is the basic API surface around logging?
-  - ``LogService`` is the main class that provides the consumer code to write diagnostic information to a one or more configured targets
-  - ``LogTarget`` is an abstraction of where the logging out put is written. (e.g. ``ConsoleTarget`` writes diagnostics to the ``console``)
+  - ``LogService`` is the main class that consumer code should use to write diagnostic information to one or more configured targets
+  - ``LogTarget`` is an abstraction of where the log output is written. (e.g. ``ConsoleTarget`` writes diagnostics to the ``console``)
   - ``LogTargetBase`` is a base abstract class that makes it easier to implement custom log target. It provides a way for inheritors to filter messages by importance.
   - ``LogLevel`` is level of importance associated with every log message (e.g. ``Debug``, ``Info``, ``Warning``, ``Error``)
 
@@ -302,7 +302,7 @@ A documentation of the provided tools can be found in [tools/README.md](tools/RE
   - ``LogService`` additionally uses ``Config.Debug`` switches as a global treshhold to further filter verbosity of the log messages.
    
 * how to implement custom log target?
-  - Derrive from ``LogTargetBase`` class and implement ``writeToLog`` method. You can configure several log targets at a time inside main application module. For example:
+  - Derrive from ``LogTargetBase`` class and implement ``writeToLog`` method (see ``ConsoleTarget``). You can configure several log targets at a time inside main application module. For example:
   ```javascript
   CoreModule.forRoot([
       { provide: WindowService, useFactory: (win) },
