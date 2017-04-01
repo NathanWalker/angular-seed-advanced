@@ -2,7 +2,7 @@
 import { ANALYTICS_PROVIDERS } from '../../../analytics/index';
 
 // module
-import { WindowService, ConsoleService, LogService, RouterExtensions, AppService } from '../../index';
+import { WindowService, ConsoleService, LogService, LogTarget, ConsoleTarget, LogLevel, RouterExtensions, AppService } from '../../index';
 
 // mocks
 import { WindowMock } from '../mocks/window.mock';
@@ -15,6 +15,12 @@ export function TEST_CORE_PROVIDERS(options?: any): Array<any> {
   let providers = [
     { provide: ConsoleService, useValue: console },
     { provide: WindowService, useClass: (options && options.window) || WindowMock },
+    {
+      provide: LogTarget,
+      deps: [ConsoleService],
+      useFactory: (c: ConsoleService) => new ConsoleTarget(c, { minLogLevel: LogLevel.Debug }),
+      multi: true
+    },
     LogService,
     ANALYTICS_PROVIDERS,
     { provide: RouterExtensions, useClass: RouterExtensionsMock },
