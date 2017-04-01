@@ -289,6 +289,30 @@ A documentation of the provided tools can be found in [tools/README.md](tools/RE
   - `src/client/app/shared/i18n/components/lang-switcher.component.spec.ts`
     - fix test
 
+### Logging
+
+* what is the basic API surface around logging?
+  - ``LogService`` is the main class that provides the consumer code to write diagnostic information to a one or more configured targets
+  - ``LogTarget`` is an abstraction of where the logging out put is written. (e.g. ``ConsoleTarget`` writes diagnostics to the ``console``)
+  - ``LogTargetBase`` is a base abstract class that makes it easier to implement custom log target. It provides a way for inheritors to filter messages by importance.
+  - ``LogLevel`` is level of importance associated with every log message (e.g. ``Debug``, ``Info``, ``Warning``, ``Error``)
+
+* how to control amount of information logged?
+  - If a log target is derrived from ``LogTargetBase`` the target can be configured to filter messages by importance. You can pass ``minLogLevel`` as ``LogTargetOptions``
+  - ``LogService`` additionally uses ``Config.Debug`` switches as a global treshhold to further filter verbosity of the log messages.
+   
+* how to implement custom log target?
+  - Derrive from ``LogTargetBase`` class and implement ``writeToLog`` method. You can configure several log targets at a time inside main application module. For example:
+  ```javascript
+  CoreModule.forRoot([
+      { provide: WindowService, useFactory: (win) },
+      { provide: ConsoleService, useFactory: (cons) },
+      { provide: LogTarget, useFactory: (consoleLogTarget), deps: [ConsoleService], multi: true },
+      { provide: LogTarget, useFactory: () => new LogStashTarget({minLogLevel: LogLevel.Debug}) }
+    ]),
+  ```
+
+
 ## General best practice guide to sharing code
 
 There’s actually only a few things to keep in mind when sharing code between web/mobile. The seed does take care of quite a few of those things but here’s a brief list:
