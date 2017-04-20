@@ -82,6 +82,12 @@
     "build.js.tns"
   ],
 
+  "build.elec": [
+    "build.assets.elec",
+    "build.elec_html_css",
+    "build.js.elec"
+  ],
+
   "build.prod.tns": [
     "clean.tns",
     "tslint.tns",

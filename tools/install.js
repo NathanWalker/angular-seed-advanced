@@ -12,6 +12,7 @@ var path = require('path');
 var webAppPath = '../src/client/app';
 var webAssetsPath = '../src/client/assets';
 var nativescriptAppPath = '../nativescript/src/app/';
+var electronAppPath = '../electron/src/app/';
 
 // Root SymLink Code for Windows
 if (process.argv.length > 2) {
@@ -32,6 +33,9 @@ console.log("Configuring...");
 try {
   if (fs.existsSync(resolve(nativescriptAppPath))) {
     fs.unlinkSync(resolve(nativescriptAppPath));
+  }
+  if (fs.existsSync(resolve(electronAppPath))) {
+    fs.unlinkSync(resolve(electronAppPath));
   }
 } catch (err) {
 }
@@ -105,6 +109,10 @@ function createSymLink() {
         console.log("Attempting to Symlink", webAppPath, nativescriptAppPath);
     }
     fs.symlinkSync(resolve(webAppPath), resolve(nativescriptAppPath), 'junction');
+    if (debugging) {
+        console.log("Attempting to Symlink", webAppPath, electronAppPath);
+    }
+    fs.symlinkSync(resolve(webAppPath), resolve(electronAppPath), 'junction');
 }
 
 /**

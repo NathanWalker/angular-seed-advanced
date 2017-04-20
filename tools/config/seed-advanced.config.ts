@@ -21,9 +21,22 @@ export class SeedAdvancedConfig extends SeedConfig {
     ANALYTICS_TRACKING_ID: '',
   };
 
-   /**
-   * Holds added packages for desktop build.
+  /**
+   * The base folder of the electron application source files.
+   * @type {string}
    */
+  ELECTRON_BASE_DIR = 'electron';
+
+  ELECTRON_APP_SRC = `${this.ELECTRON_BASE_DIR}/${this.srcSubdir}`;
+
+  ELECTRON_APP_DEST = `${this.ELECTRON_BASE_DIR}/${this.destSubdir}`;
+
+  ELECTRON_CONFIG = {
+    ANALYTICS_TRACKING_ID: '',
+  };
+  /**
+  * Holds added packages for desktop build.
+  */
   DESKTOP_PACKAGES: ExtendPackages[] = [];
 
   constructor() {
@@ -47,7 +60,7 @@ export class SeedAdvancedConfig extends SeedConfig {
     if (this.TARGET_MOBILE_HYBRID) {
       // Perhaps Ionic or Cordova
       // This is not implemented in the seed but here to show you way forward if you wanted to add
-      bootstrap   = 'main.mobile.hybrid';
+      bootstrap = 'main.mobile.hybrid';
     }
 
     if (argv['analytics']) {
@@ -149,10 +162,10 @@ export class SeedAdvancedConfig extends SeedConfig {
      * Need to duplicate this in the project.config.ts to
      * pick up packages there too.
      */
-     this.DESKTOP_PACKAGES = [
+    this.DESKTOP_PACKAGES = [
       ...this.DESKTOP_PACKAGES,
       ...additionalPackages,
-      ];
+    ];
 
     this.addPackagesBundles(additionalPackages);
 

@@ -32,6 +32,7 @@
     "karma": "karma",
     "karma.start": "karma start",
     "nativescript-install": "cd nativescript && npm install",
+    "electron-install": "cd electron && npm install",
     "postinstall": "gulp check.versions && gulp build.bundle.rxjs && npm prune && gulp webdriver && npm run nativescript-install && node tools/install.js",
     "reinstall": "npm cache clean && npm install",
     "serve.coverage": "gulp serve.coverage --color",
@@ -43,7 +44,7 @@
     "serve.prod.rollup.aot": "gulp serve.prod.rollup.aot --color --env-config prod --build-type prod",
     "start": "gulp serve.dev --color",
     "start.deving": "gulp start.deving --color",
-    "start.desktop": "gulp desktop && NODE_ENV=development electron ./dist/dev",
+    "start.desktop": "npm run gulp build.elec && cd electron && electron ./app/app",
     "start.livesync.desktop": "gulp desktop && NODE_ENV=development gulp desktop.watch",
     "start.livesync.desktop.windows": "gulp desktop && SET NODE_ENV=development && gulp desktop.watch",
     "start.desktop.windows": "gulp desktop && SET NODE_ENV=development && electron ./dist/dev",
@@ -192,6 +193,7 @@
     "reflect-metadata": "^0.1.8",
     "rxjs": "~5.2.0",
     "systemjs": "0.19.41",
+    "webpack-target-electron-renderer": "^0.4.0",
     "zone.js": "^0.8.4"
   }
 }

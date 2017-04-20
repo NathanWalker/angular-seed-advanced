@@ -63,7 +63,7 @@
     "lazy": "1.0.11",
     "nativescript-css-loader": "~0.26.1",
     "nativescript-dev-android-snapshot": "^0.*.*",
-    "nativescript-dev-webpack": "^0.4.0",
+    "nativescript-dev-webpack": "^0.3.6",
     "raw-loader": "~0.5.1",
     "resolve-url-loader": "~2.0.2",
     "typescript": "~2.1.4",
