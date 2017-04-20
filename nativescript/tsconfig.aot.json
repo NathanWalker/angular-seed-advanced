@@ -1,17 +1,8 @@
 {
+  "extends": "./tsconfig",
   "compilerOptions": {
-    "target": "es5",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "removeComments": false,
-    "noImplicitAny": false,
-    "noEmitHelpers": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "types": [],
     "baseUrl": ".",
+    "types": [],
     "paths": {
       "ui/*": ["node_modules/tns-core-modules/ui/*"],
       "platform": ["node_modules/tns-core-modules/platform"],

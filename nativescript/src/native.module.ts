@@ -2,7 +2,7 @@
 import {
   NativeScriptRouterModule,
   RouterExtensions as TNSRouterExtensions
-} from 'nativescript-angular';
+} from 'nativescript-angular/router';
 
 // angular
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';

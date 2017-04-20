@@ -29,7 +29,7 @@ export = (done: any) => {
       .filter(f => f.endsWith('d.ts'))
       .map(f => join(path, f)));
     parsed.files = parsed.files.filter((f: string, i: number) => parsed.files.indexOf(f) === i);
-    parsed.files.push(join(Config.BOOTSTRAP_DIR, 'main.web.ts'));
+    parsed.files.push(join(Config.BOOTSTRAP_DIR, Config.BOOTSTRAP_PROD_MODULE+'.ts'));
     return JSON.stringify(parsed, null, 2);
   });
   const args = argv;

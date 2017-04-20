@@ -1,48 +1,28 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "declaration": false,
-    "removeComments": true,
-    "noLib": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "lib": [
-      "es6",
-      "dom",
-      "es2015.iterable"
-    ],
-    "sourceMap": true,
-    "pretty": true,
-    "noEmitHelpers": true,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "noImplicitAny": false,
-    "noImplicitReturns": true,
-    "noImplicitUseStrict": false,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
-    "paths": {
-      "*": [
-        "./node_modules/tns-core-modules/*",
-        "./node_modules/*"
-      ]
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "noEmitHelpers": true,
+        "noEmitOnError": true,
+        "lib": [
+            "es6",
+            "dom",
+            "es2015.iterable"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "./node_modules/tns-core-modules/*",
+                "./node_modules/*"
+            ]
+        }
     },
-    "typeRoots": [
-      "../node_modules/@types",
-      "../node_modules"
-    ],
-    "types": [
-      "jasmine"
+    "exclude": [
+        "node_modules",
+        "platforms",
+        "src",
+        "**/*.aot.ts"
     ]
-  },
-  "exclude": [
-    "node_modules",
-    "platforms",
-    "src",
-    "**/*.aot.ts"
-  ],
-  "compileOnSave": false
 }
-
