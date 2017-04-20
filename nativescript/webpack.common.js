@@ -48,7 +48,7 @@ module.exports = function (platform, destinationApp) {
         // Angular AOT compiler
         new AotPlugin({
             tsConfigPath: "tsconfig.aot.json",
-            entryModule: path.resolve(__dirname, "app/app.module#AppModule"),
+            entryModule: path.resolve(__dirname, "app/native.module#NativeModule"),
             typeChecking: false
         }),
         new nsWebpack.StyleUrlResolvePlugin({platform}),
