@@ -21,7 +21,8 @@
       "./node_modules"
     ],
     "types": [
-      "node"
+      "node",
+      "jasmine"
     ]
   },
   "files": [

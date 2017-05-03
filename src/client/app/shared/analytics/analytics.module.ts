@@ -5,8 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 // lib
-import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2Segment } from 'angulartics2/dist/providers/segment/angulartics2-segment';
+import { Angulartics2Module, Angulartics2Segment } from 'angulartics2';
 
 // module
 import { ANALYTICS_PROVIDERS } from './index';

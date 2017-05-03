@@ -2,7 +2,6 @@
   "extends": "./tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
-    "types": [],
     "paths": {
       "ui/*": ["node_modules/tns-core-modules/ui/*"],
       "platform": ["node_modules/tns-core-modules/platform"],

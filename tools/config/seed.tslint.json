@@ -20,9 +20,7 @@
     "no-eval": true,
     "no-trailing-whitespace": false,
     "no-unused-expression": true,
-    "no-use-before-declare": true,
-    "one-line": [
-      true,
+    "one-line": [true,
       "check-open-brace",
       "check-catch",
       "check-else",
@@ -39,8 +37,8 @@
     "trailing-comma": true,
     "triple-equals": true,
     "variable-name": false,
-    "directive-selector": [true, "attribute", [], "camelCase"],
-    "component-selector": [true, "element", [], "kebab-case"],
+    "directive-selector": [true, ["attribute"], [], "camelCase"],
+    "component-selector": [true, ["element"], [], "kebab-case"],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true

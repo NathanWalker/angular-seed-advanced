@@ -5,10 +5,10 @@
   "nativescript": {
     "id": "com.yourdomain.nativescript",
     "tns-ios": {
-      "version": "2.5.0"
+      "version": "3.0.0"
     },
     "tns-android": {
-      "version": "2.5.0"
+      "version": "3.0.0"
     }
   },
   "scripts": {
@@ -21,37 +21,37 @@
     "build-ios-bundle": "npm run ns-bundle --ios --build-app"
   },
   "dependencies": {
-    "@angular/animations": "~4.0.0",
-    "@angular/common": "~4.0.0",
-    "@angular/compiler": "~4.0.0",
-    "@angular/core": "~4.0.0",
-    "@angular/forms": "~4.0.0",
-    "@angular/http": "~4.0.0",
-    "@angular/platform-browser": "~4.0.0",
-    "@angular/platform-browser-dynamic": "~4.0.0",
-    "@angular/router": "~4.0.0",
+    "@angular/animations": "~4.1.0",
+    "@angular/common": "~4.1.0",
+    "@angular/compiler": "~4.1.0",
+    "@angular/core": "~4.1.0",
+    "@angular/forms": "~4.1.0",
+    "@angular/http": "~4.1.0",
+    "@angular/platform-browser": "~4.1.0",
+    "@angular/platform-browser-dynamic": "~4.1.0",
+    "@angular/router": "~4.1.0",
     "@ngrx/core": "^1.2.0",
-    "@ngrx/effects": "^2.0.0",
-    "@ngrx/store": "^2.2.1",
+    "@ngrx/effects": "^2.0.3",
+    "@ngrx/store": "^2.2.2",
     "@ngx-translate/core": "^6.0.1",
     "@ngx-translate/http-loader": "0.0.3",
-    "angulartics2": "^1.6.4",
+    "angulartics2": "^2.2.1",
     "lodash": "^4.17.4",
-    "nativescript-angular": "1.5.0",
-    "nativescript-dev-webpack": "^0.3.1",
-    "nativescript-theme-core": "^1.0.3",
+    "nativescript-angular": "3.0.0",
+    "nativescript-dev-webpack": "^0.4.1",
+    "nativescript-theme-core": "^1.0.4",
     "ngrx-store-freeze": "0.1.9",
     "reflect-metadata": "^0.1.8",
-    "rxjs": "~5.2.0",
-    "tns-core-modules": "^2.5.2",
+    "rxjs": "^5.3.0",
+    "tns-core-modules": "^3.0.0",
     "url": "0.10.3",
-    "zone.js": "~0.8.2"
+    "zone.js": "~0.8.4"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "~4.0.0",
+    "@angular/compiler-cli": "^4.1.0",
     "@ngrx/store-devtools": "^3.2.4",
-    "@ngtools/webpack": "~1.3.0",
-    "@types/lodash": "4.14.59",
+    "@ngtools/webpack": "~1.3.1",
+    "@types/lodash": "4.14.63",
     "@types/jasmine": "^2.5.47",
     "babel-traverse": "6.20.0",
     "babel-types": "6.20.0",
@@ -63,11 +63,11 @@
     "lazy": "1.0.11",
     "nativescript-css-loader": "~0.26.1",
     "nativescript-dev-android-snapshot": "^0.*.*",
-    "nativescript-dev-webpack": "^0.4.0",
+    "nativescript-dev-webpack": "^0.4.1",
     "raw-loader": "~0.5.1",
     "resolve-url-loader": "~2.0.2",
-    "typescript": "~2.1.4",
-    "webpack": "2.3.2",
+    "typescript": "~2.2.0",
+    "webpack": "~2.4.1",
     "webpack-sources": "~0.2.3"
   }
 }

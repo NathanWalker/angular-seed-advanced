@@ -1,9 +1,13 @@
 {
     "compilerOptions": {
         "module": "commonjs",
+        "moduleResolution": "node",
         "target": "es5",
+        "inlineSourceMap": true,
         "experimentalDecorators": true,
+        "removeComments": false,
         "emitDecoratorMetadata": true,
+        "noImplicitUseStrict": true,
         "noEmitHelpers": true,
         "noEmitOnError": true,
         "lib": [
