@@ -61,11 +61,10 @@ It's built with a lot of the same structure found here so things work the same b
 
 **Note** you should have **node v6.5.0 or higher** and **npm 3.10.3 or higher**.
 
-* To run the NativeScript app:
+* To run the NativeScript app (currently supports 3.x):
 
 ```
 npm install -g nativescript
-npm install -g typescript
 ```
 
 ## How to start
