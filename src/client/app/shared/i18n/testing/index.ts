@@ -19,9 +19,12 @@ export function TEST_MULTILINGUAL_PROVIDERS(): Array<any> {
   return providers;
 }
 
-export function TEST_MULTILINGUAL_RESET(): void {
-  // ensure static is reset
-  MultilingualService.SUPPORTED_LANGUAGES = [
-    { code: 'en', title: 'English' }
+export function getLanguages(): Array<any> {
+  return [
+    { code: 'en', title: 'English' },
+    { code: 'es', title: 'Spanish' },
+    { code: 'fr', title: 'French' },
+    { code: 'ru', title: 'Russian' },
+    { code: 'bg', title: 'Bulgarian' }
   ];
 }

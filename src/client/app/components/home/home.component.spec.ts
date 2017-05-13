@@ -18,6 +18,7 @@ import { NameListService, NameListEffects, reducer } from '../../shared/sample/i
 import { CoreModule } from '../../shared/core/core.module';
 import { AnalyticsModule } from '../../shared/analytics/analytics.module';
 import { MultilingualModule } from '../../shared/i18n/multilingual.module';
+import { LanguageProviders } from '../../shared/i18n/index';
 import { HomeComponent } from './home.component';
 
 // test module configuration for each test
@@ -33,6 +34,7 @@ const testModuleConfig = () => {
     ],
     declarations: [HomeComponent, TestComponent],
     providers: [
+      LanguageProviders,
       NameListService,
       BaseRequestOptions,
       MockBackend,

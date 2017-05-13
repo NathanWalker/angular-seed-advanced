@@ -10,19 +10,21 @@ import { ILang, WindowService, ConsoleService, provideConsoleTarget, LogLevel } 
 import { CoreModule } from '../../core/core.module';
 import { AnalyticsModule } from '../../analytics/analytics.module';
 import { MultilingualModule } from '../multilingual.module';
-import { MultilingualService, reducer } from '../index';
-import { TEST_MULTILINGUAL_RESET } from '../testing/index';
-
-const SUPPORTED_LANGUAGES: Array<ILang> = [
-  { code: 'en', title: 'English' },
-  { code: 'es', title: 'Spanish' },
-  { code: 'fr', title: 'French' },
-  { code: 'ru', title: 'Russian' },
-  { code: 'bg', title: 'Bulgarian' }
-];
+import { MultilingualService, reducer, Languages, LanguageViewHelper } from '../index';
+import { getLanguages } from '../testing/index';
 
 // test module configuration for each test
-const testModuleConfig = () => {
+const testModuleConfig = (languages?: Array<ILang>) => {
+  let providers = [
+    provideConsoleTarget(LogLevel.Debug),
+    { provide: LanguageViewHelper, useValue: null }
+  ];
+  if (languages) {
+    providers.push({
+      provide: Languages,
+      useValue: languages
+    });
+  }
   TestBed.configureTestingModule({
     imports: [
       CoreModule.forRoot([
@@ -35,16 +37,14 @@ const testModuleConfig = () => {
       StoreModule.provideStore({ i18n: reducer })
     ],
     declarations: [TestComponent],
-    providers: [
-      provideConsoleTarget(LogLevel.Debug)
-    ]
+    providers
   });
 };
 
 export function main() {
   t.describe('i18n:', () => {
     t.describe('@Component: LangSwitcherComponent', () => {
-      t.be(testModuleConfig);
+      t.be(() => testModuleConfig([{ code: 'en', title: 'English' }]));
 
       t.it('should work',
         t.async(() => {
@@ -61,12 +61,8 @@ export function main() {
 
     t.describe('@Component: LangSwitcherComponent with multiple languages', () => {
       t.be(() => {
-        MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES;
-        testModuleConfig();
+        testModuleConfig(getLanguages());
       });
-
-      // ensure statics are reset when the test had modified statics in a beforeEach (be) or beforeEachProvider (bep)
-      t.ae(() => TEST_MULTILINGUAL_RESET());
 
       t.it('should work',
         t.async(() => {

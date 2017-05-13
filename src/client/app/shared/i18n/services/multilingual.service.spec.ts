@@ -14,11 +14,18 @@ import { ILang, WindowService, ConsoleService } from '../../core/index';
 import { TEST_CORE_PROVIDERS, WindowMockFrench } from '../../core/testing/index';
 
 // module
-import { TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET } from '../testing/index';
-import { IMultilingualState, MultilingualService, MultilingualEffects, reducer, ChangeAction } from '../index';
+import { TEST_MULTILINGUAL_PROVIDERS, getLanguages } from '../testing/index';
+import { IMultilingualState, MultilingualService, MultilingualEffects, reducer, ChangeAction, Languages } from '../index';
 
 // test module configuration for each test
 const testModuleConfig = (options?: any) => {
+  let langProvider = [];
+  if (options.languages) {
+    langProvider.push({
+      provide: Languages,
+      useValue: options.languages
+    });
+  }
   TestBed.configureTestingModule({
     imports: [
       CoreModule.forRoot([
@@ -34,7 +41,8 @@ const testModuleConfig = (options?: any) => {
     ],
     providers: [
       TEST_CORE_PROVIDERS(options),
-      TEST_MULTILINGUAL_PROVIDERS()
+      TEST_MULTILINGUAL_PROVIDERS(),
+      langProvider
     ]
   });
 };
@@ -44,13 +52,17 @@ export function main() {
     t.describe('MultilingualService', () => {
 
       t.be(() => {
-        testModuleConfig();
+        testModuleConfig({
+          languages: [{
+            code: 'en', title: 'English'
+          }]
+        });
       });
 
-      t.it('should at a minimum support english', () => {
-        t.e(MultilingualService.SUPPORTED_LANGUAGES.length).toBe(1);
-        t.e(MultilingualService.SUPPORTED_LANGUAGES[0].code).toBe('en');
-      });
+      t.it('should at a minimum support english', t.inject([Languages], (languages: any, store: Store<any>) => {
+        t.e(languages.length).toBe(1);
+        t.e(languages[0].code).toBe('en');
+      }));
 
       t.it('changeLang - should not switch unless supported', t.inject([MultilingualService, Store], (multilang: MultilingualService, store: Store<any>) => {
         store.dispatch(new ChangeAction('fr'));
@@ -63,23 +75,21 @@ export function main() {
     });
 
     t.describe('MultilingualService for French browser/platform', () => {
-      const SUPPORTED_LANGUAGES: Array<ILang> = [
-        { code: 'en', title: 'English' },
-        { code: 'fr', title: 'French' }
-      ];
 
       t.be(() => {
-        MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES;
-        testModuleConfig({ window: WindowMockFrench });
+        testModuleConfig({
+          window: WindowMockFrench,
+          languages: [
+            { code: 'en', title: 'English' },
+            { code: 'fr', title: 'French' }
+          ]
+        });
       });
 
-      // ensure statics are reset when the test had modified statics in a beforeEach (be) or beforeEachProvider (bep)
-      t.ae(() => TEST_MULTILINGUAL_RESET());
-
-      t.it('should now support french by default', t.inject([MultilingualService, Store, WindowService], (multilang: MultilingualService, store: Store<any>, win: WindowService) => {
-        t.e(MultilingualService.SUPPORTED_LANGUAGES.length).toBe(2);
-        t.e(MultilingualService.SUPPORTED_LANGUAGES[0].code).toBe('en');
-        t.e(MultilingualService.SUPPORTED_LANGUAGES[1].code).toBe('fr');
+      t.it('should now support french by default', t.inject([MultilingualService, Store, WindowService, Languages], (multilang: MultilingualService, store: Store<any>, win: WindowService, languages) => {
+        t.e(languages.length).toBe(2);
+        t.e(languages[0].code).toBe('en');
+        t.e(languages[1].code).toBe('fr');
         t.e(win.navigator.language).toBe('fr-US');
 
         store.select('i18n').subscribe((i18n: IMultilingualState) => {

@@ -57,7 +57,7 @@ app.on('ready', () => {
     label: 'Language',
     submenu: []
   };
-  for (var lang of DesktopConfig.SUPPORTED_LANGUAGES) {
+  for (var lang of DesktopConfig.GET_SUPPORTED_LANGUAGES()) {
     let code = lang.code;
     let langOption = {
       label: lang.title,
