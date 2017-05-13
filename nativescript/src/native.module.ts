@@ -3,6 +3,7 @@ import {
   NativeScriptRouterModule,
   RouterExtensions as TNSRouterExtensions
 } from 'nativescript-angular/router';
+import { SegmentedBarItem } from 'tns-core-modules/ui/segmented-bar';
 
 // angular
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
@@ -46,12 +47,20 @@ Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
 // (optional) log level - defaults to no logging if not set
 Config.DEBUG.LEVEL_4 = true;
 
-// (optional) custom i18n language support
-// example of how you can configure your own language sets
-// you can use the AppConfig class or build something similar into your own framework
-import { AppConfig } from './app/shared/sample/services/app-config';
-import { MultilingualService } from './app/shared/i18n/services/multilingual.service';
-MultilingualService.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;
+import { Languages, LanguageViewHelper } from './app/shared/i18n/index';
+
+// helper for SegmentedBar view bindings in lang-switcher shared component
+export function segmentViewHelper(languages) {
+  let segmentItems = [];
+  for (let lang of languages) {
+    // {N} requires items to be SegmentedBarItem class
+    let item = new SegmentedBarItem();
+    item.title = lang.title;
+    (<any>item).code = lang.code;
+    segmentItems.push(item);
+  }
+  return segmentItems;
+}
 
 @NgModule({
   imports: [
@@ -70,6 +79,9 @@ MultilingualService.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;
     NS_ANALYTICS_PROVIDERS,
     { provide: RouterExtensions, useClass: TNSRouterExtensions },
     { provide: AppService, useClass: NSAppService },
+    // i18n
+    { provide: Languages, useValue: Config.GET_SUPPORTED_LANGUAGES() },
+    { provide: LanguageViewHelper, deps: [Languages], useFactory: (segmentViewHelper) }
   ],
   schemas: [
     NO_ERRORS_SCHEMA,

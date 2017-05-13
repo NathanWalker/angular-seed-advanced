@@ -11,10 +11,11 @@ import { Angulartics2Module, Angulartics2Segment } from 'angulartics2';
 
 // app
 import { t } from '../shared/test/index';
+import { Config } from '../shared/core/index';
 import { TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS } from '../shared/core/testing/index';
 import { NameListService, NavbarComponent, ToolbarComponent } from '../shared/sample/index';
 import { MultilingualModule } from '../shared/i18n/multilingual.module';
-import { reducer } from '../shared/i18n/index';
+import { reducer, LanguageProviders } from '../shared/i18n/index';
 
 // module
 import { AppComponent } from './app.component';
@@ -46,7 +47,8 @@ const testModuleConfig = () => {
     providers: [
       TEST_CORE_PROVIDERS(),
       TEST_HTTP_PROVIDERS(),
-      NameListService
+      NameListService,
+      LanguageProviders
     ]
   });
 };

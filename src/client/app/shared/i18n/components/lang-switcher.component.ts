@@ -1,5 +1,5 @@
 // libs
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 // app
@@ -7,7 +7,7 @@ import { Config, ILang, LogService } from '../../core/index';
 import { IAppState } from '../../ngrx/index';
 import { ElectronEventService } from '../../electron/index';
 import * as multilingual from '../actions/index';
-import { MultilingualService } from '../services/index';
+import { MultilingualService, Languages, LanguageViewHelper } from '../services/index';
 
 @Component({
   moduleId: module.id,
@@ -20,7 +20,12 @@ export class LangSwitcherComponent {
   public lang: string;
   public supportedLanguages: Array<ILang>;
 
-  constructor(private log: LogService, private store: Store<IAppState>) {
+  constructor(
+    private store: Store<IAppState>,
+    private log: LogService,
+    @Inject(Languages) private languages,
+    @Inject(LanguageViewHelper) private viewHelper
+  ) {
     store.take(1).subscribe((s: any) => {
       // s && s.18n - ensures testing works in all cases (since some tests dont use i18n state)
       this.lang = s && s.i18n ? s.i18n.lang : '';
@@ -49,6 +54,11 @@ export class LangSwitcherComponent {
   }
 
   ngOnInit() {
-    this.supportedLanguages = MultilingualService.SUPPORTED_LANGUAGES;
+    this.supportedLanguages = this.languages;
+    if (Config.IS_MOBILE_NATIVE() && this.viewHelper) {
+      // {N} 3.0 requires SegmentedBarItem class for items
+      // when binding to SegmentedBar
+      this.supportedLanguages = this.viewHelper;
+    }
   }
 }

@@ -16,6 +16,7 @@ export class Config {
 
   public static PageClass: any;
 
+
   public static DEBUG = {
     LEVEL_1: false, // .info only
     LEVEL_2: false, // .warn only
@@ -57,6 +58,17 @@ export class Config {
     } catch (exp) {
       return {};
     }
+  }
+
+  // supported languages
+  public static GET_SUPPORTED_LANGUAGES() {
+    return [
+      { code: 'en', title: 'English' },
+      { code: 'es', title: 'Spanish' },
+      { code: 'fr', title: 'French' },
+      { code: 'ru', title: 'Russian' },
+      { code: 'bg', title: 'Bulgarian' }
+    ];
   }
 
   public static IS_DEBUG_MODE(): boolean {

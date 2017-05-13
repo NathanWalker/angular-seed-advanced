@@ -20,7 +20,7 @@ import { CoreModule } from './app/shared/core/core.module';
 import { AppReducer } from './app/shared/ngrx/index';
 import { AnalyticsModule } from './app/shared/analytics/analytics.module';
 import { MultilingualModule, translateLoaderFactory } from './app/shared/i18n/multilingual.module';
-import { MultilingualEffects } from './app/shared/i18n/index';
+import { MultilingualEffects, LanguageProviders, Languages } from './app/shared/i18n/index';
 import { SampleModule } from './app/shared/sample/sample.module';
 import { NameListEffects } from './app/shared/sample/index';
 
@@ -31,12 +31,6 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
   // only output console logging in dev mode
   Config.DEBUG.LEVEL_4 = true;
 }
-
-// sample config (extra)
-import { AppConfig } from './app/shared/sample/services/app-config';
-import { MultilingualService } from './app/shared/i18n/services/multilingual.service';
-// custom i18n language support
-MultilingualService.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;
 
 let routerModule = RouterModule.forRoot(routes);
 
@@ -85,9 +79,10 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
     }]),
     SampleModule,
     StoreModule.provideStore(AppReducer),
-    DEV_IMPORTS,
     EffectsModule.run(MultilingualEffects),
-    EffectsModule.run(NameListEffects)
+    EffectsModule.run(NameListEffects),
+    // dev environment only imports
+    DEV_IMPORTS,
   ],
   declarations: [
     APP_COMPONENTS
@@ -96,6 +91,13 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
     {
       provide: APP_BASE_HREF,
       useValue: '<%= APP_BASE %>'
+    },
+    // default language providers
+    LanguageProviders,
+    // override with supported languages
+    {
+      provide: Languages,
+      useValue: Config.GET_SUPPORTED_LANGUAGES()
     }
   ],
   bootstrap: [AppComponent]

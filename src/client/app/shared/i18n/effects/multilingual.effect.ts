@@ -1,5 +1,5 @@
 // angular
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 
 // libs
 import { Store, Action } from '@ngrx/store';
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 // module
-import { MultilingualService } from '../services/multilingual.service';
+import { MultilingualService, Languages } from '../services/multilingual.service';
 import * as multilingual from '../actions/multilingual.action';
 
 @Injectable()
@@ -19,7 +19,7 @@ export class MultilingualEffects {
     .ofType(multilingual.ActionTypes.CHANGE)
     .map(action => {
       let lang = action.payload;
-      if (includes(map(MultilingualService.SUPPORTED_LANGUAGES, 'code'), lang)) {
+      if (includes(map(this.languages, 'code'), lang)) {
         let langChangedAction = new multilingual.LangChangedAction(lang);
         // track analytics
         this.multilangService.track(langChangedAction.type, { label: langChangedAction.payload });
@@ -34,6 +34,7 @@ export class MultilingualEffects {
   constructor(
     private store: Store<any>,
     private actions$: Actions,
-    private multilangService: MultilingualService
+    private multilangService: MultilingualService,
+    @Inject(Languages) private languages
   ) { }
 }

@@ -52,13 +52,13 @@ export function main() {
 
       t.it('should not log anything by default', t.inject([LogService], (log: LogService) => {
         log.debug('debug');
-        t.e(console.log).not.toHaveBeenCalledWith('debug');
+        t.e(console.log).not.toHaveBeenCalledWith(['debug']);
         log.error('error');
-        t.e(console.error).not.toHaveBeenCalledWith('error');
+        t.e(console.error).not.toHaveBeenCalledWith(['error']);
         log.warn('warn');
-        t.e(console.warn).not.toHaveBeenCalledWith('warn');
+        t.e(console.warn).not.toHaveBeenCalledWith(['warn']);
         log.info('info');
-        t.e(console.info).not.toHaveBeenCalledWith('info');
+        t.e(console.info).not.toHaveBeenCalledWith(['info']);
       }));
     });
 
@@ -72,64 +72,64 @@ export function main() {
         Config.DEBUG.LEVEL_4 = true;
 
         log.debug('debug');
-        t.e(console.log).toHaveBeenCalledWith('debug');
+        t.e(console.log).toHaveBeenCalledWith(['debug']);
         log.error('error');
-        t.e(console.error).toHaveBeenCalledWith('error');
+        t.e(console.error).toHaveBeenCalledWith(['error']);
         log.warn('warn');
-        t.e(console.warn).toHaveBeenCalledWith('warn');
+        t.e(console.warn).toHaveBeenCalledWith(['warn']);
         log.info('info');
-        t.e(console.info).toHaveBeenCalledWith('info');
+        t.e(console.info).toHaveBeenCalledWith(['info']);
       }));
 
       t.it('LEVEL_3: error only', t.inject([LogService], (log: LogService) => {
         Config.DEBUG.LEVEL_3 = true;
 
         log.debug('debug');
-        t.e(console.log).not.toHaveBeenCalledWith('debug');
+        t.e(console.log).not.toHaveBeenCalledWith(['debug']);
         log.error('error');
-        t.e(console.error).toHaveBeenCalledWith('error');
+        t.e(console.error).toHaveBeenCalledWith(['error']);
         log.warn('warn');
-        t.e(console.warn).not.toHaveBeenCalledWith('warn');
+        t.e(console.warn).not.toHaveBeenCalledWith(['warn']);
         log.info('info');
-        t.e(console.info).not.toHaveBeenCalledWith('info');
+        t.e(console.info).not.toHaveBeenCalledWith(['info']);
 
         // always overrides lower levels and allows them to come through
         Config.DEBUG.LEVEL_4 = true;
 
         log.debug('debug w/level_4');
-        t.e(console.log).toHaveBeenCalledWith('debug w/level_4');
+        t.e(console.log).toHaveBeenCalledWith(['debug w/level_4']);
         log.error('error w/level_4');
-        t.e(console.error).toHaveBeenCalledWith('error w/level_4');
+        t.e(console.error).toHaveBeenCalledWith(['error w/level_4']);
         log.warn('warn w/level_4');
-        t.e(console.warn).toHaveBeenCalledWith('warn w/level_4');
+        t.e(console.warn).toHaveBeenCalledWith(['warn w/level_4']);
         log.info('info w/level_4');
-        t.e(console.info).toHaveBeenCalledWith('info w/level_4');
+        t.e(console.info).toHaveBeenCalledWith(['info w/level_4']);
       }));
 
       t.it('LEVEL_2: warn only', t.inject([LogService], (log: LogService) => {
         Config.DEBUG.LEVEL_2 = true;
 
         log.debug('debug');
-        t.e(console.log).not.toHaveBeenCalledWith('debug');
+        t.e(console.log).not.toHaveBeenCalledWith(['debug']);
         log.error('error');
-        t.e(console.error).not.toHaveBeenCalledWith('error');
+        t.e(console.error).not.toHaveBeenCalledWith(['error']);
         log.warn('warn');
-        t.e(console.warn).toHaveBeenCalledWith('warn');
+        t.e(console.warn).toHaveBeenCalledWith(['warn']);
         log.info('info');
-        t.e(console.info).not.toHaveBeenCalledWith('info');
+        t.e(console.info).not.toHaveBeenCalledWith(['info']);
       }));
 
       t.it('LEVEL_1: info only', t.inject([LogService], (log: LogService) => {
         Config.DEBUG.LEVEL_1 = true;
 
         log.debug('debug');
-        t.e(console.log).not.toHaveBeenCalledWith('debug');
+        t.e(console.log).not.toHaveBeenCalledWith(['debug']);
         log.error('error');
-        t.e(console.error).not.toHaveBeenCalledWith('error');
+        t.e(console.error).not.toHaveBeenCalledWith(['error']);
         log.warn('warn');
-        t.e(console.warn).not.toHaveBeenCalledWith('warn');
+        t.e(console.warn).not.toHaveBeenCalledWith(['warn']);
         log.info('info');
-        t.e(console.info).toHaveBeenCalledWith('info');
+        t.e(console.info).toHaveBeenCalledWith(['info']);
       }));
     });
 
@@ -144,11 +144,11 @@ export function main() {
         log.debug('debug');
         t.e(secondTarget.writeToLog).not.toHaveBeenCalled();
         log.info('info');
-        t.e(secondTarget.writeToLog).toHaveBeenCalledWith(<LogEvent>{ level: LogLevel.Info, message: 'info' });
+        t.e(secondTarget.writeToLog).toHaveBeenCalledWith(<LogEvent>{ level: LogLevel.Info, message: ['info'] });
         log.warn('warning');
-        t.e(secondTarget.writeToLog).toHaveBeenCalledWith(<LogEvent>{ level: LogLevel.Warning, message: 'warning' });
+        t.e(secondTarget.writeToLog).toHaveBeenCalledWith(<LogEvent>{ level: LogLevel.Warning, message: ['warning'] });
         log.error('error');
-        t.e(secondTarget.writeToLog).toHaveBeenCalledWith(<LogEvent>{ level: LogLevel.Error, message: 'error' });
+        t.e(secondTarget.writeToLog).toHaveBeenCalledWith(<LogEvent>{ level: LogLevel.Error, message: ['error'] });
       }));
     });
   });

@@ -13,7 +13,7 @@ export class LogService {
   }
 
   // debug (standard output)
-  public debug(msg: string | Object) {
+  public debug(...msg) {
     if (Config.DEBUG.LEVEL_4) {
       // console.debug does not work on {N} apps... use `log`
       return Promise.all(_.map(this.targets, logger => this.logEvent(logger, msg, LogLevel.Debug)));
@@ -22,7 +22,7 @@ export class LogService {
   }
 
   // error
-  public error(err: string | Object) {
+  public error(...err) {
     if (Config.DEBUG.LEVEL_4 || Config.DEBUG.LEVEL_3) {
       return Promise.all(_.map(this.targets, logger => this.logEvent(logger, err, LogLevel.Error)));
     }
@@ -30,7 +30,7 @@ export class LogService {
   }
 
   // warn
-  public warn(err: string | Object) {
+  public warn(...err) {
     if (Config.DEBUG.LEVEL_4 || Config.DEBUG.LEVEL_2) {
       return Promise.all(_.map(this.targets, logger => this.logEvent(logger, err, LogLevel.Warning)));
     }
@@ -38,7 +38,7 @@ export class LogService {
   }
 
   // info
-  public info(err: string | Object) {
+  public info(...err) {
     if (Config.DEBUG.LEVEL_4 || Config.DEBUG.LEVEL_1) {
       return Promise.all(_.map(this.targets, logger => this.logEvent(logger, err, LogLevel.Info)));
     }

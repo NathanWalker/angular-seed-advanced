@@ -1,5 +1,5 @@
 // angular
-import { Injectable } from '@angular/core';
+import { Injectable, InjectionToken } from '@angular/core';
 
 // libs
 import { Store } from '@ngrx/store';
@@ -15,15 +15,19 @@ import { CATEGORY } from '../common/category.common';
 import { IMultilingualState } from '../states/index';
 import { ChangeAction } from '../actions/index';
 
+// provide supported languages at runtime
+export const Languages: InjectionToken<Array<ILang>> = new InjectionToken('Languages');
+// optional view helper for language handling
+// {N} uses this to provide specific classes to SegmentedBar view bindings
+export const LanguageViewHelper: InjectionToken<Array<any>> = new InjectionToken('LanguageViewHelper');
+export const LanguageProviders = [
+  { provide: Languages, useValue: [] },
+  { provide: LanguageViewHelper, useValue: null }
+];
+
 // service
 @Injectable()
 export class MultilingualService extends Analytics {
-
-  // default supported languages
-  // see web.module.ts for example of how to provide different value
-  public static SUPPORTED_LANGUAGES: Array<ILang> = [
-    { code: 'en', title: 'English' }
-  ];
 
   constructor(
     public analytics: AnalyticsService,
