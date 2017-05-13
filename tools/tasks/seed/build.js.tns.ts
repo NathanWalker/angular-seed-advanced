@@ -21,6 +21,7 @@ export =
     run() {
       const src = [
         '**/*.ts',
+        'mobile/**/*.ts',
         'app/**/*.ts',
         '!**/*.spec.ts',
         '!app/**/*.spec.ts',
@@ -36,17 +37,30 @@ export =
         ...src,
         '!**/*.aot.ts',
       ], {
-        base: Config.TNS_APP_SRC,
-        cwd: Config.TNS_APP_SRC,
-      })
+          base: Config.TNS_APP_SRC,
+          cwd: Config.TNS_APP_SRC,
+        })
         .pipe(plugins.sourcemaps.init())
         .pipe(tsProject());
 
       const template = (<any>Object).assign(
+        // new TemplateLocalsBuilder().withStringifiedSystemConfigDev().build(), {
+        //   SYSTEM_CONFIG_TNS: jsonSystemConfig
+        // },
         new TemplateLocalsBuilder().withStringifiedSystemConfigDev().build(), {
-          SYSTEM_CONFIG_TNS: jsonSystemConfig
+          TNS_CONFIG: jsonSystemConfig
         },
       );
+
+    //   const envConfig = Object.assign({}, baseConfig, envOnlyConfig);
+    // let locals = Object.assign({},
+    //   Config,
+    //   { ENV_CONFIG: this.stringifyEnvConfig ? JSON.stringify(envConfig) : envConfig }
+    // );
+    // if (this.stringifySystemConfigDev) {
+    //   Object.assign(locals, {SYSTEM_CONFIG_DEV: JSON.stringify(Config.SYSTEM_CONFIG_DEV)});
+    // }
+    // return locals;
 
       const transpiled = result.js
         .pipe(plugins.sourcemaps.write())
@@ -57,7 +71,9 @@ export =
         //      sourceRoot: (file: any) =>
         //        relative(file.path, PROJECT_ROOT + '/' + APP_SRC).replace(sep, '/') + '/' + APP_SRC
         //    }))
-        .pipe(plugins.template(template))
+
+        // TODO: template does not work on ns-app.service - not sure why - disabled for now
+        // .pipe(plugins.template(template, {})).on('error', console.error.bind(console))
         .pipe(gulp.dest(Config.TNS_APP_DEST));
 
       const copy = gulp.src(src, {

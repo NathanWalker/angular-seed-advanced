@@ -16,8 +16,8 @@ export interface TestApi {
   fakeAsync(fn: Function): Function;
   be(fn: Function): void;
   beforeEach(fn: Function): void;
-  e(actual: any): jasmine.Matchers<any>;
-  expect(actual: any): jasmine.Matchers<any>;
+  e(actual: any): jasmine.Matchers;
+  expect(actual: any): jasmine.Matchers;
   fail(e?: any): void;
   inject(tokens: Array<any>, fn: Function): Function;
   it(name: string, fn: Function, timeOut?: number): void;
@@ -26,7 +26,7 @@ export interface TestApi {
   pending(reason?: string): void;
   spyOn(object: any, method: string): jasmine.Spy;
   tick(delay?: number): void;
-};
+}
 
 // shorthand - reduces boilerplate in every test
 export const Ng2Jasmine: TestApi = {

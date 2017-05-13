@@ -119,7 +119,7 @@ export class SeedWebServer {
     );
 
     this.startServer();
-  };
+  }
 
   /**
    * Configure the server's application request handler(s) such as a request logger.

@@ -25,7 +25,6 @@ import { ActionBarUtil } from '../utils/actionbar.util';
 import * as multilingual from '../../../app/shared/i18n/index';
 
 declare var android: any;
-const trackingId = '<%= TNS_CONFIG.ANALYTICS_TRACKING_ID %>';
 
 @Injectable()
 export class NSAppService extends AppService {
@@ -67,14 +66,6 @@ export class NSAppService extends AppService {
     ActionBarUtil.STATUSBAR_STYLE(
       isIOS ? 1 : '#3280CF'
     );
-
-    if (String('<%= BUILD_TYPE %>') !== 'prod') {
-      log.debug('NSAppCmp ----');
-
-      router.events.subscribe((e) => {
-        this.log.debug(`Router Event: ${e.toString()}`);
-      });
-    }
 
     // Fix: Reset all nsApp events before subscribing to avoid Duplicate events.
     // this.unsubscribeAll();

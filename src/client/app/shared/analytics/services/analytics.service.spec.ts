@@ -3,8 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 // libs
-import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2Segment } from 'angulartics2/dist/providers/segment/angulartics2-segment';
+import { Angulartics2Module, Angulartics2Segment } from 'angulartics2';
 
 // app
 import { t } from '../../test/index';
@@ -15,7 +14,7 @@ import { AnalyticsService, Analytics } from '../index';
 const testModuleConfig = () => {
   TestBed.configureTestingModule({
     imports: [
-      RouterTestingModule, 
+      RouterTestingModule,
       Angulartics2Module.forRoot([
         Angulartics2Segment
       ])

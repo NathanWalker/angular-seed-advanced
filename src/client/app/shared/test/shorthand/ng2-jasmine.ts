@@ -27,7 +27,7 @@ export interface TestApi {
   pending(reason?: string): void;
   spyOn(object: any, method: string): jasmine.Spy;
   tick(delay?: number): void;
-};
+}
 
 // shorthand - reduces boilerplate in every test
 export const Ng2Jasmine: TestApi = {

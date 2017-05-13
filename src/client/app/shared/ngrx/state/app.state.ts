@@ -49,7 +49,7 @@ import { ISampleState } from '../../sample/index';
 export interface IAppState {
   i18n: fromMultilingual.IMultilingualState;
   sample: fromSample.ISampleState;
-};
+}
 
 /**
  * Because metareducers take a reducer function and return a new reducer,

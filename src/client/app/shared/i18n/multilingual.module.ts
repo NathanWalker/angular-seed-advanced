@@ -19,7 +19,7 @@ import { MultilingualService } from './services/index';
 // for AoT compilation
 export function translateLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http, `${Config.IS_MOBILE_NATIVE() ? '/' : ''}assets/i18n/`, '.json');
-};
+}
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.

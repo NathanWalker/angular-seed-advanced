@@ -1,4 +1,4 @@
-@import 'nativescript-theme-core/scss/light';
+@import '~nativescript-theme-core/scss/light';
 
 $accent: #106CC8;
 
@@ -9,7 +9,7 @@ $btn-color: $accent;
 $btn-color-secondary: darken($accent, 5%);
 
 // Import the theme’s main ruleset.
-@import 'nativescript-theme-core/scss/index';
+@import '~nativescript-theme-core/scss/index';
 
 .link {
   border-width: 0;
