@@ -284,8 +284,8 @@ A documentation of the provided tools can be found in [tools/README.md](tools/RE
 * how to add a language?
   - `src/client/assets/i18n/`
     - add `[language code].json` (copy existing one and adapt the translation strings)
-  - Create a file similar to the [sample app-config](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/shared/sample/services/app-config.ts)
-    - Define your app's `SUPPORTED_LANGUAGES`.
+  - `https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/web.module.ts#L98-L101`
+    - Configure `Languages` InjectionToken with array of supported languages
   - `src/client/app/shared/i18n/components/lang-switcher.component.spec.ts`
     - fix test
 
