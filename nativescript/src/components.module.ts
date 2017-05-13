@@ -30,10 +30,6 @@ import { ConsoleService, ConsoleTarget, LogLevel } from './app/shared/core/index
 // note: couple ways this could be done, just one option presented here...
 @NgModule({
   imports: [
-    NativeScriptModule,
-    NativeScriptFormsModule,
-    NativeScriptHttpModule,
-    NativeScriptRouterModule,
     AnalyticsModule,
     CoreModule,
     MultilingualModule.forRoot([{
@@ -41,7 +37,11 @@ import { ConsoleService, ConsoleTarget, LogLevel } from './app/shared/core/index
       deps: [Http],
       useFactory: (translateLoaderFactory)
     }]),
-    SampleModule
+    SampleModule,
+    NativeScriptModule,
+    NativeScriptFormsModule,
+    NativeScriptHttpModule,
+    NativeScriptRouterModule,
   ],
   declarations: [
     AppComponent,
@@ -53,15 +53,15 @@ import { ConsoleService, ConsoleTarget, LogLevel } from './app/shared/core/index
     CUSTOM_ELEMENTS_SCHEMA
   ],
   exports: [
-    NativeScriptModule,
-    NativeScriptFormsModule,
-    NativeScriptHttpModule,
-    NativeScriptRouterModule,
     MultilingualModule,
     AppComponent,
     AnalyticsModule,
     CoreModule,
-    SampleModule
+    SampleModule,
+    NativeScriptModule,
+    NativeScriptFormsModule,
+    NativeScriptHttpModule,
+    NativeScriptRouterModule,
   ]
 })
 export class ComponentsModule { }

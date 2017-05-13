@@ -56,17 +56,18 @@ function processComponentCss() {
  * Process scss files referenced from Angular component `styleUrls` metadata
  */
 function processComponentScss() {
+  // let {N} handle via nativescript-dev-sass plugin
   const stream = gulp.src([
     '**/*.scss',
     'app/**/*.scss',
     '!app/**/*.component.scss',
   ], {
-    base: Config.TNS_APP_SRC,
-    cwd: Config.TNS_APP_SRC,
-  })
-    .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.sass(Config.getPluginConfig('gulp-sass-tns')).on('error', plugins.sass.logError))
-    .pipe(plugins.sourcemaps.write());
+      base: Config.TNS_APP_SRC,
+      cwd: Config.TNS_APP_SRC,
+    });
+    // .pipe(plugins.sourcemaps.init())
+    // .pipe(plugins.sass(Config.getPluginConfig('gulp-sass-tns')).on('error', plugins.sass.logError))
+    // .pipe(plugins.sourcemaps.write());
 
   return stream
     .pipe(renamer())
@@ -79,11 +80,11 @@ function handlePlatformSpecificFiles() {
   const platformRegexp = /(\.ios|\.android)/;
 
   return gulp.src([
-    '**/*.ios.css',
+    // '**/*.ios.css',
     '**/*.ios.html',
     '**/*.ios.js',
 
-    '**/*.android.css',
+    // '**/*.android.css',
     '**/*.android.html',
     '**/*.android.js',
   ], {
@@ -106,10 +107,15 @@ export =
     shallRun(files: String[]) {
       // Only run if tns-resources
       return files.some((f) =>
-                          // tns.html, tns.scss or tns.css under nativescript/src/app
-                          (f.indexOf('nativescript/src/app') !== -1 && !!f.match(/\.tns\.(s?css|html)$/)) ||
-                          // .html, .scss or .css NOT under nativescript/src/app
-                          (f.indexOf('nativescript/src/app') === -1 && !!f.match(/\.(s?css|html)$/))
+                          // // tns.html, tns.scss or tns.css under nativescript/src/app
+                          // (f.indexOf('nativescript/src/app') !== -1 && !!f.match(/\.tns\.(s?css|html)$/)) ||
+                          // // .html, .scss or .css NOT under nativescript/src/app
+                          // (f.indexOf('nativescript/src/app') === -1 && !!f.match(/\.(s?css|html)$/))
+
+                          // tns.html under nativescript/src/app
+                          (f.indexOf('nativescript/src/app') !== -1 && !!f.match(/\.tns\.(html)$/)) ||
+                          // .html NOT under nativescript/src/app
+                          (f.indexOf('nativescript/src/app') === -1 && !!f.match(/\.(html)$/))
                        );
     }
 
