@@ -2,7 +2,7 @@
 import { TranslateService, TranslateLoader } from '@ngx-translate/core';
 
 // module
-import { MultilingualService } from '../index';
+import { MultilingualService } from '../services/index';
 
 // mocks
 import { TranslateMock } from './mocks/ng2-translate.mock';

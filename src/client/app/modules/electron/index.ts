@@ -1,5 +1,2 @@
-// services
-export * from './services/event.service';
-
-// utils
-export * from './utils/desktop-config';
+export * from './services/index';
+export * from './utils/index';

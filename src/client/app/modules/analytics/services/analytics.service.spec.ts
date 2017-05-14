@@ -9,7 +9,7 @@ import { Angulartics2Module, Angulartics2Segment } from 'angulartics2';
 import { t } from '../../test/index';
 
 // module
-import { AnalyticsService, Analytics } from '../index';
+import { AnalyticsService, Analytics } from './analytics.service';
 
 const testModuleConfig = () => {
   TestBed.configureTestingModule({

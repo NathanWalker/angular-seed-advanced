@@ -11,9 +11,9 @@ import { EffectsTestingModule, EffectsRunner } from '@ngrx/effects/testing';
 
 // app
 import { t } from '../../test/index';
-// import {TEST_CORE_PROVIDERS, GET_HTTP_PROVIDERS_INJECTOR, TEST_LOCATION_PROVIDERS} from '../../core/testing/index';
+// import {TEST_CORE_PROVIDERS, GET_HTTP_PROVIDERS_INJECTOR, TEST_LOCATION_PROVIDERS} from '../../core/testing';
 import { AnalyticsModule } from '../../analytics/analytics.module';
-import { NameListService, NameListEffects, reducer, InitAction, InitializedAction, AddAction, NameAddedAction } from '../index';
+import { NameListService, SampleEffects, reducer, InitAction, InitializedAction, AddAction, NameAddedAction } from '../index';
 
 // test module configuration for each test
 const testModuleConfig = () => {
@@ -26,7 +26,7 @@ const testModuleConfig = () => {
     ],
     providers: [
       NameListService,
-      NameListEffects,
+      SampleEffects,
       {provide: XHRBackend, useClass: MockBackend}
     ]
   });
@@ -43,7 +43,7 @@ export function main() {
     let nameList: NameListService;
     let store: Store<any>;
     let runner: EffectsRunner; // ngrx/effects tester
-    let nameListEffects: NameListEffects;
+    let nameListEffects: SampleEffects;
     let connection: MockConnection; // this will be set when a new connection is emitted from the backend.
 
     t.be(() => {
@@ -52,7 +52,7 @@ export function main() {
       backend = <any>injector.get(XHRBackend);
       store = injector.get(Store);
       runner = injector.get(EffectsRunner);
-      nameListEffects = injector.get(NameListEffects);
+      nameListEffects = injector.get(SampleEffects);
       // sets the connection when someone tries to access the backend with an xhr request
       backend.connections.subscribe((c: MockConnection) => connection = c);
       // construct after setting up connections above

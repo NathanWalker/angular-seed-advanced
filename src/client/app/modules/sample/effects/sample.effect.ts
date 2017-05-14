@@ -11,7 +11,7 @@ import { NameListService } from '../services/name-list.service';
 import * as nameList from '../actions/name-list.action';
 
 @Injectable()
-export class NameListEffects {
+export class SampleEffects {
 
   /**
    * This effect makes use of the `startWith` operator to trigger

@@ -5,8 +5,9 @@ import './operators';
 import { Component, OnInit } from '@angular/core';
 
 // app
-import { AnalyticsService } from '../modules/analytics/index';
-import { Config, LogService, AppService } from '../modules/core/index';
+import { AnalyticsService } from '../modules/analytics/services/index';
+import { LogService, AppService } from '../modules/core/services/index';
+import { Config } from '../modules/core/utils/index';
 
 /**
  * This class represents the main application component.

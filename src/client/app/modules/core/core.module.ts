@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 // module
+import { SharedModule } from '../shared/index';
 import { CORE_DIRECTIVES } from './directives/index';
 import { CORE_PROVIDERS } from './services/index';
 import { Config } from './utils/index';
@@ -21,22 +22,16 @@ interface ICoreModuleOptions {
 
 @NgModule({
   imports: [
-    CommonModule,
-    RouterModule,
-    HttpModule
+    SharedModule
   ],
   declarations: [
-    CORE_DIRECTIVES
+    ...CORE_DIRECTIVES
   ],
   exports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    HttpModule,
-    CORE_DIRECTIVES
+    ...CORE_DIRECTIVES
   ],
   providers: [
-    CORE_PROVIDERS
+    ...CORE_PROVIDERS,
   ]
 })
 export class CoreModule {

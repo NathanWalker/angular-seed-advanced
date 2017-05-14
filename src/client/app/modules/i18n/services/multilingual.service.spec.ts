@@ -9,8 +9,7 @@ import { Angulartics2Module, Angulartics2Segment } from 'angulartics2';
 
 // app
 import { t } from '../../test/index';
-import { CoreModule } from '../../core/core.module';
-import { ILang, WindowService, ConsoleService } from '../../core/index';
+import { CoreModule, ILang, WindowService, ConsoleService } from '../../core/index';
 import { TEST_CORE_PROVIDERS, WindowMockFrench } from '../../core/testing/index';
 
 // module
@@ -45,19 +44,20 @@ const testModuleConfig = (options?: any) => {
       langProvider
     ]
   });
+  TestBed.compileComponents();
 };
 
 export function main() {
   t.describe('i18n:', () => {
     t.describe('MultilingualService', () => {
 
-      t.be(() => {
+      t.be(t.async(() => {
         testModuleConfig({
           languages: [{
             code: 'en', title: 'English'
           }]
         });
-      });
+      }));
 
       t.it('should at a minimum support english', t.inject([Languages], (languages: any, store: Store<any>) => {
         t.e(languages.length).toBe(1);
@@ -76,7 +76,7 @@ export function main() {
 
     t.describe('MultilingualService for French browser/platform', () => {
 
-      t.be(() => {
+      t.be(t.async(() => {
         testModuleConfig({
           window: WindowMockFrench,
           languages: [
@@ -84,7 +84,7 @@ export function main() {
             { code: 'fr', title: 'French' }
           ]
         });
-      });
+      }));
 
       t.it('should now support french by default', t.inject([MultilingualService, Store, WindowService, Languages], (multilang: MultilingualService, store: Store<any>, win: WindowService, languages) => {
         t.e(languages.length).toBe(2);
