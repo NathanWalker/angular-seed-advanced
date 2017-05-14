@@ -61,7 +61,10 @@ const reducers = {
   sample: fromSample.reducer
 };
 
+// ensure state is frozen as extra level of security when developing
+// helps maintain immutability
 const developmentReducer: ActionReducer<IAppState> = compose(storeFreeze, combineReducers)(reducers);
+// for production, dev has already been cleared so no need
 const productionReducer: ActionReducer<IAppState> = combineReducers(reducers);
 
 export function AppReducer(state: any, action: any) {

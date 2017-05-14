@@ -1,1 +1,1 @@
-export * from './name-list.state';
+export * from './sample.state';
