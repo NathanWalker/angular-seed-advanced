@@ -49,7 +49,7 @@
     "start.desktop.windows": "gulp desktop && SET NODE_ENV=development && electron ./dist/dev",
     "start.ios": "npm run nativescript-install && gulp build.tns && concurrently --kill-others 'gulp build.tns.watch' 'cd nativescript && tns run ios --emulator'",
     "start.ios.device": "npm run nativescript-install && gulp build.tns && concurrently --kill-others 'gulp build.tns.watch' 'cd nativescript && tns run ios'",
-    "start.android": "npm run nativescript-install && gulp build.tns && concurrently --kill-others \"gulp build.tns.watch\" \"cd nativescript && tns livesync android --emulator\"",
+    "start.android": "npm run nativescript-install && gulp build.tns && concurrently --kill-others \"gulp build.tns.watch\" \"cd nativescript && tns run android --emulator\"",
     "start.android.device": "npm run nativescript-install && gulp build.tns && concurrently --kill-others \"gulp build.tns.watch\" \"cd nativescript && tns run android\"",
     "tasks.list": "gulp --tasks-simple --color",
     "test": "gulp test --color",
