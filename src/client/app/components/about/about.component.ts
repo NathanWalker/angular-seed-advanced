@@ -1,5 +1,5 @@
 import { Injector, Component } from '@angular/core';
-import { Config } from '../../shared/core/index';
+import { Config } from '../../modules/core/index';
 
 @Component({
   moduleId: module.id,

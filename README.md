@@ -285,7 +285,7 @@ A documentation of the provided tools can be found in [tools/README.md](tools/RE
     - add `[language code].json` (copy existing one and adapt the translation strings)
   - `https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/web.module.ts#L98-L101`
     - Configure `Languages` InjectionToken with array of supported languages
-  - `src/client/app/shared/i18n/components/lang-switcher.component.spec.ts`
+  - `src/client/app/modules/i18n/components/lang-switcher.component.spec.ts`
     - fix test
 
 ### Logging
@@ -317,7 +317,7 @@ A documentation of the provided tools can be found in [tools/README.md](tools/RE
 There’s actually only a few things to keep in mind when sharing code between web/mobile. The seed does take care of quite a few of those things but here’s a brief list:
 
 * Don’t import {N} modules into your components/services. {N} modules can only be used inside the {N} app therefore cannot be shared. To get around this, use `InjectionToken`'s. [Learn more here](http://blog.thoughtram.io/angular/2016/05/23/opaque-tokens-in-angular-2.html). A great example of how to integrate 2 different plugins (1 for web, 1 for {N}) and share all the code exists in [this wiki article: How to integrate Firebase across all platforms](https://github.com/NathanWalker/angular-seed-advanced/wiki/How-to-integrate-Firebase-across-all-platforms-(web-nativescript-desktop)) written by the awesome [Scott Lowe](https://twitter.com/scott_d_lowe).
-* Use the conditional hooks provided by the seed in shared methods where you may need to handle something differently in {N} than you do on the web. For example, see [here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/shared/i18n/components/lang-switcher.component.ts#L35-L41).
+* Use the conditional hooks provided by the seed in shared methods where you may need to handle something differently in {N} than you do on the web. For example, see [here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/modules/i18n/components/lang-switcher.component.ts#L35-L41).
 * Don’t use window global. Inject the `WindowService` provided by the seed instead. This includes usage of `alert`, `confirm`, etc. For example:
 
 If you were thinking about doing: `alert('Something happened!');`, *Don't*.

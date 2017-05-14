@@ -16,16 +16,16 @@ import { APP_COMPONENTS, AppComponent } from './app/components/index';
 import { routes } from './app/components/app.routes';
 
 // feature modules
-import { CoreModule } from './app/shared/core/core.module';
-import { AppReducer } from './app/shared/ngrx/index';
-import { AnalyticsModule } from './app/shared/analytics/analytics.module';
-import { MultilingualModule, translateLoaderFactory } from './app/shared/i18n/multilingual.module';
-import { MultilingualEffects, LanguageProviders, Languages } from './app/shared/i18n/index';
-import { SampleModule } from './app/shared/sample/sample.module';
-import { NameListEffects } from './app/shared/sample/index';
+import { CoreModule } from './app/modules/core/core.module';
+import { AppReducer } from './app/modules/ngrx/index';
+import { AnalyticsModule } from './app/modules/analytics/analytics.module';
+import { MultilingualModule, translateLoaderFactory } from './app/modules/i18n/multilingual.module';
+import { MultilingualEffects, LanguageProviders, Languages } from './app/modules/i18n/index';
+import { SampleModule } from './app/modules/sample/sample.module';
+import { NameListEffects } from './app/modules/sample/index';
 
 // config
-import { Config, WindowService, ConsoleService, createConsoleTarget, provideConsoleTarget, LogTarget, LogLevel, ConsoleTarget } from './app/shared/core/index';
+import { Config, WindowService, ConsoleService, createConsoleTarget, provideConsoleTarget, LogTarget, LogLevel, ConsoleTarget } from './app/modules/core/index';
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 if (String('<%= BUILD_TYPE %>') === 'dev') {
   // only output console logging in dev mode
