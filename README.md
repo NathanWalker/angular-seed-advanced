@@ -1,4 +1,4 @@
-![Angular Seed Advanced](https://d2wp4shknjcfjl.cloudfront.net/api/file/olEzxJQ2KcXrZHzbt9UA)![Angular Seed Advanced Integrations](https://d2wp4shknjcfjl.cloudfront.net/api/file/SPLl77rSTuGZ7APrXizi)
+![Angular Seed Advanced](https://cdn.filestackcontent.com/LSWpUEEGQiOdCpv9t6Ri?v=0)
 
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 [![Build Status](https://travis-ci.org/NathanWalker/angular-seed-advanced.svg?branch=master)](https://travis-ci.org/Nate.hanWalker/angular-seed-advanced)

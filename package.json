@@ -68,8 +68,8 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@angular/compiler-cli": "^4.0.0",
-    "@angular/platform-server": "^4.0.0",
+    "@angular/compiler-cli": "^4.1.0",
+    "@angular/platform-server": "^4.1.0",
     "@ngrx/store-devtools": "^3.2.4",
     "@compodoc/compodoc": "^1.0.0-beta.7",
     "@types/async": "^2.0.32",
