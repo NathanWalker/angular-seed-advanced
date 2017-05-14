@@ -13,7 +13,7 @@ let template: any;
 let menu: any;
 
 // app
-import { DesktopConfig } from './app/shared/electron/index';
+import { DesktopConfig } from './app/modules/electron/index';
 
 // Sample
 // You would need a valid `submitURL` to use

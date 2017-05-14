@@ -17,12 +17,12 @@ import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 
 // app
-import { AppService } from '../../../app/shared/core/services/app.service';
-import { Config } from '../../../app/shared/core/utils';
-import { LogService, WindowService, RouterExtensions } from '../../../app/shared/core/index';
-import { AnalyticsService } from '../../../app/shared/analytics/index';
+import { AppService } from '../../../app/modules/core/services/app.service';
+import { Config } from '../../../app/modules/core/utils';
+import { LogService, WindowService, RouterExtensions } from '../../../app/modules/core/index';
+import { AnalyticsService } from '../../../app/modules/analytics/index';
 import { ActionBarUtil } from '../utils/actionbar.util';
-import * as multilingual from '../../../app/shared/i18n/index';
+import * as multilingual from '../../../app/modules/i18n/index';
 
 declare var android: any;
 

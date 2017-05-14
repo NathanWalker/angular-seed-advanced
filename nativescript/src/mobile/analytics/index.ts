@@ -2,7 +2,7 @@
 import { Angulartics2, Angulartics2Segment } from 'angulartics2';
 
 // app
-import { AnalyticsService } from '../../app/shared/analytics/index';
+import { AnalyticsService } from '../../app/modules/analytics/index';
 import { NSAngulartics2Segment } from './services/ns-angulartics2-segment.service';
 
 export const NS_ANALYTICS_PROVIDERS: Array<any> = [

@@ -3,7 +3,7 @@ import * as dialogs from 'ui/dialogs';
 import { device } from 'platform';
 
 // app
-import { IWindow } from '../../../app/shared/core/interfaces/iwindow';
+import { IWindow } from '../../../app/modules/core/interfaces/iwindow';
 
 export class WindowNative implements IWindow {
   public get navigator(): any {

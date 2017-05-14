@@ -49,7 +49,7 @@ tmp
 
 src/**/*.js
 src/**/*.js.map
-!src/client/app/shared/test
+!src/client/app/modules/test
 nativescript/app
 nativescript/hooks
 nativescript/node_modules

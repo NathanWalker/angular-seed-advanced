@@ -1,1 +1,1 @@
-export { EnvConfig } from '../../src/client/app/shared/core/utils/config';
+export { EnvConfig } from '../../src/client/app/modules/core/utils/config';

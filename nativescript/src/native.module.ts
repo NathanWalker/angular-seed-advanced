@@ -18,15 +18,15 @@ import {
   ConsoleService,
   RouterExtensions,
   AppService
-} from './app/shared/core/index';
+} from './app/modules/core/index';
 import { AppComponent } from './app/components/app.component';
 import { routes } from './app/components/app.routes';
 
 // feature modules
-import { CoreModule } from './app/shared/core/core.module';
-import { AppReducer } from './app/shared/ngrx/index';
-import { MultilingualEffects } from './app/shared/i18n/index';
-import { NameListEffects } from './app/shared/sample/index';
+import { CoreModule } from './app/modules/core/core.module';
+import { AppReducer } from './app/modules/ngrx/index';
+import { MultilingualEffects } from './app/modules/i18n/index';
+import { NameListEffects } from './app/modules/sample/index';
 import { ComponentsModule, cons, consoleLogTarget } from './components.module';
 
 // {N} custom app specific
@@ -37,7 +37,7 @@ import { NS_ANALYTICS_PROVIDERS } from './mobile/analytics/index';
  * Config
  * Seed provided configuration options
  */
-import { Config, LogTarget } from './app/shared/core/index';
+import { Config, LogTarget } from './app/modules/core/index';
 import { Page } from 'ui/page';
 Config.PageClass = Page;
 
@@ -47,7 +47,7 @@ Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
 // (optional) log level - defaults to no logging if not set
 Config.DEBUG.LEVEL_4 = true;
 
-import { Languages, LanguageViewHelper } from './app/shared/i18n/index';
+import { Languages, LanguageViewHelper } from './app/modules/i18n/index';
 
 // helper for SegmentedBar view bindings in lang-switcher shared component
 export function segmentViewHelper(languages) {
