@@ -1,1 +1,1 @@
-export * from './name-list.reducer';
+export * from './sample.reducer';
