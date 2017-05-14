@@ -16,16 +16,14 @@ import { APP_COMPONENTS, AppComponent } from './app/components/index';
 import { routes } from './app/components/app.routes';
 
 // feature modules
-import { CoreModule } from './app/modules/core/core.module';
+import { WindowService, ConsoleService, createConsoleTarget, provideConsoleTarget, LogTarget, LogLevel, ConsoleTarget } from './app/modules/core/services/index';
+import { CoreModule, Config } from './app/modules/core/index';
+import { AnalyticsModule } from './app/modules/analytics/index';
+import { MultilingualModule, Languages, translateLoaderFactory, MultilingualEffects } from './app/modules/i18n/index';
+import { SampleModule, SampleEffects } from './app/modules/sample/index';
 import { AppReducer } from './app/modules/ngrx/index';
-import { AnalyticsModule } from './app/modules/analytics/analytics.module';
-import { MultilingualModule, translateLoaderFactory } from './app/modules/i18n/multilingual.module';
-import { MultilingualEffects, LanguageProviders, Languages } from './app/modules/i18n/index';
-import { SampleModule } from './app/modules/sample/sample.module';
-import { NameListEffects } from './app/modules/sample/index';
 
 // config
-import { Config, WindowService, ConsoleService, createConsoleTarget, provideConsoleTarget, LogTarget, LogLevel, ConsoleTarget } from './app/modules/core/index';
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 if (String('<%= BUILD_TYPE %>') === 'dev') {
   // only output console logging in dev mode
@@ -78,9 +76,10 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
       useFactory: (translateLoaderFactory)
     }]),
     SampleModule,
+    // configure app state
     StoreModule.provideStore(AppReducer),
     EffectsModule.run(MultilingualEffects),
-    EffectsModule.run(NameListEffects),
+    EffectsModule.run(SampleEffects),
     // dev environment only imports
     DEV_IMPORTS,
   ],
@@ -92,8 +91,6 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
       provide: APP_BASE_HREF,
       useValue: '<%= APP_BASE %>'
     },
-    // default language providers
-    LanguageProviders,
     // override with supported languages
     {
       provide: Languages,

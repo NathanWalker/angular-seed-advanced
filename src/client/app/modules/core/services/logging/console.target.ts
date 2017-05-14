@@ -1,6 +1,6 @@
 import { Injectable, Provider } from '@angular/core';
 import { LogTargetBase, LogEvent, LogLevel, LogTargetOptions, LogTarget } from './log.target';
-import { ConsoleService } from './../console.service';
+import { ConsoleService } from '../console.service';
 
 @Injectable()
 export class ConsoleTarget extends LogTargetBase {

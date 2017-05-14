@@ -26,7 +26,7 @@ import { routes } from './app/components/app.routes';
 import { CoreModule } from './app/modules/core/core.module';
 import { AppReducer } from './app/modules/ngrx/index';
 import { MultilingualEffects } from './app/modules/i18n/index';
-import { NameListEffects } from './app/modules/sample/index';
+import { SampleEffects } from './app/modules/sample/index';
 import { ComponentsModule, cons, consoleLogTarget } from './components.module';
 
 // {N} custom app specific
@@ -73,7 +73,7 @@ export function segmentViewHelper(languages) {
     NativeScriptRouterModule.forRoot(<any>routes),
     StoreModule.provideStore(AppReducer),
     EffectsModule.run(MultilingualEffects),
-    EffectsModule.run(NameListEffects)
+    EffectsModule.run(SampleEffects)
   ],
   providers: [
     NS_ANALYTICS_PROVIDERS,

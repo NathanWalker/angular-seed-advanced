@@ -2,7 +2,7 @@
 import { ANALYTICS_PROVIDERS } from '../../../analytics/index';
 
 // module
-import { WindowService, ConsoleService, LogService, LogTarget, ConsoleTarget, LogLevel, RouterExtensions, AppService } from '../../index';
+import { WindowService, ConsoleService, LogService, LogTarget, ConsoleTarget, LogLevel, RouterExtensions, AppService } from '../../services/index';
 
 // mocks
 import { WindowMock } from '../mocks/window.mock';

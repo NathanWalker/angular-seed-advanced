@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 // app
-import { SAMPLE_COMPONENTS } from './components/index';
+import { SharedModule } from '../shared/index';
 import { SAMPLE_PROVIDERS } from './services/index';
 import { MultilingualModule } from '../i18n/multilingual.module';
 
@@ -16,25 +16,18 @@ import { MultilingualModule } from '../i18n/multilingual.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    HttpModule,
-    RouterModule,
+    SharedModule,
     MultilingualModule,
   ],
-  declarations: [
-    SAMPLE_COMPONENTS
-  ],
   providers: [
-    SAMPLE_PROVIDERS
+    ...SAMPLE_PROVIDERS
   ],
   schemas: [
     NO_ERRORS_SCHEMA,
     CUSTOM_ELEMENTS_SCHEMA
   ],
   exports: [
-    SAMPLE_COMPONENTS,
-    MultilingualModule
+    SharedModule
   ]
 })
 export class SampleModule {

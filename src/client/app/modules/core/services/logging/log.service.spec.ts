@@ -6,7 +6,8 @@ import { TestBed } from '@angular/core/testing';
 import { t } from '../../../test/index';
 
 // module
-import { Config, ConsoleService, LogService, LogTarget, ConsoleTarget, LogLevel, provideConsoleTarget, LogTargetBase, LogEvent } from '../../index';
+import { Config } from '../../utils/index';
+import { ConsoleService, LogService, LogTarget, ConsoleTarget, LogLevel, provideConsoleTarget, LogTargetBase, LogEvent } from '../../services/index';
 
 const secondTarget = new class extends LogTargetBase {
   constructor() {

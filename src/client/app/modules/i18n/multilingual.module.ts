@@ -2,19 +2,16 @@
 import { NgModule, ModuleWithProviders, Optional, SkipSelf, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { HttpModule, Http } from '@angular/http';
 
 // libs
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-// app
-import { Config } from '../core/index';
-
 // module
-import { LangSwitcherComponent } from './components/index';
-import { MultilingualService } from './services/index';
+import { Config } from '../core/index';
+import { MULTILANG_COMPONENTS } from './components/index';
+import { MULTILANG_PROVIDERS } from './services/index';
 
 // for AoT compilation
 export function translateLoaderFactory(http: Http) {
@@ -28,9 +25,8 @@ export function translateLoaderFactory(http: Http) {
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
-    FormsModule,
     HttpModule,
+    FormsModule,
     TranslateModule.forRoot([{
       provide: TranslateLoader,
       deps: [Http],
@@ -38,14 +34,14 @@ export function translateLoaderFactory(http: Http) {
     }]),
   ],
   declarations: [
-    LangSwitcherComponent
-  ],
-  exports: [
-    LangSwitcherComponent,
-    TranslateModule
+    ...MULTILANG_COMPONENTS
   ],
   providers: [
-    MultilingualService
+    ...MULTILANG_PROVIDERS,
+  ],
+  exports: [
+    ...MULTILANG_COMPONENTS,
+    TranslateModule
   ],
   schemas: [
     NO_ERRORS_SCHEMA,
