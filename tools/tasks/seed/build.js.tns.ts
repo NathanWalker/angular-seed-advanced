@@ -52,16 +52,6 @@ export =
         },
       );
 
-    //   const envConfig = Object.assign({}, baseConfig, envOnlyConfig);
-    // let locals = Object.assign({},
-    //   Config,
-    //   { ENV_CONFIG: this.stringifyEnvConfig ? JSON.stringify(envConfig) : envConfig }
-    // );
-    // if (this.stringifySystemConfigDev) {
-    //   Object.assign(locals, {SYSTEM_CONFIG_DEV: JSON.stringify(Config.SYSTEM_CONFIG_DEV)});
-    // }
-    // return locals;
-
       const transpiled = result.js
         .pipe(plugins.sourcemaps.write())
         // Use for debugging with Webstorm/IntelliJ
@@ -71,9 +61,7 @@ export =
         //      sourceRoot: (file: any) =>
         //        relative(file.path, PROJECT_ROOT + '/' + APP_SRC).replace(sep, '/') + '/' + APP_SRC
         //    }))
-
-        // TODO: template does not work on ns-app.service - not sure why - disabled for now
-        // .pipe(plugins.template(template, {})).on('error', console.error.bind(console))
+        .pipe(plugins.template(template, {interpolate: /<%=([\s\S]+?)%>/g}))
         .pipe(gulp.dest(Config.TNS_APP_DEST));
 
       const copy = gulp.src(src, {
