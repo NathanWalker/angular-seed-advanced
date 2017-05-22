@@ -24,6 +24,9 @@ export = () => {
 
   return result.js
     .pipe(plugins.sourcemaps.write())
-    .pipe(plugins.template(new TemplateLocalsBuilder().withStringifiedSystemConfigDev().build()))
+    .pipe(plugins.template(
+      new TemplateLocalsBuilder().withStringifiedSystemConfigDev().build(),
+      {interpolate: /<%=([\s\S]+?)%>/g}
+    ))
     .pipe(gulp.dest(Config.E2E_DEST));
 };

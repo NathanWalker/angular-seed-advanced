@@ -25,7 +25,7 @@ export = () => {
     .pipe(tsProject());
 
   return result.js
-    .pipe(plugins.template(new TemplateLocalsBuilder().build()))
+    .pipe(plugins.template(new TemplateLocalsBuilder().build(), {interpolate: /<%=([\s\S]+?)%>/g}))
     .pipe(plugins.sourcemaps.write())
     .pipe(gulp.dest('./'));
 };

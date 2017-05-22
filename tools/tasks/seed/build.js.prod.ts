@@ -35,7 +35,7 @@ export = () => {
 
 
   return result.js
-    .pipe(plugins.template(new TemplateLocalsBuilder().build()))
+    .pipe(plugins.template(new TemplateLocalsBuilder().build()), {interpolate: /<%=([\s\S]+?)%>/g})
     .pipe(gulp.dest(Config.TMP_DIR))
     .on('error', (e: any) => {
       console.log(e);

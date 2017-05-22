@@ -17,7 +17,10 @@ export = () => {
     .pipe(inject('shims'))
     .pipe(inject('libs'))
     .pipe(inject())
-    .pipe(plugins.template(new TemplateLocalsBuilder().withoutStringifiedEnvConfig().build()))
+    .pipe(plugins.template(
+      new TemplateLocalsBuilder().withoutStringifiedEnvConfig().build(),
+      {interpolate: /<%=([\s\S]+?)%>/g}
+    ))
     .pipe(gulp.dest(Config.APP_DEST));
 };
 

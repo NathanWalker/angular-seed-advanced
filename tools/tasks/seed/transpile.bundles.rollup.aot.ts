@@ -28,7 +28,7 @@ export = () => {
     });
 
   return result.js
-    .pipe(plugins.template(new TemplateLocalsBuilder().build()))
+    .pipe(plugins.template(new TemplateLocalsBuilder().build(), {interpolate: /<%=([\s\S]+?)%>/g}))
     .pipe(plugins.rename(Config.JS_PROD_APP_BUNDLE))
     .pipe(gulp.dest(Config.JS_DEST))
     .on('error', (e: any) => {

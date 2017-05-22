@@ -68,7 +68,10 @@ export =
         //      sourceRoot: (file: any) =>
         //        relative(file.path, Config.PROJECT_ROOT + '/' + Config.APP_SRC).replace(sep, '/') + '/' + Config.APP_SRC
         //    }))
-        .pipe(plugins.template(new TemplateLocalsBuilder().withStringifiedSystemConfigDev().build()))
+        .pipe(plugins.template(
+          new TemplateLocalsBuilder().withStringifiedSystemConfigDev().build(),
+          {interpolate: /<%=([\s\S]+?)%>/g}
+        ))
         .pipe(gulp.dest(Config.APP_DEST));
     }
   };
