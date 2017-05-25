@@ -9,10 +9,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { Analytics, AnalyticsService } from '../../analytics/index';
 import { ILang } from '../../core/index';
 import { WindowService } from '../../core/services/window.service';
+import { IAppState } from '../../ngrx/index';
 
 // module
 import { CATEGORY } from '../common/category.common';
-import { IMultilingualState } from '../states/index';
+import { IMultilingualState, initialState } from '../states/index';
 import { ChangeAction } from '../actions/index';
 
 // provide supported languages at runtime
@@ -33,19 +34,19 @@ export class MultilingualService extends Analytics {
     public analytics: AnalyticsService,
     private translate: TranslateService,
     private win: WindowService,
-    private store: Store<IMultilingualState>
+    private store: Store<IAppState>
   ) {
     super(analytics);
     this.category = CATEGORY;
 
     // this language will be used as a fallback when a translation isn't found in the current language
-    translate.setDefaultLang('en');
+    translate.setDefaultLang(initialState.lang);
 
     // use browser/platform lang if available
     let userLang = win.navigator.language.split('-')[0];
 
     // subscribe to changes
-    store.select('i18n').subscribe((state: IMultilingualState) => {
+    store.select(s => s.i18n).subscribe((state: IMultilingualState) => {
       // update ng2-translate which will cause translations to occur wherever the TranslatePipe is used in the view
       this.translate.use(state.lang);
     });
