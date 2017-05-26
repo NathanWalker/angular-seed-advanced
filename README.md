@@ -19,8 +19,8 @@ This is an **advanced** seed project for Angular apps based on [Minko Gechev's](
     - When using the seed, be sure to change your `write_key` [here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/index.html#L24)
   - Can be changed to any vendor, [learn more here](https://github.com/angulartics/angulartics2#supported-providers)
 - [lodash](https://lodash.com/) Helps reduce blocks of code down to single lines and enhances readability
-- [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#nativescript-app).
-- [Electron](http://electron.atom.io/) cross platform desktop apps (Mac, Windows and Linux). [Setup instructions here](#electron-app).
+- [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#mobile-app).
+- [Electron](http://electron.atom.io/) cross platform desktop apps (Mac, Windows and Linux). [Setup instructions here](#desktop-app).
 
 | ![Multiple Platforms](https://cdn.filestackcontent.com/zZlQKKKjQUaBr9pLkEVK) |
 | :---: |
