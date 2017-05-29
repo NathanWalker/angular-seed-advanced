@@ -36,6 +36,7 @@
     "angulartics2": "^2.2.1",
     "lodash": "^4.17.4",
     "nativescript-angular": "~3.0.0",
+    "nativescript-localstorage": "^1.1.2",
     "nativescript-theme-core": "^1.0.4",
     "ngrx-store-freeze": "0.1.9",
     "reflect-metadata": "^0.1.8",

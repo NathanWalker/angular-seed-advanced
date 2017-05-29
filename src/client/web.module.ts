@@ -16,7 +16,7 @@ import { APP_COMPONENTS, AppComponent } from './app/components/index';
 import { routes } from './app/components/app.routes';
 
 // feature modules
-import { WindowService, ConsoleService, createConsoleTarget, provideConsoleTarget, LogTarget, LogLevel, ConsoleTarget } from './app/modules/core/services/index';
+import { WindowService, StorageService, ConsoleService, createConsoleTarget, provideConsoleTarget, LogTarget, LogLevel, ConsoleTarget } from './app/modules/core/services/index';
 import { CoreModule, Config } from './app/modules/core/index';
 import { AnalyticsModule } from './app/modules/analytics/index';
 import { MultilingualModule, Languages, translateLoaderFactory, MultilingualEffects } from './app/modules/i18n/index';
@@ -38,11 +38,14 @@ if (String('<%= TARGET_DESKTOP %>') === 'true') {
   routerModule = RouterModule.forRoot(routes, { useHash: true });
 }
 
-declare var window, console;
+declare var window, console, localStorage;
 
 // For AoT compilation to work:
 export function win() {
   return window;
+}
+export function storage() {
+  return localStorage;
 }
 export function cons() {
   return console;
@@ -65,6 +68,7 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
     BrowserModule,
     CoreModule.forRoot([
       { provide: WindowService, useFactory: (win) },
+      { provide: StorageService, useFactory: (storage) },
       { provide: ConsoleService, useFactory: (cons) },
       { provide: LogTarget, useFactory: (consoleLogTarget), deps: [ConsoleService], multi: true }
     ]),
