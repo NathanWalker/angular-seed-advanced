@@ -4,7 +4,7 @@
   "nativescript": {
     "id": "com.yourdomain.nativescript",
     "tns-ios": {
-      "version": "3.0.0"
+      "version": "3.0.1"
     },
     "tns-android": {
       "version": "3.0.0"
@@ -62,7 +62,7 @@
     "nativescript-css-loader": "~0.26.0",
     "nativescript-dev-android-snapshot": "^0.0.9",
     "nativescript-dev-sass": "^1.1.1",
-    "nativescript-dev-webpack": "^0.5.0",
+    "nativescript-dev-webpack": "^0.6.0",
     "opener": "^1.4.1",
     "raw-loader": "~0.5.1",
     "resolve-url-loader": "~2.0.2",
