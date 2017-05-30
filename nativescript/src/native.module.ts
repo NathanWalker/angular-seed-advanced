@@ -15,6 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 // app
 import {
   WindowService,
+  StorageService,
   ConsoleService,
   RouterExtensions,
   AppService
@@ -30,7 +31,7 @@ import { SampleEffects } from './app/modules/sample/index';
 import { ComponentsModule, cons, consoleLogTarget } from './components.module';
 
 // {N} custom app specific
-import { WindowNative, NSAppService } from './mobile/core/index';
+import { WindowNative, StorageNative, NSAppService } from './mobile/core/index';
 import { NS_ANALYTICS_PROVIDERS } from './mobile/analytics/index';
 
 /**
@@ -66,6 +67,7 @@ export function segmentViewHelper(languages) {
   imports: [
     CoreModule.forRoot([
       { provide: WindowService, useClass: WindowNative },
+      { provide: StorageService, useClass: StorageNative },
       { provide: ConsoleService, useFactory: (cons) },
       { provide: LogTarget, multi: true, deps: [ConsoleService], useFactory: (consoleLogTarget) }
     ]),
