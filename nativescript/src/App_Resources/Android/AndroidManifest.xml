@@ -27,7 +27,10 @@
 		<activity
 			android:name="com.tns.NativeScriptActivity"
 			android:label="@string/title_activity_kimera"
-			android:configChanges="keyboardHidden|orientation|screenSize">
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:theme="@style/LaunchScreenTheme">
+
+				<meta-data android:name="SET_THEME_ON_LAUNCH" android:resource="@style/AppTheme"/>
 
 				<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
