@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build.desktop.mac": "rimraf desktop/mac/* && gulp desktop.mac",
-    "build.desktop.windows": "rimraf desktop/windows/* && gulp desktop.windows",
+    "build.desktop.windows": "rimraf desktop/windows/* && gulp desktop.windows --desktop",
     "build.desktop.linux": "rimraf desktop/linux/* && gulp desktop.linux",
     "build.dev": "gulp build.dev --color --env-config dev",
     "build.dev.watch": "gulp build.dev.watch --color",

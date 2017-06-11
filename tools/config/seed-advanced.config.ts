@@ -34,7 +34,11 @@ export class SeedAdvancedConfig extends SeedConfig {
     let arg: string;
     if (argv && argv._) {
       arg = argv._;
-      if (arg.indexOf('desktop') > -1) {
+      console.log(argv);
+      console.log(arg);
+//      if (arg.indexOf('desktop') > -1) {
+      if (argv['desktop']) {
+        console.log('setting TARGET_DESKTOP = true');
         this.TARGET_DESKTOP = true;
         if (arg.indexOf('.mac') > -1 || arg.indexOf('.windows') > -1 || arg.indexOf('.linux') > -1) {
           this.TARGET_DESKTOP_BUILD = true;
