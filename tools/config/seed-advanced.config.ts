@@ -31,15 +31,13 @@ export class SeedAdvancedConfig extends SeedConfig {
 
     this.ENABLE_SCSS = true;
 
-    let arg: string;
     if (argv && argv._) {
-      arg = argv._;
       if (argv['desktop']) {
         this.TARGET_DESKTOP = true;
         if (argv['desktopBuild']) {
           this.TARGET_DESKTOP_BUILD = true;
         }
-      } else if (arg.indexOf('hybrid') > -1) {
+      } else if (argv['hybrid']) {
         this.TARGET_MOBILE_HYBRID = true;
       }
     }
