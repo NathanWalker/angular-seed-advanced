@@ -8,10 +8,11 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const { AotPlugin } = require("@ngtools/webpack");
 
-const mainSheet = `app.css`;
+let mainSheet;
 
 module.exports = env => {
     const platform = getPlatform(env);
+    mainSheet = `app.${platform}.css`;
 
     // Default destination inside platforms/<platform>/...
     const path = resolve(nsWebpack.getAppPath(platform));
@@ -142,6 +143,7 @@ function getPlugins(platform, env) {
             { from: "**/*.jpg" },
             { from: "**/*.png" },
             { from: "**/*.xml" },
+            { from: 'assets', to: 'assets', type: 'dir' },
         ], { ignore: ["App_Resources/**"] }),
 
         // Generate a bundle starter script and activate it in package.json
@@ -153,15 +155,15 @@ function getPlugins(platform, env) {
         // Angular AOT compiler
         new AotPlugin({
             tsConfigPath: "tsconfig.aot.json",
-            entryModule: resolve(__dirname, "app/app.module#AppModule"),
+            entryModule: resolve(__dirname, "app/native.module#NativeModule"),
             typeChecking: false
         }),
 
         // Resolve .ios.css and .android.css component stylesheets
-        new nsWebpack.StyleUrlResolvePlugin({platform}),
+        new nsWebpack.UrlResolvePlugin({platform}),
 
     ];
-    
+
     if (env.uglify) {
         plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
 
