@@ -4,20 +4,21 @@
   "nativescript": {
     "id": "com.yourdomain.nativescript",
     "tns-ios": {
-      "version": "3.0.1"
+      "version": "3.1.0"
     },
     "tns-android": {
-      "version": "3.0.0"
+      "version": "3.1.1"
     }
   },
   "scripts": {
     "preinstall": "mkdirp app",
     "clean": "rimraf platforms node_modules lib hooks app && mkdirp app",
     "ns-bundle": "ns-bundle",
-    "start-android-bundle": "npm run ns-bundle --android --start-app",
-    "start-ios-bundle": "npm run ns-bundle --ios --start-app",
+    "start-android-bundle": "npm run ns-bundle --android --run-app",
+    "start-ios-bundle": "npm run ns-bundle --ios --run-app",
     "build-android-bundle": "npm run ns-bundle --android --build-app",
-    "build-ios-bundle": "npm run ns-bundle --ios --build-app"
+    "build-ios-bundle": "npm run ns-bundle --ios --build-app",
+    "publish-ios-bundle": "npm run ns-bundle --ios --publish-app"
   },
   "dependencies": {
     "@angular/animations": "~4.1.2",
@@ -31,17 +32,17 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^2.0.3",
     "@ngrx/store": "^2.2.2",
-    "@ngx-translate/core": "^6.0.1",
-    "@ngx-translate/http-loader": "0.0.3",
-    "angulartics2": "^2.2.1",
+    "@ngx-translate/core": "~7.0.0",
+    "@ngx-translate/http-loader": "~0.1.0",
+    "angulartics2": "^2.2.2",
     "lodash": "^4.17.4",
-    "nativescript-angular": "~3.0.0",
+    "nativescript-angular": "~3.1.1",
     "nativescript-localstorage": "^1.1.2",
     "nativescript-theme-core": "^1.0.4",
     "ngrx-store-freeze": "0.1.9",
     "reflect-metadata": "^0.1.8",
     "rxjs": "^5.4.0",
-    "tns-core-modules": "~3.0.0",
+    "tns-core-modules": "~3.1.0",
     "zone.js": "^0.8.10"
   },
   "devDependencies": {
